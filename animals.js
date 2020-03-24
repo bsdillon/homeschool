@@ -240,7 +240,7 @@ function Multi()
 {
   this.Type="Mulit";
   this.chromosomes=[];
-  this.sets = 10;
+  this.sets = 20;
   this.paired = true;
   createChromosomes(this);
 }
@@ -272,7 +272,7 @@ function Slicer()
 {
   this.Type="Slicer";
   this.chromosomes=[];
-  this.sets = 10;
+  this.sets = 20;
   this.paired = true;
   createChromosomes(this);
 }
