@@ -106,6 +106,25 @@
             population.splice(n,1);
           }
         }
+
+        for(let i=0;i<population.length;i++)
+        {
+          var t = Phenotype(population[i]);
+          if(t in types)
+          {
+            types[t]++;
+          }
+          else
+          {
+            types[t]=1;
+          }
+        }
+
+        var keys = Object.keys(types)
+        if(keys.length==1)
+        {
+          fixed = keys[0];
+        }
       }
 
       function Display()
