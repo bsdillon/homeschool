@@ -1,0 +1,60 @@
+<html>
+  <head>
+   <link rel="stylesheet" type="text/css" href="common.css">
+   <style>
+      .clear { clear:both; }
+      .score th {width:20; padding:3px; font-weight:bold; border:1px solid black;}
+      .score td {text-align: center; width:20; padding:3px; border:1px solid black;}
+      table.score {border:3px solid black;}
+    </style>
+    <script src="Math/math.js"></script>
+    <script src="Math/arithmetic.js"></script>
+    <script src="Math/ArithWord.js"></script>
+    <script src="Math/equations.js"></script>
+    <script src="Math/conics.js"></script>
+    <script src="Math/student.js"></script>
+    <script src="Math/calculus.js"></script>
+    <script src="Math/trig.js"></script>
+    <script src="Math/statistics.js"></script>
+    <script src="Math/geometry.js"></script>
+    <script src="Math/physics.js"></script>
+    <script src="Math/linear.js"></script>
+    <script src="Math/areavolume.js"></script>
+    <script src="Math/numberSkills.js"></script>
+    <script>
+      function Daily()
+      {
+        Load(true);
+      }
+
+      function Different()
+      {
+        Load(false);
+      }
+
+      function Load(val)
+      {
+        var students = document.getElementsByName("student");
+        for(let i = 0; i<students.length; i++)
+        {
+          if(students[i].checked)
+          {
+            RandomInit(val,0);
+            //RandomInit(val,i*10);
+            StudentAlgorithm(students[i].id);
+            return;
+          }
+        }
+        output.innerHTML="You must select a student to get the right problem set.";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Daily Math Assignment</h1>
+    <button onclick="Daily()">Daily Assignment</button> 
+    <button onclick="Different()">Random Assignment</button><br>
+    <label>Elena</label><input type="radio" name="student" id="E"><label>Rachael</label><input type="radio" name="student" id="R"><label>Ben</label><input type="radio" name="student" id="B"><label>Hanna</label><input type="radio" name="student" id="H"><label>Mathlympics</label><input type="radio" name="student" id="O">
+    <p id="output"></p>
+    <p id="content"></p>
+  </body>
+</html>
