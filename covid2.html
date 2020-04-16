@@ -9,10 +9,14 @@
     <script src="data.js"></script>
     <script>
       var myCanvas;
+      var myCanvas2;
       var ctx;
+      var ctx2;
       var myLine;
+      var myLine2;
       var parsed = [];
       var ratios = [];
+      var curves = [];
       var labels;
       var included = new Array();
       var marker = ['circle', 'rect', 'rectRot','triangle'];
@@ -78,14 +82,78 @@
           }
         }
       };
+      var config2 = {
+        type: 'line',
+        data: {datasets: []
+        },
+        options:
+        {
+          responsive: false,
+          legend: 
+          {
+            labels: 
+            {
+              usePointStyle: true
+            }
+          },
+          title:
+          {
+            display: true,
+            text: 'COVID Trends'
+          },
+          tooltips:
+          {
+            mode: 'point',
+            intersect: false,
+          },
+          hover:
+          {
+            mode: 'nearest',
+            intersect: true
+          },
+          scales:
+          {
+            xAxes: 
+            [
+              {
+                display: true,
+                scaleLabel: 
+                {
+                  display: true,
+                  labelString: 'Date'
+                }
+              }
+            ],
+            yAxes: 
+            [
+              {
+                display: true,
+                scaleLabel: 
+                {
+                  display: true,
+                  labelString: 'Proportionate Graph'
+                },
+                ticks: 
+                {
+                  suggestedMin: 0,
+                  suggestedMax: 1.2
+                }
+              }
+            ]
+          }
+        }
+      };
 
       function load()
       {
         myCanvas = document.getElementById("can");
         ctx = myCanvas.getContext("2d");
-        width = myCanvas.width = 1000;
-        height = myCanvas.height = 550;
+        myCanvas2 = document.getElementById("can2");
+        ctx2 = myCanvas2.getContext("2d");
+        width = myCanvas.width = myCanvas2.width = 600;
+        height = myCanvas.height = myCanvas2.height = 600;
         myLine = new Chart(ctx, config);
+        myLine2 = new Chart(ctx2, config2);
         processData();
         findValues();
         createGraph();
@@ -96,6 +164,7 @@
         for(let i=0;i<labels.length;i++)
         {
           ratios[labels[i]]=new Array();
+          curves[labels[i]]=new Array();
           var lastVal = 0;
           var lastRat = 1/0;
 
@@ -105,12 +174,14 @@
             if(isNaN(p))//there is no data; continue
             {
               ratios[labels[i]].push(lastRat);
+              curves[labels[i]].push(lastVal);
               continue;
             }
 
             if(p==1)//this would create a divide by zero; continue
             {
               ratios[labels[i]].push(lastRat);
+              curves[labels[i]].push(lastVal);
               continue;
             }
 
@@ -119,6 +190,7 @@
             if(delta==0)//there is no change; continue
             {
               ratios[labels[i]].push(lastRat);
+              curves[labels[i]].push(lastVal);
               continue;
             }
 
@@ -126,6 +198,7 @@
             lastRat = rat;
             lastVal = p;
             ratios[labels[i]].push(lastRat);
+            curves[labels[i]].push(lastVal);
           }
         }
       }
@@ -154,6 +227,7 @@
           var data = window["data"+i].split(',');
           data.splice(0,1);//skip empty value
           config.data.labels.push(data[0]);//store date
+          config2.data.labels.push(data[0]);//store date
           data.splice(0,1);//drop date
           data.splice(data.length-1,1);//drop empty end value
           
@@ -171,6 +245,7 @@
         while(config.data.datasets.length>0)
         {
           config.data.datasets.pop();
+          config2.data.datasets.pop();
         }
 
         for(let i=0;i<labels.length;i++)
@@ -192,60 +267,66 @@
             pointBorderColor: 'rgb(0, 0, 0)',
             borderDash: [style[index % style.length][1],style[index % style.length][2]]
           };
+          var newDataset2 = 
+          {
+            label: labels[i],
+            backgroundColor: Chart.helpers.color(window.chartColors[colorName]).alpha(0.5).rgbString(),
+            borderColor: c,
+            borderWidth: style[index % style.length][0],
+            data: [],
+            fill: false,
+            pointStyle: marker[index % marker.length],
+            pointRadius: 5,
+            pointBorderColor: 'rgb(0, 0, 0)',
+            borderDash: [style[index % style.length][1],style[index % style.length][2]]
+          };
 
           for(let j=0;j<ratios[labels[i]].length;j++)
           {
             newDataset.data.push(ratios[labels[i]][j]);
+            newDataset2.data.push(curves[labels[i]][j]);
           }
           config.data.datasets.push(newDataset);
+          config2.data.datasets.push(newDataset2);
         }
 
         myLine.update();
+        myLine2.update();
       }
 
-      function allOn()
+      function allStatesOn()
       {
         for(let i=0;i<config.data.datasets.length;i++)
         {
           var meta = myLine.getDatasetMeta(i);
           meta.hidden=null;
+          meta = myLine2.getDatasetMeta(i);
+          meta.hidden=null;
         }
         myLine.update();
+        myLine2.update();
       }
 
-      function none()
+      function allStatesOff()
       {
         for(let i=0;i<config.data.datasets.length;i++)
         {
           var meta = myLine.getDatasetMeta(i);
           meta.hidden=true;
+          meta = myLine2.getDatasetMeta(i);
+          meta.hidden=true;
         }
         myLine.update();
-      }
-
-      function toggle()
-      {
-        for(let i=0;i<config.data.datasets.length;i++)
-        {
-          var meta = myLine.getDatasetMeta(i);
-          if(meta.hidden)
-          {
-            meta.hidden=null;
-          }
-          else
-          {
-            meta.hidden=true;
-          }
-        }
-        myLine.update();
+        myLine2.update();
       }
     </script>
   </head>
   <body onload="load()">
     <p>Select data for a graph using the buttons below. You can also 
     turn individual data sets on/off by clicking on the legend labels.</p>
-    <button onclick="allOn()">All</button><button onclick="none()">None</button><button onclick="toggle()">Flip</button><br>
-    <canvas id="can">
-    </canvas>
+    <button onclick="allStatesOn()">All</button><button onclick="allStatesOff()">None</button><br>
+    <table>
+      <tr><td><canvas id="can"></canvas></td><td><canvas id="can2"></canvas></td></tr>
+    </table>
   </body>
 </html>
