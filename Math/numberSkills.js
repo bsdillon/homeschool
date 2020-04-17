@@ -24,7 +24,7 @@ NumberSkills.prototype.Round = function()
   let x = Math.floor(Random()*3+2);
   let y = Math.floor(Random()*3);
   let place = 10**x;
-  let val = Math.random();
+  let val = Random();
   while(val<place)
   {
     val = val*10;
