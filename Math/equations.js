@@ -21,7 +21,12 @@ function SolveLine()
     c-=b;
   }
 
-  return "<i>Solve for x</i><br>"+c+" = "+a+"x "+end;
+  var s = "<i>Solve for x</i><br>"+c+" = "+a+"x "+end+"<br>";
+  s+="<span class='answer'>";
+  s+=(a*x)+" = "+a+"x<br>";
+  s+=x+" = x";
+  s+="</span>";
+  return s;
 }
 
 function SolveSquare()
@@ -42,7 +47,14 @@ function SolveSquare()
     c-= b;
   }
 
-  return "<i>Solve for x</i><br>"+c+" = "+a+"x<sup>2</sup> "+ end;
+  var s= "<i>Solve for x</i><br>"+c+" = "+a+"x<sup>2</sup> "+ end+"<br>";
+
+  s+="<span class='answer'>";
+  s+=(a*x*x)+" = "+a+"x<sup>2</sup><br>";
+  s+=(x*x)+" = x<sup>2</sup><br>";
+  s+="&plusmn;"+x+" = x";
+  s+="</span>";
+  return s;
 }
 
 function SolveSquareRoot()
@@ -67,7 +79,6 @@ function SqrtOne()
   //c=a)x+b >>> b = c-a)x
 
   var v = "<i>Solve for x</i><br>"+c+" = "+a+"&radic;x ";
-
   if(b>0)
   {
     v+= "+ "+b;
@@ -77,6 +88,11 @@ function SqrtOne()
     v+= "&minus; "+(-b);
   }
 
+  v+="<br><span class='answer'>";
+  v+=(c-b)+" = "+a+"&radic;x<br>";
+  v+=x+" = &radic;x<br>";
+  v+=(x*x)+" = x<br>";
+  v +="</span>";
   return v;
 }
 
@@ -91,16 +107,22 @@ function SqrtTwo()
 
   var v = "<i>Solve for x</i><br>"+c+" = &radic;("+a+"x ";
 
+  var end="";
   if(b>0)
   {
-    v+= "+ "+b;
+    end = "+ "+b;
   }
   else if(b<0)
   {
-    v+= "&minus; "+(-b);
+    end = "&minus; "+(-b);
   }
-  v += ")";
+  v += end+")";
 
+  v+="<br><span class='answer'>";
+  v+=(c*c)+" = "+a+"x "+end+"<br>";
+  v+=(a*x)+" = "+a+"x<br>";
+  v+=x+" = x<br>";
+  v +="</span>";
   return v;
 }
 
@@ -139,8 +161,20 @@ function Distribute()
   var e1 = Math.floor(Random()*3+1);
   var e2 = Math.floor(Random()*3+1);
   var e3 = e2+Math.floor(Random()*3+1);
+  var e1b = Math.floor(Random()*3+1);
+  var e2b = Math.floor(Random()*3+1);
+  var e3b = e2b+Math.floor(Random()*3+1);
+  var chars = ["ab","xy","mn","pq"];
+  var r = Math.floor(Random()*4);
+  var c1 = chars[r][0];
+  var c2 = chars[r][1];
 
-  return "<i>Distribute over the binomial</i><br>" + a + "x<sup>" + e1 + "</sup>(" + b + "x<sup>" + e2 + "</sup> + " + c + "x<sup>" + e3 + "</sup>)";
+  var v = "<i>Distribute over the binomial</i><br>" + a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>(" + b + c1+"<sup>" + e2 + "</sup>"+c2+"<sup>" + e2b + "</sup> + " + c + c1+"<sup>" + e3 + "</sup>"+c2+"<sup>" + e3b + "</sup>)<br>";
+  v+="<span class='answer'>";
+  v+="("+a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>)("+ b + c1+"<sup>" + e2 + "</sup>"+c2+"<sup>" + e2b + "</sup>) + ("+a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>)(" + c + c1+"<sup>" + e3 + "</sup>"+c2+"<sup>" + e3b + "</sup>)<br>";
+  v+=(a*b)+c1+"<sup>"+(e1+e2)+"</sup>"+c2+"<sup>"+(e1b+e2b)+"</sup> + "+(a*c)+c1+"<sup>"+(e1+e3)+"</sup>"+c2+"<sup>"+(e1b+e3b)+"</sup><br>";
+  v +="</span>";
+  return v;
 }
 
 function Factor()
@@ -148,11 +182,26 @@ function Factor()
   var a = flip(Math.floor(Random()*5+1));
   var b = flip(Math.floor(Random()*5+1));
   var c = flip(Math.floor(Random()*5+1));
-  var e1 = Math.floor(Random()*3+1);
-  var e2 = Math.floor(Random()*3+1);
-  var e3 = e2+Math.floor(Random()*3+1);
+  var e1 = Math.floor(Random()*7+1);
+  var e2 = e1+Math.floor(Random()*3+1);
+  var e3 = e1+Math.floor(Random()*3+1);
+  var e1b = Math.floor(Random()*7+1);
+  var e2b = e1b+Math.floor(Random()*3+1);
+  var e3b = e1b+Math.floor(Random()*3+1);
+  e1 = Math.min(e2,e3);
+  e1b = Math.min(e2b,e3b);
+  var chars = ["ab","xy","mn","pq"];
+  var r = Math.floor(Random()*4);
+  var c1 = chars[r][0];
+  var c2 = chars[r][1];
 
-  return "<i>Factor the common portion out of the binomial.</i><br>"+ (a*b) + "x<sup>" + (e1+e2) + "</sup> + " + (a*c) + "x<sup>" + (e1+e3) + "</sup>";
+  var v = "<i>Factor the common portion out of the binomial.</i><br>"+ (a*b) + c1+"<sup>" + e2 + "</sup>"+ c2+"<sup>" + e2b + "</sup> + " + (a*c) + c1+"<sup>" + e3 + "</sup>"+ c2+"<sup>" + e3b + "</sup><br>";
+  v+="<span class='answer'>";
+  v+="("+a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>)("+ b + (e2-e1==0?"":c1+"<sup>" + (e2-e1) + "</sup>")+(e2b-e1b==0?"":c2+"<sup>" + (e2b-e1b) + "</sup>")+") + ("+a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>)(" + c + (e3-e1==0?"":c1+"<sup>" + (e3-e1) + "</sup>")+(e3b-e1b==0?"":c2+"<sup>" + (e3b-e1b) + "</sup>")+")<br>";
+  v+=a + c1+"<sup>" + e1 + "</sup>"+c2+"<sup>" + e1b + "</sup>(" + b + (e2-e1==0?"":c1+"<sup>" + (e2-e1) + "</sup>")+(e2b-e1b==0?"":c2+"<sup>" + (e2b-e1b) + "</sup>")+" + " + c + (e3-e1==0?"":c1+"<sup>" + (e3-e1) + "</sup>")+(e3b-e1b==0?"":c2+"<sup>" + (e3b-e1b) + "</sup>")+")";
+  v +="</span>";
+
+  return v;
 }
 
 function FOIL()

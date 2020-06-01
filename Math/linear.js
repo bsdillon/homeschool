@@ -16,6 +16,27 @@ LinearEquations.prototype.Line = function()
   return a+"x + "+b+"y = "+c;
 }
 
+LinearEquations.prototype.Intercept = function()
+{
+  var B = flip(Math.floor(Random()*9+1));
+  return "(0, "+B+")";
+}
+
+LinearEquations.prototype.Slope = function()
+{
+  var dx = flip(Math.floor(Random()*9+1));
+  var dy = flip(Math.floor(Random()*9+1));
+  if(dx<0)
+  {
+    //logically this will make all slopes with any negative
+    //have the negative on the top.
+    dx=0-dx;
+    dy=0-dy;
+  }
+
+  return (dy)+"/"+(dx);
+}
+
 LinearEquations.prototype.Point = function()
 {
   x = flip(Math.floor(Random()*9+1));
@@ -51,15 +72,20 @@ LinearEquations.prototype.ParaPerp = function()
 LinearEquations.prototype.PointSlope = function()
 {
   var s = "Find the equation of the line";
-  if(Random()>.5)
+  if(Random()>.33)
   {
     s += " with this slope and point. Graph it.</br>";
-    s += "m="+Math.floor(Random()*15-7)+"/"+Math.floor(Random()*7+1)+" p="+this.Point()+"<br>";
+    s += "m="+this.Slope()+" p="+this.Point()+"<br>";
   }
-  else
+  else if(Random()>.5)
   {
     s += " with these two points. Graph it.</br>";
     s += "q="+this.Point()+" p="+this.Point()+"<br>";
+  }
+  else
+  {
+    s += ". Graph it.</br>";
+    s += "m="+this.Slope()+" b="+this.Intercept()+"<br>";
   }
 
   return s;  

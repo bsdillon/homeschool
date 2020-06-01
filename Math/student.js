@@ -83,70 +83,53 @@ function EveryMath()
 function HannaMath()
 {
   var s = "<table>"
-
-  var a = new ArithWord();
-  s+="<tr><td class='hpad'>"+a.RandomProblem()+"</td></tr>";
+  for(let i=0;i<4;i++)
+  {
+    s+="<tr>";
+      var r = Math.floor(Random()*5);
+      switch(r)
+      {
+        case 0:
+          s+="<td>"+SolveLine()+"</td>";
+          break;
+        case 1:
+          s+="<td>"+SolveSquare()+"</td>";
+          break;
+        case 2:
+          s+="<td>"+SolveSquareRoot()+"</td>";
+          break;
+        case 3:
+          s+="<td>"+Distribute()+"</td>";
+          break;
+        case 4:
+          s+="<td>"+Factor()+"</td>";
+          break;
+    }
+    s+="</tr>";
   s+="<tr><td> </td></tr>";
+  }
+  s+="<tr><td> </td></tr></table>";
 
-  var ns = new NumberSkills();
-  s+="<tr><td class='hpad'>"+ns.Round()+"</td></tr>";
-  s+="<tr><td> </td></tr>";
-  s+="</table>";
+  var c = new LinearEquations();
 
-  s+=ns.Convert();
-  
   s+="<table>";
-  var a = new Arithmetic();
-  a.SetOperators(1,1,1,1);//add,sub,mult,div
-  var r = Math.floor(Random()*4);
-  switch(r)
+  for(let i=0;i<3;i++)
   {
-    case 0:
-  a.SetSectionProbabilities(0,0,1,0,0,0);//basic,complex,decimal,fraction,improper,mixed
-  s+="<tr><td class='hpad'>"+a.SelectProblem()+"</td>";
-  s+="<td class='hpad'>"+a.SelectProblem()+"</td></tr>";
-      break;
-    case 1:
-  a.SetSectionProbabilities(0,0,0,1,0,0);//basic,complex,decimal,fraction,improper,mixed
-  s+="<tr><td class='hpad'>"+a.SelectProblem()+"</td>";
-  s+="<td class='hpad'>"+a.SelectProblem()+"</td></tr>";
-      break;
-    case 2:
-  a.SetSectionProbabilities(0,0,0,0,1,0);//basic,complex,decimal,fraction,improper,mixed
-  s+="<tr><td class='hpad'>"+a.SelectProblem()+"</td>";
-  s+="<td class='hpad'>"+a.SelectProblem()+"</td></tr>";
-      break;
-    case 3:
-  a.SetSectionProbabilities(0,0,0,0,0,1);//basic,complex,decimal,fraction,improper,mixed
-  s+="<tr><td class='hpad'>"+a.SelectProblem()+"</td>";
-  s+="<td class='hpad'>"+a.SelectProblem()+"</td></tr>";
-      break;
+    s+="<tr><td>";
+    var r = Math.floor(Random()*2);
+    switch(r)
+    {
+      case 0:
+        s+=c.PointSlope();
+        break;
+      case 1:
+        s+="Rewrite in slope-intercept and graph. "+c.Line();
+        break;
+    }
+    s+="</td></tr><tr><td> </td></tr>";
   }
-  s+="<tr><td></td><td></td></tr><tr>";
 
-  var r = Math.floor(Random()*5);
-  switch(r)
-  {
-    case 0:
-      s+="<td>"+SolveLine()+"</td>";
-      break;
-    case 1:
-      s+="<td>"+SolveSquare()+"</td>";
-      break;
-    case 2:
-      s+="<td>"+SolveSquareRoot()+"</td>";
-      break;
-    case 3:
-      s+="<td>"+Distribute()+"</td>";
-      break;
-    case 4:
-      s+="<td>"+Factor()+"</td>";
-      break;
-  //s+=SolveFraction();
-  }
-  s+="</tr>";
   s+="</table>";
-
   //put it into the content
   content.innerHTML = s;
 }

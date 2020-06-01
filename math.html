@@ -2,6 +2,7 @@
   <head>
    <link rel="stylesheet" type="text/css" href="common.css">
    <style>
+      .answer { color:white; }
       .clear { clear:both; }
       .score th {width:20; padding:3px; font-weight:bold; border:1px solid black;}
       .score td {text-align: center; width:20; padding:3px; border:1px solid black;}
@@ -22,6 +23,21 @@
     <script src="Math/areavolume.js"></script>
     <script src="Math/numberSkills.js"></script>
     <script>
+      var showAnswers = false;
+
+      function flipAnswers()
+      {
+        showAnswers = !showAnswers;
+        if(showAnswers)
+        {
+          document.styleSheets[1].cssRules[0].style.color="red";
+        }
+        else
+        {
+          document.styleSheets[1].cssRules[0].style.color="white";
+        }
+      }
+
       function Daily()
       {
         Load(true);
@@ -53,7 +69,8 @@
     <h1>Daily Math Assignment</h1>
     <button onclick="Daily()">Daily Assignment</button> 
     <button onclick="Different()">Random Assignment</button><br>
-    <label>Elena</label><input type="radio" name="student" id="E"><label>Rachael</label><input type="radio" name="student" id="R"><label>Ben</label><input type="radio" name="student" id="B"><label>Hanna</label><input type="radio" name="student" id="H"><label>Mathlympics</label><input type="radio" name="student" id="O">
+    <label>Show answers</label><input type="checkbox" onchange="flipAnswers()"></input><br>
+    <label>Elena</label><input type="radio" name="student" id="E">&nbsp;&nbsp;&nbsp;<label>Rachael</label><input type="radio" name="student" id="R">&nbsp;&nbsp;&nbsp;<label>Ben</label><input type="radio" name="student" id="B">&nbsp;&nbsp;&nbsp;<label>Hanna</label><input type="radio" name="student" id="H">&nbsp;&nbsp;&nbsp;<label>Mathlympics</label><input type="radio" name="student" id="O">
     <p id="output"></p>
     <p id="content"></p>
   </body>
