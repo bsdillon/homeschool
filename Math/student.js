@@ -17,6 +17,9 @@ function StudentAlgorithm(letter)
     case 'O':
       MathOlympics();
       break;
+    case 'P':
+      Perfect();
+      break;
   }
 }
 
@@ -131,5 +134,21 @@ function HannaMath()
 
   s+="</table>";
   //put it into the content
+  content.innerHTML = s;
+}
+
+function Perfect()
+{
+  var s = "You must get each of these 100% correct to pass<br>";
+
+  var a = new Arithmetic();
+  a.SetSectionProbabilities(0,1,1,0,1,1);
+  
+  for(let i=0;i<6;i++)
+  {
+    a.SelectArithmetic();
+    s+=a.SelectProblem()+"<br><br>";
+  }
+
   content.innerHTML = s;
 }

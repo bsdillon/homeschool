@@ -30,7 +30,7 @@ Arithmetic.prototype.SelectArithmetic = function()
     total+=this.mathProbabilities[i];
   }
 
-  var index = Math.floor(Random()*total);
+  var index = Random()*total;
 
   var sum = total;
   for(let i=this.mathProbabilities.length-1;i>0;i--)
