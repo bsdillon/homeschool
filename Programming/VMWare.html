@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>Setting up a VM</title>
+    <style>
+      em {font-weight:bold; font-style:italics; background-color:yellow;}
+    </style>
+  </head>
+  <body>
+    <h2>Lesson Overview</h2>
+    <p>
+      In this lesson you are going to download some free software
+      and setup a new <em>virtual machine</em> (VM) on your computer. This
+      machine will be <em>logically</em> separated from the 
+      one you are using so you can experiment on it without 
+      breaking your own computer.
+    </p>
+    <p>
+      For this VM we will use a free version of the Linux operating
+      system. There will be some reading about Linux and then you
+      will have lessons from time to time that will teach you more
+      about Linux and how to use it. Linux is an <em>operating system</em> or OS.
+      That means it is software that controls the machine. All the
+      applications on the computer talk directly to the operating 
+      system. Windows and MaxOS are other OS options.
+    </p>
+    <p>
+      There are many flavors of Linux from Unix to Fedora and from 
+      RHEL to Ubuntu. Each version uses the same <em>kernel</em>.
+      The kernel contains all the core functions of the OS while
+      each flavor adds its own capabilities. Because they use the 
+      same kernel once you learn to Linux you will be able to Linux
+      in any flavor. Over time you may come to like one flavor more
+      than others.
+    </p>
+    <p>
+      Linux is an OS for geeks by geeks. It was built in a time 
+      before GUIs were created and it is still predominantly run
+      from the <em>command line</em>. You can use the command line
+      in other OS's, but it is less likely in Windows and far less
+      likely on a Mac. Once you master basic Linux commands and
+      learn to control your own computer, Windows and Mac will feel
+      like toys. Linux really has all the power at your fingertips.
+      That being said, with great power comes great opportunities
+      to screw everything up. That is why we are doing all this
+      in a VM. If you screw up, we can start all over without 
+      ruining your main computer. Good luck!
+    </p>
+    <h2>Lesson Objectives</h2>
+    <ul>
+      <li>Download VMWare player (free)</li>
+      <li>Download Ubuntu image (free)</li>
+      <li>Setup and run Ubuntu OS as a VM</li>
+      <li>Read about Linux</li>
+      <li>Learn associated vocabulary</li>
+      <li>Write a three page paper demonstrating knowledge of Linux and VM concepts</li>
+    </ul>
+    <h2>Evaluation</h2>
+    <ul>
+      <li>30% - Demonstrate working Ubuntu VM on laptop</li>
+      <li>50% - Paper Content (use of vocabulary and coverage of required topics)</li>
+      <li>20% - Paper grammar, format, spelling, etc.<br>
+      Note - you ARE allowed to revise the paper, but you must earn at least a 90% to advance to the next lesson.</li>
+    </ul>
+    <h2>Instructions</h2>
+    <ol>
+      <li>Download an <a href="https://ubuntu.com/download/desktop">Ubuntu</a> image and save it to your machine.</li>
+      <li>Download <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">VMWare Workstation Player</a> and install it. You will need to restart your computer.</li>
+        <ul>
+          <li>If you see an error that version 15 is incompatible with your machine, try <a href="https://vmware-player.en.uptodown.com/windows">version 12</a>.</li>
+        </ul>
+      <li>Open VMWare Workstation. Select "Create a New Virtual Machine".</li>
+      <li>Select Install from "Installer disc image file". Search for and select the Ubuntu image you downloaded.</li>
+      <li>Put a name on the computer that says what the OS is and why you are using it e.g. "Ubuntu-student".</li>
+      <li>Select a user name and a password. You can always change this, but make it something you will remember.</li>
+        <ul>
+          <li>You may see an error message saying that the host doesn't support VT. This means we have to change a setting in the computer itself.</li>
+          <li>Restart the computer. Interrupt the process by pushing one of the F-buttons (usually F9, F10, F11, or F12).</li>
+          <li>Select the option to edit system setup</li>
+          <li>Within the setup, look for virtualization and enable the VT.</li>
+          <li>Save and resume the startup. The VM should start now.</li>
+        </ul>
+      <li>Once the image is created and the machine runs, log in using that user name and password.</li>
+      <li>Note that you may have to install other software on VMWare or it cannot properly configure your machine.</li>
+    </ol>
+  </body>
+</html>
