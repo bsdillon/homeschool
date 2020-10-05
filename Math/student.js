@@ -86,7 +86,7 @@ function EveryMath()
 function HannaMath()
 {
   var s = "<table>"
-  for(let i=0;i<4;i++)
+  for(let i=0; i<4; i++)
   {
     s+="<tr>";
       var r = Math.floor(Random()*5);
@@ -119,15 +119,23 @@ function HannaMath()
   for(let i=0;i<3;i++)
   {
     s+="<tr><td>";
-    var r = Math.floor(Random()*2);
-    switch(r)
+    s+="Find the intersection of the two lines and graph.<br>";
+    for(let j=0;j<2;j++)
     {
-      case 0:
-        s+=c.PointSlope();
-        break;
-      case 1:
-        s+="Rewrite in slope-intercept and graph. "+c.Line();
-        break;
+      var r = Math.floor(Random()*3);
+      switch(r)
+      {
+        case 0:
+          s+=c.Point()+" and "+c.Point();
+          break;
+        case 1:
+          s+=c.Point()+" and m="+c.Slope();
+          break;
+        case 2:
+          s+=c.Line();
+          break;
+      }
+      s += "<br>";
     }
     s+="</td></tr><tr><td> </td></tr>";
   }
