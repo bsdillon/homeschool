@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script src="https://bsdillon.github.io/homeschool/Math/math.js"></script>
+    <script>
+      var airports = [
+      'LAX',    'ORD',    'DFW',    'DEN',    'JFK',    'SFO',    'SEA',    'LAS',
+      'MCO',     'EWR',    'CLT',    'PHX',    'IAH',    'MIA',    'BOS',    'MSP',
+      'FLL',    'DTW',    'PHL',    'LGA',    'BWI',    'SLC',    'SAN',    'IAD',
+      'DCA',    'MDW',    'TPA',    'PDX'];
+
+     function loadAssignment()
+     {
+        RandomInit(true,0);
+        var air = Math.floor(Random()*airports.length);
+        airport1.innerHTML = ""+airports[air];
+        airport1b.innerHTML = ""+airports[air];
+
+        var lat = Math.floor(Random()*90);
+        if(Random()<.5)
+        {
+          lat+="N ";
+        }
+        else
+        {
+          lat+="S ";
+        }
+
+        var lon = Math.floor(Random()*180);
+        if(Random()<.5)
+        {
+          lon+="E ";
+        }
+        else
+        {
+          lon+="W ";
+        }
+        final.innerHTML = ""+lat+" and "+lon;
+        finalb.innerHTML = ""+lat+" and "+lon;
+     }
+    </script>
+    <style>
+      .red {color:red;}
+      table th {border: solid black 1px;}
+      table td {border: solid black 1px;}
+      th {vertical-align:top; text-align:left;}
+    </style>
+  </head>
+  <body onload="loadAssignment()">
+    <h2>Monday - Wednesday</h2>
+    <p>Create a flight plan for today that will take you as far as possible from your starting point in less than 24 hours. You will be graded based on the distance from <span id="airport1b"></span>.<p>
+    
+    <h2>Tuesday - Thursday</h2>
+    <p>Create a flight plan for today that will get you as close as possible to <span id="final"></span> in less than 24 hours.  You will be graded based on the distance from <span id="finalb"></span>.</p>
+
+    <h2>Report</h2>
+   <p>Start from <span id="airport1"></span> airport. Look at flights today and allow yourself a minimum of 30 minutes between flights. You can start at any time, but you only have 24 hours to finish flying. Email your results to dad. For each leg of your flight record the following:</p>
+   <ul>
+      <li>Starting city</li>
+      <li>Starting time (local)</li>
+      <li>Destination airport</li>
+      <li>Airline name</li>
+      <li>Flight number</li>
+      <li>Destination city</li>
+      <li>Destination time (local)</li>
+      <li>Destination airport</li>
+      <li>Total flight time</li>
+      <li>Distance to/from target. <a href="https://keisan.casio.com/exec/system/1224587128">This site</a> may help.</li>
+      <li>Total elapsed time</li>
+      <li>A landmark in the destination city</li>
+      <li>Language in the destination city</li>
+      <li>Describe practices/objects unique to the destination city</li>
+  </ul>
+
+  </body>
+</html>
