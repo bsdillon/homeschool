@@ -16,7 +16,7 @@
       'PK', 'PW', 'PA', 'PG', 'PY', 'PE', 'PH', 'PL', 'PT', 'PR', 'QA', 'MK', 'RO', 'RU', 'RW', 'KN',
       'LC', 'MF', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'SS', 'ES',
       'LK', 'SD', 'SR', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 
-      'UA', 'AE', 'GB', 'US', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'YE', 'ZM'];
+      'UA', 'AE', 'GB', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'YE', 'ZM'];
 
      function loadAssignment()
      {
@@ -26,7 +26,7 @@
         console.log(code);
 
         var request = new XMLHttpRequest();
-        request.open("GET","http://api.worldbank.org/v2/country/"+code+"?format=json");
+        request.open("GET","https://api.worldbank.org/v2/country/"+code+"?format=json");
         request.onload = () => {
           console.log(request.response);
           let ans = JSON.parse(request.response)[1][0];
@@ -123,6 +123,7 @@
       <li>Describe a local food you might try.</li>
       <li>Describe a local event like a famous race or annual festival that you might visit.</li>
     </ul>
+    <button onclick="loadAssignment()">Try again</button>
     <div id="output">
     </div>
   </body>
