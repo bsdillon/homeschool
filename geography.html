@@ -23,15 +23,13 @@
         firstDone=false;
         secondDone=false;
         var code = countries[Math.floor(Random()*countries.length)];
-        console.log(code);
 
         var request = new XMLHttpRequest();
         request.open("GET","https://api.worldbank.org/v2/country/"+code+"?format=json");
         request.onload = () => {
-          console.log(request.response);
           let ans = JSON.parse(request.response)[1][0];
           name = ans.name;
-          map = "./maps/"+code+"_128.png";
+          map = "./maps/"+code.toLowerCase()+"_128.png";
           lat = ans.latitude;
           lon = ans.longitude;
           cap = ans.capitalCity;
