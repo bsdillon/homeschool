@@ -16,6 +16,36 @@ LinearEquations.prototype.Line = function()
   return a+"x + "+b+"y = "+c;
 }
 
+LinearEquations.prototype.IneqLine = function()
+{
+  a = flip(Math.floor(Random()*9+1));
+  b = flip(Math.floor(Random()*9+1));
+  c = flip(Math.floor(Random()*5+1))*b;
+
+  var s = a+"x + "+b+"y ";
+  var r = Math.floor(Random()*5);
+  switch(r)
+  {
+    case 0:
+      s+="&lt; ";
+      break;
+    case 1:
+      s+="&gt; ";
+      break;
+    case 2:
+      s+="&le; ";
+      break;
+    case 3:
+      s+="&ge; ";
+      break;
+    case 4:
+      s+="= ";
+      break;
+  }
+  s+=""+c;
+  return s;
+}
+
 LinearEquations.prototype.Intercept = function()
 {
   var B = flip(Math.floor(Random()*9+1));
