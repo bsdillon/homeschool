@@ -116,13 +116,13 @@ function HannaMath()
   var c = new LinearEquations();
 
   s+="<table>";
-  for(let i=0;i<3;i++)
+  for(let i=0;i<1;i++)
   {
     s+="<tr><td>";
     s+="Find the intersection of the two lines and graph.<br>";
     for(let j=0;j<2;j++)
     {
-      var r = Math.floor(Random()*3);
+      var r = Math.floor(Random()*4);
       switch(r)
       {
         case 0:
@@ -133,6 +133,9 @@ function HannaMath()
           break;
         case 2:
           s+=c.Line();
+          break;
+        case 3:
+          s+=c.IneqLine();
           break;
       }
       s += "<br>";
