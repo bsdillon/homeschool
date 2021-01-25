@@ -122,19 +122,13 @@ function HannaMath()
     s+="Find the intersection of the two lines and graph.<br>";
     for(let j=0;j<2;j++)
     {
-      var r = Math.floor(Random()*4);
+      var r = Math.floor(Random()*2);
       switch(r)
       {
         case 0:
           s+=c.Point()+" and "+c.Point();
           break;
         case 1:
-          s+=c.Point()+" and m="+c.Slope();
-          break;
-        case 2:
-          s+=c.Line();
-          break;
-        case 3:
           s+=c.IneqLine();
           break;
       }
