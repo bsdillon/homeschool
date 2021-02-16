@@ -114,7 +114,7 @@ function DetermineMatrix()
   for(let r=0;r<m;r++)
   {
     var num = "";
-    for(let c=0;c<n;c++)
+    for(let c=0;c<m;c++)
     {
       num += Math.floor(Random()*21-11)+" ";
     }
