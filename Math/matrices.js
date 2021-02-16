@@ -8,7 +8,7 @@ function AddMatrix()
   var m = Math.floor(Random()*3+1);
   var n = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr>"
+  var s = "<table><tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -26,10 +26,10 @@ function AddMatrix()
       op = "+";
     }
 
-    s+="<tr><td>&186;</td><td>"+num1+"</td><td>&186;</td><td>"+op+"</td><td>&186;</td><td>"+num2+"</td><td>&186;</td></tr>";
+    s+="<tr><td>&#186;</td><td>"+num1+"</td><td>&#186;</td><td>"+op+"</td><td>&#186;</td><td>"+num2+"</td><td>&#186;</td></tr>";
   }
 
-  s += "<tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr></table>"
+  s += "<tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr></table>"
   return s;
 }
 
@@ -38,7 +38,7 @@ function SubtractMatrix()
   var m = Math.floor(Random()*3+1);
   var n = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr>"
+  var s = "<table><tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -53,13 +53,13 @@ function SubtractMatrix()
     op="";
     if(r==0)
     {
-      op = "&minus;";
+      op = "&#minus;";
     }
 
-    s+="<tr><td>&186;</td><td>"+num1+"</td><td>&186;</td><td>"+op+"</td><td>&186;</td><td>"+num2+"</td><td>&186;</td></tr>";
+    s+="<tr><td>&#186;</td><td>"+num1+"</td><td>&#186;</td><td>"+op+"</td><td>&#186;</td><td>"+num2+"</td><td>&#186;</td></tr>";
   }
 
-  s += "<tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr></table>"
+  s += "<tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr></table>"
   return s;
 }
 
@@ -69,7 +69,7 @@ function MultMatrix()
   var j = Math.floor(Random()*3+1);
   var n2 = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr>"
+  var s = "<table><tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr>"
 
   var Rmax = Math.max(m1,j);
 
@@ -95,13 +95,13 @@ function MultMatrix()
     op="";
     if(r==0)
     {
-      op = "&times;";
+      op = "&#times;";
     }
 
-    s+="<tr><td>&186;</td><td>"+num1+"</td><td>&186;</td><td>"+op+"</td><td>&186;</td><td>"+num2+"</td><td>&186;</td></tr>";
+    s+="<tr><td>&#186;</td><td>"+num1+"</td><td>&#186;</td><td>"+op+"</td><td>&#186;</td><td>"+num2+"</td><td>&#186;</td></tr>";
   }
 
-  s += "<tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr></table>"
+  s += "<tr><td>&#214;</td><td></td><td>&#183;</td><td></td><td>&#214;</td><td></td><td>&#183;</td><tr></table>"
   return s;
 }
 
@@ -109,7 +109,7 @@ function DetermineMatrix()
 {
   var m = Math.floor(Random()*1+2);
 
-  var s = "Find the determinant<br><table><tr><td>&214;</td><td></td><td>&183;</td><tr>"
+  var s = "Find the determinant<br><table><tr><td>&#214;</td><td></td><td>&#183;</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -119,9 +119,9 @@ function DetermineMatrix()
       num += Math.floor(Random()*21-11)+" ";
     }
 
-    s+="<tr><td>&186;</td><td>"+num+"</td><td>&186;</td></tr>";
+    s+="<tr><td>&#186;</td><td>"+num+"</td><td>&#186;</td></tr>";
   }
 
-  s += "<tr><td>&214;</td><td></td><td>&183;</td><tr></table>"
+  s += "<tr><td>&#214;</td><td></td><td>&#183;</td><tr></table>"
   return s;
 }
