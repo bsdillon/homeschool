@@ -8,7 +8,7 @@ function AddMatrix()
   var m = Math.floor(Random()*3+1);
   var n = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>┌</td><td></td><td>┐</td><td></td><td>┌</td><td></td><td>┐</td><tr>"
+  var s = "<table><tr><td>┌</td><td colspan='"+n+"'></td><td>┐</td><td></td><td>┌</td><td colspan='"+n+"'></td><td>┐</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -16,8 +16,8 @@ function AddMatrix()
     var num2 = "";
     for(let c=0;c<n;c++)
     {
-      num1 += Math.floor(Random()*21-11)+" ";
-      num2 += Math.floor(Random()*21-11)+" ";
+      num1 += "<td>"+Math.floor(Random()*21-11)+"</td>";
+      num2 += "<td>"+Math.floor(Random()*21-11)+"</td>";
     }
 
     op="";
@@ -26,10 +26,10 @@ function AddMatrix()
       op = "+";
     }
 
-    s+="<tr><td>│</td><td>"+num1+"</td><td>│</td><td>"+op+"</td><td>│</td><td>"+num2+"</td><td>│</td></tr>";
+    s+="<tr><td>│</td>"+num1+"<td>│</td><td>"+op+"</td><td>│</td>"+num2+"<td>│</td></tr>";
   }
 
-  s += "<tr><td>└</td><td></td><td>┘</td><td></td><td>└</td><td></td><td>┘</td><tr></table>"
+  s += "<tr><td>└</td><td colspan='"+n+"'></td><td>┘</td><td></td><td>└</td><td colspan='"+n+"'></td><td>┘</td><tr></table>"
   return s;
 }
 
@@ -38,7 +38,7 @@ function SubtractMatrix()
   var m = Math.floor(Random()*3+1);
   var n = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>┌</td><td></td><td>┐</td><td></td><td>┌</td><td></td><td>┐</td><tr>"
+  var s = "<table><tr><td>┌</td><td colspan='"+n+"'></td><td>┐</td><td></td><td>┌</td><td colspan='"+n+"'></td><td>┐</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -46,20 +46,20 @@ function SubtractMatrix()
     var num2 = "";
     for(let c=0;c<n;c++)
     {
-      num1 += Math.floor(Random()*21-11)+" ";
-      num2 += Math.floor(Random()*21-11)+" ";
+      num1 += "<td>"+Math.floor(Random()*21-11)+"</td>";
+      num2 += "<td>"+Math.floor(Random()*21-11)+"</td>";
     }
 
     op="";
     if(r==0)
     {
-      op = "&#minus;";
+      op = "&minus;";
     }
 
-    s+="<tr><td>│</td><td>"+num1+"</td><td>│</td><td>"+op+"</td><td>│</td><td>"+num2+"</td><td>│</td></tr>";
+    s+="<tr><td>│</td>"+num1+"<td>│</td><td>"+op+"</td><td>│</td>"+num2+"<td>│</td></tr>";
   }
 
-  s += "<tr><td>└</td><td></td><td>┘</td><td></td><td>└</td><td></td><td>┘</td><tr></table>"
+  s += "<tr><td>└</td><td colspan='"+n+"'></td><td>┘</td><td></td><td>└</td><td colspan='"+n+"'></td><td>┘</td><tr></table>"
   return s;
 }
 
@@ -69,7 +69,7 @@ function MultMatrix()
   var j = Math.floor(Random()*3+1);
   var n2 = Math.floor(Random()*3+1);
 
-  var s = "<table><tr><td>┌</td><td></td><td>┐</td><td></td><td>┌</td><td></td><td>┐</td><tr>"
+  var s = "<table><tr><td>┌</td><td colspan='"+j+"'></td><td>┐</td><td></td><td>┌</td><td colspan='"+n2+"'></td><td>┐</td><tr>"
 
   var Rmax = Math.max(m1,j);
 
@@ -79,12 +79,12 @@ function MultMatrix()
     var num2 = "";
     for(let c=0;c<j;c++)
     {
-      num1 += Math.floor(Random()*21-11)+" ";
+      num1 += "<td>"+Math.floor(Random()*21-11)+"</td>";
     }
 
     for(let c=0;c<n2;c++)
     {
-      num2 += Math.floor(Random()*21-11)+" ";
+      num2 += "<td>"+Math.floor(Random()*21-11)+"</td>";
     }
 
     if(r>=j)
@@ -95,13 +95,13 @@ function MultMatrix()
     op="";
     if(r==0)
     {
-      op = "&#times;";
+      op = "&times;";
     }
 
-    s+="<tr><td>│</td><td>"+num1+"</td><td>│</td><td>"+op+"</td><td>│</td><td>"+num2+"</td><td>│</td></tr>";
+    s+="<tr><td>│</td>"+num1+"<td>│</td><td>"+op+"</td><td>│</td>"+num2+"<td>│</td></tr>";
   }
 
-  s += "<tr><td>└</td><td></td><td>┘</td><td></td><td>└</td><td></td><td>┘</td><tr></table>"
+  s += "<tr><td>└</td><td colspan='"+j+"'></td><td>┘</td><td></td><td>└</td><td colspan='"+n2+"'></td><td>┘</td><tr></table>"
   return s;
 }
 
@@ -109,19 +109,19 @@ function DetermineMatrix()
 {
   var m = Math.floor(Random()*1+2);
 
-  var s = "Find the determinant<br><table><tr><td>┌</td><td></td><td>┐</td><tr>"
+  var s = "Find the determinant<br><table><tr><td>┌</td><td colspan='"+m+"'></td><td>┐</td><tr>"
 
   for(let r=0;r<m;r++)
   {
     var num = "";
     for(let c=0;c<m;c++)
     {
-      num += Math.floor(Random()*21-11)+" ";
+      num += "<td>"+Math.floor(Random()*21-11)+"</td>";
     }
 
-    s+="<tr><td>│</td><td>"+num+"</td><td>│</td></tr>";
+    s+="<tr><td>│</td>"+num+"<td>│</td></tr>";
   }
 
-  s += "<tr><td>└</td><td></td><td>┘</td><tr></table>"
+  s += "<tr><td>└</td><td colspan='"+m+"'></td><td>┘</td><tr></table>"
   return s;
 }
