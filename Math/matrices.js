@@ -10,7 +10,7 @@ function AddMatrix()
 
   var s = "<table><tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr>"
 
-  for(let r=0;r<m,r++)
+  for(let r=0;r<m;r++)
   {
     var num1 = "";
     var num2 = "";
@@ -40,7 +40,7 @@ function SubtractMatrix()
 
   var s = "<table><tr><td>&214;</td><td></td><td>&183;</td><td></td><td>&214;</td><td></td><td>&183;</td><tr>"
 
-  for(let r=0;r<m,r++)
+  for(let r=0;r<m;r++)
   {
     var num1 = "";
     var num2 = "";
@@ -73,7 +73,7 @@ function MultMatrix()
 
   var Rmax = Math.max(m1,j);
 
-  for(let r=0;r<Rmax,r++)
+  for(let r=0;r<Rmax;r++)
   {
     var num1 = "";
     var num2 = "";
@@ -111,7 +111,7 @@ function DetermineMatrix()
 
   var s = "Find the determinant<br><table><tr><td>&214;</td><td></td><td>&183;</td><tr>"
 
-  for(let r=0;r<m,r++)
+  for(let r=0;r<m;r++)
   {
     var num = "";
     for(let c=0;c<n;c++)
