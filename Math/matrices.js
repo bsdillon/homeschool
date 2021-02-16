@@ -105,7 +105,7 @@ function MultMatrix()
   return s;
 }
 
-function SubtractMatrix()
+function DetermineMatrix()
 {
   var m = Math.floor(Random()*1+2);
 
