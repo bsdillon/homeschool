@@ -86,7 +86,7 @@ function EveryMath()
 function HannaMath()
 {
   var s = "<table>"
-  for(let i=0; i<4; i++)
+  for(let i=0; i<1; i++)
   {
     s+="<tr>";
       var r = Math.floor(Random()*5);
@@ -138,6 +138,11 @@ function HannaMath()
   }
 
   s+="</table>";
+  
+  s += AddMatrix() + "<br><br>";
+  s += SubtractMatrix() + "<br><br>";
+  s += MultMatrix() + "<br><br>";
+  s += DetermineMatrix() + "<br><br>";
   //put it into the content
   content.innerHTML = s;
 }
