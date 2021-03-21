@@ -84,12 +84,14 @@ function MultMatrix()
 
     for(let c=0;c<n2;c++)
     {
-      num2 += "<td>"+Math.floor(Random()*21-11)+"</td>";
-    }
-
-    if(r>=j)
-    {
-      num2 = "<td></td>";
+      if(r>=j)
+      {
+        num2 += "<td></td>";
+      }
+      else
+      {
+        num2 += "<td>"+Math.floor(Random()*21-11)+"</td>";
+      }
     }
 
     op="";
