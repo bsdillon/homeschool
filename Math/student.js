@@ -118,7 +118,7 @@ function HannaMath()
   s+=c.Point()+" and "+c.Point()+"<br><br>";
 
   s+="Find the intersection of the two lines and graph the solution ";
-  var r = Math.floor(Random()*2);
+  var r = Math.floor(Random()*3);
   switch(r)
   {
     case 0:
