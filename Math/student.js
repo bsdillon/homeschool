@@ -132,8 +132,9 @@ function HannaMath()
       break;
   }
   s+=c.IneqLine();
-  s+=c.IneqLine();
   s+="<br>";
+  s+=c.IneqLine();
+  s+="<br><br>";
 
   s += AddMatrix() + "<br><br>";
   s += SubtractMatrix() + "<br><br>";
