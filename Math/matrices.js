@@ -89,7 +89,7 @@ function MultMatrix()
 
     if(r>=j)
     {
-      num2 = "";
+      num2 = "<td></td>";
     }
 
     op="";
