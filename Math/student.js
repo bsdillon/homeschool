@@ -114,31 +114,27 @@ function HannaMath()
   s+="<tr><td> </td></tr></table>";
 
   var c = new LinearEquations();
+  s+="Find the equation of a line that crosses through these two points.<br>";
+  s+=c.Point()+" and "+c.Point()+"<br><br>";
 
-  s+="<table>";
-  for(let i=0;i<1;i++)
+  s+="Find the intersection of the two lines and graph the solution ";
+  var r = Math.floor(Random()*2);
+  switch(r)
   {
-    s+="<tr><td>";
-    s+="Find the intersection of the two lines and graph.<br>";
-    for(let j=0;j<2;j++)
-    {
-      var r = Math.floor(Random()*2);
-      switch(r)
-      {
-        case 0:
-          s+=c.Point()+" and "+c.Point();
-          break;
-        case 1:
-          s+=c.IneqLine();
-          break;
-      }
-      s += "<br>";
-    }
-    s+="</td></tr><tr><td> </td></tr>";
+    case 0:
+      s+="using the y=y method.<br>";
+      break;
+    case 1:
+      s+="using the elimination method.<br>";
+      break;
+    case 2:
+      s+="using the matrix method.<br>";
+      break;
   }
+  s+=c.IneqLine();
+  s+=c.IneqLine();
+  s+="<br>";
 
-  s+="</table>";
-  
   s += AddMatrix() + "<br><br>";
   s += SubtractMatrix() + "<br><br>";
   s += MultMatrix() + "<br><br>";
