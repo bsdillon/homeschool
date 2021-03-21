@@ -109,7 +109,7 @@ function DetermineMatrix()
 {
   var m = Math.floor(Random()*1+2);
 
-  var s = "Find the determinant<br><table><tr><td>┌</td><td colspan='"+m+"'></td><td>┐</td><tr>"
+  var s = "Find the determinant<br><table><tr><td>│</td><td colspan='"+m+"'></td><td>│</td><tr>"
 
   for(let r=0;r<m;r++)
   {
@@ -122,6 +122,6 @@ function DetermineMatrix()
     s+="<tr><td>│</td>"+num+"<td>│</td></tr>";
   }
 
-  s += "<tr><td>└</td><td colspan='"+m+"'></td><td>┘</td><tr></table>"
+  s += "<tr><td>│</td><td colspan='"+m+"'></td><td>│</td><tr></table>"
   return s;
 }
