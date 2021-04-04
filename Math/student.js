@@ -111,6 +111,8 @@ function HannaMath()
     s+="</tr>";
   s+="<tr><td> </td></tr>";
   }
+  s+="<tr><td>"+FOIL()+"</td></tr>";
+  
   s+="<tr><td> </td></tr></table>";
 
   var c = new LinearEquations();
