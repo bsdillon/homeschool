@@ -3,6 +3,41 @@ if(typeof MathDefined === "undefined")
   alert("equations.js requires math.js");
 }
 
+function PolynomialDerivative()
+{
+  var answer = "<img src='derivativerules.png'><p>Use these rules to find the first and second derivitive of this function.</p>";
+  var tmp = Math.floor(Random()*9+1);
+  var i=0;
+  
+  while(i<6)
+  {
+    if(Random()<.5)
+    {
+      tmp = " + "+tmp;
+    }
+    else
+    {
+      tmp = " &minus; "+tmp;
+    }
+
+    i+= Math.floor(Random()*2+1);
+    
+    if(i=1)
+    {
+      tmp += Math.floor(Random()*9+1)+"x";
+    }
+    else
+    {
+      tmp += Math.floor(Random()*9+1)+"x<sup>"+i+"</sup>";
+    }
+  }
+  answer += tmp;
+  answer += "<img src='inflections.png'><p>Solve the first derivatives for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward and downward velocities</p>";  
+  answer += "<img src='concavity.png'><p>Solve the second derivative for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward or downward concavity.</p>";
+
+  return answer;
+}
+
 function RiemannSum()
 {
    var type = "left";
