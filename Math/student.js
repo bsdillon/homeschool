@@ -3,7 +3,7 @@ function StudentAlgorithm(letter)
   switch(letter)
   {
     case 'E':
-      ElenaMath()
+      EveryMath()
       break;
     case 'R':
       EveryMath()
