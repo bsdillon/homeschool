@@ -67,7 +67,7 @@ function EveryMath()
 {
   var s = PolynomialDerivative();
 
-  var s = "You must get each of these 100% correct to pass<br>";
+  var s += "You must get each of these 100% correct to pass<br>";
 
   var a = new Arithmetic();
   a.SetSectionProbabilities(0,1,1,0,1,1);
