@@ -5,7 +5,7 @@ if(typeof MathDefined === "undefined")
 
 function PolynomialDerivative()
 {
-  var answer = "<img src='./Math/derivativerules.png'><p>Use these rules to find the first and second derivitive of this function.</p>";
+  var answer = "<img src='./Math/derivativerules.png' width='100'><p>Use these rules to find the first and second derivitive of this function.</p><br>";
   var tmp = Math.floor(Random()*9+1);
   var i=0;
   
@@ -31,9 +31,9 @@ function PolynomialDerivative()
       tmp = Math.floor(Random()*9+1)+"x<sup>"+i+"</sup>" + tmp;
     }
   }
-  answer += tmp;
-  answer += "<img src='./Math/inflections.png'><p>Solve the first derivatives for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward and downward velocities</p>";  
-  answer += "<img src='./Math/concavity.png'><p>Solve the second derivative for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward or downward concavity.</p>";
+  answer += "<i>f</i>(x) = "+tmp;
+  answer += "<img src='./Math/inflections.png' width='100'><p>Solve the first derivatives for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward and downward velocities</p><br>";
+  answer += "<img src='./Math/concavity.png' width='100'><p>Solve the second derivative for zeroes (or estimate the values on a graphing calculator). Identify the intervals of upward or downward concavity.</p><br>";
 
   return answer;
 }
