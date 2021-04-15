@@ -22,7 +22,7 @@ function PolynomialDerivative()
 
     i+= Math.floor(Random()*2+1);
     
-    if(i=1)
+    if(i==1)
     {
       tmp += Math.floor(Random()*9+1)+"x";
     }
