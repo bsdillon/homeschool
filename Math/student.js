@@ -65,20 +65,37 @@ function ElenaMath()
 
 function EveryMath()
 {
-  var s = "<table class='padded' width='500'><tr>";
-  var c = new LinearEquations();
-  s += "<td>"+c.ParaPerp()+"</td>";
-  s += "<td>"+c.PointSlope()+"</td></tr><tr>";
-  s += "<td>"+c.Table()+"</td><td></td></tr><tr>";
-  s += "<td>"+c.WordProblem()+"</td>";
-  s += "<td>"+c.WordProblem()+"</td></tr>";
-  s += "</table>"
+  var s = PolynomialDerivative();
 
-  var c = new AreaVolume();
-  s += "<table><tr><td>"+c.SelectProblem()+"</td>";
-  s += "<td>"+c.SelectProblem()+"</td></tr>";
-  s += "</table>";
+  var s = "You must get each of these 100% correct to pass<br>";
 
+  var a = new Arithmetic();
+  a.SetSectionProbabilities(0,1,1,0,1,1);
+  
+  for(let i=0;i<3;i++)
+  {
+    a.SelectArithmetic();
+    s+=a.SelectProblem()+"<br><br>";
+  }
+
+
+  for(let i=0;i<3;i++)
+  {
+    var r = Random();
+    if(r<.33)
+    {
+      s += AddMatrix() + "<br><br>";
+    }
+    else if(r<.66)
+    {
+      s += SubtractMatrix() + "<br><br>";
+    }
+    else
+    {
+      s += MultMatrix() + "<br><br>";
+    }
+  }
+  
   //put it into the content
   content.innerHTML = s;
 }
