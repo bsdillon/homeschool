@@ -65,7 +65,14 @@ function ElenaMath()
 
 function EveryMath()
 {
-  var s = PolynomialDerivative();
+  //var s = PolynomialDerivative();
+  var s="<img src='https://i.stack.imgur.com/70zob.png'><br>"
+  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
+  s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
+  s+=" assume that the figure is a retangular prism.<br>"
+  s+="AB = "+Math.floor(Random()*10+5)+"<br>";
+  s+="AE = "+Math.floor(Random()*10+5)+"<br>";
+  s+="AD = "+Math.floor(Random()*10+5)+"<br>";
 
   s += "You must get each of these 100% correct to pass<br>";
 
@@ -161,8 +168,9 @@ function HannaMath()
   s += DetermineMatrix() + "<br><br>";
   
   s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
-  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH, and the surface area of ABCDEFGH"
-  s+="given the following dimensions. You may assume that the figure is a retangular prism.<br>"
+  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
+  s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
+  s+=" assume that the figure is a retangular prism.<br>"
   s+="AB = "+Math.floor(Random()*10+5)+"<br>";
   s+="AE = "+Math.floor(Random()*10+5)+"<br>";
   s+="AD = "+Math.floor(Random()*10+5)+"<br>";
