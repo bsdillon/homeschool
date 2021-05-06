@@ -159,6 +159,14 @@ function HannaMath()
   s += SubtractMatrix() + "<br><br>";
   s += MultMatrix() + "<br><br>";
   s += DetermineMatrix() + "<br><br>";
+  
+  s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
+  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH, and the surface area of ABCDEFGH"
+  s+="given the following dimensions. You may assume that the figure is a retangular prism.<br>"
+  s+="AB = "+Math.floor(Random()*10+5)+"<br>";
+  s+="AE = "+Math.floor(Random()*10+5)+"<br>";
+  s+="AD = "+Math.floor(Random()*10+5)+"<br>";
+
   //put it into the content
   content.innerHTML = s;
 }
