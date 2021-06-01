@@ -148,7 +148,7 @@ function HannaMath()
           s+="<td>Factor or multiply:<br>"+FOIL()+"</td>";
           break;
         case 6:
-           var tmp+="Find the equation of a line that crosses through these two points.<br>";
+           var tmp ="Find the equation of a line that crosses through these two points.<br>";
            tmp+=c.Point()+" and "+c.Point()+"<br><br>";
            s+="<td>"+tmp+"</td>";
           break;
