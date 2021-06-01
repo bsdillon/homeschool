@@ -176,7 +176,6 @@ function HannaMath()
     s+="</tr>";
   s+="<tr><td> </td></tr>";
   }
-  s+="<tr><td>"++"</td></tr>";  
   s+="<tr><td> </td></tr></table>";
 
   s += AddMatrix() + "<br><br>";
