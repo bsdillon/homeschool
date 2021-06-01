@@ -66,13 +66,25 @@ function ElenaMath()
 function EveryMath()
 {
   //var s = PolynomialDerivative();
-  var s="<img src='https://i.stack.imgur.com/70zob.png'><br>"
-  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
-  s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
-  s+=" assume that the figure is a retangular prism.<br>"
-  s+="AB = "+Math.floor(Random()*10+5)+"<br>";
-  s+="AE = "+Math.floor(Random()*10+5)+"<br>";
-  s+="AD = "+Math.floor(Random()*10+5)+"<br>";
+  var s = "";
+  if(Random()>.5)
+  {
+    s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
+    s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
+    s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
+    s+=" assume that the figure is a retangular prism.<br>"
+    s+="AB = "+Math.floor(Random()*10+5)+"<br>";
+    s+="AE = "+Math.floor(Random()*10+5)+"<br>";
+    s+="AD = "+Math.floor(Random()*10+5)+"<br>";
+  }
+  else
+  {
+    s+="<img src='https://www.cs.swarthmore.edu/~newhall/cs21/f09/Labs/cone_1.gif'><br>";
+    s+="Find the perimeter and area of the circle, the surface areas of the cone, and<br>";
+    s+="the volume of the cone with the following dimensions.<br>";
+    s+="r = "+Math.floor(Random()*5+3)+"<br>";
+    s+="h = "+Math.floor(Random()*10+5)+"<br>";
+  }
 
   s += "You must get each of these 100% correct to pass<br>";
 
@@ -109,6 +121,7 @@ function EveryMath()
 
 function HannaMath()
 {
+  var c = new LinearEquations();
   var s = "<table>"
   for(let i=0; i<1; i++)
   {
@@ -131,49 +144,64 @@ function HannaMath()
         case 4:
           s+="<td>"+Factor()+"</td>";
           break;
+        case 5:
+          s+="<td>Factor or multiply:<br>"+FOIL()+"</td>";
+          break;
+        case 6:
+           var tmp+="Find the equation of a line that crosses through these two points.<br>";
+           tmp+=c.Point()+" and "+c.Point()+"<br><br>";
+           s+="<td>"+tmp+"</td>";
+          break;
+        case 7:
+          var tmp ="Find the intersection of the two lines and graph the solution ";
+          var r = Math.floor(Random()*3);
+          switch(r)
+          {
+            case 0:
+              tmp+="using the y=y method.<br>";
+              break;
+            case 1:
+              tmp+="using the elimination method.<br>";
+              break;
+            case 2:
+              tmp+="using the matrix method.<br>";
+              break;
+          }
+          tmp+=c.IneqLine();
+          tmp+="<br>";
+          tmp+=c.IneqLine();
+          s+="<td>"+tmp+"</td>";
+          break;
     }
     s+="</tr>";
   s+="<tr><td> </td></tr>";
   }
-  s+="<tr><td>"+FOIL()+"</td></tr>";
-  
+  s+="<tr><td>"++"</td></tr>";  
   s+="<tr><td> </td></tr></table>";
-
-  var c = new LinearEquations();
-  s+="Find the equation of a line that crosses through these two points.<br>";
-  s+=c.Point()+" and "+c.Point()+"<br><br>";
-
-  s+="Find the intersection of the two lines and graph the solution ";
-  var r = Math.floor(Random()*3);
-  switch(r)
-  {
-    case 0:
-      s+="using the y=y method.<br>";
-      break;
-    case 1:
-      s+="using the elimination method.<br>";
-      break;
-    case 2:
-      s+="using the matrix method.<br>";
-      break;
-  }
-  s+=c.IneqLine();
-  s+="<br>";
-  s+=c.IneqLine();
-  s+="<br><br>";
 
   s += AddMatrix() + "<br><br>";
   s += SubtractMatrix() + "<br><br>";
   s += MultMatrix() + "<br><br>";
   s += DetermineMatrix() + "<br><br>";
   
-  s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
-  s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
-  s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
-  s+=" assume that the figure is a retangular prism.<br>"
-  s+="AB = "+Math.floor(Random()*10+5)+"<br>";
-  s+="AE = "+Math.floor(Random()*10+5)+"<br>";
-  s+="AD = "+Math.floor(Random()*10+5)+"<br>";
+  if(Random()>.5)
+  {
+    s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
+    s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
+    s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
+    s+=" assume that the figure is a retangular prism.<br>"
+    s+="AB = "+Math.floor(Random()*10+5)+"<br>";
+    s+="AE = "+Math.floor(Random()*10+5)+"<br>";
+    s+="AD = "+Math.floor(Random()*10+5)+"<br>";
+  }
+  else
+  {
+    s+="<img src='https://www.cs.swarthmore.edu/~newhall/cs21/f09/Labs/cone_1.gif'><br>";
+    s+="Find the perimeter and area of the circle, the surface areas of the cone, and<br>";
+    s+="the volume of the cone with the following dimensions.<br>";
+    s+="r = "+Math.floor(Random()*5+3)+"<br>";
+    s+="h = "+Math.floor(Random()*10+5)+"<br>";
+  }
 
   //put it into the content
   content.innerHTML = s;
