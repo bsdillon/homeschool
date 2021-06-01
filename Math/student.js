@@ -123,10 +123,10 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
-  for(let i=0; i<1; i++)
+  for(let i=0; i<3; i++)
   {
     s+="<tr>";
-      var r = Math.floor(Random()*5);
+      var r = Math.floor(Random()*7);
       switch(r)
       {
         case 0:
@@ -178,6 +178,12 @@ function HannaMath()
   }
   s+="<tr><td> </td></tr></table>";
 
+  s+="Graph and estimate the intersections of the two grahps<br>";
+  s+=parabola();
+  s+="<br>";
+  s+=line();
+  s+="<br>";
+  
   s += AddMatrix() + "<br><br>";
   s += SubtractMatrix() + "<br><br>";
   s += MultMatrix() + "<br><br>";
