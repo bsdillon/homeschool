@@ -123,6 +123,7 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
+  s+="<tr><td>Graph the circle.<br>"+Circle()+"</td></tr>";
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
