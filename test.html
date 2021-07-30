@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <style>
+    </style>
+    <script>
+      var textFile = null;
+      var makeTextFile = function (text)
+      {
+        var data = new Blob([text], {type: 'text/plain'});
+
+        // If we are replacing a previously generated file we need to
+        // manually revoke the object URL to avoid memory leaks.
+        if (textFile !== null)
+        {
+          window.URL.revokeObjectURL(textFile);
+        }
+
+        textFile = window.URL.createObjectURL(data);
+
+        return textFile;
+      };
+
+      function loadIt()
+      {
+        var create = document.getElementById('create');
+        var textbox = document.getElementById('textbox');
+
+        create.addEventListener('click', function ()
+        {
+          var link = document.getElementById('downloadlink');
+          link.href = makeTextFile(textbox.value);
+          link.style.display = 'block';
+        }, false);
+
+      }
+    </script>
+  </head>
+  <body onload="loadIt()">
+    <input type="text" id="textbox" value="Type..."></input>
+    <input type="button" id="create" value="Create File"></input><br><br>
+    <p id="output"></p>
+    <a download="info.js" id="downloadlink" style="display: none">Download</a>
+  </body>
+</html>
