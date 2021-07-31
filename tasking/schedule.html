@@ -7,7 +7,12 @@
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var d = names[new Date().getDay()];
         var list = tasks[type][d];
-        var x = 0;
+        var s = "";
+        for(let i=0;i<list.length;i++)
+        {
+          s += "<li>"+list[i]+"</li>";
+        }
+        mytasks.innerHTML=s;
       }
     </script>
   </head>
@@ -17,7 +22,7 @@
     <label>Ben</label><input type="radio" value="Ben" onchange="update(this.value)"></input><br>
     <label>Hanna</label><input type="radio" value="Hanna" onchange="update(this.value)"></input><br>
     <h2 id="name"></h2>
-    <table id="tasks">
-    </table>
+    <ul id="mytasks">
+    </ul>
   </body>
 </html>
