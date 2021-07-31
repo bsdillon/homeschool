@@ -1,10 +1,12 @@
 <html>
   <head>
+    <script src="tasks.js"></script>
     <script>
       function update(type)
       {
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var d = names[new Date().getDay()];
+        var list = tasks[type][d];
         var x = 0;
       }
     </script>
