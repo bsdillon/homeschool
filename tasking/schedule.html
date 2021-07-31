@@ -4,6 +4,7 @@
     <script>
       function update(type)
       {
+        childname.innerHTML=type;
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var d = names[new Date().getDay()];
         var list = tasks[type][d];
@@ -21,7 +22,7 @@
     <label>Rachael</label><input type="radio" name="children" value="Rachael" onchange="update(this.value)"></input><br>
     <label>Ben</label><input type="radio" name="children" value="Ben" onchange="update(this.value)"></input><br>
     <label>Hanna</label><input type="radio" name="children" value="Hanna" onchange="update(this.value)"></input><br>
-    <h2 id="name"></h2>
+    <h2 id="childname"></h2>
     <ul id="mytasks">
     </ul>
   </body>
