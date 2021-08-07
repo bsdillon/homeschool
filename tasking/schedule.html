@@ -2,12 +2,40 @@
   <head>
     <script src="tasks.js"></script>
     <script>
-      function update(type)
+      function update()
       {
+        var type = children.value;
         childname.innerHTML=type;
+        var day = this.day.value;
+        assidnmentday = d;
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        var d = names[new Date().getDay()];
         var list = tasks[type][d];
+        if(day==="Today")
+        {
+          d = names[new Date().getDay()];
+        }
+
+        if(list==undefined)
+        {
+          list=["None"];
+        }
+        
+        if(day==="All")
+        {
+          list=[];
+          for(let i=0;i<names.length;i++)
+          {
+            var x = tasks[type][names[i]];
+            if(x!=undefined)
+            {
+              list.push("<h3>"+names[i]+"</h3");
+              for(let j=0;j<x.length;j++)
+              {
+                list.push(x[j]);
+              }
+            }
+          }
+        }
         var s = "";
         for(let i=0;i<list.length;i++)
         {
@@ -18,11 +46,23 @@
     </script>
   </head>
   <body>
-    <label>Elena</label><input type="radio" name="children" value="Elena" onchange="update(this.value)"></input><br>
-    <label>Rachael</label><input type="radio" name="children" value="Rachael" onchange="update(this.value)"></input><br>
-    <label>Ben</label><input type="radio" name="children" value="Ben" onchange="update(this.value)"></input><br>
-    <label>Hanna</label><input type="radio" name="children" value="Hanna" onchange="update(this.value)"></input><br>
-    <h2 id="childname"></h2>
+    <h2 id="childname">Who?</h2>
+    <label>Elena</label><input type="radio" name="children" value="Elena" onchange="update()"></input><br>
+    <label>Rachael</label><input type="radio" name="children" value="Rachael" onchange="update()"></input><br>
+    <label>Ben</label><input type="radio" name="children" value="Ben" onchange="update()"></input><br>
+    <label>Hanna</label><input type="radio" name="children" value="Hanna" onchange="update()"></input><br>
+    <br>
+    <h2 id="assidnmentday">Day</h2>
+    <label>All</label><input type="radio" name="day" value="Today" onchange="update()"></input><br>
+    <label>Today</label><input type="radio" name="day" value="All" onchange="update()"></input><br><br>
+    <label>Monday</label><input type="radio" name="day" value="Monday" onchange="update()"></input><br>
+    <label>Tuesday</label><input type="radio" name="day" value="Tuesday" onchange="update()"></input><br>
+    <label>Wednesday</label><input type="radio" name="day" value="Wednesday" onchange="update()"></input><br>
+    <label>Thursday</label><input type="radio" name="day" value="Thursday" onchange="update()"></input><br>
+    <label>Friday</label><input type="radio" name="day" value="Friday" onchange="update()"></input><br>
+    <label>Saturday</label><input type="radio" name="day" value="Saturday" onchange="update()"></input><br>
+    <label>Sunday</label><input type="radio" name="day" value="Sunday" onchange="update()"></input><br>
+
     <ul id="mytasks">
     </ul>
   </body>
