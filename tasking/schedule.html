@@ -17,19 +17,19 @@
         }
         childname.innerHTML=type;
 
-        var day = "Today";
+        var d = "Today";
         var dElements = document.getElementsByName("day");
 
         for(var i = 0; i < dElements.length; i++)
         {
            if(dElements[i].checked)
            {
-             type = dElements[i].value;
+             d = dElements[i].value;
              break;
            }
         }
 
-        assidnmentday = d;
+        assignmentday.innerHTML = d;
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var list = tasks[type][d];
         if(day==="Today")
@@ -67,7 +67,7 @@
       }
     </script>
   </head>
-  <body>
+  <body onload="update()">
     <h2 id="childname">Who?</h2>
     <label>Elena</label><input type="radio" checked name="children" value="Elena" onchange="update()"></input><br>
     <label>Rachael</label><input type="radio" name="children" value="Rachael" onchange="update()"></input><br>
@@ -75,8 +75,8 @@
     <label>Hanna</label><input type="radio" name="children" value="Hanna" onchange="update()"></input><br>
     <br>
     <h2 id="assidnmentday">Day</h2>
-    <label>All</label><input type="radio"checked name="day" value="Today" onchange="update()"></input><br>
-    <label>Today</label><input type="radio" name="day" value="All" onchange="update()"></input><br><br>
+    <label>All</label><input type="radio" name="day" value="Today" onchange="update()"></input><br>
+    <label>Today</label><input type="radio" checked name="day" value="All" onchange="update()"></input><br><br>
     <label>Monday</label><input type="radio" name="day" value="Monday" onchange="update()"></input><br>
     <label>Tuesday</label><input type="radio" name="day" value="Tuesday" onchange="update()"></input><br>
     <label>Wednesday</label><input type="radio" name="day" value="Wednesday" onchange="update()"></input><br>
