@@ -4,7 +4,7 @@ tasks["Rachael"]={};
 tasks["Ben"]={};
 tasks["Hanna"]={};
 tasks["Elena"].Monday=[
-  "Take Accesment Test","<img src='August Preassess1.jpg'>","<img src='August Preassess2.jpg'>","<img src='August Preassess3.jpg'>","<img src='August Preassess4.jpg'>","<img src='August Preassess5.jpg'>"
+  "Take Accesment Test","<img src='AugustPreassess1.jpg'>","<img src='AugustPreassess2.jpg'>","<img src='AugustPreassess3.jpg'>","<img src='AugustPreassess4.jpg'>","<img src='AugustPreassess5.jpg'>"
 ];
 tasks["Elena"].Tueday=[
   "sopmem","sopmem","sopmem","sopmem","sopmem"
