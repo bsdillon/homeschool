@@ -32,7 +32,7 @@
         assignmentday.innerHTML = d;
         var names = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var list = tasks[type][d];
-        if(day==="Today")
+        if(d==="Today")
         {
           d = names[new Date().getDay()];
         }
@@ -42,7 +42,7 @@
           list=["None"];
         }
         
-        if(day==="All")
+        if(d==="All")
         {
           list=[];
           for(let i=0;i<names.length;i++)
