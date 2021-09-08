@@ -123,7 +123,7 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
-  s+="<tr><td>Graph these conic sections.<br><ul>";
+  s+="<tr><td>Graph these conic sections.<ul>";
   s+="<li>"+circle()+"</li>";
   s+="<li>"+ellipse()+"</li>";
   s+="<li>"+parabola()+"</li>";
@@ -131,7 +131,7 @@ function HannaMath()
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
-      var r = Math.floor(Random()*7);
+      var r = Math.floor(Random()*8);
       switch(r)
       {
         case 0:
