@@ -123,7 +123,11 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
-  s+="<tr><td>Graph the circle.<br>"+circle()+"</td></tr>";
+  s+="<tr><td>Graph these conic sections.<br><ul>";
+  s+="<li>"+circle()+"</li>";
+  s+="<li>"+ellipse()+"</li>";
+  s+="<li>"+parabola()+"</li>";
+  s+="<li>"+line()+"</li></ul></td></tr>";
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
@@ -173,42 +177,19 @@ function HannaMath()
           tmp+=c.IneqLine();
           s+="<td>"+tmp+"</td>";
           break;
+        case 8:
+           s+="<td>";
+           s += AddMatrix() + "<br><br>";
+           s += SubtractMatrix() + "<br><br>";
+           s += MultMatrix() + "<br><br>";
+           s += DetermineMatrix() + "<br><br>";
+           s+="</td>";
+          break;
     }
     s+="</tr>";
-  s+="<tr><td> </td></tr>";
   }
-  s+="<tr><td> </td></tr></table>";
-
-  s+="Graph and estimate the intersections of the two grahps<br>";
-  s+=parabola();
-  s+="<br>";
-  s+=line();
-  s+="<br>";
+  s+="</table>";
   
-  s += AddMatrix() + "<br><br>";
-  s += SubtractMatrix() + "<br><br>";
-  s += MultMatrix() + "<br><br>";
-  s += DetermineMatrix() + "<br><br>";
-  
-  if(Random()>.5)
-  {
-    s+="<img src='https://i.stack.imgur.com/70zob.png'><br>"
-    s+="Find the perimeter of figure ABCD, area of figure ABCD, volume of figure ABCDEFGH,<br>";
-    s+=" and the surface area of figure ABCDEFGH given the following dimensions. You may<br>"
-    s+=" assume that the figure is a retangular prism.<br>"
-    s+="AB = "+Math.floor(Random()*10+5)+"<br>";
-    s+="AE = "+Math.floor(Random()*10+5)+"<br>";
-    s+="AD = "+Math.floor(Random()*10+5)+"<br>";
-  }
-  else
-  {
-    s+="<img src='https://www.cs.swarthmore.edu/~newhall/cs21/f09/Labs/cone_1.gif'><br>";
-    s+="Find the perimeter and area of the circle, the surface areas of the cone, and<br>";
-    s+="the volume of the cone with the following dimensions.<br>";
-    s+="r = "+Math.floor(Random()*5+3)+"<br>";
-    s+="h = "+Math.floor(Random()*10+5)+"<br>";
-  }
-
   //put it into the content
   content.innerHTML = s;
 }
