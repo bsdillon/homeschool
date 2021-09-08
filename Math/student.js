@@ -123,11 +123,11 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
-  s+="<tr><td>Graph these conic sections.<ul>";
+  s+="<tr><td>1. Graph these conic sections.<ol type='A'>";
   s+="<li>"+circle()+"</li>";
   s+="<li>"+ellipse()+"</li>";
   s+="<li>"+parabola()+"</li>";
-  s+="<li>"+line()+"</li></ul></td></tr>";
+  s+="<li>"+line()+"</li></ol></td></tr>";
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
@@ -135,27 +135,27 @@ function HannaMath()
       switch(r)
       {
         case 0:
-          s+="<td>"+SolveLine()+"</td>";
+          s+="<td>"+(i+2)+". "+SolveLine()+"</td>";
           break;
         case 1:
-          s+="<td>"+SolveSquare()+"</td>";
+          s+="<td>"+(i+2)+". "+SolveSquare()+"</td>";
           break;
         case 2:
-          s+="<td>"+SolveSquareRoot()+"</td>";
+          s+="<td>"+(i+2)+". "+SolveSquareRoot()+"</td>";
           break;
         case 3:
-          s+="<td>"+Distribute()+"</td>";
+          s+="<td>"+(i+2)+". "+Distribute()+"</td>";
           break;
         case 4:
-          s+="<td>"+Factor()+"</td>";
+          s+="<td>"+(i+2)+". "+Factor()+"</td>";
           break;
         case 5:
-          s+="<td>Factor or multiply:<br>"+FOIL()+"</td>";
+          s+="<td>"+(i+2)+". "+Factor or multiply:<br>"+FOIL()+"</td>";
           break;
         case 6:
            var tmp ="Find the equation of a line that crosses through these two points.<br>";
            tmp+=c.Point()+" and "+c.Point()+"<br><br>";
-           s+="<td>"+tmp+"</td>";
+           s+="<td>"+(i+2)+". "+tmp+"</td>";
           break;
         case 7:
           var tmp ="Find the intersection of the two lines and graph the solution ";
@@ -175,10 +175,10 @@ function HannaMath()
           tmp+=c.IneqLine();
           tmp+="<br>";
           tmp+=c.IneqLine();
-          s+="<td>"+tmp+"</td>";
+          s+="<td>"+(i+2)+". "+tmp+"</td>";
           break;
         case 8:
-           s+="<td>";
+           s+="<td>"+(i+2)+". ";
            s += AddMatrix() + "<br><br>";
            s += SubtractMatrix() + "<br><br>";
            s += MultMatrix() + "<br><br>";
