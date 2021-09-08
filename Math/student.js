@@ -128,10 +128,13 @@ function HannaMath()
   s+="<li>"+ellipse()+"</li>";
   s+="<li>"+parabola()+"</li>";
   s+="<li>"+line()+"</li></ol></td></tr>";
+  var available = [0,1,2,3,4,5,6,7,8];
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
-      var r = Math.floor(Random()*8);
+      var index = Math.floor(Random()*available.length);
+      var r = available[index];
+      available.splice(index,1);
       switch(r)
       {
         case 0:
