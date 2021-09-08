@@ -150,7 +150,7 @@ function HannaMath()
           s+="<td>"+(i+2)+". "+Factor()+"</td>";
           break;
         case 5:
-          s+="<td>"+(i+2)+". "+Factor or multiply:<br>"+FOIL()+"</td>";
+          s+="<td>"+(i+2)+". Factor or multiply:<br>"+FOIL()+"</td>";
           break;
         case 6:
            var tmp ="Find the equation of a line that crosses through these two points.<br>";
