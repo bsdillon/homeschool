@@ -181,11 +181,11 @@ function HannaMath()
           s+="<td>"+(i+2)+". "+tmp+"</td>";
           break;
         case 8:
-           s+="<td>"+(i+2)+". ";
-           s += AddMatrix() + "<br><br>";
-           s += SubtractMatrix() + "<br><br>";
-           s += MultMatrix() + "<br><br>";
-           s += DetermineMatrix() + "<br><br>";
+           s+="<td>"+(i+2)+". Solve these matrix problems<ol type='A'>";
+           s += "<li>"+AddMatrix() + "</li>";
+           s += "<li>"+SubtractMatrix() + "</li>";
+           s += "<li>"+MultMatrix() + "</li>";
+           s += "<li>"+DetermineMatrix() + "</li></ol>";
            s+="</td>";
           break;
     }
