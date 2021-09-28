@@ -46,10 +46,11 @@
       function writeAll(which)
       {
          var s="<h2>"+name+"</h2>";
-         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'><img src='"+flag+"' width='64'><br clear='all'>";
+         s+="<b>Capital:</b> "+cap+"<br>";
          s+=lat>0?lat+"N, " : (-lat)+"S, ";
          s+=(lon>0?lon+"E<br>" : (-lon)+"W<br>");
-         s+="<b>Capital:</b> "+cap+"<br>";
+         s+="<img src='"+flag+"' width='128'><br clear='all'><br clear='all'>";
+         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'>"
          s+="</p>";
          output.innerHTML=s;
      }
