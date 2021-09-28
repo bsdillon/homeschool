@@ -29,7 +29,9 @@
         request.onload = () => {
           let ans = JSON.parse(request.response)[1][0];
           name = ans.name;
-          map = "./maps/"+code.toLowerCase()+"_128.png";
+          codeL = code.toLowerCase();
+          flag = "https://www.countryflags.io/"+codeL+"/flat/64.png";
+          map = "./maps/"+codeL+"_128.png";
           lat = ans.latitude;
           lon = ans.longitude;
           cap = ans.capitalCity;
@@ -44,7 +46,7 @@
       function writeAll(which)
       {
          var s="<h2>"+name+"</h2>";
-         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'><br clear='all'>";
+         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'><img src='"+flag+"' width='64'><br clear='all'>";
          s+=lat>0?lat+"N, " : (-lat)+"S, ";
          s+=(lon>0?lon+"E<br>" : (-lon)+"W<br>");
          s+="<b>Capital:</b> "+cap+"<br>";
