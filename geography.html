@@ -44,27 +44,10 @@
       function writeAll(which)
       {
          var s="<h2>"+name+"</h2>";
-         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'><br><img src='"+flagimg+"' class='border' width='128' align='left' /><br clear='all'>";
-         s+="<p><b>Region:</b> "+region+"<br><b>Location:</b> ";
+         s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'><br clear='all'>";
          s+=lat>0?lat+"N, " : (-lat)+"S, ";
          s+=(lon>0?lon+"E<br>" : (-lon)+"W<br>");
          s+="<b>Capital:</b> "+cap+"<br>";
-         s+="<b>Neighboring countries:</b> ";
-         if(borders.length==0){s+="NONE<br>";}
-         for(let i=0;i<borders.length;i++)
-         {
-           s+=borders[i]+"<br>";
-         }
-         s+="<b>Money:</b> ";
-         for(let i=0;i<curr.length;i++)
-         {
-           s+=curr[i].symbol +" -- "+curr[i].name+"<br>";
-         }
-         s+="<b>Language(s):</b> "
-         for(let i=0;i<langs.length;i++)
-         {
-           s+= langs[i].name+" / "+langs[i].nativeName+"<br>";
-         }
          s+="</p>";
          output.innerHTML=s;
      }
