@@ -39,7 +39,7 @@
         request.send();
 
         var request2 = new XMLHttpRequest();
-        request2.open("GET","http://restcountries.eu/v2/alpha/"+code+"/?access_key=c37579e819a8601becbb2b4d6d900ae8");
+        request2.open("GET","https://restcountries.eu/v2/alpha/"+code+"/?access_key=c37579e819a8601becbb2b4d6d900ae8");
         request2.setRequestHeader("Access-Control-Allow-Origin","*") //important to avoid CORS error
           request2.onload = () => {
           let ans = JSON.parse(request2.response);
