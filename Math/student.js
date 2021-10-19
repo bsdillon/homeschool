@@ -124,6 +124,7 @@ function HannaMath()
   var c = new LinearEquations();
   var s = "<table>"
   s+="<tr><td>1. Graph these conic sections.<ol type='A'>";
+  s+="<li>"+hyperbola()+"</li>";
   s+="<li>"+circle()+"</li>";
   s+="<li>"+ellipse()+"</li>";
   s+="<li>"+parabola()+"</li>";
