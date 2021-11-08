@@ -2,7 +2,7 @@
   <head>
    <link rel="stylesheet" type="text/css" href="common.css">
    <style>
-      .answer { color:white; }
+      .answer { color:white; display: none;}
       .clear { clear:both; }
       .score th {width:20; padding:3px; font-weight:bold; border:1px solid black;}
       .score td {text-align: center; width:20; padding:3px; border:1px solid black;}
@@ -32,10 +32,12 @@
         if(showAnswers)
         {
           document.styleSheets[1].cssRules[0].style.color="red";
+          document.styleSheets[1].cssRules[0].style.display="block";
         }
         else
         {
           document.styleSheets[1].cssRules[0].style.color="white";
+          document.styleSheets[1].cssRules[0].style.display="none";
         }
       }
 
