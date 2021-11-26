@@ -123,72 +123,91 @@ function HannaMath()
 {
   var c = new LinearEquations();
   var s = "<table>"
-  s+="<tr><td>1. Graph these conic sections.<ol type='A'>";
-  s+="<li>"+hyperbola()+"</li>";
-  s+="<li>"+circle()+"</li>";
-  s+="<li>"+ellipse()+"</li>";
-  s+="<li>"+parabola()+"</li>";
-  s+="<li>"+line()+"</li></ol></td></tr>";
+  s+="<tr><td>1. Graph this conic section.<br>";
+  switch(Math.floor(Random()*5))
+  {
+    case 0:
+      s+=hyperbola();
+      break;
+    case 1:
+      s+=circle();
+      break;
+    case 2:
+      s+=ellipse();
+      break;
+    case 3:
+      s+=parabola();
+      break;
+    case 4:
+      s+=line();
+      break;
+  }
+  s+="</td></tr>";
+  var powers = new Powers();
+  s+="<tr><td><br>2. "+powers.PrimeFactor()+"</td></tr>";
+  s+="<tr><td><br>3. "+powers.nRoot()+"</td></tr>";
+  s+="<tr><td><br>4. "+powers.PowerRatio()+"</td></tr>";
+
   var available = [0,1,2,3,4,5,6,7,8];
   for(let i=0; i<3; i++)
   {
     s+="<tr>";
-      var index = Math.floor(Random()*available.length);
-      var r = available[index];
-      available.splice(index,1);
-      switch(r)
-      {
-        case 0:
-          s+="<td>"+(i+2)+". "+SolveLine()+"</td>";
-          break;
-        case 1:
-          s+="<td>"+(i+2)+". "+SolveSquare()+"</td>";
-          break;
-        case 2:
-          s+="<td>"+(i+2)+". "+SolveSquareRoot()+"</td>";
-          break;
-        case 3:
-          s+="<td>"+(i+2)+". "+Distribute()+"</td>";
-          break;
-        case 4:
-          s+="<td>"+(i+2)+". "+Factor()+"</td>";
-          break;
-        case 5:
-          s+="<td>"+(i+2)+". Factor or multiply:<br>"+FOIL()+"</td>";
-          break;
-        case 6:
-           var tmp ="Find the equation of a line that crosses through these two points.<br>";
-           tmp+=c.Point()+" and "+c.Point()+"<br><br>";
-           s+="<td>"+(i+2)+". "+tmp+"</td>";
-          break;
-        case 7:
-          var tmp ="Find the intersection of the two lines and graph the solution ";
-          var r = Math.floor(Random()*3);
-          switch(r)
-          {
-            case 0:
-              tmp+="using the y=y method.<br>";
-              break;
-            case 1:
-              tmp+="using the elimination method.<br>";
-              break;
-            case 2:
-              tmp+="using the matrix method.<br>";
-              break;
-          }
-          tmp+=c.IneqLine();
-          tmp+="<br>";
-          tmp+=c.IneqLine();
-          s+="<td>"+(i+2)+". "+tmp+"</td>";
-          break;
-        case 8:
-           s+="<td>"+(i+2)+". Solve these matrix problems<ol type='A'>";
-           s += "<li>"+AddMatrix() + "</li>";
-           s += "<li>"+SubtractMatrix() + "</li>";
-           s += "<li>"+MultMatrix() + "</li>";
-           s += "<li>"+DetermineMatrix() + "</li></ol>";
-           s+="</td>";
-          break;
+    var index = Math.floor(Random()*available.length);
+    var r = available[index];
+    available.splice(index,1);
+    switch(r)
+    {
+      case 0:
+        s+="<td><br>"+(i+5)+". "+SolveLine()+"</td>";
+        break;
+      case 1:
+        s+="<td><br>"+(i+5)+". "+SolveSquare()+"</td>";
+        break;
+      case 2:
+        s+="<td><br>"+(i+5)+". "+SolveSquareRoot()+"</td>";
+        break;
+      case 3:
+        s+="<td><br>"+(i+5)+". "+Distribute()+"</td>";
+        break;
+      case 4:
+        s+="<td><br>"+(i+5)+". "+Factor()+"</td>";
+        break;
+      case 5:
+        s+="<td><br>"+(i+5)+". Factor or multiply:<br>"+FOIL()+"</td>";
+        break;
+      case 6:
+        var tmp ="Find the equation of a line that crosses through these two points.<br>";
+        tmp+=c.Point()+" and "+c.Point()+"<br><br>";
+        s+="<td><br>"+(i+5)+". "+tmp+"</td>";
+        break;
+      case 7:
+        var tmp ="Find the intersection of the two lines and graph the solution ";
+        var r = Math.floor(Random()*3);
+        switch(r)
+        {
+          case 0:
+            tmp+="using the y=y method.<br>";
+            break;
+          case 1:
+            tmp+="using the elimination method.<br>";
+            break;
+          case 2:
+            tmp+="using the matrix method.<br>";
+            break;
+        }
+        tmp+=c.IneqLine();
+        tmp+="<br>";
+        tmp+=c.IneqLine();
+        s+="<td><br>"+(i+5)+". "+tmp+"</td>";
+        break;
+      case 8:
+        s+="<td><br>"+(i+5)+". Solve these matrix problems<ol type='A'>";
+        s += "<li>"+AddMatrix() + "</li>";
+        s += "<li>"+SubtractMatrix() + "</li>";
+        s += "<li>"+MultMatrix() + "</li>";
+        s += "<li>"+DetermineMatrix() + "</li></ol>";
+        s+="</td>";
+        break;
     }
     s+="</tr>";
   }

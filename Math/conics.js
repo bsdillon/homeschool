@@ -29,30 +29,10 @@ function line()
 
 function parabola()
 {
-  a = Math.floor(Random()*5+1);
+  a = flip(Math.floor(Random()*5+1));
   b = flip(Math.floor(Random()*5+1));
-  c = Math.floor(Random()*5+1);
+  c = flip(Math.floor(Random()*5+1));
   d = flip(Math.floor(Random()*5+1));
-
-  if(Random()>.5)
-  {
-    a=-a;
-  }
-
-  if(Random()>.5)
-  {
-    b=-b;
-  }
-
-  if(Random()>.5)
-  {
-    c=-c;
-  }
-
-  if(Random()>.5)
-  {
-    d=-d;
-  }
 
   var rel = getRelationshipNumber();
 
@@ -243,4 +223,190 @@ ConicSections.prototype.SelectProblem = function()
   {
     return instructions+line()+"<br>"+hyperbola();
   }
+}
+
+function intersection()
+{
+  var xCoeff = [0,0,0];
+  var yCoeff = [0,0,0];
+  var integer = 0;
+
+  var s = "Find the intersection of the two equations<br>";
+  var answer = "<br><div class='answer' name='answer'>";
+  var first = 1;
+  for(let i=0;i<2;i++)
+  {
+    var r = Math.floor(Random()*5);
+    if(r==0)
+    {
+      //line
+      a = flip(Math.floor(Random()*9+1));
+      b = flip(Math.floor(Random()*9+1));
+      c = flip(Math.floor(Random()*5+1))*b;
+
+      xCoeff[1]+=a;
+      yCoeff[1]+=b;
+      integer-=c;
+      s+= a+"x + "+b+"y = "+c;
+      answer += a+"x + "+b+"y -"+c;
+    }
+    else if(r==1)
+    {
+      //parabola
+      a = flip(Math.floor(Random()*5+1));
+      b = flip(Math.floor(Random()*5+1));
+      c = flip(Math.floor(Random()*5+1));
+      d = flip(Math.floor(Random()*5+1));
+
+      xCoeff[2]+=a*c;
+      xCoeff[1]+=((c*b)+(a*d));
+      yCoeff[1]-=1;
+      integer+=(b*d);
+      if(Random()>.5)
+      {
+        s+= "y ="+ (a*c)+"x<sup>2</sup> + "+((c*b)+(a*d))+"x + "+(b*d);
+        answer+= "-y + "+ (a*c)+"x<sup>2</sup> + "+((c*b)+(a*d))+"x + "+(b*d);
+      }
+      else
+      {
+        var tmp = "("+a+"x ";
+        if(b>0)
+        {
+          tmp += "+" + Math.abs(b) + ")("+c+"x ";
+        }
+        else
+        {
+          tmp += "&minus;" + Math.abs(b) + ")("+c+"x ";
+        }
+
+        if(d>0)
+        {
+          tmp += "+" + Math.abs(d) + ")";
+        }
+        else
+        {
+          tmp += "&minus;" + Math.abs(d) + ")";
+        }
+
+        s+= "y = "+tmp;
+        answer += "-y + "+tmp;
+      }
+    }
+    else if(r==2)
+    {
+      //circle
+      a = flip(Math.floor(Random()*5+1));
+      b = flip(Math.floor(Random()*5+1));
+      r = Math.floor(Random()*5+1);
+
+      xCoeff[1]+=2*a;
+      xCoeff[2]+=1;
+      yCoeff[1]+=2*b;
+      yCoeff[2]+=1;
+      integer+=((a*a)+(b*b)-(r*r));
+      s+= "0 = x<sup>2</sup> + y<sup>2</sup> + "+ (2*a) +"x + "+ (2*b) +"y + "+((a*a)+(b*b)-(r*r));
+      answer += "x<sup>2</sup> + y<sup>2</sup> + "+ (2*a) +"x + "+ (2*b) +"y + "+((a*a)+(b*b)-(r*r));
+    }
+    else if(r==3)
+    {
+      //ellipse
+      a = flip(Math.floor(Random()*5+1));
+      b = flip(Math.floor(Random()*5+1));
+      c = flip(Math.floor(Random()*5+1));
+      d = flip(Math.floor(Random()*5+1));
+      r = Math.floor(Random()*5+1);
+
+      xCoeff[1]+=(2*a*d*d);
+      xCoeff[2]+=d*d;
+      yCoeff[1]+=(2*b*c*c);
+      yCoeff[2]+=c*c;
+      integer+=((d*d*a*a)+(c*c*b*b)-(c*c*d*d*r*r));
+      s+= "0 = " + (d*d) +"x<sup>2</sup> + "+ (c*c)+"y<sup>2</sup> + "+ (2*a*d*d) +"x + "+ (2*b*c*c) +"y + "+((d*d*a*a)+(c*c*b*b)-(c*c*d*d*r*r));
+      answer += (d*d) +"x<sup>2</sup> + "+ (c*c)+"y<sup>2</sup> + "+ (2*a*d*d) +"x + "+ (2*b*c*c) +"y + "+((d*d*a*a)+(c*c*b*b)-(c*c*d*d*r*r));
+    }
+    else if(r==4)
+    {
+      //hyperbola
+      a = flip(Math.floor(Random()*5+1));
+      b = flip(Math.floor(Random()*5+1));
+      c = flip(Math.floor(Random()*5+1));
+      d = flip(Math.floor(Random()*5+1));
+      r = 1;
+
+      var coeffSign = 1;
+      if(Random()>.5)
+      {
+        coeffSign = -1;
+      }
+      var end = coeffSign>0?((d*d*a*a)-(c*c*b*b)-(c*c*d*d*r*r)):(-(d*d*a*a)+(c*c*b*b)-(c*c*d*d*r*r));
+      xCoeff[1]+=(coeffSign>0?2*a*d*d:-2*a*d*d);
+      xCoeff[2]+=(coeffSign>0?d*d:-d*d);
+      yCoeff[1]+=(coeffSign>0?2*b*c*c:-2*b*c*c);
+      yCoeff[2]+=(coeffSign>0?-c*c:c*c);
+      integer+=end;
+      s+= "0 =" +  (coeffSign>0?" +":" -") + (d*d) +"x<sup>2</sup>"+(coeffSign>0?" -":" +")+ (c*c)+"y<sup>2</sup>"+(coeffSign>0?" +":" -")+ (2*a*d*d) +"x" + (coeffSign>0?" -":" +") + (-2*b*c*c) +"y + "+end;
+      answer += (coeffSign>0?" +":" -") + (d*d) +"x<sup>2</sup>"+(coeffSign>0?" -":" +")+ (c*c)+"y<sup>2</sup>"+(coeffSign>0?" +":" -")+ (2*a*d*d) +"x" + (coeffSign>0?" -":" +") + (-2*b*c*c) +"y + "+end;
+    }
+    s+="<br>";
+
+    if(first>0)
+    { //for the addition step of the answer we will need the first coefficients to be negative.
+      xCoeff[1]*=-1;
+      xCoeff[2]*=-1;
+      yCoeff[1]*=-1;
+      yCoeff[2]*=-1;
+      integer*=-1;
+      first--;
+      answer += " = 0 = ";
+    }
+  }
+  
+  answer += "&nbsp;&nbsp;&nbsp;&nbsp;Write the two equations equal to zero and to each other<br>";
+  answer += "0 = ";
+  if(Math.abs(xCoeff[2])>0)
+  {
+    answer += xCoeff[2]+"x<sup>2</sup>";
+  }
+
+  if(xCoeff[1]>0)
+  {
+    answer += " + "+xCoeff[1]+"x";
+  }
+  else if(xCoeff[1]<0)
+  {
+    answer += " "+xCoeff[1]+"x";
+  }
+
+  if(yCoeff[2]>0)
+  {
+    answer += " + "+yCoeff[2]+"y<sup>2</sup>";
+  }
+  else if(yCoeff[2]<0)
+  {
+    answer += " "+yCoeff[2]+"y<sup>2</sup>";
+  }
+
+  if(yCoeff[1]>0)
+  {
+    answer += " + "+yCoeff[1]+"y";
+  }
+  else if(yCoeff[1]<0)
+  {
+    answer += " "+yCoeff[1]+"y";
+  }
+
+  if(integer>0)
+  {
+    answer += " + " + integer;
+  }
+  else if(integer>0)
+  {
+    answer += " " + integer;
+  }
+  answer += "&nbsp;&nbsp;&nbsp;&nbsp;Collect all the like terms on one side.<br>";
+  answer += "Solve the remaining equation as you would regular conic section.<br>";
+  answer += "Any intersections occur where the final equation is y=0.<br>";
+  answer +="</div>";
+
+  return s + answer;
 }
