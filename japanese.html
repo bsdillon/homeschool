@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <style>
+      body {background-color: #AAAAFF;}
+      img.hiragana {border: solid blue 5px;}
+      img.katakana {border: solid red 5px;}
+      li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
+      td {font-align:center;}
+      span.hiragana {font-weight: bold; color: blue; font-size:50px;}
+      span.katakana {font-weight: bold; color: red; font-size:50px;}
+      span.english {font-weight: bold; color: black; font-size:50px;}
+    </style>
+    <script>
+      var vowels = ['A','I','U','E','O'];
+      var consonants = ['0','K','S','T','N','H','M','Y','R','W'];
+      var hiraganaChars = [
+        [0x3042,0x3044,0x3046,0x3048,0x304A],
+        [0x304B,0x304D,0x304F,0x3051,0x3053],
+        [0x3055,0x3057,0x3059,0x305B,0x305D],
+        [0x305F,0x3061,0x3064,0x3066,0x3068],
+        [0x306A,0x306B,0x306C,0x306D,0x306E],
+        [0x306F,0x3072,0x3075,0x3078,0x307B],
+        [0x307E,0x307F,0x3080,0x3081,0x3082],
+        [0x3084,0x0085,0x3086,0x0085,0x3088],
+        [0x3089,0x308A,0x308B,0x308C,0x308D],
+        [0x308F,0x3090,0x0085,0x3091,0x3092]
+      ];
+      //N is 0x3093
+      var katakanaChars = [
+        [0x30A2,0x30A4,0x30A6,0x30A8,0x30AA],
+        [0x30AB,0x30AD,0x30AF,0x30B1,0x30B3],
+        [0x30B5,0x30B7,0x30B9,0x30BB,0x30BD],
+        [0x30BF,0x30C1,0x30C4,0x30C6,0x30C8],
+        [0x30CA,0x30CB,0x30CC,0x30CD,0x30CE],
+        [0x30CF,0x30D2,0x30D5,0x30D8,0x30DB],
+        [0x30DE,0x30DF,0x30E0,0x30E1,0x30E2],
+        [0x30E4,0x0085,0x30E6,0x0085,0x30E8],
+        [0x30E9,0x30EA,0x30EB,0x30EC,0x30ED],
+        [0x30EF,0x30F0,0x0085,0x30F1,0x30F2]
+      ];
+      //N is #30F3
+      var tiles =["0AME_CANDY.png", "0AME_CANDY.png", "0ARI_ANT.png", "0ASISA0I_HYDRANGEA.png", "0EN0TOTU_CHIMNEY.png", "0ENOKO_PAINT.png", "0IMA_TRAIN_STATION.png", "0INU_DOG.png", "0ISI_STONE.png", "0ITIKO_STRAWBERRY.png", "0ONIKIRI_RICE_BALL.png", "0ONI_OGRE.png", "0UKIWA_FLOAT_TOY.png", "0UMA_HORSE.png", "0UNAKE_GHOST.png", "0USI_COW.png", "KAHUTOMUSI_BEETLE.png", "KAMOME_SEAGULL.png", "KASA_UMBRELLA.png", "KE0ISATU_POLICE.png", "KEMUSI_CATERPILLAR.png", "KEN0DAMA_KOALA.png", "KEN0TAMA_KENDAMA.png", "KIKIYU0U_HOT_AIR_BALLOON.png", "KIN0KIYO_GOLD_FISH.png", "KIRIN0_GIRAFE.png", "KO0ORI_ICE.png", "KOMA_TOP.png", "KURI_CHESNUT.png", "KURUMO_CAR.png"];
+      //https://en.wikipedia.org/wiki/Ni_(kana)
+
+      function flip(cIndex, vIndex)
+      {
+        var id = consonants[cIndex]+vowels[vIndex];
+        var tagL = document.getElementById(cIndex+"_"+vIndex);
+        var tag = document.getElementById(id);
+        var nextSrc="";
+        tagL.classList.value = '';
+        tag.classList.value = '';
+        if(tag.src.includes("hiragana"))
+        {
+          tagL.innerHTML="&#"+katakanaChars[cIndex][vIndex]+";";
+          nextSrc = tag.src.replace("hiragana","katakana");
+          nextSrc = nextSrc.replace("hiragana","katakana");
+          tagL.classList.add("katakana");
+          tag.classList.add("katakana");
+        }
+        else
+        {
+          tagL.innerHTML="&#"+hiraganaChars[cIndex][vIndex]+";";
+          nextSrc = tag.src.replace("katakana","hiragana");
+          nextSrc = nextSrc.replace("katakana","hiragana");
+          tagL.classList.add("hiragana");
+          tag.classList.add("hiragana");
+        }
+        tag.src = nextSrc;
+      }
+
+      function loader()
+      {
+        var tile = tiles[Math.floor(Math.random()*tiles.length)];
+        var pieces = tile.split("_");
+        var engName = "";
+        var japName = "";
+        for(let i=0;i<pieces[0].length;i+=2)
+        {
+          var cPart = pieces[0][i];
+          var vPart = pieces[0][i+1];
+          var c = consonants.findIndex(function (x) {return x===cPart;});
+          var v = vowels.findIndex(function (x) {return x===vPart;});
+          if(vPart==='0')
+          {
+            engName+="N ";
+            japName+="&#3093;";
+          }
+          else
+          {
+            var cChar = consonants[c]
+            if(cChar==='0')
+            {
+              cChar = ' ';
+            }
+            engName+=cChar+vowels[v];
+            japName+="&#"+hiraganaChars[c][v]+";";
+          }
+        }
+        var tileSpot = document.getElementById("tileDemo");
+        var tmp ="<h1>"+japName+"</h1><h3>"+engName+"</h3><p>";
+        tmp += tile.substring(pieces[0].length+1,tile.length-4)+"</p>";
+        tmp += "<img src='./hiragana/images/"+tile+"' width='150'>";
+        tileSpot.innerHTML=tmp;
+  
+        var table = document.getElementById("hiragana-order");
+        for(let c=0; c<consonants.length;c++)
+        {
+          var row = table.insertRow();
+          for(let v=0;v<vowels.length;v++)
+          {
+            var td = row.insertCell();
+
+            var tdE = document.createElement("SPAN");
+            tdE.classList.add("english");
+            tdE.innerHTML = (consonants[c]+vowels[v]+"<br>").toUpperCase();
+            td.appendChild(tdE);
+
+            var tdL = document.createElement("SPAN");
+            tdL.id=c+"_"+v;
+            tdL.classList.add("hiragana");
+            tdL.innerHTML = "&#"+hiraganaChars[c][v]+";";
+            td.appendChild(tdL);
+
+            var img = document.createElement("IMG");
+            img.id = consonants[c]+vowels[v];
+            img.classList.add("hiragana");
+            img.src = "./hiragana/hiragana-"+consonants[c]+vowels[v]+"-order.gif";
+            img.onclick = function () { flip(c,v) };
+            img.width = "100";
+            img.alt = "Hiragana "+consonants[c]+vowels[v];
+            img.alt = "Hiragana "+consonants[c]+vowels[v];
+            td.appendChild(img);
+          }
+        }
+      }
+
+    //<h2>Learn vowels</h2>
+    //<iframe width="490" height="276" src="https://www.youtube.com/embed/5hYz3Kn08Oo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //<h2>Alphabet train</h2>
+    //<iframe width="490" height="276" src="https://www.youtube.com/embed/kEAbfuANKWw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //<h2>Putting syllables together</h2>
+    //<iframe width="490" height="276" src="https://www.youtube.com/embed/bXk0ooV-iLk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //<h2>Singing alphabet</h2>
+    //<iframe width="490" height="276" src="https://www.youtube.com/embed/8IpHIUxhdaI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //<h2>Sing the alphabet...again</h2>
+    //<iframe width="853" height="480" src="https://www.youtube.com/embed/K-nw5EUxDz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //<h2>Cyber bunny teaches Japanese</h2>
+    //<a href='https://www.youtube.com/channel/UCv_2-Z25BEyH-qa_J6IFWjA'>Link</a><br>
+    //<h2>Great site for practice cards in hiragana and katakana</h2>
+    //<a href="https://print-kids.net/print/kokugo/">link</a><br>
+    </script>
+  </head>
+  <body onload="loader()">
+    <div id="tileDemo"></div>
+    <table id="hiragana-order">
+    </table>
+  </body>
+</html>
