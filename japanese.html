@@ -25,6 +25,19 @@
         [0x3089,0x308A,0x308B,0x308C,0x308D],
         [0x308F,0x3090,0x0085,0x3091,0x3092]
       ];
+      var hiraganaTrue = [
+        ['あ','い','う','え','お'],
+        ['か','き','く','け','こ'],
+        ['さ','し','す','せ','そ'],
+        ['た','ち','つ','て','と'],
+        ['な','に','ぬ','ね','の'],
+        ['は','ひ','ふ','へ','ほ'],
+        ['ま','み','む','め','も'],
+        ['や',' ','ゆ',' ','よ'],
+        ['ら','り','る','れ','ろ'],
+        ['わ','ゐ',' ','ゑ','を']
+      ];
+      var hiraganaN = 'ん';
       //N is 0x3093
       var katakanaChars = [
         [0x30A2,0x30A4,0x30A6,0x30A8,0x30AA],
@@ -39,6 +52,19 @@
         [0x30EF,0x30F0,0x0085,0x30F1,0x30F2]
       ];
       //N is #30F3
+      var katakanaTrue = [
+        ['ア','イ','ウ','エ','オ'],
+        ['カ','キ','ク','ケ','コ'],
+        ['サ','シ','ス','セ','ソ'],
+        ['タ','チ','ツ','テ','ト'],
+        ['ナ','ニ','ヌ','ネ','ノ'],
+        ['ハ','ヒ','フ','ヘ','ホ'],
+        ['マ','ミ','ム','メ','モ'],
+        ['ヤ','','ユ','','ヨ'],
+        ['ラ','リ','ル','レ','ロ'],
+        ['ワ','ヰ','','ヱ','ヲ']
+      ];
+      var katakanaN = 'ン';
       var tiles =["0AME_CANDY.png", "0AME_CANDY.png", "0ARI_ANT.png", "0ASISA0I_HYDRANGEA.png", "0EN0TOTU_CHIMNEY.png", "0ENOKO_PAINT.png", "0IMA_TRAIN_STATION.png", "0INU_DOG.png", "0ISI_STONE.png", "0ITIKO_STRAWBERRY.png", "0ONIKIRI_RICE_BALL.png", "0ONI_OGRE.png", "0UKIWA_FLOAT_TOY.png", "0UMA_HORSE.png", "0UNAKE_GHOST.png", "0USI_COW.png", "KAHUTOMUSI_BEETLE.png", "KAMOME_SEAGULL.png", "KASA_UMBRELLA.png", "KE0ISATU_POLICE.png", "KEMUSI_CATERPILLAR.png", "KEN0DAMA_KOALA.png", "KEN0TAMA_KENDAMA.png", "KIKIYU0U_HOT_AIR_BALLOON.png", "KIN0KIYO_GOLD_FISH.png", "KIRIN0_GIRAFE.png", "KO0ORI_ICE.png", "KOMA_TOP.png", "KURI_CHESNUT.png", "KURUMO_CAR.png"];
       //https://en.wikipedia.org/wiki/Ni_(kana)
 
@@ -161,5 +187,6 @@
     <div id="tileDemo"></div>
     <table id="hiragana-order">
     </table>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Hiragana_%E3%82%93_stroke_order_animation.gif">
   </body>
 </html>
