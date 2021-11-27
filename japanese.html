@@ -55,6 +55,7 @@
           tagL.innerHTML="&#"+katakanaChars[cIndex][vIndex]+";";
           nextSrc = tag.src.replace("hiragana","katakana");
           nextSrc = nextSrc.replace("hiragana","katakana");
+          tag.alt = "Katakana "+consonants[cIndex]+vowels[vIndex];
           tagL.classList.add("katakana");
           tag.classList.add("katakana");
         }
@@ -63,6 +64,7 @@
           tagL.innerHTML="&#"+hiraganaChars[cIndex][vIndex]+";";
           nextSrc = tag.src.replace("katakana","hiragana");
           nextSrc = nextSrc.replace("katakana","hiragana");
+          tag.alt = "Hiragana "+consonants[cIndex]+vowels[vIndex];
           tagL.classList.add("hiragana");
           tag.classList.add("hiragana");
         }
@@ -99,7 +101,12 @@
         }
         var tileSpot = document.getElementById("tileDemo");
         var tmp ="<h1>"+japName+"</h1><h3>"+engName+"</h3><p>";
-        tmp += tile.substring(pieces[0].length+1,tile.length-4)+"</p>";
+        var eng = tile.substring(pieces[0].length+1,tile.length-4);
+        while(eng.includes("_"))
+        {
+          eng = eng.replace("_"," ");
+        }
+        tmp += eng+"</p>";
         tmp += "<img src='./hiragana/images/"+tile+"' width='150'>";
         tileSpot.innerHTML=tmp;
   
@@ -128,7 +135,6 @@
             img.src = "./hiragana/hiragana-"+consonants[c]+vowels[v]+"-order.gif";
             img.onclick = function () { flip(c,v) };
             img.width = "100";
-            img.alt = "Hiragana "+consonants[c]+vowels[v];
             img.alt = "Hiragana "+consonants[c]+vowels[v];
             td.appendChild(img);
           }
