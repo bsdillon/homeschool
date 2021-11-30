@@ -65,8 +65,33 @@
         ['ワ','ヰ','','ヱ','ヲ']
       ];
       var katakanaN = 'ン';
-      var tiles =["0AME_CANDY.png", "0AME_CANDY.png", "0ARI_ANT.png", "0ASISA0I_HYDRANGEA.png", "0EN0TOTU_CHIMNEY.png", "0ENOKO_PAINT.png", "0IMA_TRAIN_STATION.png", "0INU_DOG.png", "0ISI_STONE.png", "0ITIKO_STRAWBERRY.png", "0ONIKIRI_RICE_BALL.png", "0ONI_OGRE.png", "0UKIWA_FLOAT_TOY.png", "0UMA_HORSE.png", "0UNAKE_GHOST.png", "0USI_COW.png", "KAHUTOMUSI_BEETLE.png", "KAMOME_SEAGULL.png", "KASA_UMBRELLA.png", "KE0ISATU_POLICE.png", "KEMUSI_CATERPILLAR.png", "KEN0DAMA_KOALA.png", "KEN0TAMA_KENDAMA.png", "KIKIYU0U_HOT_AIR_BALLOON.png", "KIN0KIYO_GOLD_FISH.png", "KIRIN0_GIRAFE.png", "KO0ORI_ICE.png", "KOMA_TOP.png", "KURI_CHESNUT.png", "KURUMO_CAR.png"];
+      var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', '0USI_COW.png', 'HASAMI_SCISSORS.png', 'HEHI_SNAKE.png', 'HERIKOHUTA_HELICOPTER.png', 'HITUSI_SHEEP.png', 'HIYOKO_CHICK.png', 
+        'HOSI_STAR.png', 'HOTARU_FIREFLY.png', 'HU0USEN0_BALLOON.png', 'HUNE_BOAT.png', 'KAHUTOMUSI_BEETLE.png', 'KAMOME_SEAGULL.png', 'KASA_UMBRELLA.png', 'KE0ISATU_POLICE.png', 'KEMUSI_CATERPILLAR.png', 'KEN0TAMA_KENDAMA.png', 'KIKIYU0U_HOT_AIR_BALLOON.png', 'KIN0KIYO_GOLD_FISH.png', 'KIRIN0_GIRAFE.png', 'KO0ARA_KOALA.png', 'KO0ORI_ICE.png', 'KOMA_TOP.png', 'KURI_CHESNUT.png', 'KURUMO_CAR.png', 'KUSIRA_WHALE.png', 'NASI_PEAR.png', 
+        'NASUHI_EGGPLANT.png', 'NEKI_GREEN_ONION.png', 'NIN0SIN0_CARROTS.png', 'NISI_RAINBOW.png', 'NOKOKIRI_SAW.png', 'NORI_SEAWEED.png', 'NU0IKURUMI_STUFFED_ANIMAL.png', 'NURETA_WET.png', 'NURI0E_COLORING.png', 'REKISI_HISTORY.png', 'SA0IKORO_DICE.png', 'SAKANA_FISH.png', 'SAKURAN0HO_CHERRIES.png', 'SEMI_CICADA.png', 'SEN0HE0I_RICE_CRACKER.png', 'SEN0HU0UKI_FAN.png', 'SI0ITAKE_MUSHROOM.png', 'SIKA_DEER.png', 
+        'SIN0KO0U_TRAFFIC_LIGHT.png', 'SOHUTOKURIMU_ICE_CREAM.png', 'SORA_SKY.png', 'SORE_THAT.png', 'SOTUKUSU_SOCKS.png', 'SU0IKA_WATERMELON.png', 'SU0ITO0U_WATER_BOTTLE.png', 'SUSUME_SPARROW.png', 'TA0IKO_DRUM.png', 'TA0IYAKI_TAIYAKI.png', 'TAKOYAKI_TAKOYAKI.png', 'TEHAMI_LETTER.png', 'TEHUKURO_GLOVES.png', 'TERUTERUHO0USU_TERU_TERU_BOOZU.png', 'TIKIN0_CHICKEN.png', 'TIKUWA_FISH_ROLL.png', 'TIN0HAN0SI_CHIMPANZEE.png', 
+        'TO0UHU_TOFU.png', 'TOKE0I_CLOCK.png', 'TUHAME_SPARROW.png', 'TUKUSI_HORSE_TAIL.png', 'TUMIKI_BLOCKS.png', 'WATI_BEE.png', 'YUKI_SNOW.png', 'YUME_DREAM.png', 'YURE_SHAKE.png'];
       //https://en.wikipedia.org/wiki/Ni_(kana)
+
+      //By frequency of use
+      //first six letters	し き い こ う く り(RI)
+      //next  six letters	ふ た つ す さ と
+      //                 	け か る め み ち
+      //                 	れ ら ゆ ま ほ ひ
+      //                 	は ぬ に な て せ
+      //                 	あ わ む へ の お
+      //                 	え ろ よ や も ね
+
+      //by glyph type and average frequency
+      // う つ			C characters; 35
+      // も し い に こ り(RI)	J characters; 29
+      // き さ て ひ と ゆ		Front hook;26
+      // へ く			Angles;22
+      // た す か ふ		WTF 1; 33
+      // の め あ ぬ		Loop characters; 17
+      // け は ま ほ よ お み	T characters; 16
+      // ち ろ る え ら		Back hook characters; 16
+      // せ む な や		WTF 2; 11
+      // れ わ ね			Z characters; 9
 
       function flip(cIndex, vIndex)
       {
@@ -99,6 +124,54 @@
 
       function loader()
       {
+        var counts = [
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0],
+             [0,0,0,0,0]
+          ];
+        for(let i = 0;i<tiles.length;i++)
+        {
+          let japanese = tiles[i].split("_")[0];
+          for(let j=0;j<japanese.length;j+=2)
+          {
+            var cPart = japanese[j];
+            var vPart = japanese[j+1];
+            var c = consonants.findIndex(function (x) {return x===cPart;});
+            var v = vowels.findIndex(function (x) {return x===vPart;});
+            if(vPart!=='0')
+            {
+              if(cPart+vPart==="DA")
+              {
+                j+=0;
+              }
+              console.log(cPart+" "+vPart);
+              counts[c][v]++;
+            }
+          }
+        }
+
+        var allCounts = "Character counts: ";
+        var missing = "Missing characters: ";
+        for(let c=0;c<counts.length;c++)
+        {
+          for(let v=0;v<counts[c].length;v++)
+          {
+            allCounts += hiraganaTrue[c][v]+"-"+counts[c][v]+"; ";
+            if(counts[c][v]==0)
+            {
+              missing += hiraganaTrue[c][v]+",";
+            }
+          }
+        }
+        document.getElementById("report").innerHTML=allCounts+"<br>"+missing;
+
         var tile = tiles[Math.floor(Math.random()*tiles.length)];
         var pieces = tile.split("_");
         var engName = "";
@@ -184,6 +257,7 @@
     </script>
   </head>
   <body onload="loader()">
+    <p id="report"></p>
     <div id="tileDemo"></div>
     <table id="hiragana-order">
     </table>
