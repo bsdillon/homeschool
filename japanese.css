@@ -1,0 +1,7 @@
+      img.hiragana {border: solid blue 2px;}
+      img.katakana {border: solid red 2px;}
+      span.hiragana {font-weight: bold; color: blue; font-size:50px;}
+      span.katakana {font-weight: bold; color: red; font-size:50px;}
+      span.english {font-weight: bold; color: black; font-size:50px;}
+      .glyph.hiragana {font-align:center; background-color: #AAAAFF; border: solid blue 2px;}
+      .glyph.katakana {font-align:center; background-color: #FFAAAA; border: solid red 2px;}

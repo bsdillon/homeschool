@@ -1,265 +1,159 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
     <style>
-      body {background-color: #AAAAFF;}
-      img.hiragana {border: solid blue 5px;}
-      img.katakana {border: solid red 5px;}
       li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
-      td {font-align:center;}
-      span.hiragana {font-weight: bold; color: blue; font-size:50px;}
-      span.katakana {font-weight: bold; color: red; font-size:50px;}
-      span.english {font-weight: bold; color: black; font-size:50px;}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      em {background: #000000; color: #FFFFAA; font-weight:bold;};
     </style>
     <script>
-      var vowels = ['A','I','U','E','O'];
-      var consonants = ['0','K','S','T','N','H','M','Y','R','W'];
-      var hiraganaChars = [
-        [0x3042,0x3044,0x3046,0x3048,0x304A],
-        [0x304B,0x304D,0x304F,0x3051,0x3053],
-        [0x3055,0x3057,0x3059,0x305B,0x305D],
-        [0x305F,0x3061,0x3064,0x3066,0x3068],
-        [0x306A,0x306B,0x306C,0x306D,0x306E],
-        [0x306F,0x3072,0x3075,0x3078,0x307B],
-        [0x307E,0x307F,0x3080,0x3081,0x3082],
-        [0x3084,0x0085,0x3086,0x0085,0x3088],
-        [0x3089,0x308A,0x308B,0x308C,0x308D],
-        [0x308F,0x3090,0x0085,0x3091,0x3092]
-      ];
-      var hiraganaTrue = [
-        ['あ','い','う','え','お'],
-        ['か','き','く','け','こ'],
-        ['さ','し','す','せ','そ'],
-        ['た','ち','つ','て','と'],
-        ['な','に','ぬ','ね','の'],
-        ['は','ひ','ふ','へ','ほ'],
-        ['ま','み','む','め','も'],
-        ['や',' ','ゆ',' ','よ'],
-        ['ら','り','る','れ','ろ'],
-        ['わ','ゐ',' ','ゑ','を']
-      ];
-      var hiraganaN = 'ん';
-      //N is 0x3093
-      var katakanaChars = [
-        [0x30A2,0x30A4,0x30A6,0x30A8,0x30AA],
-        [0x30AB,0x30AD,0x30AF,0x30B1,0x30B3],
-        [0x30B5,0x30B7,0x30B9,0x30BB,0x30BD],
-        [0x30BF,0x30C1,0x30C4,0x30C6,0x30C8],
-        [0x30CA,0x30CB,0x30CC,0x30CD,0x30CE],
-        [0x30CF,0x30D2,0x30D5,0x30D8,0x30DB],
-        [0x30DE,0x30DF,0x30E0,0x30E1,0x30E2],
-        [0x30E4,0x0085,0x30E6,0x0085,0x30E8],
-        [0x30E9,0x30EA,0x30EB,0x30EC,0x30ED],
-        [0x30EF,0x30F0,0x0085,0x30F1,0x30F2]
-      ];
-      //N is #30F3
-      var katakanaTrue = [
-        ['ア','イ','ウ','エ','オ'],
-        ['カ','キ','ク','ケ','コ'],
-        ['サ','シ','ス','セ','ソ'],
-        ['タ','チ','ツ','テ','ト'],
-        ['ナ','ニ','ヌ','ネ','ノ'],
-        ['ハ','ヒ','フ','ヘ','ホ'],
-        ['マ','ミ','ム','メ','モ'],
-        ['ヤ','','ユ','','ヨ'],
-        ['ラ','リ','ル','レ','ロ'],
-        ['ワ','ヰ','','ヱ','ヲ']
-      ];
-      var katakanaN = 'ン';
-      var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', '0USI_COW.png', 'HASAMI_SCISSORS.png', 'HEHI_SNAKE.png', 'HERIKOHUTA_HELICOPTER.png', 'HITUSI_SHEEP.png', 'HIYOKO_CHICK.png', 
-        'HOSI_STAR.png', 'HOTARU_FIREFLY.png', 'HU0USEN0_BALLOON.png', 'HUNE_BOAT.png', 'KAHUTOMUSI_BEETLE.png', 'KAMOME_SEAGULL.png', 'KASA_UMBRELLA.png', 'KE0ISATU_POLICE.png', 'KEMUSI_CATERPILLAR.png', 'KEN0TAMA_KENDAMA.png', 'KIKIYU0U_HOT_AIR_BALLOON.png', 'KIN0KIYO_GOLD_FISH.png', 'KIRIN0_GIRAFE.png', 'KO0ARA_KOALA.png', 'KO0ORI_ICE.png', 'KOMA_TOP.png', 'KURI_CHESNUT.png', 'KURUMO_CAR.png', 'KUSIRA_WHALE.png', 'NASI_PEAR.png', 
-        'NASUHI_EGGPLANT.png', 'NEKI_GREEN_ONION.png', 'NIN0SIN0_CARROTS.png', 'NISI_RAINBOW.png', 'NOKOKIRI_SAW.png', 'NORI_SEAWEED.png', 'NU0IKURUMI_STUFFED_ANIMAL.png', 'NURETA_WET.png', 'NURI0E_COLORING.png', 'REKISI_HISTORY.png', 'SA0IKORO_DICE.png', 'SAKANA_FISH.png', 'SAKURAN0HO_CHERRIES.png', 'SEMI_CICADA.png', 'SEN0HE0I_RICE_CRACKER.png', 'SEN0HU0UKI_FAN.png', 'SI0ITAKE_MUSHROOM.png', 'SIKA_DEER.png', 
-        'SIN0KO0U_TRAFFIC_LIGHT.png', 'SOHUTOKURIMU_ICE_CREAM.png', 'SORA_SKY.png', 'SORE_THAT.png', 'SOTUKUSU_SOCKS.png', 'SU0IKA_WATERMELON.png', 'SU0ITO0U_WATER_BOTTLE.png', 'SUSUME_SPARROW.png', 'TA0IKO_DRUM.png', 'TA0IYAKI_TAIYAKI.png', 'TAKOYAKI_TAKOYAKI.png', 'TEHAMI_LETTER.png', 'TEHUKURO_GLOVES.png', 'TERUTERUHO0USU_TERU_TERU_BOOZU.png', 'TIKIN0_CHICKEN.png', 'TIKUWA_FISH_ROLL.png', 'TIN0HAN0SI_CHIMPANZEE.png', 
-        'TO0UHU_TOFU.png', 'TOKE0I_CLOCK.png', 'TUHAME_SPARROW.png', 'TUKUSI_HORSE_TAIL.png', 'TUMIKI_BLOCKS.png', 'WATI_BEE.png', 'YUKI_SNOW.png', 'YUME_DREAM.png', 'YURE_SHAKE.png'];
-      //https://en.wikipedia.org/wiki/Ni_(kana)
-
-      //By frequency of use
-      //first six letters	し き い こ う く り(RI)
-      //next  six letters	ふ た つ す さ と
-      //                 	け か る め み ち
-      //                 	れ ら ゆ ま ほ ひ
-      //                 	は ぬ に な て せ
-      //                 	あ わ む へ の お
-      //                 	え ろ よ や も ね
-
-      //by glyph type and average frequency
-      // う つ			C characters; 35
-      // も し い に こ り(RI)	J characters; 29
-      // き さ て ひ と ゆ		Front hook;26
-      // へ く			Angles;22
-      // た す か ふ		WTF 1; 33
-      // の め あ ぬ		Loop characters; 17
-      // け は ま ほ よ お み	T characters; 16
-      // ち ろ る え ら		Back hook characters; 16
-      // せ む な や		WTF 2; 11
-      // れ わ ね			Z characters; 9
-
-      function flip(cIndex, vIndex)
-      {
-        var id = consonants[cIndex]+vowels[vIndex];
-        var tagL = document.getElementById(cIndex+"_"+vIndex);
-        var tag = document.getElementById(id);
-        var nextSrc="";
-        tagL.classList.value = '';
-        tag.classList.value = '';
-        if(tag.src.includes("hiragana"))
-        {
-          tagL.innerHTML="&#"+katakanaChars[cIndex][vIndex]+";";
-          nextSrc = tag.src.replace("hiragana","katakana");
-          nextSrc = nextSrc.replace("hiragana","katakana");
-          tag.alt = "Katakana "+consonants[cIndex]+vowels[vIndex];
-          tagL.classList.add("katakana");
-          tag.classList.add("katakana");
-        }
-        else
-        {
-          tagL.innerHTML="&#"+hiraganaChars[cIndex][vIndex]+";";
-          nextSrc = tag.src.replace("katakana","hiragana");
-          nextSrc = nextSrc.replace("katakana","hiragana");
-          tag.alt = "Hiragana "+consonants[cIndex]+vowels[vIndex];
-          tagL.classList.add("hiragana");
-          tag.classList.add("hiragana");
-        }
-        tag.src = nextSrc;
-      }
-
       function loader()
       {
-        var counts = [
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0],
-             [0,0,0,0,0]
-          ];
-        for(let i = 0;i<tiles.length;i++)
-        {
-          let japanese = tiles[i].split("_")[0];
-          for(let j=0;j<japanese.length;j+=2)
-          {
-            var cPart = japanese[j];
-            var vPart = japanese[j+1];
-            var c = consonants.findIndex(function (x) {return x===cPart;});
-            var v = vowels.findIndex(function (x) {return x===vPart;});
-            if(vPart!=='0')
-            {
-              if(cPart+vPart==="DA")
-              {
-                j+=0;
-              }
-              console.log(cPart+" "+vPart);
-              counts[c][v]++;
-            }
-          }
-        }
+        createGlyphHTML("tsu",3,2,true,true);
+        createGlyphHTML("0u",0,2,true,true);
+        createGlyphHTML("tsuH",3,2,true,false);
+        createGlyphHTML("0uH",0,2,true,false);
+        createGlyphHTML("tsuK",3,2,false,false);
+        createGlyphHTML("0uK",0,2,false,false);
 
-        var allCounts = "Character counts: ";
-        var missing = "Missing characters: ";
-        for(let c=0;c<counts.length;c++)
-        {
-          for(let v=0;v<counts[c].length;v++)
-          {
-            allCounts += hiraganaTrue[c][v]+"-"+counts[c][v]+"; ";
-            if(counts[c][v]==0)
-            {
-              missing += hiraganaTrue[c][v]+",";
-            }
-          }
-        }
-        document.getElementById("report").innerHTML=allCounts+"<br>"+missing;
-
-        var tile = tiles[Math.floor(Math.random()*tiles.length)];
-        var pieces = tile.split("_");
-        var engName = "";
-        var japName = "";
-        for(let i=0;i<pieces[0].length;i+=2)
-        {
-          var cPart = pieces[0][i];
-          var vPart = pieces[0][i+1];
-          var c = consonants.findIndex(function (x) {return x===cPart;});
-          var v = vowels.findIndex(function (x) {return x===vPart;});
-          if(vPart==='0')
-          {
-            engName+="N ";
-            japName+="&#"+0x3093+";";
-          }
-          else
-          {
-            var cChar = consonants[c]
-            if(cChar==='0')
-            {
-              cChar = ' ';
-            }
-            engName+=cChar+vowels[v];
-            japName+="&#"+hiraganaChars[c][v]+";";
-          }
-        }
-        var tileSpot = document.getElementById("tileDemo");
-        var tmp ="<h1>"+japName+"</h1><h3>"+engName+"</h3><p>";
-        var eng = tile.substring(pieces[0].length+1,tile.length-4);
-        while(eng.includes("_"))
-        {
-          eng = eng.replace("_"," ");
-        }
-        tmp += eng+"</p>";
-        tmp += "<img src='./hiragana/images/"+tile+"' width='150'>";
-        tileSpot.innerHTML=tmp;
-  
-        var table = document.getElementById("hiragana-order");
-        for(let c=0; c<consonants.length;c++)
-        {
-          var row = table.insertRow();
-          for(let v=0;v<vowels.length;v++)
-          {
-            var td = row.insertCell();
-
-            var tdE = document.createElement("SPAN");
-            tdE.classList.add("english");
-            tdE.innerHTML = (consonants[c]+vowels[v]+"<br>").toUpperCase();
-            td.appendChild(tdE);
-
-            var tdL = document.createElement("SPAN");
-            tdL.id=c+"_"+v;
-            tdL.classList.add("hiragana");
-            tdL.innerHTML = "&#"+hiraganaChars[c][v]+";";
-            td.appendChild(tdL);
-
-            var img = document.createElement("IMG");
-            img.id = consonants[c]+vowels[v];
-            img.classList.add("hiragana");
-            img.src = "./hiragana/hiragana-"+consonants[c]+vowels[v]+"-order.gif";
-            img.onclick = function () { flip(c,v) };
-            img.width = "100";
-            img.alt = "Hiragana "+consonants[c]+vowels[v];
-            td.appendChild(img);
-          }
-        }
+        //var tile = tiles[Math.floor(Math.random()*tiles.length)];
+        //document.getElementById("tileDemo").innerHTML=createTileHTML(tile);
       }
-
-    //<h2>Learn vowels</h2>
-    //<iframe width="490" height="276" src="https://www.youtube.com/embed/5hYz3Kn08Oo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //<h2>Alphabet train</h2>
-    //<iframe width="490" height="276" src="https://www.youtube.com/embed/kEAbfuANKWw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //<h2>Putting syllables together</h2>
-    //<iframe width="490" height="276" src="https://www.youtube.com/embed/bXk0ooV-iLk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //<h2>Singing alphabet</h2>
-    //<iframe width="490" height="276" src="https://www.youtube.com/embed/8IpHIUxhdaI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //<h2>Sing the alphabet...again</h2>
-    //<iframe width="853" height="480" src="https://www.youtube.com/embed/K-nw5EUxDz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //<h2>Cyber bunny teaches Japanese</h2>
-    //<a href='https://www.youtube.com/channel/UCv_2-Z25BEyH-qa_J6IFWjA'>Link</a><br>
-    //<h2>Great site for practice cards in hiragana and katakana</h2>
-    //<a href="https://print-kids.net/print/kokugo/">link</a><br>
     </script>
   </head>
   <body onload="loader()">
-    <p id="report"></p>
-    <div id="tileDemo"></div>
-    <table id="hiragana-order">
+    <h1>Welcome to Japanese!</h1>
+    <p>
+      This week we are learning about the syllables tsu and 0u. You have two assignments this Thursday.
+      <ul>
+        <li>Write the <span style="color:blue; font-weight:bold;">hiragana</span> and <span style="color:red; font-weight:bold;">katakana</span> syllabules fifty times each. Do it like this:
+          <ul>
+            <li> Say "u" *draw う*</li>
+            <li> Say "u" *draw ウ*</li>
+            <li> *big breath*</li>
+            <li> Say "tsu" *draw つ*</li>
+            <li> Say "tsu" *draw ツ*</li>
+          </ul>
+        </li>
+        <li>Read the story below explaining why there are different symbols that mean the same sound.</li>
+      </ul>
+    </p>
+      <table>
+        <tr><td id="0uH"></td> <td id="0uK"></td> <td id="tsuH"></td> <td id="tsuK"></td></tr>
+      </table>
+    <h2>Chinese Character Simplification</h2>
+    <p>
+      Like all the hiragana, tsu and 0u are syllables, not letters. To understand how Japanese letters started, 
+      we need to learn more about Chinese characters that they came from. The old Chinese characters were drawings of
+      things. Once these pictures really looked like things, but they changed over time. This is the Chinese
+      word for "horse". You can see that it used to have legs, a head, and a tail. That is hard to write, 
+      however, so people made it simpler. Over time, the character changed and standardized. People naturally
+      found the quickest and simplest form of writing.<br>
+    </p>
+    <table>
+      <tr>
+        <td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/%E9%A6%AC-oracle.svg/300px-%E9%A6%AC-oracle.svg.png" width="100">
+        </td>
+        <td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/%E9%A6%AC-bronze-spring.svg/299px-%E9%A6%AC-bronze-spring.svg.png" width="100">
+        </td>
+        <td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/%E9%A6%AC-slip.svg/300px-%E9%A6%AC-slip.svg.png" width="100">
+        </td>
+        <td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/%E9%A6%AC-clerical-han.svg/800px-%E9%A6%AC-clerical-han.svg.png" width="100">
+        </td>
+        <td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Character_Ma_Simp.svg/919px-Character_Ma_Simp.svg.png" width="100">
+        </td>
+      </tr>
     </table>
+    <p>
+      Around the time of Jesus, the Han dynasty faced a problem because while everyone was trying to simplify
+      their drawings, they didn't do it in the same way. All over the country there were different versions of
+      things like "horse". So, the emperor forced a standard Chinese on the whole country. It was known as the
+      clerical Han style because the empire's clerks all used the same characters. At that time, the character
+      for "horse" was 馬. In just the last hundred years has China again tried to simplify their characters, 
+      this time so they can be printed more easily. The new simplified Chinese uses 马 for "horse". This was an
+       intentional decision to remove all the complexity from the character.
+    </p>
+    <h2>Chinese Writing in Japan</h2>
+    <p>
+       The original Japanese language didn't have any writing system. This isn't unusual. The same thing
+       happened in Vietnam and like Vietnam, the Japanese borrowed their system from the Chinese. In Japan,
+       Chinese-like symbols are known as kanji (漢字) or "Chinese characters" in both languages. They are used 
+       for many words that were created in China and "borrowed" by Japan. Sometimes Japanese speakers use a 
+       Chinese character and the Chinese pronunciation. This is known as kango (漢語) which means "Han words" in 
+       both languages. Even the sounds are different. While the japanese like to use longer words with several 
+       syllables, the Chinese like single syllable words. In Japanese you say "thanks" as 0arigato (ありがと) - 
+       four syllables. In Chinese it is Xie (謝) - one syllable. It is not surprising that the Japanese kango is 
+       just two short syllables and it still looks and sounds like the original Chinese for "Chinese language" 
+       Han yoo (漢語). About 60% of written Japanese is kango, but these words are just 18% of what people speak
+       every day.
+    </p>
+    <p>
+       Sometimes Japanese speakers use a Chinese character for a word in the original Japanese. For instance, 
+       the Chinese word 刀 dao "knife" became the Japanese word 刀 katana for a specific kind of sword. These
+       words sound Japanese but they are still written with kanji. This is called wasei kango (和製漢語). To
+       the Japanese, 和製 means "Made in Japan". To the Chinese 和製 (pronounced hurchi) means "harmony". You
+       can imagine the Japanese making their own use of "harmonious" Chinese characters in their language. The
+       original Japanese language still shines through the much-abused Chinese characters they use. In 刀 you
+       can just about see the "sword" in "knife", but many of wasei-kango words are nothing like their Chinese
+       counterparts. Some kanji are even brand new and truely Japanese in origin. The average Japanese uses
+       2000 to 3000 kanji, but more than 10 times that many that have ever been invented.
+    </p>
+    <p>
+      Kango and wasei kango characters have a really complicated history in Japanese. They didn't come into
+      the language all at once. They were pronounced differently in different parts of China. Among the Japanese
+      these differences led to the same Chinese character being said in three different ways. Around 500 AD, the 
+      coastal Chines capital Wu and Buddhist missionaries influenced 呉音 go-on pronunciation in Japan. Two 
+      hundred years later the Chinese capital had moved west to Chang-an and the Han empire influenced the 
+      漢音 kanon pronunciation, displacing some of the earlier pronunciation. Almost 500 years later, Zen 
+      missionaries brought their own 唐音 to-on pronunciation. Even today, go-on is used for the oldest Buddist 
+      writings, kanon for every day usage, government, and legal system; and to-on for very few words influenced
+      by that period. This means that unfortunately any kanji might have three different ways it is pronounced.
+      In most cases, if you stick with kanon, you will be fine.
+    </p>
+    <h2>Creating Two Syllabaries</h2>
+    <p>
+       <div class="floatL"><div id="0u"></div><br><div id="tsu"></div></div>
+       Around the time of the American Civil War, the Japanese were bringing many new European words into 
+       their language. With no ready-made kanji, they needed a new way to spell these words. They fell back on 
+       two writing systems developed nearly a thousand years ago for a different reason. While the same Europeans 
+       were fighting over petty kingdoms, the Japanese were working out how to write their own words in Chinese. 
+       This was different from wasei kango as they were trying to tie the single-syllable Chinese words into 
+       pronunciation of original Japanese words. This is almost like a rebus for "I love you". The two spelling 
+       systems were known as kana and they were called harigana and katakana. If you click on tsu and 0u here, 
+       they will change between <span style="color:red; font-weight:bold;">katakana</span> and 
+       <span style="color:blue; font-weight:bold;">hiragana</span>.
+    </p>
+    <img src="rebus.png">
+    <p>
+      Katakana was developed by clerks, clergy, and men in the Japanese schools. Harigana was developed by 
+      women who were educated at home and by each other outside of the schools. Both systems simplified Chinese
+      characters into syllables, but they chose different characters and took different routes to simplify.
+      Katakana characters tended to reuse straight-lined elements of Characters. Katakana characters like ウ and イ
+      were parts of many Chinese characters like 家 and 他. Hirgana were whole Chinese characters written with 
+      more circular brush strokes. The two separate kana had existed for years, unregulated and unstandardized,
+      until the 1800s.
+    </p>
+    <p>
+      The two systems are not alphabets, but syllabaries. That means that each symbol is a consonant and a vowel.
+      Although traditional kanji are still used, hiragana can be used to spell out any word from Japanese or 
+      Chinese. Katakana is used to <em>&nbsp;&nbsp;&nbsp;like this&nbsp;&nbsp;&nbsp;</em> to emphasize something 
+      or to spell out any truly foreign words like キス (kisu=kiss), メーク (meku=makeup), and エンジン (enjin=engine).
+    </p>
+    <br clear="all">
+    <h2>Keep learning</h2>
+    <p>
+      I hope you enjoy the hirgana and the katakana. Japanese children learn to read both syllabaries so they can
+      read all the signs in Japan. While there is a lot to learn, the good news is that you will find it much
+      easier to read Japanese. These syllables are limited and they can only be used with a limited number of
+      sounds. They are fixed and can't make different sounds in different places. In Japanese there will never be
+      a rough bough bought to cure a cough. In some ways this will be hard, but other parts will be easy. 
+    </p>
   </body>
 </html>
