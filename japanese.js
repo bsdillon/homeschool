@@ -82,57 +82,81 @@ var katakanaN = 'ン';
 // せ む な や		WTF 2; 11
 // れ わ ね			Z characters; 9
 
-var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', '0USI_COW.png', 'HASAMI_SCISSORS.png', 'HEHI_SNAKE.png', 'HERIKOHUTA_HELICOPTER.png', 'HITUSI_SHEEP.png', 'HIYOKO_CHICK.png', 
-  'HOSI_STAR.png', 'HOTARU_FIREFLY.png', 'HU0USEN0_BALLOON.png', 'HUNE_BOAT.png', 'KAHUTOMUSI_BEETLE.png', 'KAMOME_SEAGULL.png', 'KASA_UMBRELLA.png', 'KE0ISATU_POLICE.png', 'KEMUSI_CATERPILLAR.png', 'KEN0TAMA_KENDAMA.png', 'KIKIYU0U_HOT_AIR_BALLOON.png', 'KIN0KIYO_GOLD_FISH.png', 'KIRIN0_GIRAFE.png', 'KO0ARA_KOALA.png', 'KO0ORI_ICE.png', 'KOMA_TOP.png', 'KURI_CHESNUT.png', 'KURUMO_CAR.png', 'KUSIRA_WHALE.png', 'NASI_PEAR.png', 
-  'NASUHI_EGGPLANT.png', 'NEKI_GREEN_ONION.png', 'NIN0SIN0_CARROTS.png', 'NISI_RAINBOW.png', 'NOKOKIRI_SAW.png', 'NORI_SEAWEED.png', 'NU0IKURUMI_STUFFED_ANIMAL.png', 'NURETA_WET.png', 'NURI0E_COLORING.png', 'REKISI_HISTORY.png', 'SA0IKORO_DICE.png', 'SAKANA_FISH.png', 'SAKURAN0HO_CHERRIES.png', 'SEMI_CICADA.png', 'SEN0HE0I_RICE_CRACKER.png', 'SEN0HU0UKI_FAN.png', 'SI0ITAKE_MUSHROOM.png', 'SIKA_DEER.png', 
-  'SIN0KO0U_TRAFFIC_LIGHT.png', 'SOHUTOKURIMU_ICE_CREAM.png', 'SORA_SKY.png', 'SORE_THAT.png', 'SOTUKUSU_SOCKS.png', 'SU0IKA_WATERMELON.png', 'SU0ITO0U_WATER_BOTTLE.png', 'SUSUME_SPARROW.png', 'TA0IKO_DRUM.png', 'TA0IYAKI_TAIYAKI.png', 'TAKOYAKI_TAKOYAKI.png', 'TEHAMI_LETTER.png', 'TEHUKURO_GLOVES.png', 'TERUTERUHO0USU_TERU_TERU_BOOZU.png', 'TIKIN0_CHICKEN.png', 'TIKUWA_FISH_ROLL.png', 'TIN0HAN0SI_CHIMPANZEE.png', 
-  'TO0UHU_TOFU.png', 'TOKE0I_CLOCK.png', 'TUHAME_SPARROW.png', 'TUKUSI_HORSE_TAIL.png', 'TUMIKI_BLOCKS.png', 'WATI_BEE.png', 'YUKI_SNOW.png', 'YUME_DREAM.png', 'YURE_SHAKE.png'];
+var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', 
+  '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', 
+  '0USI_COW.png', 'HASAMI_SCISSORS.png', 'HATO_PIGEON.png', 'HEHI_SNAKE.png', 'HERIKOHUTA_HELICOPTER.png', 'HETIMA_LOOFAH.png', 'HIKO0UKI_AIRPLANE.png', 
+  'HITUSI_SHEEP.png', 'HIYOKO_CHICK.png', 'HOSI_STAR.png', 'HOTARU_FIREFLY.png', 'HOTATE_SCALLOP.png', 'HU0USEN0_BALLOON.png', 'HUKURO0U_OWL.png', 
+  'HUNE_BOAT.png', 'KAHUTOMUSI_BEETLE.png', 'KAMOME_SEAGULL.png', 'KASA_UMBRELLA.png', 'KE0ISATU_POLICE.png', 'KEMUSI_CATERPILLAR.png', 'KEN0TAMA_KENDAMA.png', 
+  'KIKIYU0U_HOT_AIR_BALLOON.png', 'KIN0KIYO_GOLD_FISH.png', 'KIRIN0_GIRAFE.png', 'KO0ARA_KOALA.png', 'KO0ORI_ICE.png', 'KOMA_TOP.png', 'KURI_CHESNUT.png', 
+  'KURUMO_CAR.png', 'KUSIRA_WHALE.png', 'MAKURA_PILLOW.png', 'METAKA_RICE_FISH.png', 'MIKAN0_ORANGE.png', 'MOMO_PEACH.png', 'MUSIMEKANE_MAGNIFYING_GLASS.png', 
+  'NAMITA_TEARS.png', 'NASI_PEAR.png', 'NASUHI_EGGPLANT.png', 'NEKI_GREEN_ONION.png', 'NESUMI_MOUSE.png', 'NIN0SIN0_CARROTS.png', 'NISI_RAINBOW.png', 
+  'NIWATORI_CHICKEN.png', 'NOKOKIRI_SAW.png', 'NORI_SEAWEED.png', 'NU0IKURUMI_STUFFED_ANIMAL.png', 'NUNO_CLOTH.png', 'NURETA_WET.png', 'NURI0E_COLORING.png', 
+  'RA0I0ON0_LION.png', 'REKISI_HISTORY.png', 'RIN0KO_APPLE.png', 'SA0IKORO_DICE.png', 'SAKANA_FISH.png', 'SAKURAN0HO_CHERRIES.png', 'SEMI_CICADA.png', 
+  'SEN0HE0I_RICE_CRACKER.png', 'SEN0HU0UKI_FAN.png', 'SI0ITAKE_MUSHROOM.png', 'SIKA_DEER.png', 'SIN0KO0U_TRAFFIC_LIGHT.png', 'SOHUTOKURIMU_ICE_CREAM.png', 
+  'SORA_SKY.png', 'SORE_THAT.png', 'SOTUKUSU_SOCKS.png', 'SU0IKA_WATERMELON.png', 'SU0ITO0U_WATER_BOTTLE.png', 'SUSUME_SPARROW.png', 'TA0IKO_DRUM.png', 
+  'TA0IYAKI_TAIYAKI.png', 'TAKOYAKI_TAKOYAKI.png', 'TEHAMI_LETTER.png', 'TEHUKURO_GLOVES.png', 'TERUTERUHO0USU_TERU_TERU_BOOZU.png', 'TIKIN0_CHICKEN.png', 
+  'TIKUWA_FISH_ROLL.png', 'TIN0HAN0SI_CHIMPANZEE.png', 'TO0UHU_TOFU.png', 'TOKE0I_CLOCK.png', 'TUHAME_SPARROW.png', 'TUKUSI_HORSE_TAIL.png', 
+  'TUMIKI_BLOCKS.png', 'WATI_BEE.png', 'YAKAN0_KETTLE.png', 'YOTUTO_SAILBOAT.png', 'YU0UHIN0HOSUTO_MAILBOX.png', 'YUKI_SNOW.png', 'YUME_DREAM.png', 
+  'YURE_SHAKE.png'
+];
 
-function createTileHTML(tileFileName)
+function createTileHTML(tileFileName, hiragamaStyle)
 {
-  var tile = tiles[Math.floor(Math.random()*tiles.length)];
   var pieces = tileFileName.split("_");
   var engName = "";
   var japName = "";
   for(let i=0;i<pieces[0].length;i+=2)
   {
-var cPart = pieces[0][i];
-var vPart = pieces[0][i+1];
-var c = consonants.findIndex(function (x) {return x===cPart;});
-var v = vowels.findIndex(function (x) {return x===vPart;});
-if(vPart==='0')
-{
-engName+="N ";
-japName+="&#"+0x3093+";";
-}
-else
-{
-var cChar = consonants[c]
-if(cChar==='0')
-{
-  cChar = ' ';
-}
-engName+=cChar+vowels[v];
-japName+="&#"+hiraganaChars[c][v]+";";
-}
+    var cPart = pieces[0][i];
+    var vPart = pieces[0][i+1];
+    var c = consonants.findIndex(function (x) {return x===cPart;});
+    var v = vowels.findIndex(function (x) {return x===vPart;});
+    if(vPart==='0')
+    {
+      engName+="N ";
+      if(hiragamaStyle)
+      {
+        japName+="&#"+0x3093+";";
+      }
+      else
+      {
+        japName+="&#"+0x30F3+";";
+      }
+    }
+    else
+    {
+      var cChar = consonants[c];
+      if(cChar==='0')
+      {
+        cChar = ' ';
+      }
+      engName+=cChar+vowels[v];
+      if(hiragamaStyle)
+      {
+        japName+="&#"+hiraganaChars[c][v]+";";
+      }
+      else
+      {
+        japName+="&#"+katakanaChars[c][v]+";";
+      }
+    }
   }
 
   var tmp ="<h1>"+japName+"</h1><h3>"+engName+"</h3><p>";
   var eng = tileFileName.substring(pieces[0].length+1,tileFileName.length-4);
   while(eng.includes("_"))
   {
-eng = eng.replace("_"," ");
+    eng = eng.replace("_"," ");
   }
 
   tmp += eng+"</p>";
-  tmp += "<img src='./hiragana/images/"+tileFileName+"' width='150'>";
+  tmp += "<img src='./hiragana/images/"+tileFileName+"' width='190'>";
   return tmp;
 }
 
 function createGlyphHTML(id, c, v, hiragana, flipSensetive)
 {
   var tag = document.getElementById(id);
-  tag.style.width="125";
   var type = hiragana? "hiragana": "katakana";
   var tagEng = document.createElement("SPAN");
   tagEng.classList.add("english");
@@ -213,7 +237,8 @@ function flipGlyph(id, cIndex, vIndex)
 //<h2>Cyber bunny teaches Japanese</h2>
 //<a href='https://www.youtube.com/channel/UCv_2-Z25BEyH-qa_J6IFWjA'>Link</a><br>
 //<h2>Great site for practice cards in hiragana and katakana</h2>
-//<a href="https://print-kids.net/print/kokugo/">link</a><br>
+//<a href="https://print-kids.net/print/kokugo/">link</a>
+//https://print-kids.net/print/kokugo/hiragana-card/hiragana-card10.pdf
 //Useful information on hirgana
 //http://www.textfugu.com/season-1/reading-writing-memorizing-hiragana/4-8/
 //There is a story here that I need to figure out.

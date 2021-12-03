@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
+    <style>
+      li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      em {background: #000000; color: #FFFFAA; font-weight:bold;};
+    </style>
+    <script>
+      function loader()
+      {
+        var newHTML="";
+        var count = 0;
+        var tag = document.getElementById("tileSpace");
+        var row = tag.insertRow();
+        for(let i=0;i<tiles.length;i++)
+        {
+          var jap = tiles[i].split("_")[0];
+          accepted = false;
+          for(let j=0;j<jap.length && !accepted;j+=2)
+          {
+            if(jap[j]+jap[j+1]==="0U" || jap[j]+jap[j+1]==="TU")
+            {
+              accepted=true;
+            }
+          }
+
+          if(accepted)
+          {
+            var td = row.insertCell();
+            var hiraganaType = Math.random()>.5?true:false;
+            td.classList.add("tile");
+            td.classList.add(hiraganaType?"hiragana":"katakana");
+            td.innerHTML = createTileHTML(tiles[i],hiraganaType);
+            count++;
+          }
+
+          if(count==4)
+          {
+            row= tag.insertRow();
+            count=0;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body onload="loader()">
+    <h1>Read 0u and tsu words</h1>
+    <p>These are all words spelled with 0u or tsu. Read the words out loud. Every time you 
+      see 0u or tsu write the character.</p>
+    <table id="tileSpace">
+    </table>
+  </body>
+</html>
