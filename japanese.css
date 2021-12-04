@@ -7,3 +7,7 @@
       .glyph.katakana {width:125; font-align:center; background-color: #FFAAAA; border: solid red 2px;}
       .tile.hiragana {vertical-align:top; width:200; font-align:center; background-color: #AAAAFF; border: solid blue 2px;}
       .tile.katakana {vertical-align:top; width:200; font-align:center; background-color: #FFAAAA; border: solid red 2px;}
+      .tile.hiragana h2 {width:200; color:blue; font-align:center;}
+      .tile.katakana h2 {width:200; color:red; font-align:center;}
+      .tile h3 {width:200; font-align:center;}
+      .tile p {width:200; font-align:center;}

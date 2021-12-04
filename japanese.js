@@ -142,7 +142,7 @@ function createTileHTML(tileFileName, hiragamaStyle)
     }
   }
 
-  var tmp ="<h1>"+japName+"</h1><h3>"+engName+"</h3><p>";
+  var tmp ="<h2>"+japName+"</h2><h3>"+engName+"</h3><p>";
   var eng = tileFileName.substring(pieces[0].length+1,tileFileName.length-4);
   while(eng.includes("_"))
   {
