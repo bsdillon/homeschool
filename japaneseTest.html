@@ -3,157 +3,240 @@
     <link rel="stylesheet" type="text/css" href="japanese.css">
     <script src="japanese.js"></script>
     <style>
-      li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
-      .floatL {float:left; margin: 10px;}
-      .floatR {float:right; margin: 10px;}
-      em {background: #000000; color: #FFFFAA; font-weight:bold;};
     </style>
     <script>
-      function loader()
-      {
-        createGlyphHTML("tsu",3,2,true,true);
-        createGlyphHTML("0u",0,2,true,true);
-        createGlyphHTML("tsuH",3,2,true,false);
-        createGlyphHTML("0uH",0,2,true,false);
-        createGlyphHTML("tsuK",3,2,false,false);
-        createGlyphHTML("0uK",0,2,false,false);
-
-        //var tile = tiles[Math.floor(Math.random()*tiles.length)];
-        //document.getElementById("tileDemo").innerHTML=createTileHTML(tile);
-      }
     </script>
   </head>
-  <body onload="loader()">
-    <h1>Welcome to Japanese!</h1>
-    <p>
-      This week we are learning about the syllables tsu and 0u. You have two assignments this Thursday.
-      <ul>
-        <li>Write the <span style="color:blue; font-weight:bold;">hiragana</span> and <span style="color:red; font-weight:bold;">katakana</span> syllabules fifty times each. Do it like this:
-          <ul>
-            <li> Say "u" *draw う*</li>
-            <li> Say "u" *draw ウ*</li>
-            <li> *big breath*</li>
-            <li> Say "tsu" *draw つ*</li>
-            <li> Say "tsu" *draw ツ*</li>
-          </ul>
-        </li>
-        <li>Read the story below explaining why there are different symbols that mean the same sound.</li>
-      </ul>
+  <body>
+    <p>There are 25 questions in this test. 20 is a passing grade. 23 is an A.<br>
+    You have one hour (60 minutes) to take the test. That gives you a little over 2 minutes for each question.<br>
     </p>
-      <table>
-        <tr><td id="0uH"></td> <td id="0uK"></td> <td id="tsuH"></td> <td id="tsuK"></td></tr>
-      </table>
-    <h2>Chinese Character Simplification</h2>
-    <p>
-      Like all the hiragana, tsu and 0u are syllables, not letters. To understand how Japanese letters started, 
-      we need to learn more about Chinese characters that they came from. The old Chinese characters were drawings of
-      things. Once these pictures really looked like things, but they changed over time. This is the Chinese
-      word for "horse". You can see that it used to have legs, a head, and a tail. That is hard to write, 
-      however, so people made it simpler. Over time, the character changed and standardized. People naturally
-      found the quickest and simplest form of writing.<br>
-    </p>
-    <table>
-      <tr>
-        <td>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/%E9%A6%AC-oracle.svg/300px-%E9%A6%AC-oracle.svg.png" width="100">
-        </td>
-        <td>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/%E9%A6%AC-bronze-spring.svg/299px-%E9%A6%AC-bronze-spring.svg.png" width="100">
-        </td>
-        <td>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/%E9%A6%AC-slip.svg/300px-%E9%A6%AC-slip.svg.png" width="100">
-        </td>
-        <td>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/%E9%A6%AC-clerical-han.svg/800px-%E9%A6%AC-clerical-han.svg.png" width="100">
-        </td>
-        <td>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Character_Ma_Simp.svg/919px-Character_Ma_Simp.svg.png" width="100">
-        </td>
-      </tr>
-    </table>
-    <p>
-      Around the time of Jesus, the Han dynasty faced a problem because while everyone was trying to simplify
-      their drawings, they didn't do it in the same way. All over the country there were different versions of
-      things like "horse". So, the emperor forced a standard Chinese on the whole country. It was known as the
-      clerical Han style because the empire's clerks all used the same characters. At that time, the character
-      for "horse" was 馬. In just the last hundred years has China again tried to simplify their characters, 
-      this time so they can be printed more easily. The new simplified Chinese uses 马 for "horse". This was an
-       intentional decision to remove all the complexity from the character.
-    </p>
-    <h2>Chinese Writing in Japan</h2>
-    <p>
-       The original Japanese language didn't have any writing system. This isn't unusual. The same thing
-       happened in Vietnam and like Vietnam, the Japanese borrowed their system from the Chinese. In Japan,
-       Chinese-like symbols are known as kanji (漢字) or "Chinese characters" in both languages. They are used 
-       for many words that were created in China and "borrowed" by Japan. Sometimes Japanese speakers use a 
-       Chinese character and the Chinese pronunciation. This is known as kango (漢語) which means "Han words" in 
-       both languages. Even the sounds are different. While the japanese like to use longer words with several 
-       syllables, the Chinese like single syllable words. In Japanese you say "thanks" as 0arigato (ありがと) - 
-       four syllables. In Chinese it is Xie (謝) - one syllable. It is not surprising that the Japanese kango is 
-       just two short syllables and it still looks and sounds like the original Chinese for "Chinese language" 
-       Han yoo (漢語). About 60% of written Japanese is kango, but these words are just 18% of what people speak
-       every day.
-    </p>
-    <p>
-       Sometimes Japanese speakers use a Chinese character for a word in the original Japanese. For instance, 
-       the Chinese word 刀 dao "knife" became the Japanese word 刀 katana for a specific kind of sword. These
-       words sound Japanese but they are still written with kanji. This is called wasei kango (和製漢語). To
-       the Japanese, 和製 means "Made in Japan". To the Chinese 和製 (pronounced hurchi) means "harmony". You
-       can imagine the Japanese making their own use of "harmonious" Chinese characters in their language. The
-       original Japanese language still shines through the much-abused Chinese characters they use. In 刀 you
-       can just about see the "sword" in "knife", but many of wasei-kango words are nothing like their Chinese
-       counterparts. Some kanji are even brand new and truely Japanese in origin. The average Japanese uses
-       2000 to 3000 kanji, but more than 10 times that many that have ever been invented.
-    </p>
-    <p>
-      Kango and wasei kango characters have a really complicated history in Japanese. They didn't come into
-      the language all at once. They were pronounced differently in different parts of China. Among the Japanese
-      these differences led to the same Chinese character being said in three different ways. Around 500 AD, the 
-      coastal Chines capital Wu and Buddhist missionaries influenced 呉音 go-on pronunciation in Japan. Two 
-      hundred years later the Chinese capital had moved west to Chang-an and the Han empire influenced the 
-      漢音 kanon pronunciation, displacing some of the earlier pronunciation. Almost 500 years later, Zen 
-      missionaries brought their own 唐音 to-on pronunciation. Even today, go-on is used for the oldest Buddist 
-      writings, kanon for every day usage, government, and legal system; and to-on for very few words influenced
-      by that period. This means that unfortunately any kanji might have three different ways it is pronounced.
-      In most cases, if you stick with kanon, you will be fine.
-    </p>
-    <h2>Creating Two Syllabaries</h2>
-    <p>
-       <div class="floatL"><div id="0u"></div><br><div id="tsu"></div></div>
-       Around the time of the American Civil War, the Japanese were bringing many new European words into 
-       their language. With no ready-made kanji, they needed a new way to spell these words. They fell back on 
-       two writing systems developed nearly a thousand years ago for a different reason. While the same Europeans 
-       were fighting over petty kingdoms, the Japanese were working out how to write their own words in Chinese. 
-       This was different from wasei kango as they were trying to tie the single-syllable Chinese words into 
-       pronunciation of original Japanese words. This is almost like a rebus for "I love you". The two spelling 
-       systems were known as kana and they were called hiragana and katakana. If you click on tsu and 0u here, 
-       they will change between <span style="color:red; font-weight:bold;">katakana</span> and 
-       <span style="color:blue; font-weight:bold;">hiragana</span>.
-    </p>
-    <img src="rebus.png">
-    <p>
-      Katakana was developed by clerks, clergy, and men in the Japanese schools. Hiragana was developed by 
-      women who were educated at home and by each other outside of the schools. Both systems simplified Chinese
-      characters into syllables, but they chose different characters and took different routes to simplify.
-      Katakana characters tended to reuse straight-lined elements of Characters. Katakana characters like ウ and イ
-      were parts of many Chinese characters like 家 and 他. Hirgana were whole Chinese characters written with 
-      more circular brush strokes. The two separate kana had existed for years, unregulated and unstandardized,
-      until the 1800s.
-    </p>
-    <p>
-      The two systems are not alphabets, but syllabaries. That means that each symbol is a consonant and a vowel.
-      Although traditional kanji are still used, hiragana can be used to spell out any word from Japanese or 
-      Chinese. Katakana is used to <em>&nbsp;&nbsp;&nbsp;like this&nbsp;&nbsp;&nbsp;</em> to emphasize something 
-      or to spell out any truly foreign words like キス (kisu=kiss), メーク (meku=makeup), and エンジン (enjin=engine).
-    </p>
-    <br clear="all">
-    <h2>Keep learning</h2>
-    <p>
-      I hope you enjoy the hirgana and the katakana. Japanese children learn to read both syllabaries so they can
-      read all the signs in Japan. While there is a lot to learn, the good news is that you will find it much
-      easier to read Japanese. These syllables are limited and they can only be used with a limited number of
-      sounds. They are fixed and can't make different sounds in different places. In Japanese there will never be
-      a rough bough bought to cure a cough. In some ways this will be hard, but other parts will be easy. 
-    </p>
+    <ol>
+      <li>
+        Which pronunciation came 700 years after the first?<br>
+        <ol type="A">
+          <li>Go-on</li>
+          <li>Kanon</li>
+          <li>To-on</li>
+          <li>Do-on</li>
+        </ol>
+      </li>
+      <li>
+        What does kanji mean?<br>
+        <ol type="A">
+          <li>Chinese drawings</li>
+          <li>Chinese sounds</li>
+          <li>Chinese words</li>
+          <li>Chinese characters</li>
+        </ol>
+      </li>
+      <li>
+        How many Japanese pronunciations types are there?<br>
+        <ol type="A">
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ol>
+      </li>
+      <li>
+        Which is true of katakana?<br>
+        <ol type="A">
+          <li>It was developed by female priests of China</li>
+          <li>It was developed by male priests of Japan</li>
+          <li>It was developed by females in the home</li>
+          <li>It was developed by males in the government</li>
+        </ol>
+      </li>
+      <li>
+        What does kango mean?<br>
+        <ol type="A">
+          <li>Chinese drawings</li>
+          <li>Chinese sounds</li>
+          <li>Chinese words</li>
+          <li>Chinese characters</li>
+        </ol>
+      </li>
+      <li>
+        Which symbol is katakana for tsu?<br>
+        <ol type="A">
+          <li>う</li>
+          <li>ウ</li>
+          <li>つ</li>
+          <li>ツ</li>
+        </ol>
+      </li>
+      <li>
+        Hirgana and katakana are________<br>
+        <ol type="A">
+          <li>Phonyms</li>
+          <li>Letters</li>
+          <li>Pictograms</li>
+          <li>Syllables</li>
+        </ol>
+      </li>
+      <li>
+        What are wasei-kango?<br>
+        <ol type="A">
+          <li>Wasei-kango are Japanese writing of Chinese words</li>
+          <li>Wasei-kango are Chinese writing of Japanese words</li>
+          <li>Wasei-kango are Chinese writing of Chinese words</li>
+          <li>Wasei-kango are Japanese writing of Japanese words</li>
+        </ol>
+      </li>
+      <li>
+        Which symbol is hiragana for 0u<br>
+        <ol type="A">
+          <li>う</li>
+          <li>ウ</li>
+          <li>つ</li>
+          <li>ツ</li>
+        </ol>
+      </li>
+      <li>
+        Which symbol is katakana for tsu<br>
+        <ol type="A">
+          <li>う</li>
+          <li>ウ</li>
+          <li>つ</li>
+          <li>ツ</li>
+        </ol>
+      </li>
+      <li>
+        Which is true of hiragana?<br>
+        <ol type="A">
+          <li>It was developed by female priests of China</li>
+          <li>It was developed by male priests of Japan</li>
+          <li>It was developed by females in the home</li>
+          <li>It was developed by males in the government</li>
+        </ol>
+      </li>
+      <li>
+        What are kango?<br>
+        <ol type="A">
+          <li>Wasei-kango are Japanese writing of Chinese words</li>
+          <li>Wasei-kango are Chinese writing of Japanese words</li>
+          <li>Wasei-kango are Chinese writing of Chinese words</li>
+          <li>Wasei-kango are Japanese writing of Japanese words</li>
+        </ol>
+      </li>
+      <li>
+        Which colors are used in our studies for hiragana and katakana respectively?<br>
+        <ol type="A">
+          <li>Red and blue</li>
+          <li>Red and yellow</li>
+          <li>Blue and red</li>
+          <li>Yellow and red</li>
+        </ol>
+      </li>
+      <li>
+        Why don't hiragana and katakana use the same symbols<br>
+        <ol type="A">
+          <li>Because they used different brushes to create them</li>
+          <li>Because katakana was influenced more by the go-on characters</li>
+          <li>Becasue hiragana was based on the original Japanese pronunciation</li>
+          <li>Because they started with different Chinese characters</li>
+        </ol>
+      </li>
+      <li>
+        Which Chinese dynasty standardized the Chinese characters?<br>
+        <ol type="A">
+          <li>Go</li>
+          <li>Han</li>
+          <li>Tang</li>
+          <li>Wu</li>
+        </ol>
+      </li>
+      <li>
+        How many kanji are kango?<br>
+        <ol type="A">
+          <li>20%</li>
+          <li>40%</li>
+          <li>60%</li>
+          <li>80%</li>
+        </ol>
+      </li>
+      <li>
+        Which symbol is katakana for 0u<br>
+        <ol type="A">
+          <li>う</li>
+          <li>ウ</li>
+          <li>つ</li>
+          <li>ツ</li>
+        </ol>
+      </li>
+      <li>
+        What is the primary use of katakana?<br>
+        <ol type="A">
+          <li>Words at the beginning of sentences</li>
+          <li>Words borrowed from English</li>
+          <li>Words from Chinese characters</li>
+          <li>Words meant in sarcasm</li>
+        </ol>
+      </li>
+      <li>
+        What pronunciation is used every day and in government proceedings?<br>
+        <ol type="A">
+          <li>Go-on</li>
+          <li>Kanon</li>
+          <li>To-on</li>
+          <li>Do-on</li>
+        </ol>
+      </li>
+      <li>
+        Which missionaries brought go-on pronunciation?<br>
+        <ol type="A">
+          <li>Maoist</li>
+          <li>Zen</li>
+          <li>Wu-shu</li>
+          <li>Buddhist</li>
+        </ol>
+      </li>
+      <li>
+        Why did the Chinese simplify their characters again in the last century<br>
+        <ol type="A">
+          <li>To be more printable</li>
+          <li>To be more like English</li>
+          <li>To be more communist</li>
+          <li>To be less like Japanese</li>
+        </ol>
+      </li>
+      <li>
+        What is the word for hiragana and katakana symbols?<br>
+        <ol type="A">
+          <li>kanji</li>
+          <li>go-on</li>
+          <li>kana</li>
+          <li>do-on</li>
+        </ol>
+      </li>
+      <li>
+        Why did Japan start using Chinese characters?<br>
+        <ol type="A">
+          <li>Chinese writing was better</li>
+          <li>Japanese started out as Chinese</li>
+          <li>Japan had no writing</li>
+          <li>China took over Japan</li>
+        </ol>
+      </li>
+      <li>
+        What pronunciation is used for Buddhist poetry?<br>
+        <ol type="A">
+          <li>Go-on</li>
+          <li>Kanon</li>
+          <li>To-on</li>
+          <li>Do-on</li>
+        </ol>
+      </li>
+      <li>
+        How are Chinese words different from Japanese?<br>
+        <ol type="A">
+          <li>Chinese words are harder to learn</li>
+          <li>Japanese words are louder</li>
+          <li>Chinese words are shorter</li>
+          <li>Japanese words are shorter</li>
+        </ol>
+      </li>
+    </ol>
   </body>
 </html>

@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
+    <style>
+      .overlay {position: absolute; z-index:1; opacity=0;}
+      li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      em {background: #000000; color: #FFFFAA; font-weight:bold;};
+    </style>
+    <script>
+      function loader()
+      {
+        createGlyphHTML("0iH",0,1,true,true);
+        createGlyphHTML("0iK",0,1,false,false);
+        createGlyphHTML("riH",8,1,true,false);
+        createGlyphHTML("riK",8,1,false,false);
+        createGlyphHTML("siH",2,1,true,false);
+        createGlyphHTML("siK",2,1,false,false);
+        createGlyphHTML("tuH",3,2,true,false);
+        createGlyphHTML("tuK",3,2,false,false);
+        createGlyphHTML("n0H",1,-1,true,false);
+        createGlyphHTML("n0K",1,-1,false,false);
+        createGlyphHTML("soH",2,4,true,false);
+        createGlyphHTML("soK",2,4,false,false);
+
+        //var tile = tiles[Math.floor(Math.random()*tiles.length)];
+        //document.getElementById("tileDemo").innerHTML=createTileHTML(tile);
+      }
+      
+    </script>
+  </head>
+  <body onload="loader()">
+    <h1></h1>
+    <table>
+      <tr><td id="0iH"></td><td id="0iK"></td><td id="riH"></td><td id="riK"></td></tr>
+      <tr><td id="siH"></td><td id="siK"></td><td id="tuH"></td><td id="tuK"></td></tr>
+      <tr><td id="n0H"></td><td id="n0K"></td><td id="soH"></td><td id="soK"></td></tr>
+    </table>
+    <img src="grid.png" height="190"><br>
+    <img src="0ivsri.png" height="50"><br>
+    <img src="sivstu.png" height="50"><br>
+    <img src="sivstuandn0vsso.png" height="50">
+  </body>
+</html>

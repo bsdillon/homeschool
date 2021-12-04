@@ -43,6 +43,7 @@ var katakanaChars = [
   [0x30EF,0x30F0,0x0085,0x30F1,0x30F2]
 ];
 
+
 var katakanaTrue = [
   ['ア','イ','ウ','エ','オ'],
   ['カ','キ','ク','ケ','コ'],
@@ -72,7 +73,8 @@ var katakanaN = 'ン';
 
 //by glyph type and average frequency
 // う つ			C characters; 35
-// も し い に こ り(RI)	J characters; 29
+// い り(RI) も し そ		J characters; 29
+// に こ 			J characters; 29
 // き さ て ひ と ゆ		Front hook;26
 // へ く			Angles;22
 // た す か ふ		WTF 1; 33
@@ -157,10 +159,28 @@ function createTileHTML(tileFileName, hiragamaStyle)
 function createGlyphHTML(id, c, v, hiragana, flipSensetive)
 {
   var tag = document.getElementById(id);
+  var transparency = document.getElementById("overlay");
+  if(!transparency)
+  {
+    var img = document.createElement("IMG");
+    img.src = "./hiragana/transGrid.png";
+    img.classList.add("overlay");
+    img.id="overlay";
+    img.onmouseleave=function (){overlayOff();};
+    document.body.appendChild(img);
+  }
+
   var type = hiragana? "hiragana": "katakana";
   var tagEng = document.createElement("SPAN");
   tagEng.classList.add("english");
-  tagEng.innerHTML = (consonants[c]+vowels[v]).toUpperCase();
+  if(v==-1)
+  {
+    tagEng.innerHTML = "N0";
+  }
+  else
+  {
+    tagEng.innerHTML = (consonants[c]+vowels[v]).toUpperCase();
+  }
   tag.appendChild(tagEng);
 
   var tagJap = document.createElement("SPAN");
@@ -168,25 +188,56 @@ function createGlyphHTML(id, c, v, hiragana, flipSensetive)
   tagJap.classList.add("hiragana");
   if(hiragana)
   {
-    tagJap.innerHTML = "&#"+hiraganaChars[c][v]+";";
+    if(v==-1)
+    {
+      tagJap.innerHTML = "&#"+hiraganaNChar+";";
+    }
+    else
+    {
+      tagJap.innerHTML = "&#"+hiraganaChars[c][v]+";";
+    }
   }
   else
   {
-    tagJap.innerHTML = "&#"+katakanaChars[c][v]+";";
+    if(v==-1)
+    {
+      tagJap.innerHTML = "&#"+katakanaNChar+";";
+    }
+    else
+    {
+      tagJap.innerHTML = "&#"+katakanaChars[c][v]+";";
+    }
   }
   tag.appendChild(tagJap);
 
   var img = document.createElement("IMG");
   img.id = id+"Img";
   img.classList.add(type);
-  img.src = "./"+type+"/"+type+"-"+consonants[c]+vowels[v]+"-order.gif";
+  if(v==-1)
+  {
+    var tmp = "N0";
+  }
+  else
+  {
+    var tmp = consonants[c]+vowels[v];
+  }
+
   if(flipSensetive)
   {
-    img.onclick = function () { flipGlyph(id,c,v) };
+    img.flipFunction = function () { flipGlyph(id,c,v) };
   }
-  img.width = "120";
-  img.alt = type+" "+consonants[c]+vowels[v];
+  else
+  {
+    img.flipFunction = function () {};
+  }
+
+  img.onmouseover = function() {overlayOn(img);}
+  img.src = "./"+type+"/"+type+"-"+tmp+"-order.gif";
+  img.width = "140";
+  img.height = "140";
+  img.alt = type+" "+tmp;
   tag.appendChild(img);
+
   tag.classList.add(type);
   tag.classList.add("glyph");
 }
@@ -202,10 +253,24 @@ function flipGlyph(id, cIndex, vIndex)
   if(tagImg.src.includes("hiragana"))
   {
     tag.classList.remove("hiragana");
-    tagJap.innerHTML="&#"+katakanaChars[cIndex][vIndex]+";";
+    if(vIndex==-1)
+    {
+      tagJap.innerHTML="&#"+katakanaNChar+";";
+    }
+    else
+    {
+      tagJap.innerHTML="&#"+katakanaChars[cIndex][vIndex]+";";
+    }
     nextSrc = tagImg.src.replace("hiragana","katakana");
     nextSrc = nextSrc.replace("hiragana","katakana");
-    tagImg.alt = "Katakana "+consonants[cIndex]+vowels[vIndex];
+    if(vIndex==-1)
+    {
+      tagImg.alt = "Katakana N0";
+    }
+    else
+    {
+      tagImg.alt = "Katakana "+consonants[cIndex]+vowels[vIndex];
+    }
     tagJap.classList.add("katakana");
     tagImg.classList.add("katakana");
     tag.classList.add("katakana");
@@ -213,15 +278,58 @@ function flipGlyph(id, cIndex, vIndex)
   else
   {
     tag.classList.remove("katakana");
-    tagJap.innerHTML="&#"+hiraganaChars[cIndex][vIndex]+";";
+    if(vIndex==-1)
+    {
+      tagJap.innerHTML="&#"+hiraganaNChar+";";
+    }
+    else
+    {
+      tagJap.innerHTML="&#"+hiraganaChars[cIndex][vIndex]+";";
+    }
     nextSrc = tagImg.src.replace("katakana","hiragana");
     nextSrc = nextSrc.replace("katakana","hiragana");
-    tagImg.alt = "Hiragana "+consonants[cIndex]+vowels[vIndex];
+    if(vIndex==-1)
+    {
+      tagImg.alt = "Hiragana N0";
+    }
+    else
+    {
+      tagImg.alt = "Hiragana "+consonants[cIndex]+vowels[vIndex];
+    }
     tagJap.classList.add("hiragana");
     tagImg.classList.add("hiragana");
     tag.classList.add("hiragana");
   }
   tagImg.src = nextSrc;
+}
+
+function getTop(el) {
+  return el.offsetTop + (el.offsetParent && getTop(el.offsetParent));
+}
+
+function getLeft(el) {
+  return el.offsetLeft + (el.offsetParent && getLeft(el.offsetParent));
+}
+
+function overlayOff()
+{
+  var tag = document.getElementById("overlay");
+  tag.style.opacity=0;
+  tag.style.left=0;
+  tag.style.top=0;
+  tag.width=0;
+  tag.height=0;
+}
+
+function overlayOn(imgTag)
+{
+  var tag = document.getElementById("overlay");
+  tag.style.opacity=1;
+  tag.style.left=getLeft(imgTag);
+  tag.style.top=getTop(imgTag);
+  tag.width=146;
+  tag.height=146;
+  tag.onclick=function(){imgTag.flipFunction();};
 }
 
 //<h2>Learn vowels</h2>
