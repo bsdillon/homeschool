@@ -12,6 +12,8 @@
     <script>
       function loader()
       {
+        document.getElementById("balloonH").innerHTML=createTileHTML("HU0USEN0_BALLOON.png", true);
+        document.getElementById("balloonK").innerHTML=createTileHTML("HU0USEN0_BALLOON.png", false);
         createGlyphHTML("0iH",0,1,true,true);
         createGlyphHTML("0iK",0,1,false,false);
         createGlyphHTML("riH",8,1,true,false);
@@ -24,23 +26,75 @@
         createGlyphHTML("n0K",1,-1,false,false);
         createGlyphHTML("soH",2,4,true,false);
         createGlyphHTML("soK",2,4,false,false);
-
-        //var tile = tiles[Math.floor(Math.random()*tiles.length)];
-        //document.getElementById("tileDemo").innerHTML=createTileHTML(tile);
+        overlayOff();
       }
-      
     </script>
   </head>
   <body onload="loader()">
-    <h1></h1>
+    <h1>Writing Kana</h1>
+    <p>
+      This week's lesson is going to focus on writing kana the right way. In Japan, students
+      practice drawing kana on a 4-square grid. This is kind of like the way that English 
+      speakers use a three-line system to help students properly draw their letters. In the
+      picture below you can see two kana that look a little similar, but the 4-square grid
+      helps us to see some distinct differences between them.
+    </p>
+    <img src="grid.png" height="190"><img src="0ivsristrokesize.png" height="190">
+    <p>
+      These are the two characters for 0i and ri that we saw above. You can see that they
+      are similar. In fact, it is easy for someone to draw them <i>badly</i> enough to be
+      confused just like an h can be drawn badly enough to look like an n. Similar, but not
+      the same. 0I should be drawn as two lines of roughly the same size, parallel to each other
+      and tilted slightly from quadrant 2 to quadrant 4. RI should be drawn as two lines, 
+      one curved inward and much longer than the one on the left, from top to bottom. These 
+      are very different characters even if they have similar pieces. Note also that the ri 
+      in hirgana and katakana re also very similar with more prounounced straight and curved 
+      elements in the katakana.
+    </p>
     <table>
       <tr><td id="0iH"></td><td id="0iK"></td><td id="riH"></td><td id="riK"></td></tr>
       <tr><td id="siH"></td><td id="siK"></td><td id="tuH"></td><td id="tuK"></td></tr>
+    </table>
+    <p>
+      You have already seen tsu, but now we are adding shi. These two characters are also 
+      very similar so it is helpful to consider that each character is associated with one 
+      wall of the grid. SHI starts on the left wall. In the hirgana shi, the J shape goes along 
+      that wall and exits into the first quadrant. In the katakana shi, all three strokes begin
+      on the left wall and move toward the right. TSU that we saw earlier starts on the top
+      wall. Again, the J shape moves along that wall and exits into the third quadrant and 
+      all three strokes of the katakana tsu start from the top wall. In the hiragana, it may 
+      be easier to see the difference, but the orientation of the katakana strokes shows that 
+      shi is wider north-to-south and narrower west-to-east, while tsu reverses that.
+    </p>
+    <img src="sivstu.png" height="150">
+    <p>
+      The last pair of of kana are also very similar to each other, but as with shi and tsu, 
+      n0 and so are tied to the left and top walls. The orientation of the strokes is different, 
+      even if the elements themselves are similar. In the hand-written caligraphy below you 
+      can see that the starting point of each stroke is very different. 
+    </p>
+    <table>
       <tr><td id="n0H"></td><td id="n0K"></td><td id="soH"></td><td id="soK"></td></tr>
     </table>
-    <img src="grid.png" height="190"><br>
-    <img src="0ivsri.png" height="50"><br>
-    <img src="sivstu.png" height="50"><br>
-    <img src="sivstuandn0vsso.png" height="50">
+    <img src="n0vsso.png" height="150">
+    <p>
+      One fun fact about n0. That is n0 ん, not no の. The n0 has no vowel just like the 0a 
+      has no consonant. It never begins a word, but it can be used to terminate a set of 
+      sounds. See the example below where ん/ン is used to terminate hu0usen0 (balloon).
+    </p>
+    <table>
+      <tr><td id="balloonH"></td><td id="balloonK"></td></tr>
+    </table>
+    <p>
+      This is quite a list of kana to learn. Once you complete this you will know 14 of the
+      most common katakana and hirgana syllables. Practice them fifty times each day ensuring 
+      that you have the right angles. Japanese children practice in three rows.
+      <ul>
+        <li>Row 1 (16 times)- practice each element by directly comparing the stroke order with an original</li>
+        <li>Row 2 (16 times)- practice the whole character, with the graph, saying the syllable outloud, and comparing the finished kana to the original</li>
+        <li>Row 3 (18 times)- practice the whole character, saying the syllable outloud, and comparing with your last effort for consistency</li>
+      </ul>
+    </p>
+    <img src="practiceSheet.png">
   </body>
 </html>

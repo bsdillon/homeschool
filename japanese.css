@@ -1,5 +1,7 @@
       img.hiragana {border: solid blue 2px;}
       img.katakana {border: solid red 2px;}
+      h2.hiragana {color: blue;}
+      h2.katakana {color: red;}
       span.hiragana {font-weight: bold; color: blue; font-size:50px;}
       span.katakana {font-weight: bold; color: red; font-size:50px;}
       span.english {font-weight: bold; color: black; font-size:50px;}

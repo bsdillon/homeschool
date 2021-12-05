@@ -102,7 +102,7 @@ var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOT
   'YURE_SHAKE.png'
 ];
 
-function createTileHTML(tileFileName, hiragamaStyle)
+function createTileHTML(tileFileName, hiraganaStyle)
 {
   var pieces = tileFileName.split("_");
   var engName = "";
@@ -116,7 +116,7 @@ function createTileHTML(tileFileName, hiragamaStyle)
     if(vPart==='0')
     {
       engName+="N ";
-      if(hiragamaStyle)
+      if(hiraganaStyle)
       {
         japName+="&#"+0x3093+";";
       }
@@ -133,7 +133,7 @@ function createTileHTML(tileFileName, hiragamaStyle)
         cChar = ' ';
       }
       engName+=cChar+vowels[v];
-      if(hiragamaStyle)
+      if(hiraganaStyle)
       {
         japName+="&#"+hiraganaChars[c][v]+";";
       }
@@ -144,7 +144,8 @@ function createTileHTML(tileFileName, hiragamaStyle)
     }
   }
 
-  var tmp ="<h2>"+japName+"</h2><h3>"+engName+"</h3><p>";
+  var type = hiraganaStyle?"hiragana":"katakana";
+  var tmp ="<h2 class='"+type+"'>"+japName+"</h2><h3>"+engName+"</h3><p>";
   var eng = tileFileName.substring(pieces[0].length+1,tileFileName.length-4);
   while(eng.includes("_"))
   {
@@ -351,3 +352,9 @@ function overlayOn(imgTag)
 //http://www.textfugu.com/season-1/reading-writing-memorizing-hiragana/4-8/
 //There is a story here that I need to figure out.
 //According to the Nihon Shoki and Kojiki, a semi-legendary scholar called Wani was dispatched to Japan by the Kingdom of Baekje during the reign of Emperor Ōjin in the early fifth century, bringing with him knowledge of Confucianism and Chinese characters.[9]
+//great caligraphy example and how to handle end of stroke hook/non-hook
+//https://youtu.be/gTr3ROSU35g?t=55
+//common radicals in kanji
+//https://laits.utexas.edu/japanese/joshu/kanji/kanji_radicals/radicals2.html
+//first 100 kanji
+//https://www.uni-passau.de/fileadmin/dokumente/hsg/nippon/Skripte/kanjibookjlptn5.pdf
