@@ -73,10 +73,10 @@ var katakanaN = 'ン';
 
 //by glyph type and average frequency
 // う つ			C characters; 35
-// い り(RI) も し そ		J characters; 29
-// に こ 			J characters; 29
+// い り(RI) も し そ	J characters; 29
+// へ く に こ		Angles and Zs;22
+
 // き さ て ひ と ゆ		Front hook;26
-// へ く			Angles;22
 // た す か ふ		WTF 1; 33
 // の め あ ぬ		Loop characters; 17
 // け は ま ほ よ お み	T characters; 16
@@ -351,7 +351,9 @@ function overlayOn(imgTag)
 //Useful information on hirgana
 //http://www.textfugu.com/season-1/reading-writing-memorizing-hiragana/4-8/
 //There is a story here that I need to figure out.
-//According to the Nihon Shoki and Kojiki, a semi-legendary scholar called Wani was dispatched to Japan by the Kingdom of Baekje during the reign of Emperor Ōjin in the early fifth century, bringing with him knowledge of Confucianism and Chinese characters.[9]
+//According to the Nihon Shoki and Kojiki, a semi-legendary scholar called Wani was 
+//dispatched to Japan by the Kingdom of Baekje during the reign of Emperor Ōjin in the 
+//early fifth century, bringing with him knowledge of Confucianism and Chinese characters.[9]
 //great caligraphy example and how to handle end of stroke hook/non-hook
 //https://youtu.be/gTr3ROSU35g?t=55
 //common radicals in kanji
