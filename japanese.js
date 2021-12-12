@@ -360,3 +360,7 @@ function overlayOn(imgTag)
 //https://laits.utexas.edu/japanese/joshu/kanji/kanji_radicals/radicals2.html
 //first 100 kanji
 //https://www.uni-passau.de/fileadmin/dokumente/hsg/nippon/Skripte/kanjibookjlptn5.pdf
+//document meant to show someone what their character looks like
+//Okagami (The Great Mirror) (大鏡)
+//document in chinese meant to teach all the kanji
+//https://en.wikipedia.org/wiki/Thousand_Character_Classic
