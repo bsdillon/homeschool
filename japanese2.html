@@ -15,20 +15,14 @@
         var count = 0;
         var tag = document.getElementById("tileSpace");
         var row = tag.insertRow();
-        var syllables = ["0I","0U","SI","SO","TU","RI","N0"]
+        var syllables = ["0I","0U","SI","SO","TU","RI","N0","KO","KU","NI","NE","WA","HE"]
         for(let i=0;i<tiles.length;i++)
         {
           var jap = tiles[i].split("_")[0];
-          accepted = false;
-          for(let j=0;j<jap.length && !accepted;j+=2)
+          accepted = true;
+          for(let j=0;j<jap.length && accepted;j+=2)
           {
-            for(let k=0;k<syllables.length && !accepted;k++)
-            {
-              if(jap[j]+jap[j+1]===syllables[k])
-              {
-                accepted=true;
-              }
-            }
+            accepted = syllables.includes(jap[j]+jap[j+1]);
           }
 
           if(accepted)
