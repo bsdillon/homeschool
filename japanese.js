@@ -72,17 +72,18 @@ var katakanaN = 'ン';
 // 	え ろ よ や も ね
 
 //by glyph type and average frequency
-// う つ			C characters; 35
-// い り(RI) も し そ	J characters; 29
-// へ く に こ		Angles and Zs;22
+// う つ い り(RI) し そ へ く に こ わ ね ん
+// き さ け は ま ほ ろ る
 
-// き さ て ひ と ゆ		Front hook;26
+
+// も
+// て ひ と ゆ		Front hook;26
 // た す か ふ		WTF 1; 33
 // の め あ ぬ		Loop characters; 17
-// け は ま ほ よ お み	T characters; 16
-// ち ろ る え ら		Back hook characters; 16
+// よ お み		T characters; 16
+// ち え ら		Back hook characters; 16
 // せ む な や		WTF 2; 11
-// れ わ ね			Z characters; 9
+// れ 			Z characters; 9
 
 var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', 
   '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', 

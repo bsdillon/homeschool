@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
+    <style>
+      .overlay {position: absolute; z-index:1; opacity=0;}
+      li {font-family: Bitstream Cyberbit,Lucida Sans Unicode,  arial unicode MS,verdana, helvetica, sans-serif;}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      em {background: #000000; color: #FFFFAA; font-weight:bold;}
+      .large {color:red; font-size:24; font-weight:bold;}
+      .hideMe {opacity=0; display:none;}
+    </style>
+    <script>
+      function loader()
+      {
+        createGlyphHTML("kiH",1,1,true,false);
+        createGlyphHTML("kiK",1,1,false,false);
+        createGlyphHTML("saH",2,0,true,false);
+        createGlyphHTML("saK",2,0,false,false);
+        createGlyphHTML("keH",1,3,true,false);
+        createGlyphHTML("keK",1,3,false,false);
+        createGlyphHTML("haH",5,0,true,false);
+        createGlyphHTML("haK",5,0,false,false);
+        createGlyphHTML("maH",6,0,true,false);
+        createGlyphHTML("maK",6,0,false,false);
+        createGlyphHTML("hoH",5,4,true,false);
+        createGlyphHTML("hoK",5,4,false,false);
+        createGlyphHTML("roH",8,4,true,false);
+        createGlyphHTML("roK",8,4,false,false);
+        createGlyphHTML("ruH",8,2,true,false);
+        createGlyphHTML("ruK",8,2,false,false);
+
+        overlayOff();
+      }
+
+      function flipImages()
+      {
+        var lImg = document.getElementById("largeMap");
+        var temp = lImg.classList.toString();
+        lImg.classList.remove("hideMe");
+        var sImg = document.getElementById("smallMap");
+        var temp2 = sImg.classList.toString();
+        sImg.classList.remove("hideMe");
+
+        if(temp2.length>0)
+        {
+          lImg.classList.add(temp2);
+        }
+
+        if(temp.length>0)
+        {
+          sImg.classList.add(temp);
+        }
+      }
+    </script>
+  </head>
+  <body onload="loader()">
+    <h1>Japanese Culture</h1>
+    <p>
+      This week we are learning 8 new syllables and 16 new symbols. Again, many of these
+      have elements in common. RO and RU are very similar to the strokes we learned in WA
+      and NE. KI and SA are the "Captain Hook" letters. They are very similar to each other.
+      You can also look at the katakana for similar elements. Doesn't the katakana for 
+      SA, look a lot like RI? Look for things like that so you can learn the same kinds
+      of strokes that combine to make different syllables.
+    </p>
+    <table>
+      <tr><td id="roH"></td><td id="roK"></td><td id="ruH"></td><td id="ruK"></td></tr>
+      <tr><td id="kiH"></td><td id="kiK"></td><td id="saH"></td><td id="saK"></td></tr>
+    </table>
+    <p>
+      KE, HA, MA, and HO all follow the same pattern in terms of stroke order:
+      down on the left (if there is any), horizontal on top (if there is any), then the
+      down on the right. So there is a lot in common with the kana you have already 
+      learned and among the new ones.
+    </p>
+    <img src="strokeOrder.png">
+    <table>
+      <tr><td id="keH"></td><td id="keK"></td><td id="haH"></td><td id="haK"></td></tr>
+      <tr><td id="maH"></td><td id="maK"></td><td id="hoH"></td><td id="hoK"></td></tr>
+    </table>
+    <p>
+      <img src="hiraganaChart42.png" class="floatL">Now you know 21 syllables and 42 of 
+      the kana. There are 10 consonants and 5 vowels which should give you 50 syllables, 
+      but some of them do not exist and others are added, so really there are 48. You 
+      are almost halfway there! It's going to take us the rest of January to learn all
+      the kana, but after that you will be able to read any Japanese word!
+    </p>
+    <br clear="all">
+    <h2>Foods in Japan</h2>
+    <caption>Click to enlarge/hide</caption><br>
+    <img src="https://maps-japan.com/img/1200/japan-agriculture-map.jpg" width="600" id="largeMap" class="hideMe" onclick="flipImages()">
+    <img src="https://maps-japan.com/img/1200/japan-agriculture-map.jpg" width="50" id="smallMap" onclick="flipImages()">
+    <p>
+      Japan is so mountainous that growing crops is impossible in much of the country.
+      Rice is their most common crop with lots of wheat and other grains. Because Japan
+      is so far to the north, parts of the country are very cold. It's like living in 
+      Maine or New Hampshire with cold snowy winters and short growing seasons. The
+      mountainous terrain and climate make feeding the Japanese people a challenge.
+    </p>
+    <p>
+      <a href="https://i.unu.edu/media/ourworld.unu.edu-en/article/3587/OurWorld_-1-2-.jpg"><img src="https://i.unu.edu/media/ourworld.unu.edu-en/article/3587/OurWorld_-1-2-.jpg" class="floatL" width="150"></a>
+      Japanese farmers have fed their people by inventing new farming techniques. They
+      use terraces to turn hills into farmland. It's hard to plant and harvest without
+      tractors, but now whole sections of the land can be productive. They have also
+      drained swamps or flooded land to make room for rice farming. It is always a
+      struggle to convert the Japanese hills into food.
+    </p>
+    <br clear="all">
+    <h2>Clothes in Japan</h2>
+    <p>
+      <a href="https://resources.matcha-jp.com/resize/720x2000/2019/05/10-76607.jpeg"><img src="https://resources.matcha-jp.com/resize/720x2000/2019/05/10-76607.jpeg" class="floatL" width="150"></a>
+      Japanese people today tend to wear clothing that is much like we wear in America. Traditional
+      Japanese clothing, however, is quite fancy. All Japanese wear a skirt/pants called hakama.
+      A hakama can be divided like pants or one piece like a skirt. Originally, men wore 
+      a coat called haori. Now women wear the haori, too.
+    </p>
+    <br clear="all">
+    <p>
+      <a href="https://villagehiker.com/travel/travel-japan/media/japanese-shoe-etiquette/shoes-facing-toward-door-japan.jpg"><img src="https://villagehiker.com/travel/travel-japan/media/japanese-shoe-etiquette/shoes-facing-toward-door-japan.jpg" class="floatL" width="150"></a>
+      Shoes are one of the areas where Japanese customs are most different from ours.
+      In many American homes, people wear their shoes all the time. In other homes they
+      don't. But in Japan, any home, hotel, public building--even some businesses--will
+      expect you to take your shoes off at the door. The Japanese have a custom that all
+      shoes come off at the door. In the home, people walk around in their socks or tabi.
+      Some special rooms like the bathroom require their own shoes for similar reasons.
+      This is just one of the ways Japanese people show respect for the places they visit.
+    </p>
+    <h2>Buildings in Japan</h2>
+    <p>
+      <a href="https://gamasutra.com/db_area/images/blog/214409/JC%2001.jpg"><img src="https://gamasutra.com/db_area/images/blog/214409/JC%2001.jpg" class="floatL" width="150"></a>
+      As with language and other cultural aspects, Japanese architecture has a lot in common with
+      its Chinese counterpart. Both cultures work in wood and have peaked, tiled roofs. Both kinds
+      of architecture as supposed to be part of the natural world around them. This is called Feng Shui.
+      Traditional Japanese buildings often have paper walls that slide and open to let sunlight and air
+      in. They are put together almost entirely out of wood, event avoiding nails in almost 
+      all of the building.
+    </p>
+    <p>
+      <a href="https://static.boredpanda.com/blog/wp-content/uploads/2016/09/amazing-modern-japanese-architecture-16-57e24fc9e71ad__880.jpg"><img src="https://static.boredpanda.com/blog/wp-content/uploads/2016/09/amazing-modern-japanese-architecture-16-57e24fc9e71ad__880.jpg" class="floatL" width="150"></a>
+      Although modern Japanese architecture is very similar to what you might see in 
+      New York or Los Angeles, they are more constrained by size. A full family in New York
+      might live in a single floor of our house. In Japan, the apartments are even smaller
+      sometimes with the bathroom tucked into a closet. Still, the Japanese love Feng Shui
+      and their style of architecture tends to open up to nature when possible. Away from
+      the cities, they open up their buildings to the world.
+    </p>
+  </body>
+</html>
