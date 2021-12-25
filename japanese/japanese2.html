@@ -1,15 +1,137 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="https://bsdillon.github.io/cs200_Spring2020/GoldField/alternate/goldfield.js"></script>
     <script src="japanese.js"></script>
     <style>
       li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
       .floatL {float:left; margin: 10px;}
       .floatR {float:right; margin: 10px;}
-      em {background: #000000; color: #FFFFAA; font-weight:bold;};
+      em {background: #000000; color: #FFFFAA; font-weight:bold;}
+      .large {font-size:48; font-weight:bold;}
     </style>
     <script>
+      var sounds = {};
+      var hKana = {};
+      var kKana = {};
+
       function loader()
+      {
+        var audio = document.createElement("audio");
+        audio.setAttribute('id', "winAudio");
+        var source = document.createElement("source");
+        source.setAttribute("src", "https://bsdillon.github.io/cs200_Spring2020/GoldField/winSound.wav");
+        audio.appendChild(source);
+        this["winSound"] = audio;
+        sounds["winSound"]=this["winSound"];
+
+        var audio = document.createElement("audio");
+        audio.setAttribute('id', "loseAudio");
+        var source = document.createElement("source");
+        source.setAttribute("src", "https://bsdillon.github.io/cs200_Spring2020/GoldField/loseSound.mp3");
+        audio.appendChild(source);
+        this["loseSound"] = audio;
+        sounds["loseSound"]=this["loseSound"];
+
+        hKana['N0']='ん';
+        kKana['N0']='ン';
+
+        var keys = ['0I', '0U', 'KI', 'KU', 'KE', 'KO', 'SA', 'SI', 'SO', 'TU', 'NI', 'NE', 'HA', 'HE', 'HO', 'MA', 'RI', 'RU', 'RO', 'WA'];
+
+        for(let i=0;i<keys.length;i++)
+        {
+          var tmp = function(x){return x===keys[i][0];};
+          var c = consonants.findIndex(tmp);
+          var tmp = function(x){return x===keys[i][1];};
+          var v = vowels.findIndex(tmp);
+          
+          hKana[keys[i]]=hiraganaTrue[c][v];
+          kKana[keys[i]]=katakanaTrue[c][v];
+        }
+
+        game();
+      }
+
+      function game()
+      {
+        var r = Math.floor(Math.random()*1);
+        switch(r)
+        {
+          case 0:
+            Match();
+            break;
+          case 1:
+            Draw();
+            break;
+          case 2:
+            Identify();
+            break;
+        }
+      }
+
+      function Match()
+      {
+        var keys = Object.keys(hKana);
+        var index = Math.floor(Math.random()*keys.length);
+        var kata = Math.random>.5;
+        var source = kata?kKana[keys[index]]:hKana[keys[index]];
+        var target = kata?hKana[keys[index]]:kKana[keys[index]];
+        var options = [target];
+        var indices = [index];
+        for(let i=0;i<4;i++)
+        {
+          var val = Math.floor(Math.random()*keys.length);
+          while(indices.includes(val))
+          {
+            val = Math.floor(Math.random()*keys.length);
+          }
+          indices.push(val);
+          options.push(kata?hKana[keys[val]]:kKana[keys[val]]);
+        }
+        document.getElementById("instructions").innerHTML="Which of these characters is a match for <span class='large'>"+source+"</span>";
+        var tmp = "";
+        while(options.length>0)
+        {
+          var v = Math.floor(Math.random()*options.length);
+          var kana = options[v];
+          options.splice(v,1);
+          if(kana==target)
+          {
+            tmp+="<button class='large' onclick='win()'>"+kana+"</button>";
+          }
+          else
+          {
+            tmp+="<button class='large' onclick='lose()'>"+kana+"</button>";
+          }
+        }
+        document.getElementById("output").innerHTML=tmp;
+      }
+
+      function Draw()
+      {
+        document.getElementsById("instructions").innerHTML="";
+        document.getElementsById("output").innerHTML="";
+      }
+
+      function Identify()
+      {
+        document.getElementsById("instructions").innerHTML="";
+        document.getElementsById("output").innerHTML="";
+      }
+
+      function win()
+      {
+        sounds["winSound"].play();
+        game();
+      }
+
+      function lose()
+      {
+        sounds["loseSound"].play();
+        setTimeout(game,3000);
+      }
+
+      function loader2()
       {
         var newHTML="";
         var count = 0;
@@ -45,10 +167,7 @@
     </script>
   </head>
   <body onload="loader()">
-    <h1>Read 0u and tsu words</h1>
-    <p>These are all words spelled with 0u or tsu. Read the words out loud. Every time you 
-      see 0u or tsu write the character.</p>
-    <table id="tileSpace">
-    </table>
+    <p id="instructions"></p>
+    <p id="output"></p>
   </body>
 </html>
