@@ -74,15 +74,13 @@ var katakanaN = 'ン';
 //by glyph type and average frequency
 // う つ い り(RI) し そ へ く に こ わ ね ん
 // き さ け は ま ほ ろ る
+// も せ ち た て ひ と ゆ
 
-
-// も
-// て ひ と ゆ		Front hook;26
-// た す か ふ		WTF 1; 33
+// す か ふ		WTF 1; 33
 // の め あ ぬ		Loop characters; 17
 // よ お み		T characters; 16
-// ち え ら		Back hook characters; 16
-// せ む な や		WTF 2; 11
+// え ら		Back hook characters; 16
+// む な や		WTF 2; 11
 // れ 			Z characters; 9
 
 var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', 

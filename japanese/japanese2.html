@@ -18,6 +18,7 @@
       var sounds = {};
       var hKana = {};
       var kKana = {};
+      var target = "";
 
       function loader()
       {
@@ -41,7 +42,7 @@
         kKana['N0']='ン';
 
         var keys = ['0I', '0U', 'KI', 'KU', 'KE', 'KO', 'SA', 'SI', 'SO', 'TU', 'NI', 'NE', 'HA', 'HE', 'HO', 'MA', 'RI', 'RU', 'RO', 'WA'];
-
+        //, 'MO', 'SE', 'TI', 'TA', 'TE', 'HI', 'TO', 'YU'
         for(let i=0;i<keys.length;i++)
         {
           var tmp = function(x){return x===keys[i][0];};
@@ -80,7 +81,7 @@
         var index = Math.floor(Math.random()*keys.length);
         var kata = Math.random()>.5;
         var source = kata?kKana[keys[index]]:hKana[keys[index]];
-        var target = kata?hKana[keys[index]]:kKana[keys[index]];
+        target = kata?hKana[keys[index]]:kKana[keys[index]];
         var options = [target];
         var indices = [index];
         for(let i=0;i<4;i++)
@@ -136,7 +137,7 @@
         var index = Math.floor(Math.random()*keys.length);
         var kata = Math.random()>.5;
         var source = kata?kKana[keys[index]]:hKana[keys[index]];
-        var target = keys[index];
+        target = keys[index];
         var options = [target];
         var indices = [index];
         for(let i=0;i<4;i++)
@@ -179,7 +180,7 @@
       function lose()
       {
         //sounds["loseSound"].play();
-        document.getElementById("reward").innerHTML="<span class='red'>Wrong...</span>";
+        document.getElementById("reward").innerHTML="<span class='red'>Wrong..."+target+"</span>";
         setTimeout(game,3000);
       }
 
