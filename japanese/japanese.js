@@ -75,13 +75,9 @@ var katakanaN = 'ン';
 // う つ い り(RI) し そ へ く に こ わ ね ん
 // き さ け は ま ほ ろ る
 // も せ ち た て ひ と ゆ
+// す か ふ れ の め あ ぬ
 
-// す か ふ		WTF 1; 33
-// の め あ ぬ		Loop characters; 17
-// よ お み		T characters; 16
-// え ら		Back hook characters; 16
-// む な や		WTF 2; 11
-// れ 			Z characters; 9
+// よ お み え ら む な や -- next week
 
 var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', 
   '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', 
