@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
+    <style>
+      .overlay {position: absolute; z-index:1; opacity=0;}
+      li {font-family: Bitstream Cyberbit,Lucida Sans Unicode,  arial unicode MS,verdana, helvetica, sans-serif;}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      em {background: #000000; color: #FFFFAA; font-weight:bold;}
+      .large {color:red; font-size:24; font-weight:bold;}
+      .hideMe {opacity=0; display:none;}
+    </style>
+    <script>
+      function loader()
+      {
+        //す  か  ふ  れ   の  め  あ   ぬ
+        //SU KA  HU  RE  NO  ME  0A  NU
+
+        createGlyphHTML("0aK",0,0,false,true);
+        createGlyphHTML("0iK",0,1,false,true);
+        createGlyphHTML("0uK",0,2,false,true);
+        //createGlyphHTML("0eK",0,3,false,true);
+        //createGlyphHTML("0oK",0,4,false,true);
+
+        createGlyphHTML("kaK",1,0,false,true);
+        createGlyphHTML("kiK",1,1,false,true);
+        createGlyphHTML("kuK",1,2,false,true);
+        createGlyphHTML("keK",1,3,false,true);
+        createGlyphHTML("koK",1,4,false,true);
+
+        createGlyphHTML("saK",2,0,false,true);
+        createGlyphHTML("siK",2,1,false,true);
+        createGlyphHTML("suK",2,2,false,true);
+        createGlyphHTML("seK",2,3,false,true);
+        createGlyphHTML("soK",2,4,false,true);
+
+        createGlyphHTML("taK",3,0,false,true);
+        createGlyphHTML("tiK",3,1,false,true);
+        createGlyphHTML("tuK",3,2,false,true);
+        createGlyphHTML("teK",3,3,false,true);
+        createGlyphHTML("toK",3,4,false,true);
+
+        //createGlyphHTML("naK",4,0,false,true);
+        createGlyphHTML("niK",4,1,false,true);
+        createGlyphHTML("nuK",4,2,false,true);
+        createGlyphHTML("neK",4,3,false,true);
+        createGlyphHTML("noK",4,4,false,true);
+
+        createGlyphHTML("haK",5,0,false,true);
+        createGlyphHTML("hiK",5,1,false,true);
+        createGlyphHTML("huK",5,2,false,true);
+        createGlyphHTML("heK",5,3,false,true);
+        createGlyphHTML("hoK",5,4,false,true);
+
+        createGlyphHTML("maK",6,0,false,true);
+        //createGlyphHTML("miK",6,1,false,true);
+        //createGlyphHTML("muK",6,2,false,true);
+        createGlyphHTML("meK",6,3,false,true);
+        createGlyphHTML("moK",6,4,false,true);
+
+        //createGlyphHTML("yaK",7,0,false,true);
+        //createGlyphHTML("yiK",7,1,false,true);
+        createGlyphHTML("yuK",7,2,false,true);
+        //createGlyphHTML("yeK",7,3,false,true);
+        //createGlyphHTML("yoK",7,4,false,true);
+
+        //createGlyphHTML("raK",8,0,false,true);
+        createGlyphHTML("riK",8,1,false,true);
+        createGlyphHTML("ruK",8,2,false,true);
+        createGlyphHTML("reK",8,3,false,true);
+        createGlyphHTML("roK",8,4,false,true);
+
+        createGlyphHTML("waK",9,0,false,true);
+        //createGlyphHTML("wiK",9,1,false,true);
+        //createGlyphHTML("wuK",9,2,false,true);
+        //createGlyphHTML("weK",9,3,false,true);
+        //createGlyphHTML("woK",9,4,false,true);
+        
+        createGlyphHTML("n0K",9,-1,false,true);
+
+        overlayOff();
+      }
+    </script>
+  </head>
+  <body onload="loader()">
+    <table>
+      <tr><td id="0aK"></td> <td id="0iK"></td> <td id="0uK"></td> <td id="0eK"></td>  <td id="0oK"></td></tr>
+      <tr><td id="kaK"></td> <td id="kiK"></td> <td id="kuK"></td> <td id="keK"></td>  <td id="koK"></td></tr>
+      <tr><td id="saK"></td> <td id="siK"></td> <td id="suK"></td> <td id="seK"></td>  <td id="soK"></td></tr>
+      <tr><td id="taK"></td> <td id="tiK"></td> <td id="tuK"></td> <td id="teK"></td>  <td id="toK"></td></tr>
+      <tr><td id="naK"></td> <td id="niK"></td> <td id="nuK"></td> <td id="neK"></td>  <td id="noK"></td></tr>
+      <tr><td id="haK"></td> <td id="hiK"></td> <td id="huK"></td> <td id="heK"></td>  <td id="hoK"></td></tr>
+      <tr><td id="maK"></td> <td id="miK"></td> <td id="muK"></td> <td id="meK"></td>  <td id="moK"></td></tr>
+      <tr><td id="yaK"></td> <td id="yiK"></td> <td id="yuK"></td> <td id="yeK"></td>  <td id="yoK"></td></tr>
+      <tr><td id="raK"></td> <td id="riK"></td> <td id="ruK"></td> <td id="reK"></td>  <td id="roK"></td></tr>
+      <tr><td id="waK"></td> <td id="wiK"></td> <td id="wuK"></td> <td id="weK"></td>  <td id="woK"></td></tr>
+      <tr><td id="n0K"></td> <td colspan="4"></td></tr>
+    </table>
+
+  </body>
+</html>
