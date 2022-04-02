@@ -41,7 +41,7 @@
         hKana['N0']='ん';
         kKana['N0']='ン';
 																								     		        
-        var keys = ['0I', '0U', 'KI', 'KU', 'KE', 'KO', 'SA', 'SI', 'SO', 'TU', 'NI', 'NE', 'HA', 'HE', 'HO', 'MA', 'RI', 'RU', 'RO', 'WA', 'MO', 'SE', 'TI', 'TA', 'TE', 'HI', 'TO', 'YU', 'SU', 'KA', 'HU', 'RE', 'NO', 'ME', '0A', 'NU'];
+        var keys = ['0A','0I', '0U', '0E', '0O', 'KA', 'KI', 'KU', 'KE', 'KO', 'SA', 'SI', 'SU', 'SE', 'SO', 'TA', 'TI', 'TU', 'TE', 'TO', 'NA', 'NI', 'NU', 'NE', 'NU', 'HA', 'HI', 'HU', 'HE', 'HO', 'MA', 'MI', 'MU', 'ME', 'MO', 'YA', 'YU', 'YO', 'RA', 'RI', 'RU', 'RE', 'RO', 'WA', 'WO', 'N0'];
         for(let i=0;i<keys.length;i++)
         {
           var tmp = function(x){return x===keys[i][0];};
@@ -59,7 +59,7 @@
       function game()
       {
         document.getElementById("reward").innerHTML="";
-        var r = Math.floor(Math.random()*3);
+        var r = Math.floor(Math.random()*4);
         switch(r)
         {
           case 0:
@@ -70,6 +70,9 @@
             break;
           case 2:
             Draw();
+            break;
+          case 3:
+            Read();
             break;
         }
       }
@@ -169,52 +172,78 @@
         document.getElementById("output").innerHTML=tmp;
       }
 
+      function Read()
+      {
+        hiraganaStyle = Math.random()<.5 ? true : false;
+        index = Math.floor(Math.random()*tiles.length);
+        tile = tiles[index];
+        var kana = tile.split("_")[0];
+        var engName = "";
+        var japName = "";
+        for(let i=0;i<kana.length;i+=2)
+        {
+          var cPart = kana[i];
+          var vPart = kana[i+1];
+          var c = consonants.findIndex(function (x) {return x===cPart;});
+          var v = vowels.findIndex(function (x) {return x===vPart;});
+          if(vPart==='0')
+          {
+            engName+="N0";
+            if(hiraganaStyle)
+            {
+              japName+="&#"+0x3093+";";
+            }
+            else
+            {
+              japName+="&#"+0x30F3+";";
+            }
+          }
+          else
+          {
+            var cChar = consonants[c];
+            if(cChar==='0')
+            {
+              cChar = '0';
+            }
+            engName+=cChar+vowels[v];
+            if(hiraganaStyle)
+            {
+              japName+="&#"+hiraganaChars[c][v]+";";
+            }
+            else
+            {
+              japName+="&#"+katakanaChars[c][v]+";";
+            }
+          }
+        }
+
+        target = engName
+        tmp = "<img src='./hiragana/images/"+tile+"' width='190'><br>";
+        tmp += "Use English letters to represent this Japanese word.<br>";
+        tmp += "<h2>"+japName+"</h2><br>";
+        tmp += "<input id='englishName' type='text'></input><button onclick='checkText()'>check</button>";
+
+        document.getElementById("output").innerHTML=tmp;
+      }
+
+      function checkText()
+      {
+        var givenText = document.getElementById("englishName").value.toUpperCase();
+        givenText === target ? win() : lose();
+      }
+
       function win()
       {
-        //sounds["winSound"].play();
+        sounds["winSound"].play();
         document.getElementById("reward").innerHTML="<span class='green'>Right!</span>";
         setTimeout(game,3000);
       }
 
       function lose()
       {
-        //sounds["loseSound"].play();
+        sounds["loseSound"].play();
         document.getElementById("reward").innerHTML="<span class='red'>Wrong..."+target+"</span>";
         setTimeout(game,3000);
-      }
-
-      function loader2()
-      {
-        var newHTML="";
-        var count = 0;
-        var tag = document.getElementById("tileSpace");
-        var row = tag.insertRow();
-        var syllables = ["0I","0U","SI","SO","TU","RI","N0","KO","KU","NI","NE","WA","HE"]
-        for(let i=0;i<tiles.length;i++)
-        {
-          var jap = tiles[i].split("_")[0];
-          accepted = true;
-          for(let j=0;j<jap.length && accepted;j+=2)
-          {
-            accepted = syllables.includes(jap[j]+jap[j+1]);
-          }
-
-          if(accepted)
-          {
-            var td = row.insertCell();
-            var hiraganaType = Math.random()>.5?true:false;
-            td.classList.add("tile");
-            td.classList.add(hiraganaType?"hiragana":"katakana");
-            td.innerHTML = createTileHTML(tiles[i],hiraganaType);
-            count++;
-          }
-
-          if(count==4)
-          {
-            row= tag.insertRow();
-            count=0;
-          }
-        }
       }
     </script>
   </head>

@@ -1,5 +1,5 @@
 var vowels = ['A','I','U','E','O'];
-var consonants = ['0','K','S','T','N','H','M','Y','R','W'];
+var consonants = ['0','K','S','T','N','H','M','Y','R','W','G','Z','D','B','P'];
 
 var hiraganaChars = [
   [0x3042,0x3044,0x3046,0x3048,0x304A],
@@ -11,7 +11,12 @@ var hiraganaChars = [
   [0x307E,0x307F,0x3080,0x3081,0x3082],
   [0x3084,0x0085,0x3086,0x0085,0x3088],
   [0x3089,0x308A,0x308B,0x308C,0x308D],
-  [0x308F,0x3090,0x0085,0x3091,0x3092]
+  [0x308F,0x3090,0x0085,0x3091,0x3092],
+  [0x304C,0x304E,0x3050,0x3052,0x3054],
+  [0x3056,0x3058,0x305A,0x305C,0x305E],
+  [0x3060,0x3062,0x3065,0x3067,0x3069],
+  [0x3070,0x3073,0x3076,0x3079,0x307C],
+  [0x3071,0x3074,0x3077,0x307A,0x307D],
 ];
 
 var hiraganaTrue = [
@@ -24,7 +29,12 @@ var hiraganaTrue = [
   ['ま','み','む','め','も'],
   ['や',' ','ゆ',' ','よ'],
   ['ら','り','る','れ','ろ'],
-  ['わ','ゐ',' ','ゑ','を']
+  ['わ','ゐ',' ','ゑ','を'],
+  ['が','ぎ','ぐ','げ','ご'],
+  ['ざ','じ','ず','ぜ','ぞ'],
+  ['だ','ぢ','づ','で','ど'],
+  ['ば','び','ぶ','べ','ぼ'],
+  ['ぱ','ぴ','ぷ','ぺ','ぽ'],
 ];
 
 var hiraganaNChar = 0x3093;
@@ -40,7 +50,12 @@ var katakanaChars = [
   [0x30DE,0x30DF,0x30E0,0x30E1,0x30E2],
   [0x30E4,0x0085,0x30E6,0x0085,0x30E8],
   [0x30E9,0x30EA,0x30EB,0x30EC,0x30ED],
-  [0x30EF,0x30F0,0x0085,0x30F1,0x30F2]
+  [0x30EF,0x30F0,0x0085,0x30F1,0x30F2],
+  [0x30AC,0x30AE,0x30B0,0x30B2,0x30B4],
+  [0x30B6,0x30B8,0x30BA,0x30BC,0x30BE],
+  [0x30C0,0x30C2,0x30C5,0x30C7,0x30C9],
+  [0x30D0,0x30D3,0x30D6,0x30D9,0x30DC],
+  [0x30D1,0x30D4,0x30D7,0x30DA,0x30DD]
 ];
 
 
@@ -54,30 +69,18 @@ var katakanaTrue = [
   ['マ','ミ','ム','メ','モ'],
   ['ヤ','','ユ','','ヨ'],
   ['ラ','リ','ル','レ','ロ'],
-  ['ワ','ヰ','','ヱ','ヲ']
+  ['ワ','ヰ','','ヱ','ヲ'],
+  ['ガ','ギ','グ','ゲ','ゴ'],
+  ['ザ','ジ','ズ','ゼ','ゾ'],
+  ['ダ','ヂ','ヅ','デ','ド'],
+  ['バ','ビ','ブ','ベ','ボ'],
+  ['パ','ピ','プ','ペ','ポ'],
 ];
 
 var katakanaNChar = 0x30F3;
 var katakanaN = 'ン';
 
 //https://en.wikipedia.org/wiki/Ni_(kana)
-
-//By frequency of use
-//first six letters	し き い こ う く り(RI)
-//next  six letters	ふ た つ す さ と
-// 	け か る め み ち
-// 	れ ら ゆ ま ほ ひ
-// 	は ぬ に な て せ
-// 	あ わ む へ の お
-// 	え ろ よ や も ね
-
-//by glyph type and average frequency
-// う つ い り(RI) し そ へ く に こ わ ね ん
-// き さ け は ま ほ ろ る
-// も せ ち た て ひ と ゆ
-// す か ふ れ の め あ ぬ
-
-// よ お み え ら む な や -- next week
 
 var tiles =['0AME_CANDY.png', '0ARI_ANT.png', '0ASISA0I_HYDRANGEA.png', '0EN0TOTU_CHIMNEY.png', '0ENOKO_PAINT.png', '0IMA_TRAIN_STATION.png', '0INU_DOG.png', 
   '0ISI_STONE.png', '0ITIKO_STRAWBERRY.png', '0ONIKIRI_RICE_BALL.png', '0ONI_OGRE.png', '0UKIWA_FLOAT_TOY.png', '0UMA_HORSE.png', '0UNAKE_GHOST.png', 
@@ -346,9 +349,6 @@ function overlayOn(imgTag)
 //Useful information on hirgana
 //http://www.textfugu.com/season-1/reading-writing-memorizing-hiragana/4-8/
 //There is a story here that I need to figure out.
-//According to the Nihon Shoki and Kojiki, a semi-legendary scholar called Wani was 
-//dispatched to Japan by the Kingdom of Baekje during the reign of Emperor Ōjin in the 
-//early fifth century, bringing with him knowledge of Confucianism and Chinese characters.[9]
 //great caligraphy example and how to handle end of stroke hook/non-hook
 //https://youtu.be/gTr3ROSU35g?t=55
 //common radicals in kanji
