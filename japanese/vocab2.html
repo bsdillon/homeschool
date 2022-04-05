@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="https://bsdillon.github.io/cs200_Spring2020/GoldField/alternate/goldfield.js"></script>
+    <script src="japanese.js"></script>
+    <style>
+      body {font-size:20;}
+      li {font-family: 'Bitstream Cyberbit','Lucida Sans Unicode',  'arial unicode MS','verdana', 'helvetica', 'sans-serif';}
+      .floatL {float:left; margin: 10px;}
+      .floatR {float:right; margin: 10px;}
+      .red {color:red; font-weight:bold;}
+      .green {color:green; font-weight:bold;}
+      .blue {color:blue; font-weight:bold;}
+      .orange {color:orange; font-weight:bold;}
+      em {font-style:italic; font-weight:bold;}
+      .large {font-size:48; font-weight:bold;}
+      button {width:150;}
+      .lines td {border:1px black solid; text-align:center; width:150;}
+      td, th {font-size:20; text-align: center;}
+      pre {font-size:30; background-image:url("https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_960_720.jpg"); width:500; font-family: 'arial unicode MS'; background-size: auto 100%; font-weight:bold;}
+    </style>
+    <script>
+      var data = [
+        "Car<br>くるま<br>車",
+        "Train<br>れさ<br>列車",
+        "Cargo<br>かもつ<br>貨物",
+        "Bicycle<br>じてんしゃ<br>自転車",
+        "Truck<br>かもつ  じどうさ<br>貨物自動車",
+        "Motorcycle<br>たんさ<br>単車",
+        "Bus<br>のりあい<br>乗合",
+        "Plane<br>ひこうき<br>飛行機",
+        "Ticket<br>けん<br>券",
+        "Boat<br>ふね<br>舟",
+        "Wheel<br>さりん<br>車輪",
+        "Gasoline<br>けいゆ<br>軽油",
+        "Engine<br>はつどうき<br>発動機",
+        "Accident<br>じこ<br>事故",
+        "Shipping<br>ゆそう<br>輸送",
+        "Traffic<br>こうつう<br>交通",
+        "Road<br>みち<br>道"];
+
+      function randomSheet()
+      {
+        var copy = [];
+        for(let i=0;i<data.length;i++)
+        {
+          copy.push(data[i]);
+        }
+
+        for(let c=1;c<=4;c++)
+        {
+          for(let r=1;r<=4;r++)
+          {
+            let index = Math.floor(Math.random()*copy.length);
+            tmp = copy[index];
+            copy.splice(index,1);
+            document.getElementById(c+"_"+r).innerHTML=tmp;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body onload="randomSheet()">
+    <h2></h2>
+    <p>
+      
+    </p>
+    <h3>Required vocabulary</h3>
+    <p>
+      It has been suggested that among the vocabulary that everyone should
+      learn in a new language, animal-related tangibles are first. Please 
+      learn this set of additional vocabulary. These are REQUIRED and fair
+      game for a test.
+    </p>
+    <table>
+      <tr><th>English</th>		<th>Japanese</th>	<th>Kanji</th>								<th>Explained</th></tr>
+      <tr><td>Car</td>			<td>くるま</td>		<td><span class="red">車</span></td>					<td>car</td></tr>
+      <tr><td>Train (electric)</td>	<td>でんしゃ</td>		<td>電<span class="red">車</span></td>					<td>electric car</td></tr>
+      <tr><td>Train (gas)</td>		<td>れさ</td>		<td>列<span class="red">車</span></td>					<td>line car</td></tr>
+      <tr><td>Cargo</td>		<td>かもつ</td>		<td><span class="orange">貨物</span></td>				<td>currency object</td></tr>
+      <tr><td>Bicycle</td>		<td>じてんしゃ</td>		<td>自転<span class="red">車</span></td>					<td>self turn[drive] car</td></tr>
+      <tr><td>Truck</td>		<td>かもつ&nbsp;&nbsp;&nbsp;じどうさ</td>	<td><span class="orange">貨物</span>自動<span class="red">車</span></td>	<td>cargo self moving car</td></tr>
+      <tr><td>Motorcycle</td>		<td>たんさ</td>		<td>単<span class="red">車</span></td>					<td>single car</td></tr>
+      <tr><td>Bus</td>			<td>のりあい</td>		<td>乗合</td>								<td>ride go</td></tr>
+      <tr><td>Machine</td>		<td>き</td>		<td><span class="blue">機</span></td><td></td></tr>
+      <tr><td>Plane</td>		<td>ひこうき</td>		<td>飛行<span class="blue">機</span></td>				<td>fly line machine</td></tr>
+      <tr><td>Ticket</td>		<td>けん</td>		<td><span class="green">券</span></td><td></td></tr>
+      <tr><td>Plane Ticket</td>		<td>こうくうけん</td>	<td>航空<span class="green">券</span></td>				<td>travel sky ticket</td></tr>
+      <tr><td>Train Ticket</td>		<td>れさけん</td>		<td>列<span class="red">車</span><span class="green">券</span></td>	<td>line car ticket</td></tr>
+      <tr><td>Bus Ticket</td>		<td>のりあいけん</td>	<td>乗合<span class="green">券</span></td>				<td>ride go ticket</td></tr>
+      <tr><td>Boat</td>			<td>ふね</td>		<td>舟</td><td></td></tr>
+      <tr><td>Wheel</td>		<td>さりん</td>		<td><span class="red">車</span>輪</td>					<td>car ring</td></tr>
+      <tr><td>Gasoline</td>		<td>けいゆ</td>		<td>軽油</td>								<td>light oil</td></tr>
+      <tr><td>Engine</td>		<td>はつどうき</td>	<td>発動<span class="blue">機</span></td>				<td>start moving machine</td></tr>
+      <tr><td>Accident</td>		<td>じこ</td>		<td>事故</td>								<td>cause consequence</td></tr>
+      <tr><td>Shipping</td>		<td>ゆそう</td>		<td>輸送</td>								<td></td></tr>
+      <tr><td>Traffic</td>		<td>こうつう</td>		<td>交通</td>								<td>mixup passage</td></tr>
+      <tr><td>Road</td>			<td>みち</td>		<td>道</td>								<td></td></tr>
+      <tr><td>Taxi</td>			<td>タクシー</td>		<td></td>								<td></td></tr>
+    </table>
+    <h3>Road Bingo</h3>
+    <p>
+      Create a random bingo sheet and print them for the road trip
+    </p>
+    <button onclick="randomSheet()">Random</button><br>
+    <table class="lines">
+      <tr><td id="1_1"></td><td id="2_1"></td><td id="3_1"></td><td id="4_1"></td></tr>
+      <tr><td id="1_2"></td><td id="2_2"></td><td id="3_2"></td><td id="4_2"></td></tr>
+      <tr><td id="1_3"></td><td id="2_3"></td><td id="3_3"></td><td id="4_3"></td></tr>
+      <tr><td id="1_4"></td><td id="2_4"></td><td id="3_4"></td><td id="4_4"></td></tr>
+    </table>
+  </body>
+</html>
