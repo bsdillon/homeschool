@@ -7,6 +7,8 @@
       .narrow {width:200;}
     </style>
     <script>
+      forbidden=["YI","YE","WI","WU","WE"];
+
       function nextKana()
       {
         var used = document.getElementById("usedKana").innerHTML;
@@ -19,6 +21,10 @@
           var c = consonants[cIndex];
           var token = c+v;
           found = used.includes(token);
+          if(forbidden.includes(token))
+          {
+            found=true;//skip forbidden characters
+          }
         }
         used = used + token+" ";
         document.getElementById("usedKana").innerHTML = used;
@@ -26,14 +32,13 @@
 
       function buttonClick(id)
       {
-        document.getElementById(id).classList.add("gold");
+        document.getElementById(id).classList.toggle("gold");
       }
 
       function newBoard()
       {
         document.getElementById("usedKana").innerHTML = "";
         var alreadyAdded = [];
-        forbidden=["YI","YE","WI","WU","WE"];
         for(let x=0;x<5;x++)
         {
           for(let y=0;y<5;y++)
