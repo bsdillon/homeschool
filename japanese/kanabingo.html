@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="japanese.css">
+    <script src="japanese.js"></script>
+    <style>
+      .gold {background-color:#FFFF00;}
+      .narrow {width:200;}
+    </style>
+    <script>
+      function nextKana()
+      {
+        var used = document.getElementById("usedKana").innerHTML;
+        var found = true;
+        while(found)
+        {
+          var vIndex = Math.floor(Math.random()*vowels.length);
+          var cIndex = Math.floor(Math.random()*consonants.length);
+          var v = vowels[vIndex];
+          var c = consonants[cIndex];
+          var token = c+v;
+          found = used.includes(token);
+        }
+        used = used + token+" ";
+        document.getElementById("usedKana").innerHTML = used;
+      }
+
+      function buttonClick(id)
+      {
+        document.getElementById(id).classList.add("gold");
+      }
+
+      function newBoard()
+      {
+        document.getElementById("usedKana").innerHTML = "";
+        var alreadyAdded = [];
+        forbidden=["YI","YE","WI","WU","WE"];
+        for(let x=0;x<5;x++)
+        {
+          for(let y=0;y<5;y++)
+          {
+            if(y==2 && x==2)
+            {
+              document.getElementById(x+"_"+y).innerHTML="<span class='english'>&#128513;</span>";
+              continue;
+            }
+            var found=true;
+
+            while(found)
+            {
+              var vIndex = Math.floor(Math.random()*vowels.length);
+              var cIndex = Math.floor(Math.random()*consonants.length);
+              var v = vowels[vIndex];
+              var c = consonants[cIndex];
+              var token = c+v;
+              found = alreadyAdded.includes(token);
+
+              if(forbidden.includes(token))
+              {
+                found=true;
+                //skip empty characters
+              }
+              else if(!found)
+              {
+                alreadyAdded.push(token);
+                var kana = hiraganaChars[cIndex][vIndex];
+                var myclass= "hiragana";
+                if(Math.random()>.5)
+                {
+                  kana = katakanaChars[cIndex][vIndex];
+                  myclass= "katakana";
+                }
+                document.getElementById(x+"_"+y).innerHTML="<button class='"+myclass+"' name='"+token+"' id='b"+x+"_"+y+"' onclick='buttonClick(this.id)'>&#"+kana+";</button>";
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body onload="newBoard()">
+    <button onclick="newBoard()">New Board</button><br><br>
+    <table><tr><td>
+    <table>
+      <tr><td id="0_0"></td><td id="1_0"></td><td id="2_0"></td><td id="3_0"></td><td id="4_0"></td></tr>
+      <tr><td id="0_1"></td><td id="1_1"></td><td id="2_1"></td><td id="3_1"></td><td id="4_1"></td></tr>
+      <tr><td id="0_2"></td><td id="1_2"></td><td id="2_2"></td><td id="3_2"></td><td id="4_2"></td></tr>
+      <tr><td id="0_3"></td><td id="1_3"></td><td id="2_3"></td><td id="3_3"></td><td id="4_3"></td></tr>
+      <tr><td id="0_4"></td><td id="1_4"></td><td id="2_4"></td><td id="3_4"></td><td id="4_4"></td></tr>
+    </table><td><td>
+    <button onclick="nextKana()">Next</button><br>
+    <p class="narrow" id="usedKana"></p>
+    </td></tr></table>
+  </body>
+</html>

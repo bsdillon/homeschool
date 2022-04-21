@@ -1,0 +1,334 @@
+https://kanji.jitenon.jp/cat/kyoiku.html
+
+零	zero	Rei
+一	one	ichi
+二	two	ni
+三	three	san
+四	four	shi
+五	Five	go
+六	Six	roku
+七	Seven	nana
+八	Eight	hachi
+九	Nine	kyu
+十	Ten	juu
+百	hundred	hyaku
+千	thousand	sen
+
+
+        <tr><td>大</td>		<td>big</td>		<td>だい</td></tr>
+        <tr><td>子</td>		<td>child</td>		<td>こ</td></tr>
+        <tr><td>耳</td>		<td>ear</td>		<td>みみ</td></tr>
+        <tr><td>夕</td>		<td>evening</td>	<td>ゆう</td></tr>
+        <tr><td>目</td>		<td>eye</td>		<td>め</td></tr>
+        <tr><td>手</td>		<td>hand</td>		<td>て</td></tr>
+        <tr><td>足</td>		<td>legs</td>		<td>あし</td></tr>
+        <tr><td>王</td>		<td>king</td>		<td>おう</td></tr>
+        <tr><td>人</td>		<td>man</td>		<td>ひと</td></tr>
+        <tr><td>月</td>		<td>moon</td>		<td>つき</td></tr>
+        <tr><td>口</td>		<td>mouth</td>		<td>くし</td></tr>
+        <tr><td>力</td>		<td>power</td>		<td>しから</td></tr>
+        <tr><td>小</td>		<td>small</td>		<td>こ</td></tr>
+        <tr><td>日</td>		<td>sun</td>		<td>ひ</td></tr>
+        <tr><td>女</td>		<td>woman</td>		<td>おんな</td></tr>
+
+
+工	craft	kou
+月	Moon	tsuki
+山	Mountain	yama
+目	eye	me
+口	mouth	kuchi
+耳	ear	mimi
+手	hand	te
+女	woman	on'na
+人	Man	hito
+子	Child	ko
+川	river	kawa
+田	Rice field	ta
+王	king	ou
+日	Day	hi
+夕	evening	yuu
+小	small	ko
+大	Big/very	dai
+足	legs	ashi  - stop mouth?
+力	Power	chikara
+
+--------------------------
+
+https://www.youtube.com/watch?v=xBY-FfviC54
+左	left	hidari - craft???
+右	right	migi - mouth???
+前	forward	mae - moon something??
+後ろ	behind	urshiro - stop short late
+座って	sit down	suwate
+立って	get up	tate
+
+先	Ahead	saki
+下	under	shita
+上	Up	ue
+出	Out	shutsu - mountain mountain
+入	Enter	iri
+休	Closed	kyuu - man tree??
+立	Stand up	tachi
+
+--------------------------
+
+
+男	Man (symbol)	otoko - power + field?
+
+--------------------------
+
+気	air	ki - steam + some x
+空	Sky	sora - hole + craft?
+石	stone	ishi
+竹	bamboo	take
+花	flower	hana - spoon + sage + spoon
+草	grass	kusa - sun + sage? + ten?
+天	Heaven	ten
+雨	rain	ame
+町	town	machi - rice field + something hooked?
+村	village	mura - tREE MEASUREMENT
+校	school	koo - tree + father + hat???
+学	Learning	Gaku - writing + some tic marks
+
+--------------------------
+
+年	Year	toshi - Pestle + a bunch of stuff
+早	Early	haya - sun + ten??
+
+--------------------------
+
+青	Blue	ao - ?? + month
+赤	Red	aka
+白	White	shiro - day + mark
+字	Character/writing	ji - from child + cap
+
+--------------------------
+
+犬	dog	inu
+本	Book	hon
+車	car	kuruma
+玉	ball	Tama
+虫	insect	mushi
+貝	Shellfish	kai - eye + some strokes
+
+--------------------------
+
+円	circle	en
+中	During/middle	naka
+名	Name	na - from evening mouth
+正	Positive	masa
+生	Raw	nama
+見	See	mi - eye + some strokes
+文	Sentence	bun
+音	sound	oto - from up/day
+糸	thread	ito - from two chinese kanji indicating short and small
+
+--------------------------
+
+--------------------------
+
+--------------------------
+https://en.wikipedia.org/wiki/Table_of_Indexing_Chinese_Character_Components
+https://en.wikipedia.org/wiki/Radical_52
+200 kanji on the list
+
+一
+丨
+丿
+丶
+乛
+十
+厂
+匚
+卜
+冂
+八
+人
+勹
+儿
+匕
+几
+亠
+冫
+冖
+凵
+卩
+刀
+力
+又
+厶
+廴
+干
+工
+土
+艹
+寸
+廾
+大
+尢
+弋
+小
+口
+山
+巾
+彳
+彡
+夕
+夂
+丬
+广
+门
+宀
+辶
+彐
+尸
+己
+弓
+子
+屮
+女
+飞
+马
+么
+巛
+王
+无
+韦
+木
+支
+犬
+歹
+车
+牙
+戈
+比
+瓦
+止
+攴
+日
+贝
+水
+见
+牛
+手
+气
+毛
+长
+片
+斤
+爪
+父
+月
+氏
+欠
+风
+殳
+文
+方
+火
+斗
+户
+心
+毋
+示
+甘
+石
+龙
+业
+目
+田
+罒
+皿
+生
+矢
+禾
+白
+瓜
+鸟
+疒
+立
+穴
+疋
+皮
+癶
+矛
+耒
+老
+耳
+臣
+覀
+而
+页
+至
+虍
+虫
+肉
+缶
+舌
+竹
+臼
+自
+血
+舟
+色
+齐
+衣
+羊
+米
+聿
+艮
+羽
+糸
+麦
+走
+赤
+豆
+酉
+辰
+豕
+卤
+里
+足
+邑
+身
+釆
+谷
+豸
+龟
+角
+言
+辛
+青
+龺
+雨
+非
+齿
+黾
+隹
+阜
+金
+鱼
+隶
+革
+面
+韭
+骨
+香
+鬼
+食
+音
+首
+髟
+鬲
+鬥
+高
+黄
+麻
+鹿
+鼎
+黑
+黍
+鼓
+鼠
+鼻
+龠
