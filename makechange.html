@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>Make Change</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script>
+      var names = {1:"penny.jpg", 5:"nickel.jpg", 10:"dime.jpg", 25:"quarter.jpg"};
+      var runningID=0;
+      var change = 0;
+
+      function init()
+      {
+        runningID=0;
+        var tag = document.getElementById("field");
+        while(tag.children.length>0)
+        {
+          tag.removeChild(tag.children[0]);
+        }
+
+        var tag = document.getElementById("answer");
+        while(tag.children.length>0)
+        {
+          tag.removeChild(tag.children[0]);
+        }
+        change = Math.floor(Math.random()*99+1);
+        var txt = change;
+        if(change<10)
+        {
+          txt = "0"+txt;
+        }
+        document.getElementById("target").innerHTML = "$0."+txt;
+      }
+
+      function removeCoin(name)
+      {
+        var child = document.getElementById(name);
+        document.getElementById("field").removeChild(child);
+      }      
+
+      function addCoin(num)
+      {
+        var tag = document.getElementById("field");
+        var img = document.createElement("img");
+        tag.appendChild(img);
+        img.src=names[num];
+        img.id="coin"+runningID;
+        newID = 'coin'+runningID;
+        img.onclick=function(){removeCoin(img.id);};
+        runningID = runningID + 1;
+      }
+
+      function checkCount()
+      {
+        var output = document.getElementById("answer");
+        var correctCount = 0;
+        var temp = change;
+        var coins = [25, 10, 5, 1];
+        
+        for(let i=0;i<coins.length;i++)
+        {
+          while(temp>=coins[i])
+          {
+            correctCount = correctCount + 1;
+            temp = temp - coins[i];
+            var img = document.createElement("img");
+            output.appendChild(img);
+            img.src=names[coins[i]];
+          }
+        }
+        var tmp = document.createElement("br");
+        output.appendChild(tmp);
+        tmp = document.createElement("button");
+        output.appendChild(tmp);
+        tmp.innerHTML="Reset";
+        tmp.onclick=function(){init();};
+
+      }
+    </script>
+    <style>
+      img {width:60;}
+    </style>
+  </head>
+  <body onload="init()">
+    <h2>Make Change</h2>
+    <p>Make the required change using the <em>MINIMUM</em> number of coins.</p>
+    <table>
+      <tr><td><img onclick="addCoin(1)" src='penny.jpg'></td><td><img onclick="addCoin(5)" src='nickel.jpg'></td><td><img onclick="addCoin(10)" src='dime.jpg'></td><td><img onclick="addCoin(25)" src='quarter.jpg'></td></tr>
+    </table>
+    <br><br>
+    <h3 id="target"></h3>
+    <div id='field'></div><br>
+    <button onclick="checkCount()">Check it</button><br>
+    <div id="answer"><div>
+  </body>
+</html>
