@@ -173,7 +173,7 @@ Trig.prototype.CalcTrig = function()
   var BC=Math.floor(100*(Random()*10+10))/100;
   var AC=Math.floor(Math.sqrt((AB*AB)+(BC*BC))*100)/100;
   
-  var s="<img src='./math/SimpleRight.png'><br>";
+  var s="<img src='./Math/SimpleRight.png'><br>";
   switch(Math.floor(Random()*3))
   {
     case 0:
@@ -215,7 +215,7 @@ Trig.prototype.UnitCircle = function()
 Trig.prototype.LabelTriangle = function()
 {
   var angle = Math.floor(Random()*360);
-  var tmp = "<img src='./math/rotated-triangle.png' style='transform:rotate("+angle+"deg);'><br class='clear'><br class='clear'>"
+  var tmp = "<img src='./Math/rotated-triangle.png' style='transform:rotate("+angle+"deg);'><br class='clear'><br class='clear'>"
   tmp += "Label the angles and sides of the triangle. Write the relationships<br>"
   tmp += "for sin, cos, and tangent of each angle. Write the pythagorean theorem.<br>"
 
