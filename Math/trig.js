@@ -85,29 +85,86 @@ Trig.prototype.BasicProblem = function()
   }
 }
 
-Trig.prototype.GraphFunction = function()
+Trig.prototype.EasyGraphFunction = function()
 {
-  var A=Math.floor(Random()*10-5);
-  var phi=Math.floor(Random()*8-4);
-  var omega=Math.floor(Random()*5+1);
+  var A=Math.floor(Random()*3+1);
+  var phi=Math.floor(Random()*3-1);
+  var omega=Math.floor(Random()*3+1);
   
-  var s="<br><nobr>"+A+" "+this.RandomTrigFunction()+"( ";
-  
-  if(phi!=0)
-  {
-    s+="["+phi+"&pi;/8] + ";
-  }
+  var tmp="<br><nobr>"+A+" ";
+  var func = ['Sin', 'Cos', 'Tan'];
+  tmp += func[Math.floor(Random()*func.length)]+"( "
 
-  if(Random()>.5)
+  if(omega==1)
   {
-    s+=omega+"&theta;)";
+    tmp+="&theta;";
+  }
+  else if(Random()>.5)
+  {
+    tmp+="-"+omega+"&theta;";
   }
   else
   {
-    s+="&theta;/"+omega+")";
+    tmp+=omega+"&theta;";
   }
 
-  return "Graph one period of "+s+"</nobr>";
+  if(phi<0)
+  {
+    tmp+=" &minus; &pi;/2)";
+  }
+  else if(phi>0)
+  {
+    tmp+=" + &pi;/2)";
+  }
+  else
+  {
+    tmp+=")";
+  }
+
+  return "Graph one period of "+tmp+"</nobr>";
+}
+
+Trig.prototype.GraphFunction = function()
+{
+  var A=Math.floor(Random()*5+1);
+  var phi=Math.floor(Random()*8-4);
+  var omega=Math.floor(Random()*5+1);
+  
+  var tmp="<br><nobr>"+A+" "+this.RandomTrigFunction()+"( ";
+  
+  if(phi!=0)
+  {
+    var d = 8;
+    while(phi%2==0)
+    {
+      phi = phi/2;
+      d = d/2;
+    }
+
+    if(d!=1)
+    {
+      tmp+="["+phi+"&pi;/"+d+"] + ";
+    }
+    else
+    {
+      tmp+="["+phi+"&pi;] + ";
+    }
+  }
+
+  if(omega==1)
+  {
+    tmp+="&theta;)";
+  }
+  else if(Random()>.5)
+  {
+    tmp+=omega+"&theta;)";
+  }
+  else
+  {
+    tmp+="&theta;/"+omega+")";
+  }
+  alert(tmp);
+  return "Graph one period of "+tmp+"</nobr>";
 }
 
 Trig.prototype.CalcTrig = function()
@@ -144,23 +201,25 @@ Trig.prototype.CalcTrig = function()
     s+="C)";
   }
 
+  s+=" - show all your work"
+
   return s;
 }
 
 Trig.prototype.UnitCircle = function()
 {
   var angle = Math.floor(Random()*360);
-  return "Draw the right triangle formed at "+angle+"&deg; on the unit circle";
+  return "Draw the right triangle formed at "+angle+"&deg; on the unit circle. Label each corner and give the length of all sides.";
 }
 
 Trig.prototype.LabelTriangle = function()
 {
   var angle = Math.floor(Random()*360);
-  var s = "<img src='./math/rotated-triangle.png' style='transform:rotate("+angle+"deg);'><br class='clear'><br class='clear'>"
-  s += "Label the angles and sides of the triangle. Write the relationships<br>"
-  s += "for sin, cos, and tangent of each angle. Write the pythagorean theorem.<br>"
+  var tmp = "<img src='./math/rotated-triangle.png' style='transform:rotate("+angle+"deg);'><br class='clear'><br class='clear'>"
+  tmp += "Label the angles and sides of the triangle. Write the relationships<br>"
+  tmp += "for sin, cos, and tangent of each angle. Write the pythagorean theorem.<br>"
 
-  return s;
+  return tmp;
 }
 
 Trig.prototype.AngleSum = function()
@@ -172,20 +231,20 @@ Trig.prototype.AngleSum = function()
   var sine_b = Math.sin(beta*Math.PI/180).toFixed(3);
   var cosine_b = Math.cos(beta*Math.PI/180).toFixed(3);
 
-  var s = this.RandomTrigFunction()+"(&alpha;";
+  var tmp = this.RandomTrigFunction()+"(&alpha;";
 
   if(Random()<.5)
   {
-    s+="+&beta;)<br>";
+    tmp+="+&beta;)<br>";
   }
   else
   {
-    s+="-&beta;)<br>";
+    tmp+="-&beta;)<br>";
   }
 
   var t = "&alpha;="+alpha+"&deg;  Cos(&alpha;)="+cosine_a+" Sin(&alpha;)="+sine_a+"<br>";
   t += "&beta;="+beta+"&deg;  Cos(&beta;)="+cosine_b+" Sin(&beta;)="+sine_b+"<br>";
-  t += "Find "+s;
+  t += "Find "+tmp;
   return t;
 }
 
@@ -195,10 +254,10 @@ Trig.prototype.DoubleAngle = function()
   var sine_a = Math.sin(alpha*Math.PI/180).toFixed(3);
   var cosine_a = Math.cos(alpha*Math.PI/180).toFixed(3);
 
-  var s = this.RandomTrigFunction()+"(2&alpha;)<br>";
+  var tmp = this.RandomTrigFunction()+"(2&alpha;)<br>";
 
   var t = "&alpha;="+alpha+"&deg;  Cos(&alpha;)="+cosine_a+" Sin(&alpha;)="+sine_a+"<br>";
-  t += "Find "+s;
+  t += "Find "+tmp;
   return t;
 }
 
@@ -208,10 +267,10 @@ Trig.prototype.HalfAngle = function()
   var sine_a = Math.sin(alpha*Math.PI/180).toFixed(3);
   var cosine_a = Math.cos(alpha*Math.PI/180).toFixed(3);
 
-  var s = this.RandomTrigFunction()+"(&alpha;/2)<br>";
+  var tmp = this.RandomTrigFunction()+"(&alpha;/2)<br>";
 
   var t = "&alpha;="+alpha+"&deg;  Cos(&alpha;)="+cosine_a+" Sin(&alpha;)="+sine_a+"<br>";
-  t += "Find "+s;
+  t += "Find "+tmp;
   return t;
 }
 
@@ -247,55 +306,55 @@ function Triangle()
 
 Triangle.prototype.LawSines = function()
 {
-  var s = "";
+  var tmp = "";
   var r = Math.floor(Random()*3);
   switch(r)
   {
     case 0:
-      s += "&angle;A="+this.A;
-      s += " BC="+this.BC;
-      s += Random() ? " AB="+this.AB : " AC="+this.AC;
+      tmp += "&angle;A="+this.A;
+      tmp += " BC="+this.BC;
+      tmp += Random() ? " AB="+this.AB : " AC="+this.AC;
       break;
     case 1:
-      s += "&angle;B="+this.B;
-      s += " AC="+this.AC;
-      s += Random() ? " AB="+this.AB : " BC="+this.BC;
+      tmp += "&angle;B="+this.B;
+      tmp += " AC="+this.AC;
+      tmp += Random() ? " AB="+this.AB : " BC="+this.BC;
       break;
     case 2:
-      s += "&angle;C="+this.C;
-      s += " AB="+this.AB;
-      s += Random() ? " BC="+this.BC : " AC="+this.AC;
+      tmp += "&angle;C="+this.C;
+      tmp += " AB="+this.AB;
+      tmp += Random() ? " BC="+this.BC : " AC="+this.AC;
       break;
   }
 
-  return s;    
+  return tmp;
 }
 
 Triangle.prototype.LawCosines = function()
 {
-  var s="";
+  var tmp="";
   var r = Math.floor(Random()*3);
   switch(r)
   {
     case 0:
-      s += "&angle;A="+this.A;
-      s += " AB="+this.AB+" AC="+this.AC;
+      tmp += "&angle;A="+this.A;
+      tmp += " AB="+this.AB+" AC="+this.AC;
       break;
     case 1:
-      s += "&angle;B="+this.B;
-      s += " AB="+this.AB+" BC="+this.BC;
+      tmp += "&angle;B="+this.B;
+      tmp += " AB="+this.AB+" BC="+this.BC;
       break;
     case 2:
-      s += "&angle;C="+this.C;
-      s += " AC="+this.AC+" BC="+this.BC;
+      tmp += "&angle;C="+this.C;
+      tmp += " AC="+this.AC+" BC="+this.BC;
       break;
   }
-  return s;
+  return tmp;
 }
 
 Triangle.prototype.SSS = function()
 {
-  s = " AB="+this.AB+" AC="+this.AC+" BC="+this.BC;
-  return s;
+  tmp = " AB="+this.AB+" AC="+this.AC+" BC="+this.BC;
+  return tmp;
 }
 

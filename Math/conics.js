@@ -22,7 +22,7 @@ function line()
   answer +=a+"x + "+b+"(0)="+c+"&nbsp;&nbsp;Test for y=0<br>";
   answer +="x="+c+"/"+a+"<br><br>";
   answer +=a+"{0} + "+b+"x="+c+"&nbsp;&nbsp;Test for x=0<br>";
-  answer +="y="+c+"/"+b+"<div>";
+  answer +="y="+c+"/"+b+"</div>";
 
   return answer;
 }
