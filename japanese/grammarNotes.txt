@@ -69,3 +69,9 @@ names them 1st son, 2nd son, 3rd son, etc.
 を - direct object (wo)
 知 - knowledge (chi)
 か - question
+
+
+https://jisho.org/  - site for breaking down kanji
+https://kanji.jitenon.jp/kousei/list.php?data=76ee77e2  -- site for building up kanji
+https://www.japandict.com/%E9%9D%92%E9%BE%8D - site helps with the tones
+https://www.i2ocr.com/free-online-japanese-ocr - site for character recognition

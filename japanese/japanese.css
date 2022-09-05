@@ -16,3 +16,7 @@
       .tile h3 {width:200; font-align:center;}
       .tile p {width:200; font-align:center;}
       p {width:600;}
+      .rising {border-bottom: 2px solid black; }
+      .rising::after {position:relative; left: +.2em; bottom:-0.0em; content:"↑"; color:black; border-bottom: 0;}
+      .falling {border-top: 2px solid black; }
+      .falling::after {position:relative; left: +.2em; bottom:+0.3em; content:"↓"; color:black; border-top: 0;}
