@@ -21,7 +21,7 @@ function factoredPolynomial()
       if(i<10)
       {
         s+= "(x + ";
-        s += (i-10)+")<sup>"+coeffs[i]+"</sup>";
+        s += (10-i)+")<sup>"+coeffs[i]+"</sup>";
       }
       else if(i==10)
       {
