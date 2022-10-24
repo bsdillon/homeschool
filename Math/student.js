@@ -3,7 +3,7 @@ function StudentAlgorithm(letter)
   switch(letter)
   {
     case 'E':
-      EveryMath()
+      NextMath()
       break;
     case 'R':
       EveryMath()
@@ -21,6 +21,14 @@ function StudentAlgorithm(letter)
       Perfect();
       break;
   }
+}
+
+function Nextmath()
+{
+  var s = "Graph this polynomial.<br>f(x)= ";
+  s += factoredPolynomial();
+  
+  content.innerHTML = s;
 }
 
 function EveryMath()
