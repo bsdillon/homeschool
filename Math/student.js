@@ -27,7 +27,10 @@ function NextMath()
 {
   var s = "Graph this polynomial.<br>f(x)= ";
   s += factoredPolynomial();
+
+  s+="<br><br>";
   
+  s+= createFromRoots();
   content.innerHTML = s;
 }
 
