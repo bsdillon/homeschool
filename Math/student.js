@@ -23,7 +23,7 @@ function StudentAlgorithm(letter)
   }
 }
 
-function Nextmath()
+function NextMath()
 {
   var s = "Graph this polynomial.<br>f(x)= ";
   s += factoredPolynomial();
