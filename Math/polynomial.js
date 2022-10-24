@@ -18,26 +18,25 @@ function factoredPolynomial()
   {
     if(coeffs[i]>0)
     {
+      pow = "<sup>"+coeffs[i]+"</sup>"
+      if(coeffs[i]==1)
+      {
+        pow = "";
+      }
+      
       if(i<10)
       {
         s+= "(x + ";
-        s += (10-i)+")<sup>"+coeffs[i]+"</sup>";
+        s += (10-i)+")"+pow;
       }
       else if(i==10)
       {
-        if(coeffs[i]==0)
-        {
-          s= "x"+s;
-        }
-        else
-        {
-          s= "x<sup>"+coeffs[i]+"</sup>"+s;
-        }
+        s= "x"+ pow + s;
       }
       else
       {
         s+= "(x &minus; ";
-        s += (i-10)+")<sup>"+coeffs[i]+"</sup>";
+        s += (i-10)+")"+pow;
       }
     }
   }
