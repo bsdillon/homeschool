@@ -30,7 +30,8 @@
           let ans = JSON.parse(request.response)[1][0];
           name = ans.name;
           codeL = code.toLowerCase();
-          flag = "https://www.countryflags.io/"+codeL+"/flat/64.png";
+          flag = "https://flagsapi.com/"+code+"/flat/64.png";
+
           map = "./maps/"+codeL+"_128.png";
           lat = ans.latitude;
           lon = ans.longitude;
@@ -51,7 +52,7 @@
          s+=(lon>0?lon+"E<br>" : (-lon)+"W<br>");
          s+="<img src='"+flag+"' width='128'><br clear='all'><br clear='all'>";
          s+="<img src='"+map+"' width='128' class='border' align='left' /><br clear='all'>"
-         s+="</p>";
+         s+="<br></p>";
          output.innerHTML=s;
      }
     </script>
@@ -63,16 +64,16 @@
     </style>
   </head>
   <body onload="RandomInit(true,0);loadAssignment()">
-    <h2>Write an essay</h2>
-    <p>Write a two page essay about the country below. send only half your text explaining the seven context questions and the rest on something unique to the country:</p>
+    <h2>Create a travel log</h2>
+    <p>Each week, start a new travel log that takes off from Washington, D.C. and takes of to five different countries. At each stop record the following:</p>
     <ul>
-      <li>What is the land like? What is the region like?</li>
-      <li>What is the climate like?</li>
-      <li>What is the wildlife like? What natural resources do they have?</li>
-      <li>What are the people like? Do they have a name for themselves? What language do they speak? What is unique to their culture?</li>
-      <li>What is the government like? Do they have any current political conflicts? Have they had a civil war? External war?</li>
-      <li>What food can they grow? What animals can they raise? Do they have any important agriculture?</li>
-      <li>What is their econmy like? What things do they sell to the rest of the world? What things do they need to buy from others? Do they have strong trading partnerships? What is the median income? What is the Gross National Product?</li>
+      <li>How did you travel to this country? How much did that trip cost in terms of money and time?</li>
+      <li>What is the contry's capital?</li>
+      <li>What is their money called? How much is $1.00 US worth?</li>
+      <li>What is the weather like today?</li>
+      <li>What language do they speak? Learn how to say "Hello, my name is ... " in their language</li>
+      <li>What is their government like? Is it dangerous to be there now?</li>
+      <li>Tell us about one important place you might visit while there.</li>
     </ul>
     <button onclick="loadAssignment()">Try again</button>
     <div id="output">

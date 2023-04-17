@@ -1,0 +1,14 @@
+.clear { clear:both; }
+.between {border-left:2px black solid; border-right:2px black solid;}
+.under {border-bottom:2px black solid;}
+.right {text-align:right;}
+.center {text-align:center;}
+.big {font-size:15px;}
+td.hpad {padding:15px;}
+table.padded td,th {padding:15px; width:150px;}
+.padded {padding: 15px;}
+table {text-align:top;}
+dt {font-size:15px;}
+dd {font-size:15px; font-weight:bold;font-style:italic;}
+.red {color:red; font-weight:bold;}
+table.bordered td{border-style:solid; text-align:center;}
