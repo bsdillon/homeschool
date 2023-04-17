@@ -61,50 +61,71 @@ function Perfect()
 
 function EveryMath()
 {
-  var s = "First do some arithmetic.<br>";
-  s+="<table>";
   var math = new Arithmetic();
   math.SetSectionProbabilities(0,1,1,0,1,1);
   
-  for(let r=0;r<2;r++)
+  s="<table><tr width='150'>"
+  for(let c=0;c<4;c++)
   {
-    s+="<tr width='150'>"
-    for(let c=0;c<3;c++)
-    {
-      math.SelectArithmetic()
-      s+="<td style='padding-right:50px'>"+math.SelectProblem()+"</td>"
-    }
-    s+="</tr><tr><td>&nbsp;</td></tr>"
+    math.SelectArithmetic()
+    s+="<td style='padding-right:50px'>"+math.SelectProblem()+"</td>"
   }
-  s+="</table>";
+  s+="</tr></table><br><br><table><tr><td>";
 
   math = new Powers();
   r = Random();
   if(r<.33){
-    s+=math.PrimeFactor()+"<br><br>"
+    s+=math.PrimeFactor()
   }
   else if (r<.67) {
-    s+=math.nRoot()+"<br><br>"
+    s+=math.nRoot()
   }
   else {
-    s+=math.PowerRatio()+"<br><br>"
+    s+=math.PowerRatio()
   }
+
+  s+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td><td>";
 
   math = new Trig();
   r = Random();
   if(r<.33){
-    s+= math.EasyGraphFunction()+"<br><br>";
+    s+= math.EasyGraphFunction();
   }
   else if (r<.67) {
-    s+= math.CalcTrig()+"<br><br>";
+    s+= math.CalcTrig();
   }
   else {
-    s+= math.UnitCircle()+"<br><br>";
+    s+= math.UnitCircle();
   }
+  s+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td></tr></table><br><br><table><tr><td>";
 
-  s+= AssortmentsSelection();
+  s+= AssortmentsSelection()+"<br>";
 
-  s+= Factorial();
+  s+="</td><td>";
+
+  s+= Factorial()+"<br>";
+
+  s+="</td><td>";
+
+  s+= CountCases()+"<br>";
+
+  s+="</td></tr><tr><td>";
+
+  s+= CountCases2()+"<br>";
+
+  s+="</td><td>";
+
+  s+= venn()+"<br>";
+
+  s+="</td></tr></table><table><tr><td>";
+
+  s+= alienAdditionRule();
+
+  s+="</td><td>";
+
+  s += dataProbability();
+
+  s+="</td></tr></table>";
 
   //put it into the content
   content.innerHTML = s;
