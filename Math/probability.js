@@ -150,6 +150,7 @@ function dataProbability()
   var temp = "<p>The data below shows the weight of corn ears harvested at one farm.";
   n1 = Math.floor(Random()*9+1);
   n2 = Math.floor(Random()*9+1);
+  while(n1==n2){n2 = Math.floor(Random()*9+1);}
   if(n1>n2){tp=n1;n1=n2;n2=tp;}
   temp+="Based on this data, what is the probability of harvesting an ear ";
   r = Random();
