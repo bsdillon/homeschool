@@ -15,6 +15,51 @@ function AssortmentsSelection() {
   return temp;
 }
 
+function n_choose_r() {
+  var people = Math.floor(Random()*3)+2
+  var games = [["5 card stud",5], ["cribbage",6], ["rummy", 7], ["gin", 10]];
+  var g = Math.floor(Random()*games.length);
+  var tmp = "You are playing a game of "+games[g][0]+" with a group of "+people+" friends."
+  tmp += "That means "+games[g][1]+" cards per hand. How many unique deals could you play?"
+  tmp += " Remember that in a 'hand' the order will not matter, but in a deal each hand has to go to the right person."
+  return tmp;
+}
+
+function n_permute_r() {
+  var classes =["Art","Baseball","Computers","Driving","Electronics","Future Businessman","Geography","History","Individual Finances","Jazz","Karate","Latin","Math","National Government","Ocean Studies","Pre-calculus","Qualifying Exams","Robotis","Spanish","Trigonometry","University Prep","Vocal Music","Water Conservation","Xenobiology","Youth Government","Zoolology"]
+  var selected = [];
+  var c = Math.floor(Random()*5+10);
+  list = "<b>";
+  while(selected.length<c)
+  {
+    var next = Math.floor(Random()*26);
+    if(selected.indexOf(next)<0)
+    {
+      selected.push(next);
+      list+=classes[next]+"&nbsp;&nbsp;***&nbsp;&nbsp;";
+      if(selected.length%5==0)
+      {
+        list+="<br>";
+      }
+    }
+  }
+  list +="</b>"
+
+  var tmp = "At A-B High the senior class is picking their schedules from the class list below."
+  tmp += "If the students have to select 5 classes how many unique class schedules can be selected?"
+  tmp += " Remember that the order of classes matter.<br>"
+  tmp += list;
+  return tmp;
+}
+
+function repetition() {
+  var words = ["Ferrocarril", "Mesosaur", "Fullfilled", "Insurrection", "Historicity", "Minnesotta", "Lightning", "Telephone", "Preindustrial", "Nova Scotia", "Uruaguay", "Beattific"];
+  var w = Math.floor(Random()*words.length);
+  var len = words[w].length;
+  var tmp = "How many unique "+len+"-length 'words' can you create by recombining the letters of "+words[w]+"?";
+  return tmp;
+}
+
 function Factorial() {
   var temp = "<p>Expand ";
   var top = Math.floor(Random()*10+3);
@@ -25,7 +70,7 @@ function Factorial() {
 }
 
 function CountCases() {
-  var temp = "<p>How many different license plates can have ";
+  var temp = "How many different license plates can have ";
   var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
   num = Math.floor(Random()*5+3);
   temp += num+" digits in the format ";
@@ -38,7 +83,7 @@ function CountCases() {
     }
     temp+=char
   }
-  temp+="?</p>";
+  temp+="?";
   return temp;
 }
 
@@ -54,7 +99,7 @@ function CountCases2() {
 }
 
 function venn() {
-  var temp = "<p>Draw a venn diagram that demonstrates the relationship below. Be sure to label all areas with at least ONE object.<br>";
+  var temp = "Draw a venn diagram that demonstrates the relationship below. Be sure to label all areas with at least ONE object.<br>";
   r = Random();
   if(r<.36) {
     if(Random()<.5){
@@ -101,8 +146,7 @@ function venn() {
     }
   }
 
-  temp += "</p>";
-  return temp;
+  return temp+"<br>";
 }
 
 function alienAdditionRule()

@@ -70,7 +70,7 @@ function EveryMath()
     math.SelectArithmetic()
     s+="<td style='padding-right:50px'>"+math.SelectProblem()+"</td>"
   }
-  s+="</tr></table><br><br><table><tr><td>";
+  s+="</tr></table><br>";
 
   math = new Powers();
   r = Random();
@@ -81,10 +81,10 @@ function EveryMath()
     s+=math.nRoot()
   }
   else {
-    s+=math.PowerRatio()
+    s+=math.PowerRatio()+"<br>"
   }
 
-  s+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td><td>";
+  s+="<br>";
 
   math = new Trig();
   r = Random();
@@ -95,37 +95,41 @@ function EveryMath()
     s+= math.CalcTrig();
   }
   else {
-    s+= math.UnitCircle();
+    s+= math.UnitCircle()+"<br>";
   }
-  s+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td></tr></table><br><br><table><tr><td>";
+  s+="<br>";
 
-  s+= AssortmentsSelection()+"<br>";
+  for(let i=0;i<2;i++) {
+    r = Random();
+    if(r<1.0/7) {
+      s+= AssortmentsSelection()+"<br>";
+    }
+    else if(r<2.0/7) {
+      s+= Factorial()+"<br>";
+    }
+    else if(r<3.0/7) {
+      s+= CountCases()+"<br>";
+    }
+    else if(r<4.0/7) {
+      s+= CountCases2()+"<br>";
+    }
+    else if(r<5.0/7) {
+      s+= venn();
+    }
+    else if(r<6.0/7) {
+      s+= alienAdditionRule();
+    }
+    else{
+      s += dataProbability();
+    }
+    s+="<br>";
+  }
 
-  s+="</td><td>";
+  s += n_choose_r()+"<br><br>"
 
-  s+= Factorial()+"<br>";
+  s += n_permute_r()+"<br><br>"
 
-  s+="</td><td>";
-
-  s+= CountCases()+"<br>";
-
-  s+="</td></tr><tr><td>";
-
-  s+= CountCases2()+"<br>";
-
-  s+="</td><td>";
-
-  s+= venn()+"<br>";
-
-  s+="</td></tr></table><table><tr><td>";
-
-  s+= alienAdditionRule();
-
-  s+="</td><td>";
-
-  s += dataProbability();
-
-  s+="</td></tr></table>";
+  s += repetition() 
 
   //put it into the content
   content.innerHTML = s;
