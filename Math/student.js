@@ -101,35 +101,18 @@ function EveryMath()
 
   for(let i=0;i<2;i++) {
     r = Random();
-    if(r<1.0/7) {
+    if(r<1.0/3) {
       s+= AssortmentsSelection()+"<br>";
     }
-    else if(r<2.0/7) {
-      s+= Factorial()+"<br>";
-    }
-    else if(r<3.0/7) {
-      s+= CountCases()+"<br>";
-    }
-    else if(r<4.0/7) {
-      s+= CountCases2()+"<br>";
-    }
-    else if(r<5.0/7) {
-      s+= venn();
-    }
-    else if(r<6.0/7) {
+    else if(r<2.0/3) {
       s+= alienAdditionRule();
     }
     else{
-      s += dataProbability();
+      s += repetition() 
     }
     s+="<br>";
   }
 
-  s += n_choose_r()+"<br><br>"
-
-  s += n_permute_r()+"<br><br>"
-
-  s += repetition() 
 
   //put it into the content
   content.innerHTML = s;
