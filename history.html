@@ -1,0 +1,215 @@
+<html>
+  <head>
+    <script>
+      var events = ['University of Bologna', 'Leaders: Stalin', 'Explorers: Christopher Columbus', 'Explorers: Magellan', 'Wars: Korean War', 'Fall of Berlin Wall', 
+                   'Scientists: Darwin', 'Invention: X-ray', 'Wars: September 11th', 'Rise of Aztecs', 'Writers: Maya Angelou', 'Invention: Iron Age', 'Angkor Wat', 
+                   'Wars: Chinese Revolution', 'Wars: Battle of Thermopylae', 'Writers: Marx', 'Sputnik', 'Wars: Battle of Vienna', 'Invention: Gunpowder', 'Black Death', 
+                   'Womans Suffrage', 'Invention: Railroad', 'Wars: Russian Revolution', 'Scientists: Pasteur', 'Leaders: Charlemagne', 'Explorers: Hudson', 'Great Pyramid', 
+                   'Wars: Spanish Armada', 'Kamakura Shogunate', 'Invention: Vaccine', 'Space Race', 'Rise of Inca', 'Scientists: Lovelace', 'Invention: Telephone', 
+                   'Leaders: Alexander the Great', 'Leaders: Muhammad', 'Moon Landing', 'Invention: Steam Engine', 'Leaders: Elizabeth I', 'Wars: Gulf War 1', 
+                   'Wars: First Crusade', 'Leaders: Hitler', 'Leaders: Buddha', 'Writers: Twain', 'Invention: ether anesthetic', 'Invention: Atomic Bomb', 'Leaders: Mao', 
+                   'Leaders: Lenin', 'Explorers: Cooke', 'Renaissance', 'Wars: End of Apartheid', 'Writers: Mary Shelley', 'Invention: Birth Control', 'Leaders: Confucius', 
+                   'Explorers: Jamestown', 'Abolitionist Movement', 'Leaders: Suleiman the Magnificent', 'Rise of Greece', 'Wars: Norman Conquest of England', 
+                   'League of Nations', 'Explorers: Armstrong', 'Writers: Hans Christian Andersen', 'Scientists: GW Carver', 'Wars: American Civil War', 'Leaders: JFK', 
+                   'Code of Hammurabi', 'Writers: Lewis Carol', 'Invention: Movable Type', 'Leaders: Genghis Khan', 'Scientists: Jane Goodall', 'Suez Canal', 'Leaders: Qin', 
+                   'Boston Tea Party', 'Invention: Bronze Age', 'Wars: Vietnam War', 'Wars: French Revolution', 'Wars: Spanish Independence', 'Leaders: Jesus', 
+                   'Wars: Battle of Tours', 'Invention: Powered flight', 'Invention: Steam Boat', 'Invention: Agriculture', 'Wars: World War I', 
+                   'Wars: Cortes Conquers Aztecs', 'Explorers: Marco Polo', 'Wars: Spanish-American War', 'Wars: Gulf War 2', 'Wars: Turks take Constantinople', 
+                   'Wars: Russo-Japanese War', 'Fall of Rome', 'Wars: Pizarro Conquers Inca', 'Julian Calendar', 'Invention: Internet', 'Writers: Dickens', 
+                   'Explorers: Buzz Aldrin', 'Taj Mahal', 'Wars: World War II', 'Wars: Battle of Marathon', 'Writers: Victor Hugo', 'Wars: US Civil Rights Movement', 
+                   'Invention: Penicillin', 'Scientists: Galileo', 'Wars: Greco-Persian Wars', 'Invention: Telegraph', 'Invention: Cities', 'Writers: Shakespeare', 
+                   'Leaders: Martin Luther', 'Writers: Bronte Sisters', 'Invention: Wheeled Vehicles', 'Wars: Six-Day War', 'Spanish Flu', 'Roman Republic', 
+                   'African Colonization', 'Invention: Stone Age', 'Wars: Cuban Missile Crisis', 'Great Wall', 'Invention: Writing', 'United Nations', 'Scientists: Tesla', 
+                   'Magna Charta', 'Wars: Indian Independence', 'Scientists: Newton', 'Scientists: Copernicus', 'Wars: American Revolution', 'Invention: Spinning Jenny', 
+                   'Explorers: Yuri Gagarin', 'Wars: Pearl Harbor', 'Great Depression', 'Wars: Haitian Independence', 'Scientists: Flemming', 'Wars: English Civil War', 
+                   'Roman Empire', 'Explorers: Leif Erickson', 'Industrial Revolution', 'Wars: D-Day Landings', 'Scientists: Watson & Crick', 'Scientists: Marie Curie', 
+                   'Columbian Exchange', 'Invention: Radio', 'Explorers: Vasco da Gama', 'Scientests: Einstein'];
+
+      function randomize()
+      {
+        var x = Math.floor(Math.random()*events.length);
+        var y = Math.floor(Math.random()*events.length);
+        while(x==y)
+        {
+          y = Math.floor(Math.random()*events.length);
+        }
+        var z = Math.floor(Math.random()*events.length);
+        while(x==z || y==z)
+        {
+          z = Math.floor(Math.random()*events.length);
+        }
+        document.getElementById("elem1").innerHTML=events[x];
+        document.getElementById("elem2").innerHTML=events[y];
+        document.getElementById("elem3").innerHTML=events[z];
+      }
+    </script>
+    <style>
+      label {font-weight: bold;}
+      .red  {color:white; background-color:red;}
+      .green {color:whilte; background-color:#00FF00;}
+    </style>
+  </head>
+  <body onload="randomize()">
+    <h1>Historical Literacy</h1>
+    <p>
+      Each week select 2 or 3 elements from the list below. These are important world history events and they are always relted. Consider if you can linking the three shown below. You must agree as a group on the three items. To determine the link:<br>
+      <ol>
+        <li>Pick a random set of events</li>
+        <li>Do a LITTLE research about each event</li>
+        <li>Place them in chronological order</li>
+        <li>Now they are in order, determine how the first led to the second and to the third</li>
+        <li>Consider asking a parent or google if you can't find the link.</li>
+        <li><span class="green">IF YOU CAN FIND A LINK</span>, write down the link immediately. This is critical to your essay.</li>
+        <li><span class="red">IF YOU CANNOT FIND A LINK</span>, go back to the first step.</li>
+        <li>Write an essay describing the first event, the path to the second, the second event, the path to the third, and the third event. Summarize in the conclusion.</li>
+        <li>Revize your essay and submit it on Friday.</li>
+        <li>Be sure to mark out the three items on the list.</li>
+      </ol>
+    </p>
+    <button onclick="randomize()">New Group</button><br>
+    <label id="elem1"></label><br><label id="elem2"></label><br><label id="elem3"></label>
+    <ol>
+      <li>University of Bologna</li>
+      <li>Leaders: Stalin</li>
+      <li>Explorers: Christopher Columbus</li>
+      <li>Explorers: Magellan</li>
+      <li>Wars: Korean War</li>
+      <li>Fall of Berlin Wall</li>
+      <li>Scientists: Darwin</li>
+      <li>Invention: X-ray</li>
+      <li>Wars: September 11th</li>
+      <li>Rise of Aztecs</li>
+      <li>Writers: Maya Angelou</li>
+      <li>Invention: Iron Age</li>
+      <li>Angkor Wat</li>
+      <li>Wars: Chinese Revolution</li>
+      <li>Wars: Battle of Thermopylae</li>
+      <li>Writers: Marx</li>
+      <li>Sputnik</li>
+      <li>Wars: Battle of Vienna</li>
+      <li>Invention: Gunpowder</li>
+      <li>Black Death</li>
+      <li>Woman's Suffrage</li>
+      <li>Invention: Railroad</li>
+      <li>Wars: Russian Revolution</li>
+      <li>Scientists: Pasteur</li>
+      <li>Leaders: Charlemagne</li>
+      <li>Explorers: Hudson</li>
+      <li>Great Pyramid</li>
+      <li>Wars: Spanish Armada</li>
+      <li>Kamakura Shogunate</li>
+      <li>Invention: Vaccine</li>
+      <li>Space Race</li>
+      <li>Rise of Inca</li>
+      <li>Scientists: Lovelace</li>
+      <li>Invention: Telephone</li>
+      <li>Leaders: Alexander the Great</li>
+      <li>Leaders: Muhammad</li>
+      <li>Moon Landing</li>
+      <li>Invention: Steam Engine</li>
+      <li>Leaders: Elizabeth I</li>
+      <li>Wars: Gulf War 1</li>
+      <li>Wars: First Crusade</li>
+      <li>Leaders: Hitler</li>
+      <li>Leaders: Buddha</li>
+      <li>Writers: Twain</li>
+      <li>Invention: ether anesthetic</li>
+      <li>Invention: Atomic Bomb</li>
+      <li>Leaders: Mao</li>
+      <li>Leaders: Lenin</li>
+      <li>Explorers: Cooke</li>
+      <li>Renaissance</li>
+      <li>Wars: End of Apartheid</li>
+      <li>Writers: Mary Shelley</li>
+      <li>Invention: Birth Control</li>
+      <li>Leaders: Confucius</li>
+      <li>Explorers: Jamestown</li>
+      <li>Abolitionist Movement</li>
+      <li>Leaders: Suleiman the Magnificent</li>
+      <li>Rise of Greece</li>
+      <li>Wars: Norman Conquest of England</li>
+      <li>League of Nations</li>
+      <li>Explorers: Armstrong</li>
+      <li>Writers: Hans Christian Andersen</li>
+      <li>Scientists: GW Carver</li>
+      <li>Wars: American Civil War</li>
+      <li>Leaders: JFK</li>
+      <li>Code of Hammurabi</li>
+      <li>Writers: Lewis Carol</li>
+      <li>Invention: Movable Type</li>
+      <li>Leaders: Genghis Khan</li>
+      <li>Scientists: Jane Goodall</li>
+      <li>Suez Canal</li>
+      <li>Leaders: Qin</li>
+      <li>Boston Tea Party</li>
+      <li>Invention: Bronze Age</li>
+      <li>Wars: Vietnam War</li>
+      <li>Wars: French Revolution</li>
+      <li>Wars: Spanish Independence</li>
+      <li>Leaders: Jesus</li>
+      <li>Wars: Battle of Tours</li>
+      <li>Invention: Powered flight</li>
+      <li>Invention: Steam Boat</li>
+      <li>Invention: Agriculture</li>
+      <li>Wars: World War I</li>
+      <li>Wars: Cortes Conquers Aztecs</li>
+      <li>Explorers: Marco Polo</li>
+      <li>Wars: Spanish-American War</li>
+      <li>Wars: Gulf War 2</li>
+      <li>Wars: Turks take Constantinople</li>
+      <li>Wars: Russo-Japanese War</li>
+      <li>Fall of Rome</li>
+      <li>Wars: Pizarro Conquers Inca</li>
+      <li>Julian Calendar</li>
+      <li>Invention: Internet</li>
+      <li>Writers: Dickens</li>
+      <li>Explorers: Buzz Aldrin</li>
+      <li>Taj Mahal</li>
+      <li>Wars: World War II</li>
+      <li>Wars: Battle of Marathon</li>
+      <li>Writers: Victor Hugo</li>
+      <li>Wars: US Civil Rights Movement</li>
+      <li>Invention: Penicillin</li>
+      <li>Scientists: Galileo</li>
+      <li>Wars: Greco-Persian Wars</li>
+      <li>Invention: Telegraph</li>
+      <li>Invention: Cities</li>
+      <li>Writers: Shakespeare</li>
+      <li>Leaders: Martin Luther</li>
+      <li>Writers: Bronte Sisters</li>
+      <li>Invention: Wheeled Vehicles</li>
+      <li>Wars: Six-Day War</li>
+      <li>Spanish Flu</li>
+      <li>Roman Republic</li>
+      <li>African Colonization</li>
+      <li>Invention: Stone Age</li>
+      <li>Wars: Cuban Missile Crisis</li>
+      <li>Great Wall</li>
+      <li>Invention: Writing</li>
+      <li>United Nations</li>
+      <li>Scientists: Tesla</li>
+      <li>Magna Charta</li>
+      <li>Wars: Indian Independence</li>
+      <li>Scientists: Newton</li>
+      <li>Scientists: Copernicus</li>
+      <li>Wars: American Revolution</li>
+      <li>Invention: Spinning Jenny</li>
+      <li>Explorers: Yuri Gagarin</li>
+      <li>Wars: Pearl Harbor</li>
+      <li>Great Depression</li>
+      <li>Wars: Haitian Independence</li>
+      <li>Scientists: Flemming</li>
+      <li>Wars: English Civil War</li>
+      <li>Roman Empire</li>
+      <li>Explorers: Leif Erickson</li>
+      <li>Industrial Revolution</li>
+      <li>Wars: D-Day Landings</li>
+      <li>Scientists: Watson & Crick</li>
+      <li>Scientists: Marie Curie</li>
+      <li>Columbian Exchange</li>
+      <li>Invention: Radio</li>
+      <li>Explorers: Vasco da Gama</li>
+      <li>Scientests: Einstein</li>
+    </ol>
+  </body>
+</html>
