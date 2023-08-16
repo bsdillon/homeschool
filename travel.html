@@ -1,13 +1,48 @@
 <html>
   <head>
+    <script src="https://bsdillon.github.io/homeschool/Math/math.js"></script>
     <script>
-      var ports = ['Antwerp, Belgium', Dalian, China', Guangzhou Harbor, China', Lianyungang, China', Ningbo-Zhoushan, China', Qingdao, China', Shanghai, China', Shenzhen, China', Suzhou, China', Taicang, China', Tianjin, China', Xiamen, China', Yingkou, China', Jebel Ali, Dubai, United Arab Emirates', Bremen/Bremerhaven, Germany', Hamburg, Germany', Piraeus, Greece', Jawarharlal Nehru Port (Nhava Sheva), India', Mundra, India', Tanjung Priok, Jakarta, Indonesia', Keihin Ports, Japan*', Port Klang, Malaysia', Tanjung Pelepas, Malaysia', Tanger Med, Morocco', Manila, Philippines', Hong Kong, S.A.R, China', Singapore, Singapore', Busan, South Korea', Algeciras, Spain', Valencia, Spain', Colombo, Sri Lanka', Kaohsiung, Taiwan, China', Laem Chabang, Thailand', Rotterdam, The Netherlands', Los Angeles, U.S.A', Savannah, U.S.A', Long Beach, U.S.A.', New York-New Jersey, U.S.A.', Hai Phong, Vietnam', Ho Chi Minh City, Vietnam'];
+      var ports = ['Antwerp, Belgium', 'Dalian, China', 'Guangzhou Harbor, China', 'Lianyungang, China', 'Ningbo-Zhoushan, China', 'Qingdao, China', 'Shanghai, China', 'Shenzhen, China', 'Suzhou, China', 'Taicang, China', 'Tianjin, China', 'Xiamen, China', 'Yingkou, China', 'Jebel Ali, Dubai, United Arab Emirates', 'Bremen/Bremerhaven, Germany', 'Hamburg, Germany', 'Piraeus, Greece', 'Jawarharlal Nehru Port (Nhava Sheva), India', 'Mundra, India', 'Tanjung Priok, Jakarta, Indonesia', 'Keihin Ports, Japan*', 'Port Klang, Malaysia', 'Tanjung Pelepas, Malaysia', 'Tanger Med, Morocco', 'Manila, Philippines', 'Hong Kong, S.A.R, China', 'Singapore, Singapore', 'Busan, South Korea', 'Algeciras, Spain', 'Valencia, Spain', 'Colombo, Sri Lanka', 'Kaohsiung, Taiwan, China', 'Laem Chabang, Thailand', 'Rotterdam, The Netherlands', 'Los Angeles, U.S.A', 'Savannah, U.S.A', 'Long Beach, U.S.A.', 'New York-New Jersey, U.S.A.', 'Hai Phong, Vietnam', 'Ho Chi Minh City, Vietnam'];
       
-      
+      function selectCountries()
+      {
+        var x = Math.floor(Random()*ports.length);
+        var y = Math.floor(Random()*ports.length);
+        var country1 = "";
+        var country2 = "";
+        while(country1===country2) //we don't want to have two places in the same country
+        {
+          while (x==y)
+          {
+            y = Math.floor(Random()*ports.length);
+          }
+
+          var location1 = ports[x]
+          country1 = location1.substring(location1.indexOf(', ')+2);
+
+          var location2 = ports[y]
+          country2 = location2.substring(location2.indexOf(', ')+2);
+
+          x = Math.floor(Random()*ports.length);
+          y = Math.floor(Random()*ports.length);
+          document.getElementById("port1").innerHTML=location1
+          document.getElementById("port2").innerHTML=location2
+        }
+      }
     </script>
   </head>
-  <body>
-    <h1>Geograph!</h1>
-    <p></p>
+  <body onload="RandomInit();selectCountries()">
+    <h1>Geography!</h1>
+    <p id="port1"></p>
+    <p id="port2"></p>
+    <p>Plan a sea route for cargo between the two countries. To do this consider the following:<br>
+      <ul>
+        <li>Draw a draft route between the two ports.</li>
+        <li>Divide it into segments 400 mile segments (one per day).</li>
+        <li>Consider the weather forcast for the route over each day.</li>
+        <li>Write out the course as a daily set of <starting lat/lon, course and/or changes, projected weather></li>
+      </ul>
+    </p>
+    <img src="sample.png">
   </body>
 </html>
