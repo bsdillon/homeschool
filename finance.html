@@ -1,5 +1,151 @@
 <html>
-  <body>
+  <head>
+    <script src="https://bsdillon.github.io/homeschool/Math/math.js"></script>
+    <script>
+      function randomize()
+      {
+        var total = 0;
+
+        temp = "<h3>Expenses</h3><ul>"
+        var type = Math.floor(Random()*1);
+        if(type==1)
+        {
+          var mortgage = Math.floor(Random()*200+50)*1000;
+          var rate = .25*(Math.floor(Random()*16)+20);
+          var i = rate/1200;
+          var years = 30;
+          var num = 360;
+          if(Random()>.5)
+          {
+            years = 15;
+            num = 180;
+          }
+          var top = i*Math.pow(i+1,num);
+          var bottom = Math.pow(i+1,num)-1;
+          var month = mortgage*(top)/bottom;
+          total = total + month;
+          rate = rate.toFixed(2);
+          month = month.toFixed(2);
+
+          temp = temp + "<li>I own a house and pay $"+month+" on a $"+mortgage+" mortgage at "+rate+"% for "+years+" years.</li>";
+        }
+        else if(type==2)
+        {
+          var month = 250*Math.floor(Random()*5+3);
+          total = total + month;
+
+          temp = temp + "<li>I rent my own apartment for $"+month+" monthly.</li>";
+        }
+        else if(type==0)
+        {
+          var month = 100*Math.floor(Random()*4+3);
+          total = total + month;
+
+          temp = temp + "<li>I share a room in a house for $"+month+"</li>";
+        }
+
+        var type = Math.floor(Random()*3);
+        if(type==2)
+        {
+          var month = Math.floor(Random()*10)*5+60;
+          total = total + month;
+          var gas = 3.75*Math.floor(Random()*10+4);
+          total = total + gas;
+          gas = gas.toFixed(2);
+
+          temp = temp + "<li>I drive a motorcycle, so I pay $"+month+" monthly and $"+gas+" in gas per week</li>";
+        }
+        else if(type==1)
+        {
+          var month = Math.floor(Random()*20)*5+100;
+          total = total + month;
+          var gas = 3.75*Math.floor(Random()*15+10);
+          total = total + gas;
+          gas = gas.toFixed(2);
+
+          temp = temp + "<li>I drive a car, so I pay $"+month+" monthly and $"+gas+" in gas per week</li>";
+        }
+        else if(type==0)
+        {
+          var month = Math.floor(Random()*40)+40;
+          total = total + month;
+
+          temp = temp + "<li>I have a monthly bus pass for $"+month+"</li>";
+        }
+
+        var bills = ["water","electric","trash","internet"];
+        var base = [25,25,10,25];
+        var next = [70,30,25,35];
+
+        while(bills.length>0)
+        {
+          var t = Math.floor(Random()*bills.length);
+
+          if(Random()<.5)
+          {
+            var month = Random()*next[t]+base[t];
+            total = total + month;
+            month = month.toFixed(2);
+            temp = temp + "<li>My "+bills[t]+" bill is around $"+month+" per month</li>";
+          }
+
+          bills.splice(t,1);
+          base.splice(t,1);
+          next.splice(t,1);
+        }
+
+        temp = temp + "</ul><h3>Debts</h3><ul>";
+        var accounts = [];
+        var count = Math.floor(Random()*5+2);
+        for(let i=0;i<count;i++)
+        {
+            var limit = Math.floor(Random()*10+1)*500;
+            var rate = .25*(Math.floor(Random()*56)+40);
+            var balance = Random()*limit;
+            var payment = balance*(rate*.008333333)+(.01*balance);
+            total = total + payment;
+            rate = rate.toFixed(2);
+            balance = balance.toFixed(2);
+            payment = payment.toFixed(2);
+            temp = temp + "<li>I have a credit account with a limit of $"+limit+" at a rate of "+rate+"%. My current balance is $"+balance+" and I pay $"+payment+" monthly</li>";
+        }
+        temp = temp + "</ul><h3>Income</h3><ul>";
+
+        var goal = total * 12 * 2;
+
+        var income = [];
+	while(goal>0)
+        {
+          var hourly = Math.floor((Random()*20+9)*10)/10;
+          hourly = hourly.toFixed(2);
+          var hours = Math.floor(Random()*20+20);
+          var salary = Math.floor(hourly*hours*52);
+          goal = goal - salary;
+          if(Random()>.5)
+          {
+            temp = temp + "<li>I work "+hours+" hours per week for $"+hourly+" per hour.</li>";
+          }
+          else
+          {
+            if(hours>34)
+            {
+              temp = temp + "<li>I have a full-time job with an annual salary of $"+salary+"</li>";
+            }
+            else
+            {
+              temp = temp + "<li>I have a part-time job with an annual salary of $"+salary+"</li>";
+            }
+          }
+        }
+        temp = temp + "</ul>";
+
+        document.getElementById("contents").innerHTML=temp;
+      }
+    </script>
+  </head>
+  <body onload="RandomInit(false,0);randomize();">
     <h1>Finance</h1>
+    <p>Create a spreadsheet budget for an individual given the information below.</p>
+    <div id="contents"></div>
   </body>
 </html>
