@@ -28,16 +28,16 @@
 
       function randomize()
       {
-        var x = Math.floor(Math.random()*events.length);
-        var y = Math.floor(Math.random()*events.length);
+        var x = Math.floor(Random()*events.length);
+        var y = Math.floor(Random()*events.length);
         while(x==y)
         {
-          y = Math.floor(Math.random()*events.length);
+          y = Math.floor(Random()*events.length);
         }
-        var z = Math.floor(Math.random()*events.length);
+        var z = Math.floor(Random()*events.length);
         while(x==z || y==z)
         {
-          z = Math.floor(Math.random()*events.length);
+          z = Math.floor(Random()*events.length);
         }
         document.getElementById("elem1").innerHTML=events[x];
         document.getElementById("elem2").innerHTML=events[y];
