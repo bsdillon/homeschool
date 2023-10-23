@@ -13,4 +13,8 @@ table {text-align:top;}
 dt {font-size:15px;}
 dd {font-size:15px; font-weight:bold;font-style:italic;}
 .red {color:red; font-weight:bold;}
+.hidden {color:rgba(0,0,0,0); font-weight:bold;}
 table.bordered td{border-style:solid; text-align:center;}
+table.allborders td{border-style:solid; text-align:center; white-space: nowrap;}
+table.allborders th{border-style:solid; text-align:center; white-space: nowrap;}
+table.allborders {border-style:solid; text-align:center;}

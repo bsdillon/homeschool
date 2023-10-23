@@ -1,3 +1,135 @@
+var greekNumbers = {2:"di", 3:"tri", 4:"tetra"};
+
+   function nameCompound()
+   {
+     pIon = SelectIon(true)
+     nIon = SelectIon(false)
+
+     x = pIon[2];
+     y = -nIon[2];
+
+     if(y>x)//switch order x greatest
+     {
+       var t = x;
+       x = y;
+       y = t
+     }
+     
+     while(y) { //euclid method to find gcf
+       var t = y;
+       y = x % y;
+       x = t;
+     }
+     gcf = x //x is gcf
+
+     //most reduced numbers
+     x = pIon[2]/gcf;
+     y = -nIon[2]/gcf;
+
+     formula = "";
+     name = "";
+     if(x==y)
+     {
+       formula = pIon[0]+nIon[0];
+       name = pIon[1]+" "+nIon[1];
+     }
+     else
+     {
+       if(y>1 && pIon[3]>1)
+       {
+         //this is a multi-atom ion like NH4 so we
+         //surround it with ( ) and add the number.
+         formula = "("+pIon[0]+")<sub>"+y+"</sub>";
+         name = pIon[1]+" ";
+       }
+       else if (y>1)
+       {
+         formula = pIon[0]+"<sub>"+y+"</sub>";
+         name = greekNumbers[y]+pIon[1]+" ";
+
+       }
+       else
+       {
+         formula = pIon[0];
+         name = pIon[1]+" ";
+       }
+
+       if(x>1 && nIon[3]>1)
+       {
+         //this is a multi-atom ion like NH4 so we
+         //surround it with ( ) and add the number.
+         formula += "("+nIon[0]+")<sub>"+x+"</sub>";
+         name += nIon[1];
+       }
+       else if(x>1)
+       {
+         formula += nIon[0]+"<sub>"+x+"</sub>";
+         name += greekNumbers[x]+nIon[1];
+       }
+       else
+       {
+         formula += nIon[0];
+         name += nIon[1];
+       }
+     }
+
+     if(Math.random()<.5)
+     {
+       return ["What is the name of this molecule?<br>"+formula, name];
+     }
+     else
+     {
+       return ["Write the formula of the named molecule.<br>"+name,formula];
+     }
+   }
+
+   function SelectIon(positive)
+   {
+     value = Math.floor(Math.random()*21);
+     if(positive)
+     {
+       if(value<6)
+       {
+         var index = Math.floor(Math.random()*Object.keys(p1Ions).length);
+         pIon = Object.keys(p1Ions)[index];
+         return [pIon, p1Ions[pIon][0],1,p1Ions[pIon][2]]
+       }
+       else if(value<18)
+       {
+         var index = Math.floor(Math.random()*Object.keys(p2Ions).length);
+         pIon = Object.keys(p2Ions)[index];
+         return [pIon, p2Ions[pIon][0],2,p2Ions[pIon][2]]
+       }
+       else
+       {
+         var index = Math.floor(Math.random()*Object.keys(p3Ions).length);
+         pIon = Object.keys(p3Ions)[index];
+         return [pIon, p3Ions[pIon][0],3,p3Ions[pIon][2]]
+       }
+     }
+     else
+     {
+       if(value<6)
+       {
+         var index = Math.floor(Math.random()*Object.keys(n1Ions).length);
+         nIon = Object.keys(n1Ions)[index];
+         return [nIon, n1Ions[nIon][0],-1,n1Ions[nIon][2]]
+       }
+       else if(value<18)
+       {
+         var index = Math.floor(Math.random()*Object.keys(n2Ions).length);
+         nIon = Object.keys(n2Ions)[index];
+         return [nIon, n2Ions[nIon][0],-2,n2Ions[nIon][2]]
+       }
+       else
+       {
+         var index = Math.floor(Math.random()*Object.keys(n3Ions).length);
+         nIon = Object.keys(n3Ions)[index];
+         return [nIon, n3Ions[nIon][0],-3,n3Ions[nIon][2]]
+       }
+     }
+   }
+
    function CreateCompound()
    {
       var name = "";

@@ -16,6 +16,20 @@ LinearEquations.prototype.Line = function()
   return a+"x + "+b+"y = "+c;
 }
 
+LinearEquations.prototype.System = function()
+{
+  a = flip(Math.floor(Random()*9+1));
+  b = flip(Math.floor(Random()*9+1));
+  c = flip(Math.floor(Random()*5+1))*b;
+
+  d = flip(Math.floor(Random()*9+1));
+  e = flip(Math.floor(Random()*9+1));
+  f = flip(Math.floor(Random()*5+1))*e;
+
+  s = a+"x + "+b+"y = "+c +"<br>"+d+"x + "+e+"y = "+f;
+  return [s,[a,b,c],[d,e,f]];
+}
+
 LinearEquations.prototype.IneqLine = function()
 {
   a = flip(Math.floor(Random()*9+1));

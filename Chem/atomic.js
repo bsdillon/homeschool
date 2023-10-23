@@ -1,4 +1,4 @@
-   function MakeAtomRow(tag)
+   function MakeAtomRow(tag, answertag)
    {
      var index = Math.floor(Math.random()*Object.keys(Atoms).length);
      var protons = index;
@@ -8,6 +8,64 @@
      var mass = index+neutrons;
      var electrons = index+Math.floor(Math.random()*5-2);
      var charge = index - electrons;
+
+     if(answertag!=null)
+     {
+       //symbol and notations
+       var cell = answertag.insertCell(0);
+       var s = "";
+       if(neutronsOrMass==1)
+       {
+         s = "<sup>"+mass+"</sup>";
+       }
+
+       s += symbol;
+
+       if(chargeOrElectrons==0)
+       {
+         if(charge==0)
+         {
+           //no op
+         }
+         else if (charge >0)
+         {
+           s+= "+"+charge;
+         }
+         else
+         {
+           s+= "-"+(-charge);
+         }
+       }
+       cell.innerHTML = s;
+
+       //Description
+       var cell = answertag.insertCell(1);
+       cell.innerHTML = description;
+
+       //Protons
+       var cell = answertag.insertCell(2);
+       cell.innerHTML = protons;
+
+       //Neutrons
+       var cell = answertag.insertCell(3);
+       cell.innerHTML = neutrons;
+
+       //Electrons
+       var cell = answertag.insertCell(4);
+       cell.innerHTML = electrons;
+
+       //Atomic Number
+       var cell = answertag.insertCell(5);
+       cell.innerHTML = index;
+
+       //Atomic Mass
+       var cell = answertag.insertCell(6);
+       cell.innerHTML = mass;
+
+       //Charge
+       var cell = answertag.insertCell(7);
+       cell.innerHTML = charge;
+     }
 
      var symbolNameAtomicNumberOrProton = Math.floor(Math.random()*4);
      if(symbolNameAtomicNumberOrProton!=0)

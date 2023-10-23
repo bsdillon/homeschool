@@ -86,3 +86,22 @@ function relation()
   return relText;
 }
 
+function GCF(x,y)
+{
+  x = Math.abs(x);
+  y = Math.abs(y);
+
+  if(x<y)
+  {
+    var t = x;
+    x=y;
+    y=t;
+  }
+
+  while(y) { //euclid method to find gcf
+    var t = y;
+    y = x % y;
+    x = t;
+  }
+  return x;
+}
