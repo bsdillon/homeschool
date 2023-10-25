@@ -1,12 +1,143 @@
 <html>
   <head>
-    <script src="https://bsdillon.github.io/homeschool/Math/math.js"></script>
+    <style>
+      .red {color:red;};
+      th {border:3px black solid;}
+      td {border:1px black solid;}
+      table {border:1px black solid;}
+    </style>
+    <script src="https://bsdillon.github.io/homeschool/Math/math.js"></script> 
     <script>
       function randomize()
       {
+        var unitCost = Random()*10+1;
+        var unitGross = unitCost*(Random()*.2+1.05);
+        var unitCostF = unitCost.toFixed(2);
+        var unitGrossF = unitGross.toFixed(2);
+        var allotment = 100*unitCost;
+        var allotmentF = allotment.toFixed(2);
+        var power = Math.floor(allotment/25+1);
+        allotment = power*25;
+        var creditGranting = Random();
+        var creditUsing = Random();
+        
+        var lines = {}
+
+        var m = Math.floor(Random()*12+1);
+        var d = Math.floor(Random()*30+1);
+        var h = Math.floor(Random()*3+5);
+        var min  = Math.floor(Random()*4*15);
+        var startDate = new Date(2023,m,d,h,min);
+        var nextDate = new Date(startDate.getTime() + 0);
+        var oldestDate = new Date(startDate.getTime() + 0);
+
+        var num = Math.floor(Random()*3+1);
+        var money = Math.floor(Random()*4+1)*allotment;
+
+        for(let i=0;i<num;i++)
+        {
+          if(nextDate-oldestDate > 0)
+          {
+            oldestDate = new Date(nextDate.getTime() + 0);
+          }
+          lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td>$"+money+"</td><td></td><td></td><td></td><td></td><td>Deposit</td></tr>";
+          var days = Math.floor(Random()*4+2);
+          nextDate = new Date(nextDate.getTime() + (days*24*60*60*1000));
+          money = Math.floor(Random()*2+1)*allotment;
+        }
+
+        var num = Math.floor(Random()*2+1);
+        var money = Math.floor(Random()*10+1)*25;
+        var days = Math.floor(Random()*4+2);
+        nextDate = new Date(startDate.getTime() + (days*24*60*60*1000));
+
+        for(let i=0;i<num;i++)
+        {
+          if(nextDate-oldestDate > 0)
+          {
+            oldestDate = new Date(nextDate.getTime() + 0);
+          }
+          lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td></td><td>$"+money+"</td><td></td><td></td><td></td><td>Withdrawal</td></tr>";
+          var days = Math.floor(Random()*4+2);
+          nextDate = new Date(nextDate.getTime() + (days*24*60*60*1000));
+          money = Math.floor(Random()*2+1)*allotment;
+        }
+
+        nextDate = new Date(startDate.getTime() + 1);
+        lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td></td><td>$"+allotmentF+"</td><td></td><td></td><td>100</td><td>Supplies for widgets</td></tr>"
+        var units=100;
+
+        while(oldestDate - nextDate > 0)
+        {
+          var hours = Random()*2+1;
+          nextDate = new Date(nextDate.getTime() + (hours*60*60*1000));
+          if(units<25)
+          {
+            if(Random()<creditUsing)
+            {
+              lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td></td><td>$"+allotmentF+"</td><td></td><td></td><td>100</td><td>Supplies for widgets</td></tr>"
+              units += 100;
+            }
+            else
+            {
+              account = ""+Math.floor(Random()*10)+Math.floor(Random()*10)+Math.floor(Random()*10);
+              lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td></td><td></td><td></td><td>$"+allotmentF+"</td><td>100</td><td>Supplies for widgets on account #P"+account+"</td></tr>"
+              units += 100;
+              days = Random()*2+1
+              tempDate = new Date(nextDate.getTime() + (days*24*60*60*1000));
+              if(oldestDate-tempDate > 0)
+              {
+                lines[tempDate.getTime()]= "<tr><th>"+tempDate.toLocaleDateString()+" "+tempDate.toLocaleTimeString()+"</th><td></td><td>$"+allotmentF+"</td><td></td><td></td><td></td><td>Payment for supplies on account #P"+account+"</td></tr>"
+              }
+            }
+          }
+          else
+          {
+            if(Random()<creditGranting)
+            {
+              sold = Math.floor(Random()*21+5);
+              units -= sold;
+              price = (sold*unitGross).toFixed(2);
+              lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td>$"+price+"</td><td></td><td></td><td></td><td>-"+sold+"</td><td>Sale</td></tr>"
+            }
+            else
+            {
+              sold = Math.floor(Random()*21+5);
+              units -= sold;
+              price = (sold*unitGross).toFixed(2);
+              account = ""+Math.floor(Random()*10)+Math.floor(Random()*10)+Math.floor(Random()*10)+Math.floor(Random()*10)
+              lines[nextDate.getTime()]= "<tr><th>"+nextDate.toLocaleDateString()+" "+nextDate.toLocaleTimeString()+"</th><td></td><td></td><td>$"+price+"</td><td></td><td>-"+sold+"</td><td>Sale on account #S"+account+"</td></tr>"
+              days = Random()*2+1
+              tempDate = new Date(nextDate.getTime() + (days*24*60*60*1000));
+              if(oldestDate-tempDate > 0)
+              {
+                lines[tempDate.getTime()]= "<tr><th>"+tempDate.toLocaleDateString()+" "+tempDate.toLocaleTimeString()+"</th><td>$"+price+"</td><td></td><td></td><td></td><td></td><td>Received on account #S"+account+"</td></tr>"
+              }
+            }
+          }
+        }
+
+        var keys = Object.keys(lines).sort();
+
+
+        temp = "<p>Create a spreadsheet showing the following cashflow.<ul><li>Track inventory, cash-on-hand, receivables, and payables for each transaction</li><li>Produce graphs for each</li><li>Identify any period where you cash-on-hand is depleted.</li><li>Calculate the future value of all sales on account</li><li>What is the lowest inventory?</li></ul></p>";
+        temp += "<h3>Transactions</h3><table>";
+        temp += "<tr><th>Date</th><th>Credit </th><th> Debit </th><th>Receiv.</th><th>Payable</th><th> Stock </th><th>Memo</th></tr>";
+        for(let i=0;i<keys.length;i++)
+        {
+          temp += lines[keys[i]];
+        }
+        temp += "</table>";
+
+        document.getElementById("contents").innerHTML=temp;
+      }
+
+      function homefinance()
+      {
         var total = 0;
 
-        temp = "<h3>Expenses</h3><ul>"
+        temp = "<p>Create a spreadsheet budget for an individual given the information below.</p>";
+        temp += "<h3>Expenses</h3><ul>";
         var type = Math.floor(Random()*1);
         if(type==1)
         {
@@ -145,7 +276,6 @@
   </head>
   <body onload="RandomInit(true,0);randomize();">
     <h1>Finance</h1>
-    <p>Create a spreadsheet budget for an individual given the information below.</p>
     <div id="contents"></div>
   </body>
 </html>
