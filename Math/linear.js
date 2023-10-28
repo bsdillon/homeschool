@@ -450,3 +450,438 @@ LinearEquations.prototype.Trend = function()
 
   return s;
 }
+
+LinearEquations.prototype.fullProblem = function()
+{
+  data = this.System();
+  set1 = data[1];
+  set2 = data[2];
+
+  classN = "hidden";
+  if(showingAnswer)
+  {
+    classN = "red";
+  }
+
+  temp = "Solve this set of linear equations by substitution, elimination, ";
+  temp += "and matrices.<br>"+data[0]+"<br>"
+
+  answer = [temp,""];
+  temp ="";
+
+  gcf = GCF(set1[0],set1[1]);
+  n1 = -set1[0]/gcf;
+  d1 = set1[1]/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m1 = n1+"/"+d1;
+  if(d1==1)
+  {
+    m1 = n1;
+  }
+
+  perm1 = [n1, d1,0,0,0];
+  part1 = m1+"x";
+
+  gcf = GCF(set1[2],set1[1]);
+  n1 = set1[2]/gcf;
+  d1 = set1[1]/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  b1 = n1+"/"+d1;
+  b1Alt = -n1+"/"+d1;
+  if(d1==1)
+  {
+    b1 = n1;
+    b1Alt = -n1;
+  }
+  perm1[2] = n1;
+  perm1[3] = d1;
+  perm1[4] = b1;
+
+  if (b1>=0)
+  {
+    part1 += " + "+b1;
+  }
+  else
+  {
+    part1 += " &minus; "+(-b1);
+  }
+  temp += "y = "+part1+"<br>";
+
+  gcf = GCF(set2[0],set2[1]);
+  n1 = -set2[0]/gcf;
+  d1 = set2[1]/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m2 = n1+"/"+d1;
+  m2Alt = -n1+"/"+d1;
+  if(d1==1)
+  {
+    m2 = n1;
+    m2Alt = -n1;
+  }
+
+  perm2 = [n1, d1,0,0,0];
+  part2 = m2+"x";
+
+  gcf = GCF(set2[2],set2[1]);
+  n1 = set2[2]/gcf;
+  d1 = set2[1]/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  b2 = n1+"/"+d1;
+  if(d1==1)
+  {
+    b2 = n1;
+  }
+
+  perm2[2] = n1;
+  perm2[3] = d1;
+  perm2[4] = b2;
+
+  if (b2>=0)
+  {
+    part2 += " + "+b2;
+  }
+  else
+  {
+    part2 += " &minus; "+(-b2);
+  }
+  temp += "y = "+part2+"<br>";
+
+  temp += part1 + " = " + part2+"<br><br>"
+
+  //=============Solve substitution===============
+
+  temp += m1 + "x + " + m2Alt +"x = " + b2 +" + "+b1Alt+"<br>";
+
+  gcf = GCF(set1[1],set2[1]);
+  d1 = set1[1]/gcf;
+  d2 = set2[1]/gcf;
+  dT = set1[1]*d2
+
+  n1 = (-set1[0])*d2;
+  n2 = set2[0]*d1;//m WAS -x/y but we added it to move to other side
+  nT = n1+n2;
+
+  n1 = set2[2]*d1;
+  n2 = -set1[2]*d2;//m WAS c/y but we sutracted it to move to other side
+  b1 = n1 + n2
+
+  gcf = GCF(nT,dT);
+  nT = nT/gcf;
+  d1 = dT/gcf;
+
+  if(d1<0)
+  {
+    nT = -nT;
+    d1 = -d1;
+  }
+
+  mT = nT+"/"+d1;
+  if(d1==1)
+  {
+    mT = nT;
+  }
+
+  gcf = GCF(b1,dT);
+  b1 = b1/gcf;
+  d2 = dT/gcf;
+
+  if(d2<0)
+  {
+    b1 = -b1;
+    d2 = -d2;
+  }
+ 
+  bT = b1+"/"+d2;
+  if(d2==1)
+  {
+    bT = b1;
+  }
+
+  temp += mT+"x = "+bT+"<br>";
+
+  nF = b1*d1;
+  dF = d2*nT;
+
+  gcf = GCF(nF,dF);
+  nF = nF/gcf;
+  dF = dF/gcf;
+
+  if(dF<0)
+  {
+    nF = -nF;
+    dF = -dF;
+  }
+
+  v = nF+"/"+dF;
+  if(dF==1)
+  {
+    v = nF;
+  }
+
+  temp += "x = "+v+"<br><br>";
+
+  //==========Check answer on equation 1=============
+
+  n1 = perm1[0];
+  d1 = perm1[1];
+  
+  gcf = GCF(n1,d1);
+  n1 = n1/gcf;
+  d1 = d1/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m = n1+"/"+d1;
+  if(d1==1)
+  {
+    m = n1;
+  }
+
+  temp += "y = "+m+"("+v+") + "+perm1[4]+"<br>";
+
+  n1 = perm1[0]*nF;
+  d1 = perm1[1]*dF;
+  
+  gcf = GCF(n1,d1);
+  n1 = n1/gcf;
+  d1 = d1/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m = n1+"/"+d1;
+  if(d1==1)
+  {
+    m = n1;
+  }
+
+  temp += "y = "+m+" + "+perm1[4]+"<br>";
+
+  n = n1*perm1[3];
+  n2 = perm1[2]*d1;
+  d = perm1[3]*d1;
+
+  n = n+n2;
+
+  gcf = GCF(n,d);
+  n = n/gcf;
+  d = d/gcf;
+
+  if(d<0)
+  {
+    n = -n;
+    d = -d;
+  }
+
+  m = n+"/"+d;
+  if(d==1)
+  {
+    m = n;
+  }
+
+  temp += "y = "+m+"<br><br>";
+
+  //=========Check on equation 2================
+
+  n1 = perm2[0];
+  d1 = perm2[1];
+  
+  gcf = GCF(n1,d1);
+  n1 = n1/gcf;
+  d1 = d1/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m = n1+"/"+d1;
+  if(d1==1)
+  {
+    m = n1;
+  }
+
+  temp += "y = "+m+"("+v+") + "+perm2[4]+"<br>";
+
+  n1 = perm2[0]*nF;
+  d1 = perm2[1]*dF;
+  
+  gcf = GCF(n1,d1);
+  n1 = n1/gcf;
+  d1 = d1/gcf;
+
+  if(d1<0)
+  {
+    n1 = -n1;
+    d1 = -d1;
+  }
+
+  m = n1+"/"+d1;
+  if(d1==1)
+  {
+    m = n1;
+  }
+
+  temp += "y = "+m+" + "+perm2[4]+"<br>";
+
+  n = n1*perm2[3];
+  n2 = perm2[2]*d1;
+  d = perm2[3]*d1;
+
+  n = n+n2;
+
+  gcf = GCF(n,d);
+  n = n/gcf;
+  d = d/gcf;
+
+  if(d<0)
+  {
+    n = -n;
+    d = -d;
+  }
+
+  m = n+"/"+d;
+  if(d==1)
+  {
+    m = n;
+  }
+
+  temp += "y = "+m+"<br><br>";
+
+  temp += "Solution: ("+v+", "+m+")<br><br>"
+
+  //=========Elimination================
+
+  gcf = GCF(set1[1], set2[1]);
+  m1 = -set2[1]/gcf;
+  m2 = set1[1]/gcf;
+
+  if(m1<0 && m2<0)
+  {
+    m1 = -m1;
+    m2 = -m2;
+  }
+
+  temp += m1+"["+set1[0]+"x + "+set1[1]+"y = "+set1[2]+"]<br>";
+  temp += m2+"["+set2[0]+"x + "+set2[1]+"y = "+set2[2]+"]<br><br>";
+
+  temp += (m1*set1[0])+"x + "+(m1*set1[1])+"y = "+(m1*set1[2])+"<br>";
+  temp += (m2*set2[0])+"x + "+(m2*set2[1])+"y = "+(m2*set2[2])+"<br><br>";
+
+  temp += ((m1*set1[0])+(m2*set2[0]))+"x = "+((m1*set1[2])+(m2*set2[2]))+"<br>";
+ 
+  n = ((m1*set1[2])+(m2*set2[2]));
+  d = ((m1*set1[0])+(m2*set2[0]));
+
+  gcf = GCF(n, d);
+  n = n/gcf;
+  d = d/gcf;
+
+  if(d<0)
+  {
+    n = -n;
+    d = -d;
+  }
+
+  v2 = n+"/"+d;
+  if(d==1)
+  {
+    v2 = n;
+  } 
+
+  temp += "x = "+v2;
+
+  temp += "Matches: "+v+" = "+v2;
+
+  //=========Matrices================
+
+  temp += "D = <br>|"+set1[0]+" "+set1[1]+"|<br>|"+set2[0]+" "+set2[1]+"|<br>"
+  temp += "D = "+(set1[0]*set2[1])+" &minus; "+(set1[1]*set2[0])+"<br>"
+  dd = (set1[0]*set2[1])-(set1[1]*set2[0]);
+  temp += "D = "+dd+"<br><br>"
+
+  temp += "Dx = <br>|"+set1[2]+" "+set1[1]+"|<br>|"+set2[2]+" "+set2[1]+"|<br>"
+  temp += "Dx = "+(set1[2]*set2[1])+" &minus; "+(set1[1]*set2[2])+"<br>"
+  dx = (set1[2]*set2[1])-(set1[1]*set2[2]);
+  temp += "Dx = "+dx+"<br><br>"
+
+  temp += "Dy = <br>|"+set1[0]+" "+set1[2]+"|<br>|"+set2[0]+" "+set2[2]+"|<br>"
+  temp += "Dy = "+(set1[0]*set2[2])+" &minus; "+(set1[2]*set2[0])+"<br>"
+  dy = (set1[0]*set2[2])-(set1[2]*set2[0]);
+  temp += "Dy = "+dy+"<br><br>"
+
+  n = dy;
+  d = dd;
+  gcf = GCF(n, d);
+  n = n/gcf;
+  d = d/gcf;
+
+  if(d<0)
+  {
+    n = -n;
+    d = -d;
+  }
+
+  v2M = n+"/"+d;
+  if(d==1)
+  {
+    v2M = n;
+  } 
+
+  temp += "y = Dy/D = "+v2M+"<br>"
+
+  n = dx;
+  d = dd;
+  gcf = GCF(n, d);
+  n = n/gcf;
+  d = d/gcf;
+
+  if(d<0)
+  {
+    n = -n;
+    d = -d;
+  }
+
+  vM = n+"/"+d;
+  if(d==1)
+  {
+    vM = n;
+  } 
+
+  temp += "x = Dx/D = "+vM+"<br>"
+
+  answer[1]= temp;
+  return answer;
+}
