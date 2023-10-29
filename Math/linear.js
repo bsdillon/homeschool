@@ -821,9 +821,9 @@ LinearEquations.prototype.fullProblem = function()
     v2 = n;
   } 
 
-  temp += "x = "+v2;
+  temp += "x = "+v2+"<br>";
 
-  temp += "Matches: "+v+" = "+v2;
+  temp += "Matches: "+v+" = "+v2+"<br><br>";
 
   //=========Matrices================
 

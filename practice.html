@@ -27,16 +27,35 @@
         var keys = Object.keys(PRESENTE);
         var index = Math.floor(Random()*keys.length);
         verb = keys[index]
-        data = PRESENTE[keys[index]];
-
-        answer = "yo - "+data[1]+"<br>t&uacute; - "+data[2]+"<br>&eacute;l - "+data[3]+"<br>nosotros - "+data[4]+"<br>vosotros - "+data[5]+"<br>ellos - "+data[6]+"<br>English: "+data[0];
+        data = PRESENTE[verb];
 
         classN = "hidden";
         if(showingAnswer)
         {
           classN = "red";
         }
-        tag.innerHTML = "Conjugate "+verb+" in the present tense. What does it mean in English?<br><span class='answer "+classN+"'>"+answer+"</span>";
+
+        temp = "Fill out the following for "+verb+":<br>";
+        temp += "English translation:<span class='answer "+classN+"'>TO "+data[0]+"</span><br>";
+        temp += "Gerund (-ing):<span class='answer "+classN+"'>"+GERUNDO[verb][1]+"</span><br>";
+        temp += "Participle (-ed):<span class='answer "+classN+"'>"+PARTICIPIO[verb][1]+"</span><br>";
+
+        temp += "<table class='allborders'><tr><th colspan='6'>PRESENTE</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+        data = IMPERETIVO[verb];
+        temp += "<table class='allborders'><tr><th colspan='6'>IMPERETIVO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[7]+"/<br>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[8]+"/<br>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+        data = PRETERITO[verb];
+        temp += "<table class='allborders'><tr><th colspan='6'>PRETERITO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+        data = IMPERFECTO[verb];
+        temp += "<table class='allborders'><tr><th colspan='6'>IMPERFECTO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+        tag.innerHTML = temp;
       }
 
       function linear_fill()
