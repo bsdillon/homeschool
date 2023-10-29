@@ -8,6 +8,7 @@
     <script src="./Chem/atomic.js"></script>
     <script src="./Chem/compounds.js"></script>
     <script src="./spanish/verbconjugate.js"></script>
+    <script src="./history.js"></script>
     <script>
       var showingAnswer = false;
 
@@ -18,16 +19,30 @@
         compound_fill();
         linear_fill();
         spanish_fill();
+        history_fill();
+        geo_fill();
       }
 
-      function spanish_fill()
+      function geo_fill()
       {
-        tag = document.getElementById("verbElement");
+        tag = document.getElementById("geoElement");
 
-        var keys = Object.keys(PRESENTE);
-        var index = Math.floor(Random()*keys.length);
-        verb = keys[index]
-        data = PRESENTE[verb];
+        var location = ["Northern hemisphere","Southern hemisphere","Eastern hemisphere","Western hemisphere","North America", "South America", "Europe", "Africa", "Asia", "Austrailia/Oceana"];
+        var objects = ["border","city","capital","port","railway","highway","bridge"];
+        var feature = ["mountain", "lake", "river", "desert", "ongoing war", "recent disaster", "tourist attraction"];
+
+        var lIndex = Math.floor(Random()*location.length)
+        var oIndex = Math.floor(Random()*objects.length)
+        var fIndex = Math.floor(Random()*feature.length)
+
+        var temp = "In the area of "+location[lIndex]+" this country has a "+objects[oIndex]+" near a "+feature[fIndex];
+
+        tag.innerHTML = temp;
+      }
+
+      function history_fill()
+      {
+        tag = document.getElementById("historyElement");
 
         classN = "hidden";
         if(showingAnswer)
@@ -35,25 +50,20 @@
           classN = "red";
         }
 
-        temp = "Fill out the following for "+verb+":<br>";
-        temp += "English translation:<span class='answer "+classN+"'>TO "+data[0]+"</span><br>";
-        temp += "Gerund (-ing):<span class='answer "+classN+"'>"+GERUNDO[verb][1]+"</span><br>";
-        temp += "Participle (-ed):<span class='answer "+classN+"'>"+PARTICIPIO[verb][1]+"</span><br>";
+        tag.innerHTML = historyProblem();
+      }
 
-        temp += "<table class='allborders'><tr><th colspan='6'>PRESENTE</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
-        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+      function spanish_fill()
+      {
+        tag = document.getElementById("verbElement");
 
-        data = IMPERETIVO[verb];
-        temp += "<table class='allborders'><tr><th colspan='6'>IMPERETIVO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
-        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[7]+"/<br>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[8]+"/<br>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
 
-        data = PRETERITO[verb];
-        temp += "<table class='allborders'><tr><th colspan='6'>PRETERITO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
-        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
-
-        data = IMPERFECTO[verb];
-        temp += "<table class='allborders'><tr><th colspan='6'>IMPERFECTO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
-        temp += "<tr class='answer "+classN+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+        conjugationProblem(classN);
 
         tag.innerHTML = temp;
       }
@@ -128,12 +138,26 @@
       You can reset each problem individually. If you want to see the answers, check the box.
     </p>
     <button onclick="loadAll()">Reset</button><label>Show answer</label><input type="checkbox" onclick="checkboxToggle()"></input>
+
+    <h3>Reading and Writing</h3>
+    <ul>
+      <li>Read a book for 30 minutes</li>
+      <li>Write a one-page journal on what you read</li>
+      <li>Identify any words you didn't know. Look them up and write their definition</li>
+    </ul>
+
+    <h3>Geography Scavenger Hunt</h3>
+    <p>Find as many countries as you can that fit this description. Score against our siblings only for UNIQUE country names.<br>
+    <span id="geoElement"></span></p>
+
     <h3>Subatomic Particles</h3>
     <table id="subatomic" class="allborders">
       <tr><th>Symbol</th><th>Description</th><th># P</th><th># N</th><th># E</th><th>Atomic #</th><th>Atomic Mass</th><th>Charge</th></tr>
     </table><br>
     <h3>Named Compound</h3>
     <p id="compoundElement"></p>
+    <h3>Historical Events</h3>
+    <p id="historyElement"></p>
     <h3>Spanish Verb</h3>
     <p id="verbElement"></p>
     <h3>Linear Equations</h3>

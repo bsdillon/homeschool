@@ -2,22 +2,48 @@
   <head>
     <title>Dillon Homepage</title>
     <link rel="stylesheet" type="text/css" href="common.css">
+    <script src="./Math/math.js"></script>
+    <script>
+      function loadit()
+      {
+        RandomInit(true,0);
+        tag = document.getElementById("FHE");
+        var numbers = [Math.floor(Random()*10000),Math.floor(Random()*10000),Math.floor(Random()*10000),Math.floor(Random()*10000),Math.floor(Random()*10000),Math.floor(Random()*10000)];
+        var family = {};
+        family[numbers[0]] = "Dad";
+        family[numbers[1]] = "Mom";
+        family[numbers[2]] = "Elena";
+        family[numbers[3]] = "Rachael";
+        family[numbers[4]] = "Ben";
+        family[numbers[5]] = "Hanna";
+
+        var keys = Object.keys(family).sort();
+        var ordered = [];
+        for(let i = 0;i<keys.length;i++)
+        {
+          ordered.push(family[keys[i]]);
+        }
+
+        temp="<ul><li>Opening Prayer - "+ordered[0]+"</li>";
+        temp+="<li>Song - "+ordered[1]+"</li>";
+        temp+="<li>Lesson - "+ordered[2]+"</li>";
+        temp+="<li>Scripture - "+ordered[3]+"</li>";
+        temp+="<li>Food - "+ordered[4]+"</li>";
+        temp+="<li>Game - "+ordered[5]+"</li></ul>";
+
+        tag.innerHTML = temp;
+      }
+    </script>
   </head>
-  <body>
+  <body onload="loadit()">
     <h1>Dillon Homeschool</h1>
     <p>Each day will have a major class product that we are working on. You will normally produce homework on that subject which we will 
-    review each night. In addition every day you must do the following as a <em>separate</em> activity:<br>
-    <ul>
-      <li>Read a book for 30 minutes</li>
-      <li>Write a one-page journal on what you read</li>
-      <li>Identify any words you didn't know. Look them up and write their definition</li>
-      <li>Write at least a paragraph in a personal journal</li>
-      <li>Read Come Follow Me <a href='https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-new-testament-2023?lang=eng'>assignment</a></li>
-      <li>Travel log <a href="travel.html">link</a></li>
-    </ul></p>
-    <p><a href="practice.html">Practice Problems</a></p>
+    review each night. In addition every day you must do the following as a <em>separate</em> activity:<br></p>
+    <p><a href="practice.html">Every day</a></p>
     <h2>Monday</h2>
-    <p>History <a href="history.html">link</a></p>
+    <p>Study this week's Come Follow Me and prepare for home evening. Plan for:<br>
+    <span id="FHE"></span>
+    </p>
     <h2>Tuesday</h2>
     <p>Spanish <a href="spanish.html">link</a></p>
     <h2>Wednesday</h2>

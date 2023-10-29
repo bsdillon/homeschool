@@ -80,7 +80,7 @@ var GERUNDO = {'AGARRAR': ['GRAB', 'AGARRANDO'],
     'ASUSTAR': ['ASTONISH', 'ASUSTANDO'],
     'AVANZAR': ['ADVANCE', 'AVANZANDO'],
     'AVISAR': ['ADVISE', 'AVISANDO'],
-    'BAÑAR': ['BATHE', 'BAÑANDO'],
+    'BA&Ntilde;AR': ['BATHE', 'BA&Ntilde;ANDO'],
     'BURLAR': ['MOCK', 'BURLANDO'],
     'CAMINAR': ['WALK', 'CAMINANDO'],
     'COCINAR': ['COOK', 'COCINANDO'],
@@ -92,7 +92,7 @@ var GERUNDO = {'AGARRAR': ['GRAB', 'AGARRANDO'],
     'DISFRUTAR': ['ENJOY', 'DISFRUTANDO'],
     'DISPARAR': ['SHOOT', 'DISPARANDO'],
     'EMPEZAR': ['BEGIN', 'EMPEZANDO'],
-    'ENSEÑAR': ['TEACH', 'ENSEÑANDO'],
+    'ENSE&Ntilde;AR': ['TEACH', 'ENSE&Ntilde;ANDO'],
     'ENTRAR': ['ENTER', 'ENTRANDO'],
     'ENVIAR': ['SEND', 'ENVIANDO'],
     'ESPERAR': ['WAIT', 'ESPERANDO'],
@@ -156,7 +156,7 @@ var PRETERITO = {'AGARRAR':['GRAB','AGARR&Eacute;','AGARRASTE','AGARR&Oacute;','
     'ASUSTAR':['ASTONISH','ASUST&Eacute;','ASUSTASTE','ASUST&Oacute;','ASUSTAMOS','ASUSTASTEIS','ASUSTARON'],
     'AVANZAR':['ADVANCE','AVANZ&Eacute;','AVANZASTE','AVANZ&Oacute;','AVANZAMOS','AVANZASTEIS','AVANZARON'],
     'AVISAR':['ADVISE','AVIS&Eacute;','AVISASTE','AVIS&Oacute;','AVISAMOS','AVISASTEIS','AVISARON'],
-    'BAÑAR':['BATHE','BAÑ&Eacute;','BAÑASTE','BAÑ&Oacute;','BAÑAMOS','BAÑASTEIS','BAÑARON'],
+    'BA&Ntilde;AR':['BATHE','BA&Ntilde;&Eacute;','BA&Ntilde;ASTE','BA&Ntilde;&Oacute;','BA&Ntilde;AMOS','BA&Ntilde;ASTEIS','BA&Ntilde;ARON'],
     'BURLAR':['MOCK','BURL&Eacute;','BURLASTE','BURL&Oacute;','BURLAMOS','BURLASTEIS','BURLARON'],
     'CAMINAR':['WALK','CAMIN&Eacute;','CAMINASTE','CAMIN&Oacute;','CAMINAMOS','CAMINASTEIS','CAMINARON'],
     'COCINAR':['COOK','COCIN&Eacute;','COCINASTE','COCIN&Oacute;','COCINAMOS','COCINASTEIS','COCINARON'],
@@ -168,7 +168,7 @@ var PRETERITO = {'AGARRAR':['GRAB','AGARR&Eacute;','AGARRASTE','AGARR&Oacute;','
     'DISFRUTAR':['ENJOY','DISFRUT&Eacute;','DISFRUTASTE','DISFRUT&Oacute;','DISFRUTAMOS','DISFRUTASTEIS','DISFRUTARON'],
     'DISPARAR':['SHOOT','DISPAR&Eacute;','DISPARASTE','DISPAR&Oacute;','DISPARAMOS','DISPARASTEIS','DISPARARON'],
     'EMPEZAR':['BEGIN','EMPEZ&Eacute;','EMPEZASTE','EMPEZ&Oacute;','EMPEZAMOS','EMPEZASTEIS','EMPEZARON'],
-    'ENSEÑAR':['TEACH','ENSEÑ&Eacute;','ENSEÑASTE','ENSEÑ&Oacute;','ENSEÑAMOS','ENSEÑASTEIS','ENSEÑARON'],
+    'ENSE&Ntilde;AR':['TEACH','ENSE&Ntilde;&Eacute;','ENSE&Ntilde;ASTE','ENSE&Ntilde;&Oacute;','ENSE&Ntilde;AMOS','ENSE&Ntilde;ASTEIS','ENSE&Ntilde;ARON'],
     'ENTRAR':['ENTER','ENTR&Eacute;','ENTRASTE','ENTR&Oacute;','ENTRAMOS','ENTRASTEIS','ENTRARON'],
     'ENVIAR':['SEND','ENVI&Eacute;','ENVIASTE','ENVI&Oacute;','ENVIAMOS','ENVIASTEIS','ENVIARON'],
     'ESPERAR':['WAIT','ESPER&Eacute;','ESPERASTE','ESPER&Oacute;','ESPERAMOS','ESPERASTEIS','ESPERARON'],
@@ -232,7 +232,7 @@ var IMPERFECTO = {'AGARRAR':['GRAB','AGARRABA','AGARRABAS','AGARRABA','AGARR&Aac
     'ASUSTAR':['ASTONISH','ASUSTABA','ASUSTABAS','ASUSTABA','ASUST&Aacute;BAMOS','ASUSTABAIS','ASUSTABAN'],
     'AVANZAR':['ADVANCE','AVANZABA','AVANZABAS','AVANZABA','AVANZ&Aacute;BAMOS','AVANZABAIS','AVANZABAN'],
     'AVISAR':['ADVISE','AVISABA','AVISABAS','AVISABA','AVIS&Aacute;BAMOS','AVISABAIS','AVISABAN'],
-    'BAÑAR':['BATHE','BAÑABA','BAÑABAS','BAÑABA','BAÑ&Aacute;BAMOS','BAÑABAIS','BAÑABAN'],
+    'BA&Ntilde;AR':['BATHE','BA&Ntilde;ABA','BA&Ntilde;ABAS','BA&Ntilde;ABA','BA&Ntilde;&Aacute;BAMOS','BA&Ntilde;ABAIS','BA&Ntilde;ABAN'],
     'BURLAR':['MOCK','BURLABA','BURLABAS','BURLABA','BURL&Aacute;BAMOS','BURLABAIS','BURLABAN'],
     'CAMINAR':['WALK','CAMINABA','CAMINABAS','CAMINABA','CAMIN&Aacute;BAMOS','CAMINABAIS','CAMINABAN'],
     'COCINAR':['COOK','COCINABA','COCINABAS','COCINABA','COCIN&Aacute;BAMOS','COCINABAIS','COCINABAN'],
@@ -244,7 +244,7 @@ var IMPERFECTO = {'AGARRAR':['GRAB','AGARRABA','AGARRABAS','AGARRABA','AGARR&Aac
     'DISFRUTAR':['ENJOY','DISFRUTABA','DISFRUTABAS','DISFRUTABA','DISFRUT&Aacute;BAMOS','DISFRUTABAIS','DISFRUTABAN'],
     'DISPARAR':['SHOOT','DISPARABA','DISPARABAS','DISPARABA','DISPAR&Aacute;BAMOS','DISPARABAIS','DISPARABAN'],
     'EMPEZAR':['BEGIN','EMPEZABA','EMPEZABAS','EMPEZABA','EMPEZ&Aacute;BAMOS','EMPEZABAIS','EMPEZABAN'],
-    'ENSEÑAR':['TEACH','ENSEÑABA','ENSEÑABAS','ENSEÑABA','ENSEÑ&Aacute;BAMOS','ENSEÑABAIS','ENSEÑABAN'],
+    'ENSE&Ntilde;AR':['TEACH','ENSE&Ntilde;ABA','ENSE&Ntilde;ABAS','ENSE&Ntilde;ABA','ENSE&Ntilde;&Aacute;BAMOS','ENSE&Ntilde;ABAIS','ENSE&Ntilde;ABAN'],
     'ENTRAR':['ENTER','ENTRABA','ENTRABAS','ENTRABA','ENTR&Aacute;BAMOS','ENTRABAIS','ENTRABAN'],
     'ENVIAR':['SEND','ENVIABA','ENVIABAS','ENVIABA','ENVI&Aacute;BAMOS','ENVIABAIS','ENVIABAN'],
     'ESPERAR':['WAIT','ESPERABA','ESPERABAS','ESPERABA','ESPER&Aacute;BAMOS','ESPERABAIS','ESPERABAN'],
@@ -308,7 +308,7 @@ var IMPERETIVO = {'AGARRAR':['GRAB','--','NO AGARRES','AGARRE','AGARREMOS','NO A
     'ASUSTAR':['ASTONISH','--','NO ASUSTES','ASUSTE','ASUSTEMOS','NO ASUST&Eacute;IS','ASUSTEN','ASUSTA','ASUSTAD'],
     'AVANZAR':['ADVANCE','--','NO AVANZES','AVANZE','AVANZEMOS','NO AVANZ&Eacute;IS','AVANZEN','AVANZA','AVANZAD'],
     'AVISAR':['ADVISE','--','NO AVISES','AVISE','AVISEMOS','NO AVIS&Eacute;IS','AVISEN','AVISA','AVISAD'],
-    'BAÑAR':['BATHE','--','NO BAÑES','BAÑE','BAÑEMOS','NO BAÑ&Eacute;IS','BAÑEN','BAÑA','BAÑAD'],
+    'BA&Ntilde;AR':['BATHE','--','NO BA&Ntilde;ES','BA&Ntilde;E','BA&Ntilde;EMOS','NO BA&Ntilde;&Eacute;IS','BA&Ntilde;EN','BA&Ntilde;A','BA&Ntilde;AD'],
     'BURLAR':['MOCK','--','NO BURLES','BURLE','BURLEMOS','NO BURL&Eacute;IS','BURLEN','BURLA','BURLAD'],
     'CAMINAR':['WALK','--','NO CAMINES','CAMINE','CAMINEMOS','NO CAMIN&Eacute;IS','CAMINEN','CAMINA','CAMINAD'],
     'COCINAR':['COOK','--','NO COCINES','COCINE','COCINEMOS','NO COCIN&Eacute;IS','COCINEN','COCINA','COCINAD'],
@@ -320,7 +320,7 @@ var IMPERETIVO = {'AGARRAR':['GRAB','--','NO AGARRES','AGARRE','AGARREMOS','NO A
     'DISFRUTAR':['ENJOY','--','NO DISFRUTES','DISFRUTE','DISFRUTEMOS','NO DISFRUT&Eacute;IS','DISFRUTEN','DISFRUTA','DISFRUTAD'],
     'DISPARAR':['SHOOT','--','NO DISPARES','DISPARE','DISPAREMOS','NO DISPAR&Eacute;IS','DISPAREN','DISPARA','DISPARAD'],
     'EMPEZAR':['BEGIN','--','NO EMPEZES','EMPEZE','EMPEZEMOS','NO EMPEZ&Eacute;IS','EMPEZEN','EMPEZA','EMPEZAD'],
-    'ENSEÑAR':['TEACH','--','NO ENSEÑES','ENSEÑE','ENSEÑEMOS','NO ENSEÑ&Eacute;IS','ENSEÑEN','ENSEÑA','ENSEÑAD'],
+    'ENSE&Ntilde;AR':['TEACH','--','NO ENSE&Ntilde;ES','ENSE&Ntilde;E','ENSE&Ntilde;EMOS','NO ENSE&Ntilde;&Eacute;IS','ENSE&Ntilde;EN','ENSE&Ntilde;A','ENSE&Ntilde;AD'],
     'ENTRAR':['ENTER','--','NO ENTRES','ENTRE','ENTREMOS','NO ENTR&Eacute;IS','ENTREN','ENTRA','ENTRAD'],
     'ENVIAR':['SEND','--','NO ENVIES','ENVIE','ENVIEMOS','NO ENVI&Eacute;IS','ENVIEN','ENVIA','ENVIAD'],
     'ESPERAR':['WAIT','--','NO ESPERES','ESPERE','ESPEREMOS','NO ESPER&Eacute;IS','ESPEREN','ESPERA','ESPERAD'],
@@ -384,7 +384,7 @@ var PARTICIPIO = {'AGARRAR':['GRAB','AGARRADO'],
     'ASUSTAR':['ASTONISH','ASUSTADO'],
     'AVANZAR':['ADVANCE','AVANZADO'],
     'AVISAR':['ADVISE','AVISADO'],
-    'BAÑAR':['BATHE','BAÑADO'],
+    'BA&Ntilde;AR':['BATHE','BA&Ntilde;ADO'],
     'BURLAR':['MOCK','BURLADO'],
     'CAMINAR':['WALK','CAMINADO'],
     'COCINAR':['COOK','COCINADO'],
@@ -396,7 +396,7 @@ var PARTICIPIO = {'AGARRAR':['GRAB','AGARRADO'],
     'DISFRUTAR':['ENJOY','DISFRUTADO'],
     'DISPARAR':['SHOOT','DISPARADO'],
     'EMPEZAR':['BEGIN','EMPEZADO'],
-    'ENSEÑAR':['TEACH','ENSEÑADO'],
+    'ENSE&Ntilde;AR':['TEACH','ENSE&Ntilde;ADO'],
     'ENTRAR':['ENTER','ENTRADO'],
     'ENVIAR':['SEND','ENVIADO'],
     'ESPERAR':['WAIT','ESPERADO'],
@@ -453,3 +453,33 @@ var PARTICIPIO = {'AGARRAR':['GRAB','AGARRADO'],
     'DORMIR':['SLEEP','DORMIDO'],
     'DECIR':['SAY','DICHO'],
     'SEGUIR':['FOLLOW','SEGUIDO']}
+
+function conjugationProblem(flag)
+{
+  var keys = Object.keys(PRESENTE);
+  var index = Math.floor(Random()*keys.length);
+  verb = keys[index];
+  data = PRESENTE[verb];
+
+  temp = "Fill out the following for "+verb+":<br>";
+  temp += "English translation:<span class='answer "+flag+"'>TO "+data[0]+"</span><br>";
+  temp += "Gerund (-ing):<span class='answer "+flag+"'>"+GERUNDO[verb][1]+"</span><br>";
+  temp += "Participle (-ed):<span class='answer "+flag+"'>"+PARTICIPIO[verb][1]+"</span><br>";
+
+  temp += "<table class='allborders'><tr><th colspan='6'>PRESENTE</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+  temp += "<tr class='answer "+flag+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+  data = IMPERETIVO[verb];
+  temp += "<table class='allborders'><tr><th colspan='6'>IMPERETIVO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+  temp += "<tr class='answer "+flag+"'><th>"+data[1]+"</th><th>"+data[7]+"/<br>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[8]+"/<br>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+  data = PRETERITO[verb];
+  temp += "<table class='allborders'><tr><th colspan='6'>PRETERITO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+  temp += "<tr class='answer "+flag+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+  data = IMPERFECTO[verb];
+  temp += "<table class='allborders'><tr><th colspan='6'>IMPERFECTO</th></tr><tr><th>Yo</th><th>T&uacute;</th><th>&Eacute;l</th><th>Nosotros</th><th>Vosotros</th><th>Ellos</th></tr>";
+  temp += "<tr class='answer "+flag+"'><th>"+data[1]+"</th><th>"+data[2]+"</th><th>"+data[3]+"</th><th>"+data[4]+"</th><th>"+data[5]+"</th><th>"+data[6]+"</th></tr><table><br>";
+
+  return temp;
+}
