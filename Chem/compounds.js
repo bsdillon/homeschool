@@ -73,14 +73,15 @@ var greekNumbers = {2:"di", 3:"tri", 4:"tetra"};
        }
      }
 
+     answer = ["Write the formula of the named molecule.<br>"+name,formula];
      if(Math.random()<.5)
      {
-       return ["What is the name of this molecule?<br>"+formula, name];
+       answer[0] ="What is the name of this molecule?<br>"+formula;
+       answer[1] =name;
      }
-     else
-     {
-       return ["Write the formula of the named molecule.<br>"+name,formula];
-     }
+
+     answer[0] = answer[0] + "<br>Find the empirical formula, the molar mass, and the percent of molar mass from each element.";
+     return answer;
    }
 
    function SelectIon(positive)

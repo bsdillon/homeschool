@@ -1,7 +1,7 @@
    function MakeAtomRow(tag, answertag)
    {
      var index = Math.floor(Math.random()*Object.keys(Atoms).length);
-     var protons = index;
+     var protons = index+1;
      var symbol = Object.keys(Atoms)[index];
      var description = Atoms[Object.keys(Atoms)[index]];
      var neutrons = NormalNeutrons[index]+Math.floor(Math.random()*5-2);
