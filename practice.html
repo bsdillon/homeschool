@@ -130,7 +130,7 @@
         }
 
         temp += "<li>What is the relationship between light's wavelength and frequency? <span class='answer "+classN+"'>c=&lambda;<i>v</i></span></li>";
-        lambda = Math.floor(Random()*370) + 380; //*10-7
+        lambda = Math.floor(Random()*370) + 380; //*10-9
 
         rgb= convert(lambda);
 
@@ -152,16 +152,28 @@
         if(show==0)
         {
           temp += "<td>"
+          work = "<nobr><i>v</i>=c/&lambda;<br><i>v</i>=(3.00&times;10<sup>8</sup>m/s)/("+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m)</nobr><br>";
+          work += "<nobr><i>v</i>="+(3/(lambda/100))+"&times;10<sup>(8+7)</sup>s<sup>-1</sup></nobr><br>";
+          work += "<nobr><i>v</i>="+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup></nobr><br><br>";
+          work += "<nobr>E=&hbar;c/&lambda;</nobr><br><nobr>E=(6.626&times;10<sup>-34</sup> J&middot;s)(3.00&times;10<sup>8</sup>m/s)/("+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m)</nobr><br>";
+          work += "<nobr>E="+(6.626*3/(lambda/100))+"&times;10<sup>(-34+8+7)</sup>J</nobr><br>";
+          work += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr><br>";
         }
         else
         {
           temp += "<td class='answer "+classN+"'>"
         }
-        temp += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-9</sup>m</nobr></td>";
+        temp += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr></td>";
 
         if(show==1)
         {
           temp += "<td>"
+          work = "<nobr>&lambda;=c/<i>v</i><br>&lambda;=(3.00&times;10<sup>8</sup>m/s)/("+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup>)</nobr><br>";
+          work += "<nobr>&lambda;="+(3/freq)+"&times;10<sup>(8&minus;"+Fpower+")</sup>m</nobr><br>";
+          work += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr><br><br>";
+          work += "<nobr>E=&hbar;<i>v</i></nobr><br><nobr>E=(6.626&times;10<sup>-34</sup> J&middot;s)("+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup>)</nobr><br>";
+          work += "<nobr>E="+(6.626*freq)+"&times;10<sup>(-34+"+Fpower+")</sup>J</nobr><br>";
+          work += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr><br>";
         }
         else
         {
@@ -172,6 +184,13 @@
         if(show==2)
         {
           temp += "<td>"
+          work = "&lambda;=&hbar;c/E<br><nobr>&lambda;=(6.626&times;10<sup>-34</sup>J&middot;s)(3.00&times;10<sup>8</sup>m/s)/("+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup>J)</nobr><br>";
+          work += "<nobr>&lambda;="+((3*6.626)/energy)+"&times;10<sup>(-34+8+"+(-Epower)+")</sup>m</nobr><br>";
+          work += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr><br><br>";
+
+          work += "<i>v</i>=E/&hbar;<br><nobr><i>v</i>=("+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup>J)/(6.626&times;10<sup>-34</sup>J&middot;s)</nobr><br>";
+          work += "<nobr><i>v</i>="+(energy/6.626)+"&times;10<sup>(34&minus;"+(-Epower)+")</sup>s<sup>-1</sup></nobr><br>";
+          work += "<nobr><i>v</i>="+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup></nobr><br><br>";
         }
         else
         {
@@ -180,6 +199,8 @@
         temp += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr></td>";
 
         temp += "<td style='background-color:#888888; color:"+rgb+"'>COLOR</td></tr></table>";
+
+        temp += "<span class='answer "+classN+"'>"+work+"</span>";
 
         tag.innerHTML = temp;
       }
