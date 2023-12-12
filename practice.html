@@ -8,6 +8,7 @@
     <script src="./Chem/atomic.js"></script>
     <script src="./Chem/compounds.js"></script>
     <script src="./spanish/verbconjugate.js"></script>
+    <script src="./spanish/numberexample.js"></script>
     <script src="./history.js"></script>
     <script>
       var showingAnswer = false;
@@ -245,7 +246,14 @@
           classN = "red";
         }
 
-        conjugationProblem(classN);
+        if(false) // Random()>.5)
+        {
+          temp = conjugationProblem(classN);
+        }
+        else
+        {
+          temp = numberProblem(classN);
+        }
 
         tag.innerHTML = temp;
       }

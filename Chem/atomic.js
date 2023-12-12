@@ -5,9 +5,9 @@
      var symbol = Object.keys(Atoms)[index];
      var description = Atoms[Object.keys(Atoms)[index]];
      var neutrons = NormalNeutrons[index]+Math.floor(Math.random()*5-2);
-     var mass = index+neutrons;
-     var electrons = index+Math.floor(Math.random()*5-2);
-     var charge = index - electrons;
+     var mass = protons+neutrons;
+     var electrons = protons+Math.floor(Math.random()*5-2);
+     var charge = protons - electrons;
 
      if(answertag!=null)
      {
@@ -56,7 +56,7 @@
 
        //Atomic Number
        var cell = answertag.insertCell(5);
-       cell.innerHTML = index;
+       cell.innerHTML = protons;
 
        //Atomic Mass
        var cell = answertag.insertCell(6);
@@ -78,9 +78,10 @@
        description = "?";
      }
 
+     an = protons;
      if(symbolNameAtomicNumberOrProton!=2)
      {
-       index = "?";
+       an = "?";
      }
 
      if(symbolNameAtomicNumberOrProton!=3)
@@ -157,7 +158,7 @@
 
      //Atomic Number
      var cell = tag.insertCell(5);
-     cell.innerHTML = index;
+     cell.innerHTML = an;
 
      //Atomic Mass
      var cell = tag.insertCell(6);
