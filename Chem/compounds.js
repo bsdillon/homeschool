@@ -1,6 +1,54 @@
 var greekNumbers = {2:"di", 3:"tri", 4:"tetra"};
 
-   function nameCompound()
+var UPPERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var LOWERS = "abcdefghijklmnopqrstuvwxyz"
+
+   function stoichProblem()
+   {
+     ions = selectIons()
+     formula = ions[0]
+     name = ions[1]
+
+     elementList = []
+     soFar = ""
+     for (let i = 0; i < formula.length; i++)
+     {
+       uIndex = UPPERS.indexOf(formula[i])
+       lIndex = LOWERS.indexOf(formula[i])
+       if(uIndex > -1 && soFar.length==0)
+       {
+         soFar = soFar+formula[i]  // this is either the first capital Hg or only capital H
+       }
+       else if (lIndex> -1 && soFar.length>0) // this is the ONLY lower case as in Hg
+       {
+         soFar = soFar+formula[i]
+         elementList.push(soFar)
+         soFar = ""
+       }
+       else if (uIndex >-1) //this is the SECOND capital and therefore a different element
+       {
+         elementList.push(soFar)
+         soFar = formula[i]
+       }
+       else if (soFar.length>0) // this NOT a lower and not an upper
+       {
+         elementList.push(soFar)
+         soFar = ""
+       }
+     }
+
+     if (soFar.length>0) // Anything left
+     {
+       elementList.push(soFar)
+       soFar = ""
+     }
+
+     NUMBER = Math.floor(Random()*10+5)
+
+     return "If you have "+NUMBER+" atoms of "+elementList[Math.floor(Random()*elementList.length)]+", how many "+formula+" can you make? Will you have any left over?"
+   }
+
+   function selectIons()
    {
      pIon = SelectIon(true)
      nIon = SelectIon(false)
@@ -72,7 +120,14 @@ var greekNumbers = {2:"di", 3:"tri", 4:"tetra"};
          name += nIon[1];
        }
      }
+     return [formula, name]
+   }
 
+   function nameCompound()
+   {
+     ions = selectIons()
+     formula = ions[0]
+     name = ions[1]
      answer = ["Write the formula of the named molecule.<br>"+name,formula];
      if(Math.random()<.5)
      {

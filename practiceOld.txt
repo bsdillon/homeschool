@@ -1,0 +1,439 @@
+<html>
+  <head>
+    <title>Practice Problems</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script src="./Math/math.js"></script>
+    <script src="./Math/linear.js"></script>
+    <script src="./Chem/basics.js"></script>
+    <script src="./Chem/atomic.js"></script>
+    <script src="./Chem/compounds.js"></script>
+    <script src="./spanish/verbconjugate.js"></script>
+    <script src="./spanish/numberexample.js"></script>
+    <script src="./history.js"></script>
+    <script>
+      var showingAnswer = false;
+
+      function loadAll()
+      {
+        RandomInit(false);
+        subatomic_fill();
+        compound_fill();
+        linear_fill();
+        spanish_fill();
+        history_fill();
+        geo_fill();
+        physics_fill();
+        quantum_fill();
+      }
+
+      function quantum_fill()
+      {
+        tag = document.getElementById("quantumElement");
+
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+  
+        n = Math.floor(Random()*3+1);
+        temp = "What are the quantum numbers for n="+n+"?<br><span class='answer "+classN+"'>"
+
+        for (i = 1; i<=n; i++)
+        {
+          l = n-i;
+          temp += " <i>l</i>="+l+" m<sub><i>l</i></sub> = {";
+          for(let m=-l;m<=l;m++)
+          {
+            temp+= m+" ";
+          }
+          temp +="} "+((l*2+1)*2)+" electrons<br><br>";
+        }
+        temp +="</span>";
+
+        var index = Math.floor(Random()*shells.length);
+        if(Random()<.5)
+        {
+          temp +="What element corresponds to<br>"+shells[index][1]+"?<br><span class='answer "+classN+"'>"+shells[index][0]+"</span>";
+        }
+        else
+        {
+          temp +="What is the electron configuration of "+shells[index][0]+"?<br><span class='answer "+classN+"'>"+shells[index][1]+"</span>";
+        }
+
+        temp +="<br><br>What is the wavelength of light ";
+
+        n1 = Math.floor(Random()*4+1);
+        n2 = Math.floor(Random()*4+1);
+        while(n2==n1)
+        {
+          n2 = Math.floor(Random()*4+1);
+        }
+
+        if(n1>n2)
+        {
+          var t = n1;
+          n1 = n2;
+          n2 = t;
+        }
+
+        if(Random()<.5)
+        {
+          temp +="emitted";
+        }
+        else
+        {
+          temp +="absorbed";
+        }
+
+        temp +=" between hydrogen layers "+n1+" and "+n2+"?<br>";
+
+        lambda = (n1*n1*n2*n2)/(.0109678*((n2*n2)-(n1*n1)));
+
+        temp +="<span class='answer "+classN+"'>"+lambda.toFixed(0)+" nm</span>"
+
+
+        tag.innerHTML = temp;
+      }
+
+      function physics_fill()
+      {
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+
+        tag = document.getElementById("physicsElement");
+
+        temp = "Answer the following:<br><ul>"
+        temp += "<li>What is the speed of light c=<span class='answer "+classN+"'>3.00*10<sup>8</sup> m/s</span></li>";
+        temp += "<li>What is Planck's constant &hbar;=<span class='answer "+classN+"'>6.626*10<sup>-34</sup> J·s</span></li>";
+        temp += "<li>What is Avagadro's number <i>n</i>=<span class='answer "+classN+"'>6.02*10<sup>23</sup></span></li>";
+        temp += "<li>What is the energy equation ";
+
+        var r = Random()
+        if(r<.25)
+        {
+          temp += "involving frequency of light E=<span class='answer "+classN+"'>&hbar;<i>v</i></span></li>";
+        }
+        else if(r<.5)
+        {
+          temp += "involving wavelength of light E=<span class='answer "+classN+"'>&hbar;c/&lambda;</span></li>";
+        }
+        else if(r<.75)
+        {
+          temp += "<i>v</i>=<span class='answer "+classN+"'>E/&hbar;</span></li>";
+        }
+        else
+        {
+          temp += "&lambda;=<span class='answer "+classN+"'>E/&hbar;c</span></li>";
+        }
+
+        temp += "<li>What is the relationship between light's wavelength and frequency? <span class='answer "+classN+"'>c=&lambda;<i>v</i></span></li>";
+        lambda = Math.floor(Random()*370) + 380; //*10-9
+
+        rgb= convert(lambda);
+
+        freq = 3/lambda; //10^8*10^9
+        Fpower = Math.floor(Math.log10(freq));
+        freq = freq*Math.pow(10,-Fpower);
+        Fpower = 17 + Fpower;
+
+        //6.626 × 10−34 J·s
+        energy = 6.626*freq;
+        p = Math.floor(Math.log10(energy));
+        energy = energy*Math.pow(10,-p);
+        Epower = p-34+Fpower;
+
+        temp += "</ul>Fill in the table<br><table class='allborders'><tr><th>Wavelength</th><th>Frequency</th><th>Energy</th><th>Color</th></tr><tr>";
+
+        show = Math.floor(Random()*3);
+
+        if(show==0)
+        {
+          temp += "<td>"
+          work = "<nobr><i>v</i>=c/&lambda;<br><i>v</i>=(3.00&times;10<sup>8</sup>m/s)/("+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m)</nobr><br>";
+          work += "<nobr><i>v</i>="+(3/(lambda/100))+"&times;10<sup>(8+7)</sup>s<sup>-1</sup></nobr><br>";
+          work += "<nobr><i>v</i>="+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup></nobr><br><br>";
+          work += "<nobr>E=&hbar;c/&lambda;</nobr><br><nobr>E=(6.626&times;10<sup>-34</sup> J&middot;s)(3.00&times;10<sup>8</sup>m/s)/("+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m)</nobr><br>";
+          work += "<nobr>E="+(6.626*3/(lambda/100))+"&times;10<sup>(-34+8+7)</sup>J</nobr><br>";
+          work += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr><br>";
+        }
+        else
+        {
+          temp += "<td class='answer "+classN+"'>"
+        }
+        temp += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr></td>";
+
+        if(show==1)
+        {
+          temp += "<td>"
+          work = "<nobr>&lambda;=c/<i>v</i><br>&lambda;=(3.00&times;10<sup>8</sup>m/s)/("+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup>)</nobr><br>";
+          work += "<nobr>&lambda;="+(3/freq)+"&times;10<sup>(8&minus;"+Fpower+")</sup>m</nobr><br>";
+          work += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr><br><br>";
+          work += "<nobr>E=&hbar;<i>v</i></nobr><br><nobr>E=(6.626&times;10<sup>-34</sup> J&middot;s)("+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup>)</nobr><br>";
+          work += "<nobr>E="+(6.626*freq)+"&times;10<sup>(-34+"+Fpower+")</sup>J</nobr><br>";
+          work += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr><br>";
+        }
+        else
+        {
+          temp += "<td class='answer "+classN+"'>"
+        }
+        temp += "<nobr><i>v</i>="+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup></nobr></td>";
+
+        if(show==2)
+        {
+          temp += "<td>"
+          work = "&lambda;=&hbar;c/E<br><nobr>&lambda;=(6.626&times;10<sup>-34</sup>J&middot;s)(3.00&times;10<sup>8</sup>m/s)/("+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup>J)</nobr><br>";
+          work += "<nobr>&lambda;="+((3*6.626)/energy)+"&times;10<sup>(-34+8+"+(-Epower)+")</sup>m</nobr><br>";
+          work += "<nobr>&lambda;="+(lambda/100).toFixed(2)+"&times;10<sup>-7</sup>m</nobr><br><br>";
+
+          work += "<i>v</i>=E/&hbar;<br><nobr><i>v</i>=("+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup>J)/(6.626&times;10<sup>-34</sup>J&middot;s)</nobr><br>";
+          work += "<nobr><i>v</i>="+(energy/6.626)+"&times;10<sup>(34&minus;"+(-Epower)+")</sup>s<sup>-1</sup></nobr><br>";
+          work += "<nobr><i>v</i>="+freq.toFixed(2)+"&times;10<sup>"+Fpower+"</sup> s<sup>-1</sup></nobr><br><br>";
+        }
+        else
+        {
+          temp += "<td class='answer "+classN+"'>"
+        }
+        temp += "<nobr>E="+energy.toFixed(2)+"&times;10<sup>"+Epower+"</sup> J</nobr></td>";
+
+        temp += "<td style='background-color:#888888; color:"+rgb+"'>COLOR</td></tr></table>";
+
+        temp += "<span class='answer "+classN+"'>"+work+"</span>";
+
+        tag.innerHTML = temp;
+      }
+
+      function geo_fill()
+      {
+        tag = document.getElementById("geoElement");
+
+        var location = ["Northern hemisphere","Southern hemisphere","Eastern hemisphere","Western hemisphere","North America", "South America", "Europe", "Africa", "Asia", "Austrailia/Oceana"];
+        var objects = ["border","city","capital","port","railway","highway","bridge"];
+        var feature = ["mountain", "lake", "river", "desert", "ongoing war", "recent disaster", "tourist attraction"];
+
+        var lIndex = Math.floor(Random()*location.length)
+        var oIndex = Math.floor(Random()*objects.length)
+        var fIndex = Math.floor(Random()*feature.length)
+
+        var temp = "In the area of "+location[lIndex]+" this country has a "+objects[oIndex]+" near a "+feature[fIndex];
+
+        tag.innerHTML = temp;
+      }
+
+      function history_fill()
+      {
+        tag = document.getElementById("historyElement");
+
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+
+        tag.innerHTML = historyProblem();
+      }
+
+      function spanish_fill()
+      {
+        tag = document.getElementById("verbElement");
+
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+
+        if(false) // Random()>.5)
+        {
+          temp = conjugationProblem(classN);
+        }
+        else
+        {
+          temp = numberProblem(classN);
+        }
+
+        tag.innerHTML = temp;
+      }
+
+      function linear_fill()
+      {
+        tag = document.getElementById("lineElement");
+
+        obj = new LinearEquations();
+        data = obj.fullProblem();
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+        tag.innerHTML = data[0] +"<br><span class='answer "+classN+"'>"+data[1]+"</span>";
+      }
+
+      function compound_fill()
+      {
+        tag = document.getElementById("compoundElement");
+        compound = nameCompound();
+        classN = "hidden";
+        if(showingAnswer)
+        {
+          classN = "red";
+        }
+        tag.innerHTML = compound[0] +"<br><span class='answer "+classN+"'>"+compound[1]+"</span>";
+      }
+
+      function subatomic_fill()
+      {
+        table = document.getElementById("subatomic");
+        tbody = table.getElementsByTagName("tbody")[0];
+        rows = tbody.getElementsByTagName("tr");
+        while(rows.length>1)
+        {
+          table.deleteRow(1);
+          rows = tbody.getElementsByTagName("tr");
+        }
+
+        first = table.insertRow();
+        second = table.insertRow();
+        second.classList.toggle("answer")
+        if(showingAnswer)
+        {
+          second.classList.toggle("red")
+        }
+        else
+        {
+          second.classList.toggle("hidden")
+        }
+        MakeAtomRow(first, second)
+      }
+
+      function checkboxToggle()
+      {
+        mylist = document.getElementsByClassName("answer");
+        for(let i=0;i<mylist.length;i++)
+        {
+          mylist[i].classList.toggle("red")
+          mylist[i].classList.toggle("hidden")
+        }
+        showingAnswer = !showingAnswer;
+      }
+
+      function decimalToHex(d) {
+          d = Math.round(d);
+          var hex = d.toString(16);
+          while (hex.length < 2) {
+              hex = "0" + hex;
+          }
+
+          return hex;
+      }
+
+      function convert(w)
+      {
+          if (w >= 380 && w < 440)
+          {
+              red   = -(w - 440) / (440 - 380);
+              green = 0.0;
+              blue  = 1.0;
+          }
+          else if (w >= 440 && w < 490)
+          {
+              red   = 0.0;
+              green = (w - 440) / (490 - 440);
+              blue  = 1.0;
+          }
+          else if (w >= 490 && w < 510)
+          {
+              red   = 0.0;
+              green = 1.0;
+              blue  = -(w - 510) / (510 - 490);
+          }
+          else if (w >= 510 && w < 580)
+          {
+              red   = (w - 510) / (580 - 510);
+              green = 1.0;
+              blue  = 0.0;
+          }
+          else if (w >= 580 && w < 645)
+          {
+              red   = 1.0;
+              green = -(w - 645) / (645 - 580);
+              blue  = 0.0;
+          }
+          else if (w >= 645 && w < 781)
+          {
+              red   = 1.0;
+              green = 0.0;
+              blue  = 0.0;
+          }
+          else
+          {
+              red   = 0.0;
+              green = 0.0;
+              blue  = 0.0;
+          }
+    
+
+          // Let the intensity fall off near the vision limits
+
+          if (w >= 380 && w < 420)
+              factor = 0.3 + 0.7*(w - 380) / (420 - 380);
+          else if (w >= 420 && w < 701)
+              factor = 1.0;
+          else if (w >= 701 && w < 781)
+              factor = 0.3 + 0.7*(780 - w) / (780 - 700);
+          else
+              factor = 0.0;
+
+          var gamma = 0.80;
+          var R = (red   > 0 ? 255*Math.pow(red   * factor, gamma) : 0);
+          var G = (green > 0 ? 255*Math.pow(green * factor, gamma) : 0);
+          var B = (blue  > 0 ? 255*Math.pow(blue  * factor, gamma) : 0); 
+
+          return "#" + decimalToHex(R) + decimalToHex(G) + decimalToHex(B);
+      }
+    </script>
+  </head>
+  <body onload="loadAll()">
+    <h1>Practice Problems</h1>
+    <p>
+      You can reset each problem individually. If you want to see the answers, check the box.
+    </p>
+    <button onclick="loadAll()">Reset</button><label>Show answer</label><input type="checkbox" onclick="checkboxToggle()"></input>
+
+    <h3>Reading and Writing</h3>
+    <ul>
+      <li>Read a book for 30 minutes</li>
+      <li>Write a one-page journal on what you read</li>
+      <li>Identify any words you didn't know. Look them up and write their definition</li>
+    </ul>
+
+    <h3>Physical Chemistry</h3>
+    <p id="physicsElement"></p>
+
+    <p id="quantumElement"></p>
+
+    <h3>Geography Scavenger Hunt</h3>
+    <p>Find as many countries as you can that fit this description. Score against our siblings only for UNIQUE country names.<br>
+    <span id="geoElement"></span></p>
+
+    <h3>Subatomic Particles</h3>
+    <table id="subatomic" class="allborders">
+      <tr><th>Symbol</th><th>Description</th><th># P</th><th># N</th><th># E</th><th>Atomic #</th><th>Atomic Mass</th><th>Charge</th></tr>
+    </table><br>
+
+    <h3>Named Compound</h3>
+    <p id="compoundElement"></p>
+
+    <h3>Historical Events</h3>
+    <p id="historyElement"></p>
+
+    <h3>Spanish Verb</h3>
+    <p id="verbElement"></p>
+
+    <h3>Linear Equations</h3>
+    <p id="lineElement"></p>
+  </body>
+</html>
