@@ -1,10 +1,118 @@
 var greekNumbers = {2:"di", 3:"tri", 4:"tetra"};
 
+var NUMBERS = "0123456789";
 var UPPERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var LOWERS = "abcdefghijklmnopqrstuvwxyz"
 
+   function reaction()
+   {
+      part1 = explodedFormula()
+      ions1 = part1[0]
+      form1 = combineIons(ions1)
+      name1 = part1[1]
+      part2 = explodedFormula()
+      ions2 = part2[0]
+      form2 = combineIons(ions2)
+      name2 = part2[1]
+
+      problem = "Finish the reaction equation and balance it<br>"
+      if(Random()>.5)
+      {
+        //using words
+        problem += "<b><em>"+name1[0]+" "+name1[1]+"</em></b> reacts with <b><em>"+name2[0]+" "+name2[1]+"</em></b>"
+      }
+      else
+      {
+        problem += form1+" + "+form2+" &rarr; ??? + ???"
+      }
+
+      counts = minimize(ions1[1],ions2[3])
+      x = counts[0];
+      y = counts[1];
+      form3 = combineIons([ions1[0], x, ions2[2], y])
+
+      counts = minimize(ions2[1],ions1[3])
+      x2 = counts[0];
+      y2 = counts[1];
+      form4 = combineIons([ions2[0], x2, ions1[2], y])
+
+      //answer = form1+" + "+form2+" &rarr; "+form3+" + "+form4+"<br>";
+
+      //p1L = ions1[1]
+      //p1R = x
+
+      //p2L = ions2[1]
+      //p2R = x2
+
+      //n1L = ions1[3]
+      //n1R = y
+
+      //n2L = ions2[3]
+      //n2R = y2
+
+      return problem
+   }
+
+   function combineIons(ions)
+   {
+      var answer = "";
+      containsNumber = false;
+      x = ions[1]
+      y = ions[3]
+
+      for (let i = 0; i < ions[0].length; i++)
+      {
+         uIndex = NUMBERS.indexOf(ions[0][i])
+         if (uIndex>-1)
+         {
+            containsNumber = true;
+            break;
+         }
+      }
+
+      if(x==1)
+      {
+        answer = ions[0];
+      }
+      else if(containsNumber)
+      {
+        answer = "("+ions[0]+")<sub>"+x+"</sub>";
+      }
+      else
+      {
+        answer = ions[0]+"<sub>"+x+"</sub>";
+      }
+
+      containsNumber = false;
+      for (let i = 0; i < ions[2].length; i++)
+      {
+         uIndex = NUMBERS.indexOf(ions[2][i])
+         if (uIndex>-1)
+         {
+            containsNumber = true;
+            break;
+         }
+      }
+
+      if(y==1)
+      {
+        answer += ions[2];
+      }
+      else if(containsNumber)
+      {
+        answer += "("+ions[2]+")<sub>"+y+"</sub>";
+      }
+      else
+      {
+        answer += ions[2]+"<sub>"+y+"</sub>";
+      }
+      return answer;
+   }
+
    function stoichProblem()
    {
+     answer = ""
+
      ions = selectIons()
      formula = ions[0]
      name = ions[1]
@@ -48,14 +156,10 @@ var LOWERS = "abcdefghijklmnopqrstuvwxyz"
      return "If you have "+NUMBER+" atoms of "+elementList[Math.floor(Random()*elementList.length)]+", how many "+formula+" can you make? Will you have any left over?"
    }
 
-   function selectIons()
+   function minimize(xP,yP)
    {
-     pIon = SelectIon(true)
-     nIon = SelectIon(false)
-
-     x = pIon[2];
-     y = -nIon[2];
-
+     x = xP
+     y = yP
      if(y>x)//switch order x greatest
      {
        var t = x;
@@ -71,8 +175,19 @@ var LOWERS = "abcdefghijklmnopqrstuvwxyz"
      gcf = x //x is gcf
 
      //most reduced numbers
-     x = pIon[2]/gcf;
-     y = -nIon[2]/gcf;
+     x = xP/gcf;
+     y = yP/gcf;
+     return [x,y];
+   }
+
+   function selectIons()
+   {
+     pIon = SelectIon(true)
+     nIon = SelectIon(false)
+
+     counts = minimize(pIon[2],-nIon[2])
+     x = counts[0];
+     y = counts[1];
 
      formula = "";
      name = "";
@@ -94,7 +209,6 @@ var LOWERS = "abcdefghijklmnopqrstuvwxyz"
        {
          formula = pIon[0]+"<sub>"+y+"</sub>";
          name = greekNumbers[y]+pIon[1]+" ";
-
        }
        else
        {
@@ -118,6 +232,64 @@ var LOWERS = "abcdefghijklmnopqrstuvwxyz"
        {
          formula += nIon[0];
          name += nIon[1];
+       }
+     }
+     return [formula, name]
+   }
+
+   function explodedFormula()
+   {
+     pIon = SelectIon(true)
+     nIon = SelectIon(false)
+
+     counts = minimize(pIon[2],-nIon[2])
+     x = counts[0];
+     y = counts[1];
+
+     var formula = [];
+     var name = [];
+     if(x==y)
+     {
+       formula = [pIon[0],1,nIon[0],1];
+       name = [pIon[1],nIon[1]];
+     }
+     else
+     {
+       if(y>1 && pIon[3]>1)
+       {
+         //this is a multi-atom ion like NH4 so we
+         //surround it with ( ) and add the number.
+         formula = [pIon[0],y];
+         name = [pIon[1]];
+       }
+       else if (y>1)
+       {
+         formula = [pIon[0],y];
+         name = [greekNumbers[y]+pIon[1]];
+       }
+       else
+       {
+         formula = [pIon[0],1];
+         name = [pIon[1]];
+       }
+
+       formula.push(nIon[0])
+       if(x>1 && nIon[3]>1)
+       {
+         //this is a multi-atom ion like NH4 so we
+         //surround it with ( ) and add the number.
+         formula.push(x);
+         name.push(nIon[1]);
+       }
+       else if(x>1)
+       {
+         formula.push(x);
+         name.push(greekNumbers[x]+nIon[1]);
+       }
+       else
+       {
+         formula.push(1);
+         name.push(nIon[1]);
        }
      }
      return [formula, name]

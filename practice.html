@@ -31,7 +31,10 @@
         {
           classN = "red";
         }
-        tag.innerHTML = compound ;
+
+	equations = reaction();        
+
+        tag.innerHTML = compound + "<br><br>" + equations ;
       }
 
       var countries = ['AF', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD',
@@ -118,6 +121,9 @@
     </p>
     <button onclick="loadAll()">Reset</button><label>Show answer</label><input type="checkbox" onclick="checkboxToggle()"></input>
 
+    <h3>Stoichiometry</h3>
+    <p id="stoichElement"></p>
+
     <h3>Reading and Writing</h3>
     <ul>
       <li>Read a book for 30 minutes</li>
@@ -138,9 +144,6 @@
 
     <h3>Historical Events</h3>
     <p id="historyElement"></p>
-
-    <h3>Stoichiometry</h3>
-    <p id="stoichElement"></p>
 
     <h3>Spanish Translation</h3>
     <p>Translate the selection indicates for each day. Compare it with the Spanish version of the same text when you finish.</p>
