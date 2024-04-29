@@ -34,8 +34,12 @@ Powers.prototype.PrimeFactor = function()
     }
   
     s+=value+"<br><div class='answer' name='answer'>";
+    s+=answer+"</div>";
   }
-  s+=answer+"</div>";
+  else
+  {
+    s = value;
+  }
   return s;
 }
 
