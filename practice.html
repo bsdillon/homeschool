@@ -116,7 +116,7 @@
 	   }
 	   else if (r==1)
 	   {
-		obj = Algebra()
+		obj = new Algebra()
 		data = obj.SelectProblem()
 		problemset += data + "<br>"
 	   }
@@ -131,37 +131,37 @@
 	   }
 	   else if (r==3)
 	   {
-		obj = ArithWord()
+		obj = new ArithWord()
 		data = obj.RandomProblem()
 		problemset += data + "<br>"
 	   }
 	   else if (r==4)
 	   {
-		obj = AreaVolume()
+		obj = new AreaVolume()
 		data = obj.SelectProblem()
 		problemset += data + "<br>"
 	   }
 	   else if (r==5)
 	   {
-		obj = ConicSections()
+		obj = new ConicSections()
 		data = obj.SelectProblem()
 		problemset += data + "<br>"
 	   }
 	   else if (r==6)
 	   {
-		obj = Geometry()
+		obj = new Geometry()
 		data = obj.SelectProblem()
 		problemset += data + "<br>"
 	   }
 	   else if (r==7)
 	   {
-		obj = NumberSkills()
+		obj = new NumberSkills()
 		data = obj.SelectSkill()
 		problemset += data + "<br>"
 	   }
 	   else if (r==8)
 	   {
-		obj = Physics()
+		obj = new Physics()
 		data = obj.InclinedMass1()
 		if (Random()>.5)
 		{
@@ -171,7 +171,7 @@
 	   }
 	   else if (r==9)
 	   {
-		obj = Powers()
+		obj = new Powers()
 		data = obj.PrimeFactor()
 		if (Random()<.3)
 		{
@@ -186,7 +186,7 @@
 	   }
 	   else if (r==10)
 	   {
-		obj = Trig()
+		obj = new Trig()
 		data = obj.BasicProblem
 		problemset += data + "<br>"
 	   }
