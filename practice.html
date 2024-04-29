@@ -5,6 +5,7 @@
     <script src="./Math/math.js"></script>
     <script src="./Math/linear.js"></script>
     <script src="./Math/equations.js"></script>
+    <script src="./Math/matrices.js"></script>
     <script src="./Chem/basics.js"></script>
     <script src="./Chem/atomic.js"></script>
     <script src="./Chem/compounds.js"></script>
@@ -20,7 +21,7 @@
         history_fill();
         geography_fill();
         stoich_fill();
-        linear_fill();
+        algebra_fill();
       }
 
       function stoich_fill()
@@ -91,20 +92,97 @@
 
       function linear_fill()
       {
-        tag = document.getElementById("lineElement");
+        tag = document.getElementById("algebra");
 
-        obj = new LinearEquations();
-        data = obj.fullProblem();
-        classN = "hidden";
-        if(showingAnswer)
-        {
-          classN = "red";
-        }
-        tag.innerHTML = data[0] +"<br><span class='answer "+classN+"'>"+data[1]+"</span>";
+	var problemset = ""
+	for(let i = 0; i<5; i++)
+	{
+	   r = Math.floor(Random()*11)
+	   if (r==0)
+	   {
+	        obj = new LinearEquations();
+	        data = obj.fullProblem();
+		problemset += data[0]+"<br>";		   
+	   }
+	   else if (r==1)
+	   {
+		obj = Algebra()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==2)
+	   {
+		data = AddMatrix()
+		problemset += data + "<br>"
+		data = SubtractMatrix()
+		problemset += data + "<br>"
+		data = MultMatrix()
+		problemset += data + "<br>"
+	   }
+	   else if (r==3)
+	   {
+		obj = ArithWord()
+		data = obj.RandomProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==4)
+	   {
+		obj = AreaVolume()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==5)
+	   {
+		obj = ConicSections()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==6)
+	   {
+		obj = Geometry()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==7)
+	   {
+		obj = NumberSkills()
+		data = obj.SelectSkill()
+		problemset += data + "<br>"
+	   }
+	   else if (r==8)
+	   {
+		obj = Physics()
+		data = obj.InclinedMass1()
+		if (Random()>.5)
+		{
+		    data = obj.VectorMath()
+		}
+		problemset += data + "<br>"
+	   }
+	   else if (r==9)
+	   {
+		obj = Powers()
+		data = obj.PrimeFactor()
+		if (Random()<.3)
+		{
+		    data = obj.nRoot()
+		}
 
-	tag = document.getElementById("3planes");
-	data = ThreeDLinear()
-        tag.innerHTML = data;
+		if(Random<.3)
+		{
+		    data = obj.PowerRatio()
+		}
+		problemset += data + "<br>"
+	   }
+	   else if (r==10)
+	   {
+		obj = Trig()
+		data = obj.BasicProblem
+		problemset += data + "<br>"
+	   }
+	}
+
+        tag.innerHTML = problemset;
       }
 
       function checkboxToggle()
@@ -126,21 +204,45 @@
     </p>
     <button onclick="loadAll()">Reset</button><label>Show answer</label><input type="checkbox" onclick="checkboxToggle()"></input>
 
+    <h3>Vocabulary</h3>
+    <P>
+	Each week you will learn 10 words of vocabulary with a quiz on Wednesday and a test on Friday. Please do the following each
+	day.<br>
+	<dl>
+	   <dt>Monday</dt><dl>Write down each word and its definition <b>10 pts</b></dl>
+	   <dt>Tuesday</dt><dl>Write a sentence for each word (you may use an alternate form e.g. verb, noun, adjective, etc.) <b>10 pts</b></dl>
+	   <dt>Wednesday</dt><dl>Pass the quiz <b>20 pts</b></dl>
+	   <dt>Thursday</dt><dl>Use all ten words in a short written form. Story if you like. Built into one of your assignments is an option. <b>10 pts</b></dl>
+	   <dt>Friday</dt><dl>Pass the test. <b>30 pts</b></dl>
+	</dl>
+    </P>
+    <ol>
+       <li>Droll</li>
+       <li>Enignma</li>
+       <li>Epistle</li>
+       <li>Haughty</li>
+       <li>Implacable</li>
+       <li>Melancholy</li>
+       <li>Peremptory</li>
+       <li>Rickety</li>
+       <li>Rife</li>
+       <li>Vehement</li>
+    </ol>
+	  
     <h3>Current Events and Presentation</h3>
     <p>For each day of the week, pick one of the top articles in <a href="https://apnews.com/">this site</a> and read it. Write one 
        slide for that article. On Friday, present your "week in review" presentation on the 5 articles you chose.<br><br>
-       Each week your selected articles should include one each from World, Business, and Science.
+       Each week your selected articles should include one each from World, Business, and Science. <b>10 pts each</b>
     </p>
 	  
     <h3>Stoichiometry</h3>
-    <p>Make sure you use grams instead of atoms and solve for mass.</p>
+    <p>Make sure you use grams instead of atoms and solve for mass. <b>5 pts each</b></p>
     <p id="stoichElement"></p>
 
     <h3>Reading and Writing</h3>
     <ul>
       <li>Read <b>YOUR ASSIGNED BOOK</b> for 30 minutes or 10 minutes, which ever is greater.</li>
-      <li>Write a one-page journal on what you read</li>
-      <li>Identify any words you didn't know. Look them up and write their definition</li>
+      <li>Write a one-page journal on what you read. <b>20 pts</b></li>
     </ul>
 
     <h3>Geography Study</h3>
@@ -148,7 +250,7 @@
     Locate this country on a map. Draw a map of the country AND and inset map showing it's location at least in its continent 
     or ocean. Your map should stretch from the top of the page to the bottom and from side to side. Obviously some narrow 
     countries like Chile can't do both, but make it fit which ever works best and scale everything else. YOU WILL do a good 
-    job drawing the country.<br><br>
+    job drawing the country. <b>35 pts</b><br><br>
     You may use symbols on your map, but you must include a legend on the side of the map.
     </p>
       <ol>
@@ -182,11 +284,11 @@
     <span id="geoElement"></span>
 
     <h3>Historical Events</h3>
-    <p>Minimum of 3 paragraphs of 5 sentences each.</p>
+    <p>Minimum of 3 paragraphs of 5 sentences each. <b>10 pts</b></p>
     <p id="historyElement"></p>
 
-    <h3>Linear Equations</h3>
-    <p id="3planes"></p>
-    <p id="lineElement"></p>
+    <h3>Algebra Problems</h3>
+    <b>5 pts each</b>
+    <p id="algebra"></p>
   </body>
 </html>
