@@ -107,7 +107,7 @@
 	var problemset = ""
 	for(let i = 0; i<5; i++)
 	{
-	   r = Math.floor(Random()*11)
+	   r = Math.floor(Random()*10)
 	   if (r==0)
 	   {
 	        obj = new LinearEquations();
@@ -161,12 +161,8 @@
 	   }
 	   else if (r==8)
 	   {
-		obj = new Physics()
-		data = obj.InclinedMass1()
-		if (Random()>.5)
-		{
-		    data = obj.VectorMath()
-		}
+		obj = new Trig()
+		data = obj.BasicProblem
 		problemset += data + "<br>"
 	   }
 	   else if (r==9)
@@ -186,8 +182,12 @@
 	   }
 	   else if (r==10)
 	   {
-		obj = new Trig()
-		data = obj.BasicProblem
+		obj = new Physics()
+		data = obj.InclinedMass1()
+		if (Random()>.5)
+		{
+		    data = obj.VectorMath()
+		}
 		problemset += data + "<br>"
 	   }
 	}
