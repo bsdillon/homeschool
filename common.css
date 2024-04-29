@@ -18,3 +18,4 @@ table.bordered td{border-style:solid; text-align:center;}
 table.allborders td{border-style:solid; text-align:center; white-space: nowrap;}
 table.allborders th{border-style:solid; text-align:center; white-space: nowrap;}
 table.allborders {border-style:solid; text-align:center;}
+answer {color:rgba(0,0,0,0); font-weight:bold;}
