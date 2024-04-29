@@ -5,6 +5,7 @@ if(typeof MathDefined === "undefined")
 
 function Powers()
 {
+  this.showAnswer=false
 }
 
 Powers.prototype.PrimeFactor = function()
@@ -20,17 +21,20 @@ Powers.prototype.PrimeFactor = function()
     value = value * values[n];
     counts[n]++;
   }
-  
-  var answer = "";
-  for(let i=0;i<counts.length;i++)
-  {
-    if(counts[i]>0)
-    {
-      answer+=values[i]+"<sup>"+counts[i]+"</sup>";
-    }
-  }
 
-  s+=value+"<br><div class='answer' name='answer'>";
+  if (self.showAnswer)
+  {
+    var answer = "";
+    for(let i=0;i<counts.length;i++)
+    {
+      if(counts[i]>0)
+      {
+        answer+=values[i]+"<sup>"+counts[i]+"</sup>";
+      }
+    }
+  
+    s+=value+"<br><div class='answer' name='answer'>";
+  }
   s+=answer+"</div>";
   return s;
 }
@@ -73,25 +77,28 @@ Powers.prototype.nRoot = function()
   }
   s+="</span><br>";
 
-  //creating the answer
-  var inval = 1;
-  var outval = 1;
-  for(let i=0;i<counts.length;i++)
+  if (self.showAnswer)
   {
-    if(counts[i]>=rootIndex+2)
+    //creating the answer
+    var inval = 1;
+    var outval = 1;
+    for(let i=0;i<counts.length;i++)
     {
-      var tmp = Math.floor(counts[i]/(rootIndex+2));
-      outval*=Math.pow(values[i],tmp);
-      counts[i]-=(tmp*(rootIndex+2));
+      if(counts[i]>=rootIndex+2)
+      {
+        var tmp = Math.floor(counts[i]/(rootIndex+2));
+        outval*=Math.pow(values[i],tmp);
+        counts[i]-=(tmp*(rootIndex+2));
+      }
+      inval*=Math.pow(values[i],counts[i]);
     }
-    inval*=Math.pow(values[i],counts[i]);
+    if(outval==1)
+    {
+      outval="";
+    }
+  
+    var outside = "<div class='answer' name='answer'>"+outval;
   }
-  if(outval==1)
-  {
-    outval="";
-  }
-
-  var outside = "<div class='answer' name='answer'>"+outval;
   var inside = roots[rootIndex]+"<span style='text-decoration:overline'>"+inval;
 
   var inval = "";
@@ -109,11 +116,17 @@ Powers.prototype.nRoot = function()
     {
       inval+=values2[i]+(tmp==1?"":"<sup>"+counts2[i]+"</sup>");
     }
+
+    outside +=outval;
+    inside +=inval;
+    s+= outside+inside+"</span>";
+  }
+  else
+  {
+    inside +=inval;
+    s+= inside+"</span>";
   }
 
-  outside +=outval;
-  inside +=inval;
-  s+= outside+inside+"</span>";
   s += "</div>"
   return s;
 }
@@ -222,9 +235,12 @@ Powers.prototype.PowerRatio = function()
     }
   }
 
-
-  var answer = "<div class='answer' name='answer'>"
-  answer += top+" / "+bottom+"</div>";
-
-  return s+answer;
+  if (self.showAnswer)
+  {
+    var answer = "<div class='answer' name='answer'>"
+    answer += top+" / "+bottom+"</div>";
+  
+    return s+answer;
+  }
+  return top;
 }
