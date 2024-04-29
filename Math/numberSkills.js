@@ -9,10 +9,13 @@ function NumberSkills()
 
 NumberSkills.prototype.SelectSkill = function()
 {
-  switch(Math.floor(Random()*1))
+  switch(Math.floor(Random()*2))
   {
     case 0:
       return this.Round();
+      break;
+    case 1:
+      return this.Convert();
       break;
   }
 }
