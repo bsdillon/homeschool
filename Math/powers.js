@@ -127,7 +127,7 @@ Powers.prototype.nRoot = function()
   else
   {
     inside +=inval;
-    s+= inside+"</span>";
+    s+= inside;
   }
 
   s += "</div>"
