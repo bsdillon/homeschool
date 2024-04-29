@@ -116,7 +116,10 @@ Powers.prototype.nRoot = function()
     {
       inval+=values2[i]+(tmp==1?"":"<sup>"+counts2[i]+"</sup>");
     }
+  }
 
+  if (self.showAnswer)
+  {
     outside +=outval;
     inside +=inval;
     s+= outside+inside+"</span>";
