@@ -3,7 +3,19 @@
     <title>Practice Problems</title>
     <link rel="stylesheet" type="text/css" href="common.css">
     <script src="./Math/math.js"></script>
+    <script src="./Math/ArithWord.js"></script>
     <script src="./Math/linear.js"></script>
+    <script src="./Math/equations.js"></script>
+    <script src="./Math/matrices.js"></script>
+    <script src="./Math/areavolume.js"></script>
+    <script src="./Math/conics.js"></script>
+    <script src="./Math/equations.js"></script>
+    <script src="./Math/geometry.js"></script>
+    <script src="./Math/linear.js"></script>
+    <script src="./Math/numberSkills.js"></script>
+    <script src="./Math/physics.js"></script>
+    <script src="./Math/powers.js"></script>
+    <script src="./Math/trig.js"></script>
     <script src="./Chem/basics.js"></script>
     <script src="./Chem/atomic.js"></script>
     <script src="./Chem/compounds.js"></script>
@@ -15,11 +27,11 @@
 
       function loadAll()
       {
-        RandomInit(false);
+        RandomInit(true);
         history_fill();
         geography_fill();
         stoich_fill();
-        linear_fill();
+        algebra_fill();
       }
 
       function stoich_fill()
@@ -88,18 +100,99 @@
         tag.innerHTML = historyProblem();
       }
 
-      function linear_fill()
+      function algebra_fill()
       {
-        tag = document.getElementById("lineElement");
+        tag = document.getElementById("algebra");
 
-        obj = new LinearEquations();
-        data = obj.fullProblem();
-        classN = "hidden";
-        if(showingAnswer)
-        {
-          classN = "red";
-        }
-        tag.innerHTML = data[0] +"<br><span class='answer "+classN+"'>"+data[1]+"</span>";
+	var problemset = ""
+	for(let i = 0; i<5; i++)
+	{
+	   r = Math.floor(Random()*10)
+	   if (r==0)
+	   {
+	        obj = new LinearEquations();
+	        data = obj.fullProblem();
+		problemset += data[0]+"<br>";		   
+	   }
+	   else if (r==1)
+	   {
+		obj = new Algebra()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==2)
+	   {
+		data = AddMatrix()
+		problemset += data + "<br>"
+		data = SubtractMatrix()
+		problemset += data + "<br>"
+		data = MultMatrix()
+		problemset += data + "<br>"
+	   }
+	   else if (r==3)
+	   {
+		obj = new ArithWord()
+		data = obj.RandomProblem()
+		problemset += data + "<br><br>"
+	   }
+	   else if (r==4)
+	   {
+		obj = new AreaVolume()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==5)
+	   {
+		obj = new ConicSections()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==6)
+	   {
+		obj = new Geometry()
+		data = obj.SelectProblem()
+		problemset += data + "<br>"
+	   }
+	   else if (r==7)
+	   {
+		obj = new NumberSkills()
+		data = obj.SelectSkill()
+		problemset += data + "<br><br>"
+	   }
+	   else if (r==8)
+	   {
+		obj = new Trig()
+		data = obj.BasicProblem()
+		problemset += data + "<br><br>"
+	   }
+	   else if (r==9)
+	   {
+		obj = new Powers()
+		data = obj.PrimeFactor()
+		if (Random()<.3)
+		{
+		    data = obj.nRoot()
+		}
+
+		if(Random<.3)
+		{
+		    data = obj.PowerRatio()
+		}
+		problemset += data + "<br>"
+	   }
+	   else if (r==10)
+	   {
+		obj = new Physics()
+		data = obj.InclinedMass1()
+		if (Random()>.5)
+		{
+		    data = obj.VectorMath()
+		}
+		problemset += data + "<br>"
+	   }
+	}
+
+        tag.innerHTML = problemset;
       }
 
       function checkboxToggle()
@@ -121,55 +214,91 @@
     </p>
     <button onclick="loadAll()">Reset</button><label>Show answer</label><input type="checkbox" onclick="checkboxToggle()"></input>
 
+    <h3>Vocabulary</h3>
+    <P>
+	Each week you will learn 10 words of vocabulary with a quiz on Wednesday and a test on Friday. Please do the following each
+	day.<br>
+	<ul>
+	   <li><b>Monday</b>Write down each word and its definition <b>10 pts</b></li>
+	   <li><b>Tuesday</b>Write a sentence for each word (you may use an alternate form e.g. verb, noun, adjective, etc.) <b>10 pts</b></li>
+	   <li><b>Wednesday</b>Pass the quiz <b>20 pts</b></li>
+	   <li><b>Thursday</b>Use all ten words in a short written form. Story if you like. Built into one of your assignments is an option. <b>10 pts</b></li>
+	   <li><b>Friday</b>Pass the test. <b>30 pts</b></li>
+	</ul>
+    </P>
+    <ol>
+       <li>Droll</li>
+       <li>Enignma</li>
+       <li>Epistle</li>
+       <li>Haughty</li>
+       <li>Implacable</li>
+       <li>Melancholy</li>
+       <li>Peremptory</li>
+       <li>Rickety</li>
+       <li>Rife</li>
+       <li>Vehement</li>
+    </ol>
+	  
+    <h3>Current Events and Presentation</h3>
+    <p>For each day of the week, pick one of the top articles in <a href="https://apnews.com/">this site</a> and read it. Write one 
+       slide for that article. On Friday, present your "week in review" presentation on the 5 articles you chose.<br><br>
+       Each week your selected articles should include one each from World, Business, and Science. <b>10 pts each</b>
+    </p>
+	  
     <h3>Stoichiometry</h3>
+    <p>Make sure you use grams instead of atoms and solve for mass. <b>5 pts each</b></p>
     <p id="stoichElement"></p>
 
     <h3>Reading and Writing</h3>
     <ul>
-      <li>Read a book for 30 minutes</li>
-      <li>Write a one-page journal on what you read</li>
-      <li>Identify any words you didn't know. Look them up and write their definition</li>
+      <li>Read <b>YOUR ASSIGNED BOOK</b> for 30 minutes or 10 minutes, which ever is greater.</li>
+      <li>Write a one-page journal on what you read. <b>20 pts</b></li>
     </ul>
 
     <h3>Geography Study</h3>
-    <p>Locate this country on a map and answer the following questions in paragraph form:</p>
-      <ul>
-        <li>Did this country go exploring or colonizing? What is "discovered" or colonized?</li>
-        <li>Does this country have any current wars or historical enemies?</li>
-        <li>What famous historical figure came from this country?</li>
-        <li>What is one product from this country?</li>
-        <li>How is this country in the news today</li>
-      </ul>
+    <p>
+    Locate this country on a map. Draw a map of the country AND and inset map showing it's location at least in its continent 
+    or ocean. Your map should stretch from the top of the page to the bottom and from side to side. Obviously some narrow 
+    countries like Chile can't do both, but make it fit which ever works best and scale everything else. YOU WILL do a good 
+    job drawing the country. <b>35 pts</b><br><br>
+    You may use symbols on your map, but you must include a legend on the side of the map.
+    </p>
+      <ol>
+        <li>On the map locate and name the following PHYISCAL landmarks: mountain systems, major rivers, major lakes, seas and oceans.</li>
+	<li>Find the CLIMATE charts for your country's annual rain fall and temperature. Reproduce these on the side/top of the map. Identify the climate of the country from <a href="https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification#Overview">this table</a>.
+		<ul><li>You must include 1 of these locations for every 1 million square miles of territory in your country. Minimum of 1. Show each location on the map pointing to the corresponding climate chart.</li></ul>
+	</li>
+	<li>Identify abundant NATURAL RESOURCES found in this country including oil, coal, metals, and wild/forested areas.</li>
+	<li>On the map locate and name the following POLITICAL DIVISIONS: national capital, state (or equivalent major subdivision) boundaries</li>
+	<li>List the top three ECONOMIC products of the country. If they are agricultural or mineral identify the areas they are produced on the map. If they are a finished product, identify the major commercial cities on the map. One city/symbol for EACH of the three products.</li>
+	<li>On the back of the map, identify the POLITICAL SYSTEM of the country from <a href="https://en.wikipedia.org/wiki/List_of_forms_of_government#Forms_of_government_by_power_source">this table</a>. Answer the following in a paragraph:
+		<ul>
+			<li>How long has this government system been in place?</li>
+			<li>Who is the current head? What is the position called? How long has he/she been in power?</li>
+			<li>How is the government selected? How is the head of the government specifically selected?</li>
+			<li>Are there any major challenges to that authority?</li>
+			<li>What do you think about this system of government?</li>
+		</ul>
+	</li>
+	<li>On the back, write about the CULTURAL identity of the country. Find a pie chart describing the ethnic divisions of the country
+		and reproduce it on the back. You must write one paragraph for every group with over 20% of the population (max of 3, min of 1). Consider the following:
+		<ul>
+			<li>Is this cultural group dominant? If not, how does their power relate to the dominant group? Is any one group dominant?</li>
+			<li>Is this cultural group native to that region BEFORE 1492 (when nosey white people when exploring)? If not, where did they come from? If so, how far back does "native" go for them?</li>
+			<li>What are the language, dress, and physical characteristics which make them identifiable visually?</li>
+			<li>What are the religous, ceremonial, and other rites that define their life's major phases (at a minimum: birth, adulthood, death)?</li>
+			<li>How does this people make a living? Are they settled in any one region of the country? Do they span mulitple countries?</li>
+		</ul>
+	</li>
+      </ol>
     <span id="geoElement"></span>
 
     <h3>Historical Events</h3>
+    <p>Minimum of 3 paragraphs of 5 sentences each. <b>10 pts</b></p>
     <p id="historyElement"></p>
 
-    <h3>Spanish Translation</h3>
-    <p>Translate the selection indicates for each day. Compare it with the Spanish version of the same text when you finish.</p>
-    <table>
-      <tr><th>Date</th><th>Selection</th></tr>
-      <tr><td style="width:100">January 8</th><td style="width:100">1 Nephi 1:1</td></tr>
-      <tr><td>January 9</th><td>1 Nephi 2:1</td></tr>
-      <tr><td>January 10</th><td>1 Nephi 3:7</td></tr>
-      <tr><td>January 11</th><td>1 Nephi 4:10</td></tr>
-      <tr><td>January 12</th><td>1 Nephi 5:14</td></tr>
-      <tr><td>January 15</th><td>1 Nephi 6:3</td></tr>
-      <tr><td>January 16</th><td>1 Nephi 7:16</td></tr>
-      <tr><td>January 17</th><td>1 Nephi 8:24</td></tr>
-      <tr><td>January 18</th><td>1 Nephi 9:2</td></tr>
-      <tr><td>January 19</th><td>1 Nephi 10:3</td></tr>
-      <tr><td>January 22</th><td>1 Nephi 11:8</td></tr>
-      <tr><td>January 23</th><td>1 Nephi 12:17</td></tr>
-      <tr><td>January 24</th><td>1 Nephi 13:5</td></tr>
-      <tr><td>January 25</th><td>1 Nephi 14:10</td></tr>
-      <tr><td>January 26</th><td>1 Nephi 15:24</td></tr>
-      <tr><td>January 29</th><td>1 Nephi 16:2</td></tr>
-      <tr><td>January 30</th><td>1 Nephi 17:1-2</td></tr>
-      <tr><td>January 31</th><td>1 Nephi 18:6</td></tr>
-    </table>
-
-    <h3>Linear Equations</h3>
-    <p id="lineElement"></p>
+    <h3>Algebra Problems</h3>
+    <b>5 pts each</b>
+    <p id="algebra"></p>
   </body>
 </html>

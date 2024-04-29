@@ -166,7 +166,7 @@ function hyperbola()
 
 function ConicSections()
 {
-  this.sectionProbabilities = [0,1,1,4,4];
+  this.sectionProbabilities = [1,2,3,3,3];
 }
 
 ConicSections.prototype.SetSectionProbabilities = function(l,p,c,e,h)

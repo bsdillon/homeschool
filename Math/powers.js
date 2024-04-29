@@ -20,7 +20,7 @@ Powers.prototype.PrimeFactor = function()
     value = value * values[n];
     counts[n]++;
   }
-  
+
   var answer = "";
   for(let i=0;i<counts.length;i++)
   {
@@ -32,6 +32,7 @@ Powers.prototype.PrimeFactor = function()
 
   s+=value+"<br><div class='answer' name='answer'>";
   s+=answer+"</div>";
+
   return s;
 }
 
@@ -114,6 +115,7 @@ Powers.prototype.nRoot = function()
   outside +=outval;
   inside +=inval;
   s+= outside+inside+"</span>";
+
   s += "</div>"
   return s;
 }
@@ -221,7 +223,6 @@ Powers.prototype.PowerRatio = function()
       lenB+=2;
     }
   }
-
 
   var answer = "<div class='answer' name='answer'>"
   answer += top+" / "+bottom+"</div>";
