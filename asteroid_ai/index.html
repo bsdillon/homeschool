@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawable Canvas</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="blackCanvas"></canvas>
+    <script src="drawable.js"></script>
+    <script src="./ships/standardShip.js"></script>
+    <script src="./ships/needleShip.js"></script>
+    <script src="./ships/thresherShip.js"></script>
+    <script src="./ships/heavyShip.js"></script>
+    <script src="./ships/warpShip.js"></script>
+    <script src="./ships/quantumShip.js"></script>
+    <script src="./mines/standardMine.js"></script>
+    <script src="./mines/timedMine.js"></script>
+    <script src="./mines/magneticMine.js"></script>
+    <script src="./mines/stealthMine.js"></script>
+    <script src="controls.js"></script>
+    <script>
+        const canvas = document.getElementById('blackCanvas');
+        const context = canvas.getContext('2d');
+        const ships = [];
+        const mines = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function addDrawable(drawable, theSet) {
+            theSet.push(drawable);
+        }
+
+        function destroyMine(drawable) {
+            destroyMe(drawable, mines)
+        }
+
+        function destroyShip(drawable) {
+            destroyMe(drawable, ships)
+        }
+
+        function destroyMe(drawable, theSet) {
+            const index = theSet.indexOf(drawable);
+            if (index !== -1) {
+                theSet.splice(index, 1); // Remove from the array
+            }
+        }
+
+        function draw() {
+            // Fill the background with black first
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = 'black';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Move and draw all drawables
+            mines.forEach(mine => {
+                mine.look(ships, destroyMine);
+            });
+            mines.forEach(mine => {
+                mine.move();
+                mine.draw(context);
+            });
+            ships.forEach(ship => {
+                ship.look(ships, destroyShip);
+                ship.move();
+                ship.draw(context);
+            });
+        }
+
+        function mainLoop() {
+            draw();
+            setTimeout(mainLoop, 50);
+        }
+
+        function getMine() {
+            var r = Math.floor(Math.random()*4);
+            if(r==0){
+              return new StandardMine(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
+            }
+            else if(r==1){
+              return new TimedMine(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
+            }
+            else if(r==2){
+              return new MagneticMine(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
+            }
+            else if(r==3){
+              return new StealthMine(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
+            }
+        }
+
+        function getShip() {
+            var r = Math.random();
+            if(r<.167) {
+              return new StandardShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+            else if(r<.333) {
+              return new NeedleShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+            else if(r<.5) {
+              return new ThresherShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+            else if(r<.667) {
+              return new HeavyShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+            else if(r<.833) {
+	      return new WarpShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+            else {
+	      return new QuantumShip(window.innerWidth / 2, window.innerHeight / 2, 0);
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas, false);
+        resizeCanvas();
+
+        // Create Controls object and delegate keyboard events to it
+	const ship = getShip();
+        addDrawable(ship, ships);
+        const controls = new Controls(ship);
+
+	for(let i=0;i<100;i++)
+        {
+          addDrawable(getMine(), mines);
+        }
+
+        mainLoop();
+    </script>
+</body>
+</html>
