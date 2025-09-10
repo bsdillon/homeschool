@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <style>
+            .name {width: 75px; background-color: cornflowerblue; padding: 0 10px;}
+            .spanish {width: 300px; padding: 0 10px;}
+            .english {color: white; background-color: darkred; width:300px; text-align: right; padding: 0 10px;}
+        </style>
+        <script>
+            let name_list = ["Luis","Carmen","Isabella","Angel","Mateo","Felipe","Jesus", "Lupe"];
+            let greeting_list = ["Hola.","Buenos d&#237;as.","Buenas noches.","Buenos tardes.","&#191;Qu&#233; tal?","&#191;Qu&#233; pasa?"];
+            let feeling_list = ["Bien","Gozoso","Enojado","Triste","Mal"];
+            let leaving_list = ["Adios","Hasta luego","Hasta la vista","Nos vemos","Que le vaya bien","Vaya con Dios","Tenga buen d&#237;a"];
+
+            let translation_dict = {
+                "Hola.":"Hello","Buenos d&#237;as.":"Good morning","Buenas noches.":"Good evening","Buenos tardes.":"Good afternoon","&#191;Qu&#233; tal?":"What's up?","&#191;Qu&#233; pasa?":"What's happening?",
+                "Bien":"Well","Gozoso":"Joyful","Enojado":"Mad","Triste":"Sad","Mal":"Bad",
+                "Adios":"Goodbye","Hasta luego":"Until later","Hasta la vista":"Until I see you","Nos vemos":"See you","Que le vaya bien":"Hope it goes well","Vaya con Dios":"Go with God","Tenga buen d&#237;a":"Have a good day"
+            }
+
+            function create_script()
+            {
+                let script = document.getElementById("script_space");
+                script.innerHTML = "";
+                let table = document.createElement("table");
+                script.appendChild(table);
+                let names = get_two(name_list);
+                let greetings = get_two(greeting_list);
+                let feelings = get_two(feeling_list);
+                let leavings = get_two(leaving_list);
+
+                dialog_block(table, names[0], greetings[0], translation_dict[greetings[0]]);
+                dialog_block(table, names[1], greetings[1], translation_dict[greetings[1]]);
+                dialog_block(table, names[0], "&#191;C&#243;mo est&#225;?", "How are you?");
+                dialog_block(table, names[1], feelings[1]+", &#191;y t&#250;?", translation_dict[feelings[0]]+", and you?");
+                dialog_block(table, names[0], feelings[0], translation_dict[feelings[1]]);
+                dialog_block(table, names[0], leavings[0], translation_dict[leavings[0]]);
+                dialog_block(table, names[1], leavings[1], translation_dict[leavings[1]]);
+            }
+
+            function get_two(list)
+            {
+                let index1 = Math.floor(Math.random()*list.length);
+                let index2 = Math.floor(Math.random()*list.length);
+                while(index2==index1)
+                {
+                    index2 = Math.floor(Math.random()*list.length);
+                }
+                return [list[index1], list[index2]];
+            }
+
+            function dialog_block(table, name, spanish, english)
+            {
+                // add a row
+                let row = table.insertRow();
+
+                // add cells
+                let name_cell = row.insertCell();
+                name_cell.innerHTML = name;
+                name_cell.classList.add("name");
+                let spanish_cell = row.insertCell();
+                spanish_cell.innerHTML = spanish;
+                spanish_cell.classList.add("spanish");
+
+                let row2 = table.insertRow();
+                let empty_cell = row2.insertCell();
+                let english_cell = row2.insertCell();
+                english_cell.innerHTML = english;
+                english_cell.classList.add("english");
+
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Conversation Practice</h2>
+        <h3>Purpose</h3>
+        <p>
+            This lesson is meant to build conversational Spanish skills by generating a dialog, 
+            following a standard pattern, and expanding on that pattern over several sessions.
+            Working in pairs, the student(s) and a parent can verbally practice the conversational
+            components.
+        </p>
+        <h3>Lesson Objectives</h3>
+        <ul>
+            <li>Practice verbally</li>
+            <li>Learn greetings</li>
+            <li>Learn common phrases</li>
+            <li>Dynamic practice in pairs</li>
+        </ul>
+        <h3>Instructions</h3>
+        <h3>Lesson</h3>
+        <button onclick="create_script()">Generate</button>
+        <div id="script_space">
+
+        </div>
+    </body>
+</html>
